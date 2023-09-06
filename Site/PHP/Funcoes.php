@@ -6,6 +6,4 @@
           echo "Não foi possível conectar";
       } else { return $varConn; }
     }
-
-
 ?>
