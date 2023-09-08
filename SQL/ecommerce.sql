@@ -1,8 +1,8 @@
 /*Criação de tabelas*/
 
     CREATE TABLE tbl_cliente(
-        id_usuario integer PRIMARY KEY,
-        nome_usuario text NOT NULL,
+        id_cliente integer PRIMARY KEY,
+        nome_cliente text NOT NULL,
         email varchar(30) NOT NULL,
         senha varchar(30) NOT NULL,
         telefone varchar(20) NOT NULL
@@ -17,7 +17,7 @@
 
     CREATE TABLE tbl_produto(
         id_produto varchar PRIMARY KEY,
-        nome text NOT NULL,
+        nome_produto text NOT NULL,
         descricao text NOT NULL, 
         vlr float NOT NULL,
         exluido varchar(10),
@@ -29,7 +29,7 @@
     );
 
     ALTER TABLE tbl_pedido ADD CONSTRAINT produto FOREIGN KEY (produto) REFERENCES tbl_produtos(id_produto);
-    ALTER TABLE tbl_pedido ADD CONSTRAINT cliente FOREIGN KEY (cliente) REFERENCES tbl_cliente(id_usuario);
+    ALTER TABLE tbl_pedido ADD CONSTRAINT cliente FOREIGN KEY (cliente) REFERENCES tbl_cliente(id_cliente);
 
 /*Inserção de dados*/
 
