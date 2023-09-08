@@ -19,7 +19,6 @@ CREATE TABLE tbl_produtos(
     nome text(10) NOT NULL,
     descricao text(100) NOT NULL, 
     vlr float NOT NULL,
-    qnt int,
     exluido varchar(10),
     dta_exclusao timestamp,
     id_visual varchar(50),
