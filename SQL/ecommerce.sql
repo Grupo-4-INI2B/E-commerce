@@ -40,10 +40,7 @@
     INSERT INTO tbl_pedido VALUES 
         (1, 100.0, '10wa', 1), 
         (2, 100.0, '20wa', 2), 
-        (3, 100.0, '30wa', 3), 
-        (4, 100.0, '10wa', 1), 
-        (5, 100.0, '20wa', 2), 
-        (6, 100.0, '30wa', 3);
+        (3, 100.0, '30wa', 3);
     INSERT INTO tbl_produto VALUES 
         ('10wa', 'Produto 1', 'Produto 1', 100.0, 'N', null, null, null, null, null), 
         ('20wa', 'Produto 2', 'Produto 2', 100.0, 'N', null, null, null, null, null), 
