@@ -1,0 +1,237 @@
+.logo
+{
+    height: 10%;
+    width: 10%;
+    position: absolute;
+    position: fixed;
+    border-radius: 70px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 15% 10% 10% 10% 25% auto auto;
+    grid-template-rows: auto;
+    background-color: #272727;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15%;
+}
+a {
+  font-family: Arial;
+  font-size:large;
+  border-color: #F6BE00;
+  border-width: 7px;
+  border-style: solid;
+  border-radius: 70px;
+}
+
+
+a:link {
+  background: #F6BE00;
+  text-decoration: none;
+  font-weight:100;
+ 
+ }
+ 
+ a:hover {
+  background: #CCC;
+  color: #FFF;
+  font-weight: bold;
+  border-color: #CCC;
+ }
+
+ .carrinho {
+  background-image: url('IconCart.svg');
+  background-repeat: no-repeat;
+  text-indent: 20px;
+  justify-content: center;
+  background-position: 10px 60px;
+  background-size: 20px;
+}
+
+
+
+.grid-logo {
+    display: flex;
+    justify-content:flex-start;
+    align-items: flex-start;
+    background-color: #272727;
+    color: black;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  padding: 20px;
+  font-size: 30px;
+}
+.search-container
+{
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    padding: 20px;
+    grid-area: auto / 5  ;
+}
+
+.grid-carrinho {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #272727;
+    color: black;
+    padding: 20px;
+  }
+.carrinho{
+    height: 50%;
+    width: 50%;
+}
+.grid-login {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background-color: #272727;
+  color: black;
+  padding: 20px;
+}
+.login{
+  height: 50%;
+  width: 50%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home{
+  height: 150px;
+  display: grid;
+  flex-direction: row;
+  width: 100vw;
+  background-color: #f6bd0049;
+  margin-top: 95px;
+  position: static;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  
+}
+.margem-titulo{
+  margin-left: 50px;
+}
+.onda{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 33px;
+  width: 135px;
+}
+
+.grid-container2 {
+  margin-top: 20px;
+  margin-left: 9%;
+  margin-right: 9%;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px; /* Reduzir o espaçamento entre as células */
+}
+
+.grid-container2 > * {
+  margin: 10%; /* Remover as margens padrão */
+  font-family: Arial;
+}
+
+.gustavo {
+  box-shadow: 0px 10px 10px #CCC;
+  border-radius: 30px;
+  grid-row: 1;
+  grid-column: 1;
+  background-color: #EFEFEF;
+  color: #272727;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.gustavo > img{
+  border-radius: 30px;
+}
+
+.heitor {
+  box-shadow: 0px 10px 10px #CCC;
+  border-radius: 30px;
+  grid-row: 1;
+  grid-column: 2;
+  background-color: #EFEFEF;
+  color: #272727;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.heitor > img{
+  border-radius: 30px;
+}
+
+.igor {
+    box-shadow: 0px 10px 10px #CCC;
+    border-radius: 30px;
+  grid-row: 1;
+  grid-column: 3;
+  background-color: #EFEFEF;
+  color: #272727;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.igor > img{
+  border-radius: 30px;
+}
+
+.janaina {
+    box-shadow: 0px 10px 10px #CCC;
+    border-radius: 30px;
+  grid-row: 1;
+  grid-column: 4;
+  background-color: #EFEFEF;
+  color: #272727;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.janaina > img{
+  border-radius: 30px;
+}
+
+.juliana {
+    box-shadow: 0px 10px 10px #CCC;
+    border-radius: 30px;
+  grid-row: 1;
+  grid-column: 5;
+  background-color: #EFEFEF;
+  color: #272727;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.juliana > img{
+  border-radius: 30px;
+}
