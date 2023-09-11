@@ -367,6 +367,7 @@ body
 
 /* Estilos para a grid de produtos populares */
 .produtos-populares {
+  box-shadow: 0px 5px 5px #efefef72;
   margin-right: 35px;
   background-color: #efefef72;
   width: 39vw;
@@ -412,6 +413,7 @@ body
   opacity: 1;
 }
 .product-container {
+  width: 100%;
   background-color: #efefef00;
   margin-top: 10px;
   margin: 3%;
