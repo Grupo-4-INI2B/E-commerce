@@ -142,6 +142,11 @@ a:link {
     grid-template-rows: auto auto;
   
 }
+.img{
+  width: 100%;
+  height: 100%;
+  
+}
 .margem-titulo{
   margin-left: 50px;
 }
@@ -158,7 +163,6 @@ body
     border-radius: 20px;
     width: 48vw;
     height: 50vh;
-    margin-top: 10px;
     margin-left: 20px;
     display: grid;
     grid-template-columns: auto auto;
@@ -248,14 +252,16 @@ body
 }
 
 .div-foto{
-  margin-top: auto;
+  margin-right: 30px;
+  margin-top: 30px;
   display: flex;
-  justify-content: center;
+  align-items: center;
   align-items:flex-end;
   grid-area: 1/2/2/3;
 }
 #foto
 {
+  margin-top: 30px;
   width: 20vw;
   height: 40vh;
 }
@@ -367,7 +373,7 @@ body
 
 /* Estilos para a grid de produtos populares */
 .produtos-populares {
-  box-shadow: 0px 5px 5px #efefef72;
+  box-shadow: 0px 5px 5px #CCC;
   margin-right: 35px;
   background-color: #efefef72;
   width: 39vw;
@@ -376,7 +382,7 @@ body
   border-radius: 30px;
   display: flex;
   justify-content: space-between; /* Alinhe as setas horizontalmente */
-  grid-area: 1/2/2/3;
+  align-items: center; /* Alinhe as setas verticalmente */
   position: relative; /* Adicione posição relativa para as setas */
 }
 
@@ -499,10 +505,22 @@ body
 .video-container h2 {
   font-size: 30px;
   margin-bottom: 20px;
+  align-items: center;
+
 }
 
 iframe {
+  align-items: center;
   border-radius: 20px;
   width: 80%;
   height: 80%;
+}
+.subtitulo-video{
+  border-radius: 20px;
+  width: 80%;
+  height: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #FFF;
+  border: 10px FFF;
 }
