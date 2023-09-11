@@ -213,3 +213,9 @@ a:link {
   text-decoration: line-through;
 }
 
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
