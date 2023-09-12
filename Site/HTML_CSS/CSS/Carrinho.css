@@ -1,23 +1,63 @@
-.logo
-{
-    height: 10%;
-    width: 10%;
-    position: absolute;
-    position: fixed;
-    border-radius: 70px;
+.body {
+  width: auto;
+}
+.logo {
+  height: 10%;
+  width: 10%;
+  position: fixed;
+  border-radius: 70px;
 }
 
+/* .grid-container */
 .grid-container {
-    display: grid;
-    grid-template-columns: 15% 10% 10% 10% 25% auto auto;
-    grid-template-rows: auto;
-    background-color: #272727;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 15%;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 15% 10% 10% 10% 25% auto auto;
+  grid-template-rows: 1fr;
+  background-color: #272727;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15%;
 }
+
+/* .vermais */
+.vermais {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #FFF;
+  font-size: 14px; /* Ajuste o tamanho conforme necessário */
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-family: Arial;
+  font-weight: bold;
+  width: 50%;
+  background-color: #F6BE00;
+  border: none;
+  outline: none;
+  box-shadow: 0px 5px 5px #efefef72;
+  height: 35px;
+  cursor: pointer;
+  margin: 25px;
+}
+
+.carrinho, .login{
+  height: 40px; /* Ajuste a altura conforme necessário */
+  width: 40px; /* Ajuste a largura conforme necessário */
+  align-items: center;
+}
+.onda{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 33px;
+  width: 135px;
+}
+
 a {
   font-family: Arial;
   font-size:large;
@@ -32,25 +72,19 @@ a:link {
   background: #F6BE00;
   text-decoration: none;
   font-weight:100;
+  font-weight: bold;
+  padding: 0 1vw;
  
  }
  
  a:hover {
-  background: #CCC;
+  background: #ffe48c;    
   color: #FFF;
-  font-weight: bold;
-  border-color: #CCC;
+  border-color: #ffe48c;
+  font-weight: 50;
+  padding: 0 1.2vw;
+
  }
-
- .carrinho {
-  background-image: url('IconCart.svg');
-  background-repeat: no-repeat;
-  text-indent: 20px;
-  justify-content: center;
-  background-position: 10px 60px;
-  background-size: 20px;
-}
-
 
 
 .grid-logo {
@@ -100,10 +134,39 @@ a:link {
   color: black;
   padding: 20px;
 }
-.login{
-  height: 50%;
-  width: 50%;
+
+.home{
+  height: 150px;
+  flex-direction: row;
+  width: auto;
+  background-color: #f6bd0049;
+  margin-top: 95px;
+  position: relative;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  
 }
+.img{
+  width: 100%;
+  height: 100%;
+  
+}
+.margem-titulo{
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+body
+{
+  margin: 0;
+  padding: 0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 
 * {
   margin: 0;
