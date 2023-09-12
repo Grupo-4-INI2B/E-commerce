@@ -5,189 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../CSS/Home.css">
+    <link rel="stylesheet" href="../CSS/Produtos.css">
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
-    <style>
-        /* Seus estilos CSS aqui */
-        .card-row {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        /* Estilos para os cards de produtos */
-        .product-card {
-            flex: 0 0 auto;
-            width: 250px;
-            height: 450px;
-            margin-right: 40px;
-            margin-bottom: 20px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-
-        .product-image {
-            position: relative;
-            width: 100%;
-            height: 350px;
-            overflow: hidden;
-        }
-
-        .product-thumb {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-        }
-
-        .discount-tag {
-            position: absolute;
-            background: #fff;
-            padding: 5px;
-            border-radius: 5px;
-            color: #ff7d7d;
-            right: 10px;
-            top: 10px;
-            text-transform: capitalize;
-        }
-
-        .card-btn {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px;
-            width: 90%;
-            text-transform: capitalize;
-            border: none;
-            outline: none;
-            background: #fff;
-            border-radius: 5px;
-            transition: 0.5s;
-            cursor: pointer;
-            opacity: 0;
-        }
-
-        .product-card:hover .card-btn {
-            opacity: 1;
-        }
-
-        .card-btn:hover {
-            background: #efefef;
-        }
-
-        .product-info {
-            width: 100%;
-            height: 100px;
-            padding-top: 10px;
-        }
-
-        .product-brand {
-            text-transform: uppercase;
-        }
-
-        .product-short-des {
-            width: 100%;
-            height: 20px;
-            line-height: 20px;
-            overflow: hidden;
-            opacity: 0.5;
-            text-transform: capitalize;
-            margin: 5px 0;
-        }
-
-        .price {
-            font-weight: 900;
-            font-size: 20px;
-        }
-
-        .actual-price {
-            margin-left: 20px;
-            opacity: 0.5;
-            text-decoration: line-through;
-        }
-    </style>
+    <script src="../JS/home.js"></script>
 </head>
 <body>
     <div class="grid-container">
-        <!-- Conteúdo do cabeçalho aqui -->
+        <div class="grid-logo">
+            <img class="logo" src="../Imagens/logocaixinhacolor.svg" alt="Logomarca">
+        </div>
+    <div  class="grid-item">
+        <div >
+            <a href="Home.html" style="color: #000000" >Home</a>
+        </div>
+    </div>
+    <div  class="grid-item">
+        <div >
+            <a href="Produtos.html" style="color: #000000" >Produtos</a>
+
+        </div>
+    </div>
+    <div  class="grid-item">
+        <div >
+            <a href="Devops.html" style="color: #000000" >Devops</a>
+        </div>
+    </div>
+    <div class="search-container">
+        <form>
+            <label for="search-input" class="search-icon"></label>
+            <input type="text" class="search-input" id="search-input" width="30" height="15" required />
+        </form>
     </div>
 
-    <div class="product-container">
-        <!-- Os cards de produtos serão inseridos aqui pelo JavaScript -->
+    <div class="grid-carrinho">
+        <a href="Carrinho.html" class="btn btn-primary" style="color: #000000">
+            <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
+            Carrinho
+          </a>
+          
+
     </div>
-
-    <script>
-        // Função para criar um card de produto
-        function criarCardProduto(numeroProduto) {
-            // Crie um elemento de div para o card
-            var card = document.createElement("div");
-            card.className = "product-card";
-
-            // Crie um elemento de imagem com base no nome do arquivo
-            var imagem = document.createElement("img");
-            imagem.src = "../Produtos E-commerce/Studio Ghibli/SG" + numeroProduto.toString().padStart(2, '0') + ".png"; // Formato da imagem corrigido
-            imagem.alt = "Nome do Produto";
-
-            // Crie um elemento h2 para o título
-            var titulo = document.createElement("h2");
-            titulo.textContent = "Adesivo Anime";
-
-            // Crie um elemento de parágrafo para o texto
-            var texto = document.createElement("p");
-            texto.innerHTML = "Studio Ghibli<br>" + numeroProduto.toString().padStart(2, '0');
-
-            // Crie um elemento de parágrafo para o preço
-            var preco = document.createElement("p");
-            preco.className = "price";
-            preco.textContent = "R$ 0,70";
-
-            // Crie um botão "Comprar"
-            var botaoComprar = document.createElement("button");
-            botaoComprar.className = "btn-buy";
-            botaoComprar.textContent = "Comprar";
-
-            // Adicione os elementos ao card
-            card.appendChild(imagem);
-            card.appendChild(titulo);
-            card.appendChild(texto);
-            card.appendChild(preco);
-            card.appendChild(botaoComprar);
-
-            return card;
-        }
-
-        // Função para criar linhas de cards
-        function criarLinhasDeCards() {
-            var productContainer = document.querySelector(".product-container");
-            var row = null; // Variável para controlar a linha atual
-
-            // Loop para criar cards para produtos de 01 a 50
-            for (var i = 1; i <= 50; i++) {
-                if (i % 10 === 1) {
-                    // Comece uma nova linha de cards a cada 10 produtos
-                    if (row) {
-                        productContainer.appendChild(row);
-                    }
-                    row = document.createElement("div");
-                    row.className = "card-row";
-                }
-
-                var card = criarCardProduto(i);
-                row.appendChild(card);
-            }
-
-            // Adicione a última linha se necessário
-            if (row) {
-                productContainer.appendChild(row);
-            }
-        }
-
-        // Chame a função para criar as linhas de cards quando a página for carregada
-        criarLinhasDeCards();
-    </script>
+    <div class="grid-login">
+        <a href="login.html" class="cart" style="color: #000000">
+        <img src="../Imagens/IconPerson.svg" alt="Ícone de Usuário" width="15" height="15" style="position: relative; top: 2px;">
+        Entrar
+    </a>
+    </div>
+    </div>
+    <div class="home">
+        <br>
+        <h1 class="margem-titulo">Os Melhores<br>Produtos</h1>
+            <img src="../Imagens//onda.png" alt="" class="onda">
+    </div>
+   
+    </div>
+    <!--Filtros-->
+    <div class="filter">
+        <label for="filter-select">Filtrar por:</label>
+        <select id="filter-select">
+            <option value="todos">Todos</option>
+            <option value="Studio Ghibli">Studio Ghibli</option>
+            <option value="Demon Slayer">Demon Slayer</option>
+            <option value="Capivaras">Capivaras</option>
+            <option value="Pokemons">Pokemons</option>
+            <option value="Star Wars">Star Wars</option>
+            <option value="Van Gogh">Van Gogh</option>
+        </select>
+    <!--JS e loop-->
+    <form>
+        <div class="container"></div>
+        <script src="/Site/HTML_CSS/JS/Produtos.js"></script>
+    </form>
 </body>
 </html>
