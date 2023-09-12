@@ -72,15 +72,17 @@ a:link {
   text-decoration: none;
   font-weight:100;
   font-weight: bold;
-
   padding: 0 1vw;
  
  }
  
  a:hover {
-  background: #CCC;
+  background: #ffe48c;    
   color: #FFF;
-  border-color: #CCC;
+  border-color: #ffe48c;
+  font-weight: 50;
+  padding: 0 1.2vw;
+
  }
 
 
