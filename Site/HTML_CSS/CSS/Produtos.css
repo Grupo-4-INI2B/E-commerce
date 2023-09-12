@@ -1,23 +1,62 @@
-.logo
-{
-    height: 10%;
-    width: 10%;
-    position: absolute;
-    position: fixed;
-    border-radius: 70px;
+.body {
+  width: auto;
+}
+.logo {
+  height: 10%;
+  width: 10%;
+  position: fixed;
+  border-radius: 70px;
 }
 
+/* .grid-container */
 .grid-container {
-    display: grid;
-    grid-template-columns: 15% 10% 10% 10% 25% auto auto;
-    grid-template-rows: auto;
-    background-color: #272727;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 15%;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 15% 10% 10% 10% 25% auto auto;
+  grid-template-rows: 1fr;
+  background-color: #272727;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15%;
 }
+
+/* .vermais */
+.vermais {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #FFF;
+  font-size: 14px; /* Ajuste o tamanho conforme necessário */
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-family: Arial;
+  font-weight: bold;
+  width: 50%;
+  background-color: #F6BE00;
+  border: none;
+  outline: none;
+  box-shadow: 0px 5px 5px #efefef72;
+  height: 35px;
+  cursor: pointer;
+  margin: 25px;
+}
+
+.carrinho, .login{
+  height: 40px; /* Ajuste a altura conforme necessário */
+  width: 40px; /* Ajuste a largura conforme necessário */
+}
+.onda{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 33px;
+  width: 135px;
+}
+
 a {
   font-family: Arial;
   font-size:large;
@@ -32,25 +71,17 @@ a:link {
   background: #F6BE00;
   text-decoration: none;
   font-weight:100;
+  font-weight: bold;
+
+  padding: 0 1vw;
  
  }
  
  a:hover {
   background: #CCC;
   color: #FFF;
-  font-weight: bold;
   border-color: #CCC;
  }
-
- .carrinho {
-  background-image: url('IconCart.svg');
-  background-repeat: no-repeat;
-  text-indent: 20px;
-  justify-content: center;
-  background-position: 10px 60px;
-  background-size: 20px;
-}
-
 
 
 .grid-logo {
@@ -100,9 +131,26 @@ a:link {
   color: black;
   padding: 20px;
 }
-.login{
-  height: 50%;
-  width: 50%;
+
+.home{
+  height: 150px;
+  display: grid;
+  flex-direction: row;
+  width: auto;
+  background-color: #f6bd0049;
+  margin-top: 95px;
+  position: static;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  
+}
+.img{
+  width: 100%;
+  height: 100%;
+  
+}
+.margem-titulo{
+  margin-left: 50px;
 }
 
 * {
@@ -111,105 +159,108 @@ a:link {
   box-sizing: border-box;
 }
 
+/*CSS Cards*/
 
-.product-container{
-  margin-top: 20px;
-  margin-left: 9%;
-  margin-right: 9%;
-  gap: 5px;
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-}
-
-.product-container::-webkit-scrollbar{
-  display: none;
-}
-
-.product-card{
-  flex: 0 0 auto;
-  width: 250px;
-  height: 450px;
-  margin-right: 40px;
-}
-
-.product-image{
-  position: relative;
-  width: 100%;
-  height: 350px;
-  overflow: hidden;
-}
-
-.product-thumb{
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-}
-
-.discount-tag{
-  position: absolute;
-  background: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  color: #ff7d7d;
-  right: 10px;
-  top: 10px;
-  text-transform: capitalize;
-}
-
-.card-btn{
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px;
+/* Estilos para o container */
+.container {
   width: 90%;
-  text-transform: capitalize;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Exibe 4 cards por linha */
+  grid-gap: 45px;
+  margin-top: 30px;
+  padding-top: 30px;
+  background-color: #efefef00;
+  margin-top: 10px;
+}
+
+/* Estilos para o product card */
+.product-card {
+  border: 10px 10px solid #efefef72;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  width: auto; /* Ajuste a largura conforme necessário */
+  height: auto;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin: 10px 10px;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #777;
+}
+
+.product-card .price {
+  font-weight: bold;
+  color: #f6be00;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.product-card .btn-buy {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #FFF;
+  font-size: small;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-family: Arial;
+  font-weight: bold;
+  width: 100%;
+  background-color: #F6BE00;
   border: none;
   outline: none;
-  background: #fff;
-  border-radius: 5px;
-  transition: 0.5s;
+  box-shadow: 0px 5px 5px #efefef72;
+  height: 35px;
   cursor: pointer;
-  opacity: 0;
+  margin-top: 10px; /* Ajuste a margem conforme necessário */
 }
 
-.product-card:hover .card-btn{
-  opacity: 1;
-}
-
-.card-btn:hover{
-  background: #efefef;
-}
-
-.product-info{
+.product-card .btn-buy:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100px;
-  padding-top: 10px;
+  height: 100%;
+  background-color: #F6BE00;
+  border-radius: 10rem;
+  z-index: -2;
 }
 
-.product-brand{
-  text-transform: uppercase;
+.product-card .btn-buy:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #b68b00;
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
 }
 
-.product-short-des{
+.product-card .btn-buy:hover {
+  color: #FFF;
+}
+
+.product-card .btn-buy:hover:before {
   width: 100%;
-  height: 20px;
-  line-height: 20px;
-  overflow: hidden;
-  opacity: 0.5;
-  text-transform: capitalize;
-  margin: 5px 0;
-}
-
-.price{
-  font-weight: 900;
-  font-size: 20px;
-}
-
-.actual-price{
-  margin-left: 20px;
-  opacity: 0.5;
-  text-decoration: line-through;
 }
 

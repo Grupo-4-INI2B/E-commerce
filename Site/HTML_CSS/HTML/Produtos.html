@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Produtos.css">
-    <link rel="stylesheet" href="search-box.css" />
+    <link rel="stylesheet" href="../CSS/Produtos.css">
+    <link rel="stylesheet" href="../CSS/Search-Box.css" />
+    <script src="../JS/home.js"></script>
 </head>
 <body>
     <div class="grid-container">
         <div class="grid-logo">
-            <img class="logo" src="./logocaixinhacolor.svg" alt="Logomarca">
+            <img class="logo" src="../Imagens/logocaixinhacolor.svg" alt="Logomarca">
         </div>
     <div  class="grid-item">
         <div >
@@ -30,42 +31,50 @@
         </div>
     </div>
     <div class="search-container">
-        <label for="search-input" class="search-icon"></label>
-        <input type="text" class="search-input" id="search-input" required />
+        <form>
+            <label for="search-input" class="search-icon"></label>
+            <input type="text" class="search-input" id="search-input" width="30" height="15" required />
+        </form>
     </div>
+
     <div class="grid-carrinho">
         <a href="Carrinho.html" class="btn btn-primary" style="color: #000000">
-            <img src="IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
-            Comprar
+            <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
+            Carrinho
           </a>
           
 
     </div>
     <div class="grid-login">
         <a href="login.html" class="cart" style="color: #000000">
-        <img src="IconPerson.svg" alt="Ícone de Usuário" width="15" height="15" style="position: relative; top: 2px;">
+        <img src="../Imagens/IconPerson.svg" alt="Ícone de Usuário" width="15" height="15" style="position: relative; top: 2px;">
         Entrar
     </a>
     </div>
-    
-
-    <div class="product-container">
-      <div class="product-card">
-          <div class="product-image">
-              <span class="discount-tag">50% off</span>
-              <img src="/Produtos E-commerce/Studio Ghibli/SG01.png" class="product-thumb" alt="">
-              <button class="card-btn">add to whislist</button>
-          </div>
-          <div class="product-info">
-              <h2 class="product-brand">brand</h2>
-              <p class="product-short-des">a short line about the cloth..</p>
-              <span class="price">$20</span><span class="actual-price">$40</span>
-          </div>
-      </div>
-      +7 more cards
-  </div>
-
-
-    
+    </div>
+    <div class="home">
+        <br>
+        <h1 class="margem-titulo">Os Melhores<br>Produtos</h1>
+            <img src="../Imagens//onda.png" alt="" class="onda">
+    </div>
+   
+    </div>
+    <!--Filtros-->
+    <div class="filter">
+        <label for="filter-select">Filtrar por:</label>
+        <select id="filter-select">
+            <option value="todos">Todos</option>
+            <option value="Studio Ghibli">Studio Ghibli</option>
+            <option value="Demon Slayer">Demon Slayer</option>
+            <option value="Capivaras">Capivaras</option>
+            <option value="Pokemons">Pokemons</option>
+            <option value="Star Wars">Star Wars</option>
+            <option value="Van Gogh">Van Gogh</option>
+        </select>
+    <!--JS e loop-->
+    <form>
+        <div class="container"></div>
+        <script src="/Site/HTML_CSS/JS/Produtos.js"></script>
+    </form>
 </body>
 </html>
