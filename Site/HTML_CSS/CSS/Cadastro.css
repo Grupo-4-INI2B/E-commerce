@@ -120,7 +120,7 @@ body {
 }
 
 input#name {
-    background-image: url(IconUSER.svg);
+    background-image: url(../Imagens/IconUSER.svg);
     background-repeat: no-repeat;
     text-indent: 20px;
     justify-content: center;
@@ -130,7 +130,7 @@ input#name {
 }
 
 input#senha {
-    background-image: url(IconLOCK.svg);
+    background-image: url(../Imagens/IconLOCK.svg);
     background-repeat: no-repeat;
     text-indent: 20px;
     justify-content: center;
@@ -140,7 +140,7 @@ input#senha {
 }
 
 input#user {
-    background-image: url(IconNAME.svg);
+    background-image: url(../Imagens/IconNAME.svg);
     background-repeat: no-repeat;
     text-indent: 20px;
     justify-content: center;

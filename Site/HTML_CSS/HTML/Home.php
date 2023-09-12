@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
     <script src="../JS/home.js"></script>
 </head>
+        <?php
+            session_start();
+            if (isset($_SESSION['loginCookie'])) {
+                $sessaoConectado = $_SESSION['sessaoConectado'];
+                echo "teste";
+            } else { 
+                $sessaoConectado = false; 
+            }
+        ?>
 <body>
     <div class="grid-container">
         <div class="grid-logo">
@@ -180,7 +189,7 @@
     <div class="video-container">
         <div>
             <h2 class="video" style="font-size: large;">Vídeo</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/zqLEO5tIuYs?si=dWcRa1PAJ_1ajSLr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/ZstsPUKT5CI?si=Q7e-LowkpHzFFVwe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <div class="Texto-do vídeo">
             <p class="subtitulo-video">Aqui você encontra os melhores produtos geek's do mercado.</p>
