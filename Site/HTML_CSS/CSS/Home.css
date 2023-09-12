@@ -71,7 +71,6 @@ a:link {
   background: #F6BE00;
   text-decoration: none;
   font-weight:100;
-  font-weight: bold;
 
   padding: 0 1vw;
  
@@ -81,6 +80,8 @@ a:link {
   background: #CCC;
   color: #FFF;
   border-color: #CCC;
+  font-weight: bold;
+
  }
 
 

@@ -264,15 +264,3 @@ a:link {
   width: 100%;
 }
 
-/*FIlters css*/
-#filter-select {
-  text-align: center;
-  width: 25%
-  background-color: #f8f9fa;
-  color: #343a40;
-  font-family: Arial;
-  font-size: 16px;
-  padding: 10px 0px;
-  border: 1px solid #ced4da;
-  border-radius: 5px;
-}

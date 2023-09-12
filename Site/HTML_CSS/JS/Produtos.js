@@ -152,30 +152,3 @@ function criarCardsStudioGhibli() {
     criarCardsResto();
   });
   
-  function atualizarExibicaoDeProdutos(filterValue) {
-    const productCards = document.querySelectorAll(".product-card");
-  
-    productCards.forEach((card) => {
-      const category = card.getAttribute("data-category");
-  
-      if (filterValue === "todos" || filterValue === category) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-    });
-  }
-  
-  // Adiciona um evento de mudança ao novo componente de seleção personalizado
-  const inputElements = document.querySelectorAll(".select-box__input");
-  inputElements.forEach((input) => {
-    input.addEventListener("change", () => {
-      const selectedOption = document.querySelector(".select-box__input:checked");
-  
-      if (selectedOption) {
-        const filterValue = selectedOption.value;
-        atualizarExibicaoDeProdutos(filterValue);
-      }
-    });
-  });
-  
