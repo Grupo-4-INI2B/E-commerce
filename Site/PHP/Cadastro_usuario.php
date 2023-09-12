@@ -28,5 +28,5 @@
         $sql = "INSERT INTO tbl_cliente (id_usuario, usuario, email, senha) VALUES ('$id_usuario', '$usuario', '$email', '$senha')";
         $insert = $conn->query($sql);
     }
-    header(/*PÁGINA PRINCIPAL*/);
+    header("../../HTML_CSS/HTML/Home.html");
 ?>
