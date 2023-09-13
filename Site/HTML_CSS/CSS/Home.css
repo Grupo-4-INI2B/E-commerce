@@ -1,6 +1,5 @@
 body{
-  line-height: 1.5;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial;
 }
 
 .logo {
@@ -35,7 +34,6 @@ body{
   position: relative;
   overflow: dden;
   z-index: 1;
-  font-family: Arial;
   font-weight: bold;
   width: 50%;
   background-color: #F6BE00;
@@ -202,6 +200,7 @@ body
 }
 
 .vermais {
+  margin-top: 10px;
   display: inline-block;
   padding: 0.75rem 1.25rem;
   border-radius: 10rem;
@@ -220,7 +219,6 @@ body
   box-shadow: 0px 10px 10px #CCC;
   height: 35px;
   cursor: pointer;
-  margin-top: 40px;
   margin-left: 85px;
 }
 
@@ -379,20 +377,43 @@ body
 }
 
 /* Estilos para a grid de produtos populares */
+.mais-vendidos
+{
+
+  margin-top: auto;
+  width: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #ffe48c;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0px 5px 5px #CCC;
+  padding: 1vw 1vw;
+  border-radius: 30px;
+  
+
+}
+
 .produtos-populares {
   box-shadow: 0px 5px 5px #CCC;
   margin-right: 35px;
   background-color: #efefef72;
   width: 39vw;
-  height: 350px;
+  height: auto;
   padding: 5px;
   border-radius: 30px;
   display: flex;
   justify-content: space-between; /* Alinhe as setas horizontalmente */
   align-items: center; /* Alinhe as setas verticalmente */
   position: relative; /* Adicione posição relativa para as setas */
+  flex-direction: column;
 }
-
+.teste2{
+  display: flex;
+  flex-direction: column;
+}
 
 /* Estilos para as setas de navegação */
 .pre-btn,
@@ -405,8 +426,8 @@ body
   cursor: pointer;
   z-index: 2; 
   position: absolute; 
-  top: 50%; 
-  transform: translateY(-50%); 
+  top: 60%; 
+  transform: translateY(-60%); 
 }
 
 .pre-btn {
@@ -495,12 +516,12 @@ body
 
 /* Estilos para a div do vídeo */
 .video-container {
-  display: block;
+  display: flex;
+  flex-direction: column;
   background-color: #efefef72;
   border-radius: 20px;
   width: auto;
   height: vw;
-  margin-top: 10px;
   display: flex;
   box-shadow: 0px 5px 5px #CCC;
   margin-bottom: 30px;
@@ -510,8 +531,13 @@ body
 
 
 }
+
+.teste{
+display: flex;
+}
 .video-e-titulo
 {
+  
   align-items: center;
   height: auto;
   width: 100%;
@@ -523,11 +549,9 @@ body
   
 }
 
-/* Estílo para possível títpulo para a div do vídeo
-.video-container h1 {
-  margin-top: 20px;
+.video {
+  margin-top: auto;
   width: 100%;
-  margin: 10%;
   margin-left: auto;
   margin-right: auto;
   background-color: #ffe48c;
@@ -539,8 +563,7 @@ body
   border-radius: 20px;
 
 }
-*/
-iframe {
+  iframe {
   align-items: center;
   border-radius: 20px;
   margin: 10px;
@@ -549,7 +572,8 @@ iframe {
   height: 315px;
 }
 .subtitulo-video{
-  margin-top: 5%;
+  line-height: 1.5;
+  margin-top: auto;
   width: 100%;
   height: auto;
   text-align: justify;
@@ -571,6 +595,7 @@ iframe {
   max-width: auto;
   margin:auto;
 }
+
 .row{
   display: flex;
   flex-wrap: wrap;

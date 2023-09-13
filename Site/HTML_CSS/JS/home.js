@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const arrowHoverEffect = (arrow) => {
         arrow.addEventListener('mouseover', () => {
-            arrow.style.transform = 'translateY(-50%) translateX(5px)';
+            arrow.style.transform = 'translateY(-60%) translateX(5px)';
         });
     
         arrow.addEventListener('mouseout', () => {
-            arrow.style.transform = 'translateY(-50%)';
+            arrow.style.transform = 'translateY(-60%)';
         });
     };
 

@@ -129,6 +129,17 @@ input#name {
     
 }
 
+input#phone {
+    background-image: url(../Imagens/IconUSER.svg);
+    color: #CCC;
+    background-repeat: no-repeat;
+    text-indent: 20px;
+    justify-content: center;
+    background-position: 10px 24px;
+    background-size: 20px;
+    
+}
+
 input#senha {
     background-image: url(../Imagens/IconLOCK.svg);
     background-repeat: no-repeat;
