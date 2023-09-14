@@ -1,5 +1,6 @@
-.body {
-  width: auto;
+body{
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
 }
 .logo {
   height: 10%;
@@ -135,7 +136,7 @@ a:link {
 }
 
 .home{
-  height: 150px;
+  height: 170px;
   display: grid;
   flex-direction: row;
   width: auto;
