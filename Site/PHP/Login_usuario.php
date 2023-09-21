@@ -1,29 +1,27 @@
 <?php
-    display_errors ( 'display_errors' , 1);
+    display_errors ('display_errors' , 1);
     error_reporting (E_ALL);
 
     include ("Functions.php");
 
+    $conn = conecta();
     session_start();
 
-    $conn = conecta();
+    //Parámetros vindos do formulário de Login(Login.html)
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-    // $email = $_POST['email'];
-    // $senha = $_POST['senha'];
-    echo "abnabac";
+    $select = $conn->query("SELECT (email, senha) FROM tbl_cliente");
+    while($row = $select -> fetch()) {
+        $varEmail = $row['email'];
+        $varSenha = $row['senha'];
 
-    $select = $conn->query("SELECT email, senha FROM tbl_cliente");
-    if ($email<>'') {
-        header("../../HTML_CSS/HTML/Home.html");
-        setcookie('loginCookie', $email, time() + 172800);
+        if($email == $varEmail && $senha == $varSenha) {
+            DefineCookie('Cookie_email', $email, 1440);
+            $usuario = array('email' => $email, 'senha' => $senha);
+            $_SESSION['sessaoUsuario'] = $usuario;
+            header("Location: ../../HTML_CSS/HTML/Home.html");
+        }
     }
-    // while ($row = $select -> fetch()){
-    //     $varEmail = $row['email'];
-    //     $varSenha = $row['senha'];
-    //     if($email == $varEmail && $senha == $varSenha){
-            
-    //     }else{
-    //         header(/*ERRO*/);
-    //     }
-    // }
+
 ?>
