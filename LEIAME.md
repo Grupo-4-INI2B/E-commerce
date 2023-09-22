@@ -14,15 +14,11 @@ Gestão de Negócios I da Profa. Me. Jovita M. Hojas Baenas.
 O objetivo é desenvolver um sítio de comércio digital para servir durante a trigésima Semana do Colégio
 "Viva CTI", onde é posto em prática o projeto em sua totalidade. 
 
-Para o banco de dados:
+Para o especificações:
   - Há dois bancos sendo utilizados, da Kinghost (Porto Alegre/RS) e o próprio do colégio, o segundo
     servindo para manter as páginas no ar;
-  - Utilizamos como gerenciador o PostgreSQL e a sua versão extendida da linguagem SQL.
-
-Para as ações(back) do site:
-  - Linguagem PHP.
-
-Para o front:
+  - Utilizamos como gerenciador o PostgreSQL e a sua versão extendida da linguagem SQL;
+  - Linguagem PHP;
   - HTML;
   - CSS;
   - E um pouco de JavaScript, quando necessário.
