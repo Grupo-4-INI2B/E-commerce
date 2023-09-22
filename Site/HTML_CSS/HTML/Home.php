@@ -9,15 +9,6 @@
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
     <script src="../JS/home.js"></script>
 </head>
-        <?php
-            session_start();
-            if (isset($_SESSION['loginCookie'])) {
-                $sessaoConectado = $_SESSION['sessaoConectado'];
-                echo "teste";
-            } else { 
-                $sessaoConectado = false; 
-            }
-        ?>
 <body>
     <div class="grid-container">
         <div class="grid-logo">

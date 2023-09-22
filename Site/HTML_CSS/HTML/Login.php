@@ -4,18 +4,16 @@
     display_errors ('display_errors' , 1);
     error_reporting (E_ALL);
 
-    include ("Functions.php");
+    include ("Funcoes.php");
 
     $conn = conecta();
-
-    if (isset($_SESSION['sessaoUsuario'])) {
-        $sessaoUsuario = $_SESSION['sessaoUsuario'];
-    } else {  
-        $Cookie_email = '';
-        if (isset($_COOKIE['Cookie_email']) && isset($_COOKIE['Cookie_senha'])) {
-            $Cookie_email = $_COOKIE['Cookie_email'];
-        }
+    $Cookie_email = '';
+    $Cookie_senha = '';
+    if (isset($_COOKIE['Cookie_email']) && isset($_COOKIE['Cookie_senha'])) {
+        $Cookie_email = $_COOKIE['Cookie_email'];
+        $Cookie_senha = $_COOKIE['Cookie_senha'];
     }
+    
 ?>    
 <head>
     <meta charset="UTF-8">
@@ -45,7 +43,7 @@
                             <br>
                         </div>
                         <div class="textfield">
-                            <input type="password" id="senha" name="senha" placeholder="Senha" />
+                            <input type="password" id="senha" name="senha" placeholder="Senha" value='$Cookie_senha'/>
                         </div>
                         <button type="submit" class="btn-login">Login</button>
                         <a href="cadastro.html" style="color: #FFF" >Não tenho uma conta</a>

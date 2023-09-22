@@ -2,7 +2,7 @@
     display_errors ('display_errors' , 1);
     error_reporting (E_ALL);
 
-    include ("Functions.php");
+    include ("Funcoes.php");
 
     $conn = conecta();
 
@@ -20,7 +20,7 @@
     }
 
     //Verifica se o email já existe no banco de dados
-    $select = $conn->query("SELECT email FROM tbl_cliente");
+    $select = $conn->query("SELECT email FROM tbl_usuario");
     while ($row = $select -> fetch()) {
         $varEmail = $row['email'];
         if($email == $varEmail){
@@ -30,7 +30,7 @@
     }
 
     //Verifica se o id gerado já existe no banco de dados
-    $select = $conn->query("SELECT id_usuario FROM tbl_cliente");
+    $select = $conn->query("SELECT id_usuario FROM tbl_usuario");
     while ($row = $select -> fetch()) {
         $varIdUsuario = $row['id_usuario'];
         if($id_usuario == $varIdUsuario)
@@ -40,9 +40,10 @@
     }
    
     //Insere os dados do usuário no banco de dados
-    $insert = $conn->query("INSERT INTO tbl_cliente VALUES ($id_usuario, $usuario, $email, $senha, $tlfn)");
+    $insert = $conn->query("INSERT INTO tbl_usuarios VALUES ($id_usuario, $usuario, $email, $senha, $tlfn)");
 
     //Criando um cookie para email e senha
     DefineCookie('Cookie_email', $email, 1440);
-    header("Location: ../../HTML_CSS/HTML/Home.html");
+    DefineCookie('Cookie_senha', $senha, 1440);
+    header("Location: ../../HTML_CSS/HTML/Login_usuario.php");
 ?>
