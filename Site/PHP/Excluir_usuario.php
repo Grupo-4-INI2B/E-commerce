@@ -3,16 +3,15 @@
     display_errors ('display_errors' , 1);
     error_reporting (E_ALL);
 
-    include ("Functions.php");
+    include ("Funcoes.php");
 
     $conn = conecta();
-    session_start();
 
     //Parámetros vindos do formulário da Home, onde vai enviar o cookie salvo.
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $select = $conn->query("SELECT id_usuario FROM tbl_cliente WHERE email = $email AND senha = $senha");
+    $select = $conn->query("SELECT id_usuario FROM tbl_usuario WHERE email = $email AND senha = $senha");
 
     while ($row = $select -> fetch()) {
         $varEmail = $row['email'];
@@ -20,9 +19,9 @@
         $id_usuario = $row['id_usuario'];
 
         if($email == $varEmail && $senha == $varSenha) {
-            $delete = $conn->query("DELETE FROM tbl_cliente WHERE id_usuario = $id_usuario");
-            session_destroy();
+            $delete = $conn->query("DELETE FROM tbl_usuario WHERE id_usuario = $id_usuario");
             unset($_COOKIE['Cookie_email']);
+            unset($_COOKIE['Cookie_senha']);
             header("Location: ../../HTML_CSS/HTML/Home.html");
         }
     }

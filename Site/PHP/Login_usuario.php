@@ -2,25 +2,36 @@
     display_errors ('display_errors' , 1);
     error_reporting (E_ALL);
 
-    include ("Functions.php");
+    include ("Funcoes.php");
 
     $conn = conecta();
-    session_start();
 
-    //Parámetros vindos do formulário de Login(Login.html)
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+    $email = '', $senha = '';
 
-    $select = $conn->query("SELECT (email, senha) FROM tbl_cliente");
+    if(isset($_COOKIE['Cookie_email']) && isset($_COOKIE['Cookie_senha'])) {
+        //Parámetros vindos do formulário da cadastro.
+        $email = $_COOKIE['Cookie_email'];
+        $senha = $_COOKIE['Cookie_senha'];
+    }else {
+        //Parámetros vindos do formulário de Login
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+    }
+
+    $select = $conn->query("SELECT (email, senha) FROM tbl_usuario");
     while($row = $select -> fetch()) {
         $varEmail = $row['email'];
         $varSenha = $row['senha'];
 
         if($email == $varEmail && $senha == $varSenha) {
-            DefineCookie('Cookie_email', $email, 1440);
-            $usuario = array('email' => $email, 'senha' => $senha);
-            $_SESSION['sessaoUsuario'] = $usuario;
-            header("Location: ../../HTML_CSS/HTML/Home.html");
+            if(isset($_COOKIE['Cookie_email']) && isset($_COOKIE['Cookie_senha'])) {
+                header("Location: ../../HTML_CSS/HTML/Home.php");
+                break;
+            }else {
+                DefineCookie('Cookie_email', $email, 1440);
+                DefineCookie('Cookie_senha', $senha, 1440);
+                header("Location: ../../HTML_CSS/HTML/Home.php");
+            }
         }
     }
 
