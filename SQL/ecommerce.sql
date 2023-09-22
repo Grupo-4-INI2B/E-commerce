@@ -11,14 +11,14 @@
     CREATE TABLE tbl_pedido(
         id_pedido integer PRIMARY KEY NOT NULL,
         vlr_total float NOT NULL, /*Valor total do pedido*/
-        status varchar(10) NOT NULL, /*Status do pedido*/
+        status varchar(100) NOT NULL, /*Status do pedido*/
         dta_pedido timestamp NOT NULL, /*Data do pedido*/
         usuario integer NOT NULL
     );
 
     CREATE TABLE tbl_compraTmp(
         sessao varchar(50) PRIMARY KEY, /*Sessão php*/
-        pedido integer NOT NULL,
+        pedido integer NOT NULL
     );
 
     CREATE TABLE tbl_carrinho(
