@@ -6,7 +6,7 @@ body{
   height: 10%;
   width: 10%;
   position: fixed;
-  border-radius: 70px;
+  border-radius: 20px;
 }
 
 /* .grid-container */
@@ -58,7 +58,7 @@ body{
   height: 33px;
   width: 135px;
 }
-
+/*
 a {
   font-family: Arial;
   font-size:large;
@@ -67,25 +67,44 @@ a {
   border-style: solid;
   border-radius: 70px;
 }
-
-
 a:link {
   background: #F6BE00;
   text-decoration: none;
   font-weight:100;
   font-weight: bold;
   padding: 0 1vw;
- 
- }
- 
- a:hover {
+}
+a:hover {
   background: #ffe48c;    
   color: #FFF;
   border-color: #ffe48c;
   font-weight: 50;
   padding: 0 1.2vw;
+}*/
 
- }
+.botao-menu{
+  font-family: Arial;
+  font-size:large;
+  border-color: #F6BE00;
+  border-width: 7px;
+  border-style: solid;
+  border-radius: 70px;
+}
+.botao-menu:link {
+  background: #F6BE00;
+  text-decoration: none;
+  font-weight:100;
+  font-weight: bold;
+  padding: 0 1vw; 
+} 
+.botao-menu:hover {
+  background: #ffe48c;    
+  color: #FFF;
+  border-color: #ffe48c;
+  font-weight: 50;
+  padding: 0 1.2vw;
+}
+
 
 
 .grid-logo {
