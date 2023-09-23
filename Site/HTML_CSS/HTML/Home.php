@@ -9,7 +9,15 @@
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
     <script src="../JS/Home.js"></script>
 </head>
+<?php
+    display_errors ('display_errors' , 1);
+    error_reporting (E_ALL);
 
+    include ("Funcoes.php");
+
+    $conn = conecta();
+
+?>
 <body>
     <div class="grid-container">
         <div class="grid-logo">
@@ -19,7 +27,7 @@
         </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Home.html" style="color: #000000" >Home</a>
+            <a class="botao-menu"ws href="Home.html" style="color: #000000" >Home</a>
         </div>
     </div>
     <div  class="grid-item">
@@ -34,9 +42,9 @@
         </div>
     </div>
     <div class="search-container">
-        <form>
+        <form name="frmPesquisa" action="Produtos.html" method="post">
             <label for="search-input" class="search-icon"></label>
-            <input type="text" class="search-input" id="search-input" width="30" height="15" required />
+            <input name ="iptPesquisa" type="text" class="search-input" id="search-input" width="30" height="15" required />
         </form>
     </div>
 
