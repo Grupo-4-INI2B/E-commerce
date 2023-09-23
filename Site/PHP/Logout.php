@@ -5,7 +5,7 @@
     include ("Funcoes.php");
 
     $conn = conecta();
-    session_start(); 
-
+    
+    
     
 ?>
