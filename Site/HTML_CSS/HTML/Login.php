@@ -46,7 +46,7 @@
                             <input type="password" id="senha" name="senha" placeholder="Senha" value='$Cookie_senha'/>
                         </div>
                         <button type="submit" class="btn-login">Login</button>
-                        <a href="cadastro.html" style="color: #FFF" >Não tenho uma conta</a>
+                        <a href="Cadastro.html" style="color: #FFF" >Não tenho uma conta</a>
                     </div>
                     <!--
                     <button class="close-button">

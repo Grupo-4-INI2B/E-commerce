@@ -9,7 +9,7 @@
     );
 
     CREATE TABLE tbl_pedido(
-        id_pedido integer PRIMARY KEY NOT NULL, /*Valor total do pedido*/
+        id_pedido integer PRIMARY KEY NOT NULL, 
         status varchar(100) NOT NULL, /*Status do pedido*/
         dta_pedido timestamp NOT NULL, /*Data do pedido*/
         usuario integer NOT NULL,
@@ -39,9 +39,9 @@
         custo numeric(10, 2),
         margem_lucro numeric(10, 2),
         icms numeric(10, 2),
-        imagem varchar(50),
-        qntd int not null /*Lembrar-se de questionar ao 
+        imagem varchar(50), /*Lembrar-se de questionar ao 
         Cabelo sobre o tipo deste campo (varchar oy bytea[])*/
+        qntd int not null /*Perguntar ao José*/
     );
 
 /*Criação de chaves estrangeiras*/
