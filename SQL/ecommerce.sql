@@ -9,11 +9,12 @@
     );
 
     CREATE TABLE tbl_pedido(
-        id_pedido integer PRIMARY KEY NOT NULL,
-        vlr_total float NOT NULL, /*Valor total do pedido*/
+        id_pedido integer PRIMARY KEY NOT NULL, /*Valor total do pedido*/
         status varchar(100) NOT NULL, /*Status do pedido*/
         dta_pedido timestamp NOT NULL, /*Data do pedido*/
-        usuario integer NOT NULL
+        usuario integer NOT NULL,
+        sessao integer NOT NULL,
+        /*produto varchar(50)*/
     );
 
     CREATE TABLE tbl_compraTmp(
@@ -23,7 +24,7 @@
 
     CREATE TABLE tbl_carrinho(
         qntd integer,
-        produto varchar(50),
+        produto varchar(50) ,
         pedido integer
     );
 
@@ -38,13 +39,16 @@
         custo numeric(10, 2),
         margem_lucro numeric(10, 2),
         icms numeric(10, 2),
-        imagem varchar(50) /*Lembrar-se de questionar ao 
+        imagem varchar(50),
+        qntd int not null /*Lembrar-se de questionar ao 
         Cabelo sobre o tipo deste campo (varchar oy bytea[])*/
     );
 
 /*Criação de chaves estrangeiras*/
 
     ALTER TABLE tbl_pedido ADD CONSTRAINT usuario FOREIGN KEY (usuario) REFERENCES tbl_usuario(id_usuario);
+    ALTER TABLE tbl_pedido ADD CONSTRAINT sessao FOREIGN KEY (sessao) REFERENCES tbl_compraTmp(sessao);
+    /*ALTER TABLE tbl_pedido ADD CONSTRAINT produto FOREIGN KEY (produto) REFERENCES tbl_produto(id_produto);*/
     ALTER TABLE tbl_compraTmp ADD CONSTRAINT pedido FOREIGN KEY (pedido) REFERENCES tbl_pedido(id_pedido);
     ALTER TABLE tbl_carrinho ADD CONSTRAINT produto FOREIGN KEY (produto) REFERENCES tbl_produto(id_produto);
     ALTER TABLE tbl_carrinho ADD CONSTRAINT pedido FOREIGN KEY (pedido) REFERENCES tbl_pedido(id_pedido);
