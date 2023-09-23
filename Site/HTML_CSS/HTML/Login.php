@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <?php
     display_errors ('display_errors' , 1);
     error_reporting (E_ALL);
