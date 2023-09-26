@@ -14,8 +14,14 @@
     error_reporting (E_ALL);
 
     include ("Funcoes.php");
-
     $conn = conecta();
+
+    $email = '';
+
+    if(isset($_COOKIE['Cookie_email'])) { 
+        $email = $_COOKIE['Cookie_email'];
+    }
+
 
 ?>
 <body>

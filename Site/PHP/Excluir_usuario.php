@@ -19,9 +19,8 @@
         $id_usuario = $row['id_usuario'];
 
         if($email == $varEmail && $senha == $varSenha) {
-            $delete = $conn->query("DELETE FROM tbl_usuario WHERE id_usuario = $id_usuario");
+            $delete = $conn->query("UPDATE tbl_usuario SET excluido = true WHERE id_usuario = $id_usuario");
             unset($_COOKIE['Cookie_email']);
-            unset($_COOKIE['Cookie_senha']);
             header("Location: ../../HTML_CSS/HTML/Home.html");
         }
     }
