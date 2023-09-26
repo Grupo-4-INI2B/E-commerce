@@ -119,7 +119,7 @@ body {
     height: auto;
 }
 
-input#name {
+input#usuario {
     background-image: url(../Imagens/IconUSER.svg);
     background-repeat: no-repeat;
     text-indent: 20px;
@@ -130,7 +130,7 @@ input#name {
 }
 
 input#phone {
-    background-image: url(../Imagens/IconUSER.svg);
+    background-image: url(../Imagens/Telefone.svg);
     color: #CCC;
     background-repeat: no-repeat;
     text-indent: 20px;
@@ -151,7 +151,7 @@ input#senha {
 }
 
 input#user {
-    background-image: url(../Imagens/IconNAME.svg);
+    background-image: url(../Imagens/Email.svg);
     background-repeat: no-repeat;
     text-indent: 20px;
     justify-content: center;
