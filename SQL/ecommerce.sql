@@ -5,7 +5,10 @@
         nome_usuario text NOT NULL,
         email varchar(30) NOT NULL,
         telefone varchar(20) NOT NULL,
-        senha varchar(30) NOT NULL
+        senha varchar(30) NOT NULL,
+        adm boolean NOT NULL,
+        excluido boolean NOT NULL,
+        dta_exclusao timestamp
     );
 
     CREATE TABLE tbl_pedido(
@@ -13,7 +16,7 @@
         status varchar(100) NOT NULL, /*Status do pedido*/
         dta_pedido timestamp NOT NULL, /*Data do pedido*/
         usuario integer NOT NULL,
-        sessao integer NOT NULL,
+        sessao integer NOT NULL
         /*produto varchar(50)*/
     );
 
@@ -33,14 +36,12 @@
         nome_produto text NOT NULL,
         descricao text NOT NULL, 
         vlr float NOT NULL,
-        exluido varchar(10),
+        exluido boolean NOT NULL,
         dta_exclusao timestamp,
         id_visual varchar(50),
         custo numeric(10, 2),
         margem_lucro numeric(10, 2),
         icms numeric(10, 2),
-        imagem varchar(50), /*Lembrar-se de questionar ao 
-        Cabelo sobre o tipo deste campo (varchar oy bytea[])*/
         qntd int not null /*Perguntar ao José*/
     );
 
@@ -56,7 +57,7 @@
 /*Inserção de dados*/
 
     INSERT INTO tbl_usuario VALUES 
-        (1, 'João', 'a@w.com', '123456789', '123456'),
+        (1, 'João', 'a@w.com', '123456789', '123456', ),
         (2, 'Maria', 'b@w.com', '1234567810', '12456'),
         (3, 'José', 'c@w.com', '1234567811', '12356'),
         (4, 'Pedro', 'd@w.com', '1234567812', '12346'),

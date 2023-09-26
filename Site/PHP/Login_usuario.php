@@ -24,12 +24,11 @@
         $varSenha = $row['senha'];
 
         if($email == $varEmail && $senha == $varSenha) {
-            if(isset($_COOKIE['Cookie_email']) && isset($_COOKIE['Cookie_senha'])) {
+            if(isset($_COOKIE['Cookie_email'])) {
                 header("Location: ../../HTML_CSS/HTML/Home.php");
                 break;
             }else {
                 DefineCookie('Cookie_email', $email, 1440);
-                DefineCookie('Cookie_senha', $senha, 1440);
                 header("Location: ../../HTML_CSS/HTML/Home.php");
             }
         }

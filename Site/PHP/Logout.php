@@ -6,6 +6,4 @@
 
     $conn = conecta();
     
-    
-    
 ?>

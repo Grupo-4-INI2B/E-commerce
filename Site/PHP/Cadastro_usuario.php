@@ -12,6 +12,13 @@
     $email = $_POST['email'];
     $tlfn = $_POST['tlfn']; 
     $senha = $_POST['senha'];
+    $excluido = false;
+
+    if($email = 'bbytecraft@gmail.com'){ //Verifica se o usuário é administrador
+        $adm = true; 
+    }else{
+        $adm = false;
+    }
     
     /*Verifica se algum campo está vazio(só por garantia, visto que 
     no HTML já está definido que todos os campos são obrigatórios)*/
@@ -40,10 +47,9 @@
     }
    
     //Insere os dados do usuário no banco de dados
-    $insert = $conn->query("INSERT INTO tbl_usuarios VALUES ($id_usuario, $usuario, $email, $senha, $tlfn)");
+    $insert = $conn->query("INSERT INTO tbl_usuarios VALUES ($id_usuario, $usuario, $email, $senha, $tlfn, $adm, $excluido)");
 
     //Criando um cookie para email e senha
     DefineCookie('Cookie_email', $email, 1440);
-    DefineCookie('Cookie_senha', $senha, 1440);
     header("Location: ../../HTML_CSS/HTML/Login_usuario.php");
 ?>
