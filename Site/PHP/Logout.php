@@ -1,9 +1,9 @@
 <?php
-    display_errors ('display_errors' , 1);
-    error_reporting (E_ALL);
+   display_errors ('display_errors' , 1);
+   error_reporting (E_ALL);
+   session_start();
 
-    include ("Funcoes.php");
-
-    $conn = conecta();
-    
+   unset($_SESSION['sessaoUsuario']); 
+ 
+   header('Location: ../../HTML_CSS/HTML/Home.php');
 ?>

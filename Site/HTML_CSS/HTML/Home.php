@@ -12,14 +12,21 @@
 <?php
     display_errors ('display_errors' , 1);
     error_reporting (E_ALL);
+    session_start();
 
     include ("Funcoes.php");
     $conn = conecta();
 
-    $email = '';
+    $sessaoUsuario = false;
 
-    if(isset($_COOKIE['Cookie_email'])) { 
-        $email = $_COOKIE['Cookie_email'];
+    if(isset($_SESSION['sessaoUsuario'])) {
+        $sessaoUsuario = $_SESSION['sessaoUsuario'];
+    }
+
+    if($sessaoUsuario) {
+        /*Colocar as opções do usuário*/
+    }else {
+        /*Colocar as opções que qualuer um pode ver, mesmo sem estar logado*/
     }
 
 

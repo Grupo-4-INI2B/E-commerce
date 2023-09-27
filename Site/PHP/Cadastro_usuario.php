@@ -1,9 +1,9 @@
 <?php
     display_errors ('display_errors' , 1);
     error_reporting (E_ALL);
+    session_start();
 
     include ("Funcoes.php");
-
     $conn = conecta();
 
     //Parámetros vindos do formulário de cadastro(Cadastro.html)
@@ -12,14 +12,13 @@
     $email = $_POST['email'];
     $tlfn = $_POST['tlfn']; 
     $senha = $_POST['senha'];
+    $adm  = false;
     $excluido = false;
 
     if($email = 'bbytecraft@gmail.com'){ //Verifica se o usuário é administrador
         $adm = true; 
-    }else{
-        $adm = false;
     }
-    
+
     /*Verifica se algum campo está vazio(só por garantia, visto que 
     no HTML já está definido que todos os campos são obrigatórios)*/
     if($usuario == '' || $email == '' || $tlfn == '' || $senha == '') {
@@ -42,14 +41,15 @@
         $varIdUsuario = $row['id_usuario'];
         if($id_usuario == $varIdUsuario)
             $id_usuario = rand(1000, 2000);
-        else
+        else 
             break;
     }
    
     //Insere os dados do usuário no banco de dados
     $insert = $conn->query("INSERT INTO tbl_usuarios VALUES ($id_usuario, $usuario, $email, $senha, $tlfn, $adm, $excluido)");
 
-    //Criando um cookie para email e senha
-    DefineCookie('Cookie_email', $email, 1440);
+    //Criando um cookie para email e sessao
+    defineCookie('cookie_email', $email, 1440);
+    defineSession($email);
     header("Location: ../../HTML_CSS/HTML/Login_usuario.php");
 ?>
