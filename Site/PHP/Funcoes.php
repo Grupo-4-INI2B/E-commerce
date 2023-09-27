@@ -1,4 +1,5 @@
 <?php
+
   function conecta ($params) {
     $varConn = new PDO($params);
     if (!$varConn) {
@@ -22,9 +23,9 @@
     setcookie($paramNome, $paramValor, time() + $paramMinutos * 60); 
   }
 
-  function defineSessao($paramEmail) {
+  function defineSessao($nomeSessao ,$paramEmail) {
     session_start();
-    $_SESSION['sessaoUsuario'] = $paramEmail;
+    $_SESSION[$nomeSessao] = $paramEmail;
   }
 
   function EnviaEmail ($pEmailDestino, $pAssunto, $pHtml, $pRemetente) {
@@ -84,7 +85,7 @@
 * Função para executar frases sql
 * marcelo c peres - 2023 
 */
-function ExecutaSQL( $paramConn, $paramSQL ) 
+function ExecutaSQL($paramConn, $paramSQL) 
 {
  $linhas = $paramConn->exec($paramSQL);
  
