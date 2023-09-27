@@ -6,7 +6,27 @@
     <title>Login</title>
     <link rel="stylesheet" href="../CSS/login.css">
 </head>
-<
+<?php
+    display_errors ('display_errors' , 1);
+    error_reporting (E_ALL);
+    session_start();
+
+    include ("Funcoes.php");
+    $conn = conecta();
+
+    if (isset($_SESSION['sessaoUsuario'])) {
+        $sessaoUsuario = $_SESSION['sessaoUsuario'];
+    } else { 
+      $sessaoUsuario = false; 
+    }
+
+    $email = '';
+    if(!$sessaoUsuario){
+        if(isset($_COOKIE['cookie_email'])) {
+            $email = $_COOKIE['cookie_email'];
+        }
+    }
+?>
 <body>
     <form name="frmLogin" method="post" action="../../PHP/Login_usuario.php">
     <div class="main-login">
@@ -25,7 +45,7 @@
                     <br>
                         <div class="textfield">
 
-                            <input type="email" id="email" name="email" placeholder="Email"/>
+                            <input type="email" id="email" name="email" placeholder="Email" value="$email"/>
                             <br>
                         </div>
                         <div class="textfield">

@@ -6,8 +6,8 @@
         email varchar(30) NOT NULL,
         telefone varchar(20) NOT NULL,
         senha varchar(30) NOT NULL,
-        adm boolean NOT NULL,
-        excluido boolean NOT NULL,
+        adm boolean NOT NULL, /*Se o usuário é administrador ou não*/
+        excluido boolean NOT NULL, /*Exlusão lógica*/
         dta_exclusao timestamp
     );
 
@@ -17,7 +17,6 @@
         dta_pedido timestamp NOT NULL, /*Data do pedido*/
         usuario integer NOT NULL,
         sessao integer NOT NULL
-        /*produto varchar(50)*/
     );
 
     CREATE TABLE tbl_compraTmp(
@@ -49,19 +48,18 @@
 
     ALTER TABLE tbl_pedido ADD CONSTRAINT usuario FOREIGN KEY (usuario) REFERENCES tbl_usuario(id_usuario);
     ALTER TABLE tbl_pedido ADD CONSTRAINT sessao FOREIGN KEY (sessao) REFERENCES tbl_compraTmp(sessao);
-    /*ALTER TABLE tbl_pedido ADD CONSTRAINT produto FOREIGN KEY (produto) REFERENCES tbl_produto(id_produto);*/
     ALTER TABLE tbl_compraTmp ADD CONSTRAINT pedido FOREIGN KEY (pedido) REFERENCES tbl_pedido(id_pedido);
     ALTER TABLE tbl_carrinho ADD CONSTRAINT produto FOREIGN KEY (produto) REFERENCES tbl_produto(id_produto);
     ALTER TABLE tbl_carrinho ADD CONSTRAINT pedido FOREIGN KEY (pedido) REFERENCES tbl_pedido(id_pedido);
 
 /*Inserção de dados*/
 
-    INSERT INTO tbl_usuario VALUES 
-        (1, 'João', 'a@w.com', '123456789', '123456', ),
-        (2, 'Maria', 'b@w.com', '1234567810', '12456'),
-        (3, 'José', 'c@w.com', '1234567811', '12356'),
-        (4, 'Pedro', 'd@w.com', '1234567812', '12346'),
-        (5, 'Paulo', 'e@w.com', '1234567813', '12345');
+    INSERT INTO tbl_usuario(id_usuario, nome_usuario, email, telefone, senha, adm, excluido) VALUES 
+        (1, 'João', 'a@w.com', '123456789', '123456', FALSE, FALSE),
+        (2, 'Maria', 'b@w.com', '1234567810', '12456', FALSE, FALSE),
+        (3, 'José', 'c@w.com', '1234567811', '12356' , FALSE, FALSE),
+        (4, 'Pedro', 'd@w.com', '1234567812', '12346', FALSE, FALSE),
+        (5, 'Paulo', 'e@w.com', '1234567813', '12345', FALSE, FALSE);
     INSERT INTO tbl_pedido VALUES 
         (1, 100.00, 'Aguardando pagamento', '2020-10-10 10:10:10', 1),
         (2, 200.00, 'Aguardando pagamento', '2020-10-10 10:10:10', 2),
