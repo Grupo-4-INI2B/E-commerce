@@ -10,9 +10,11 @@
     $email =  $_COOKIE['cookie_email'];
     $senha = $_POST['senha'];
 
+    //Seleciona o id do usuario
     $select = $conn->query("SELECT id_usuario FROM tbl_usuario WHERE email = $email AND senha = $senha");
     $id_usuario = $select->fetch();
 
+    //Deleta o usuário(lógico) e deativa o cookie e a sessão
     $delete = $conn->query("UPDATE tbl_usuario SET excluido = true WHERE id_usuario = $id_usuario");
     unset($_COOKIE['Cookie_email']);
     unset($_SESSION['sessaoUsuario']);

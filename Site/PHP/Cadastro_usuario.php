@@ -1,4 +1,5 @@
 <?php
+
     display_errors ('display_errors' , 1);
     error_reporting (E_ALL);
     session_start();
@@ -39,10 +40,11 @@
     $select = $conn->query("SELECT id_usuario FROM tbl_usuario");
     while ($row = $select -> fetch()) {
         $varIdUsuario = $row['id_usuario'];
-        if($id_usuario == $varIdUsuario)
+        if($id_usuario == $varIdUsuario) {
             $id_usuario = rand(1000, 2000);
-        else 
+        }else { 
             break;
+        }
     }
    
     //Insere os dados do usuário no banco de dados
@@ -50,6 +52,10 @@
 
     //Criando um cookie para email e sessao
     defineCookie('cookie_email', $email, 1440);
-    defineSession($email);
+    if($adm){ //Verifica se o usuário é administrador
+        defineSession('sessaoAdm', $email);
+    }else{
+        defineSession('sessaoUsuario', $email);
+    }
     header("Location: ../../HTML_CSS/HTML/Login_usuario.php");
 ?>
