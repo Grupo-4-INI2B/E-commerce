@@ -1,7 +1,6 @@
 <?php
 
-    display_errors ('display_errors' , 1);
-    error_reporting (E_ALL);
+ini_set ( 'display_errors' , 1);    error_reporting (E_ALL);
     session_start();
 
     include ("Funcoes.php");
@@ -40,7 +39,7 @@
                 break;
             }else {
                 defineCookie('cookie_email', $email, 1440);
-                if($email = 'bbytecraft@gmail.com'){ //Verifica se o usuário é administrador
+                if($email = "bbytecraft@gmail.com"){ //Verifica se o usuário é administrador
                     defineSessao('sessaoAdm', $email);
                     header("Location: ../../HTML_CSS/HTML/Home.php");
                 }else{

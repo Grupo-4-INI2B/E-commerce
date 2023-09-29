@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
     <script src="../JS/Home.js"></script>
 </head>
+</html>
 <?php
     ini_set ( 'display_errors' , 1);
     error_reporting (E_ALL);
