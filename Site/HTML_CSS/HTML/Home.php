@@ -10,11 +10,11 @@
     <script src="../JS/Home.js"></script>
 </head>
 <?php
-    display_errors ('display_errors' , 1);
+    ini_set ( 'display_errors' , 1);
     error_reporting (E_ALL);
     session_start();
 
-    include ("Funcoes.php");
+    include ("../../PHP/Funcoes.php");
     $conn = conecta();
 
     $sessaoUsuario = false;
