@@ -2,27 +2,21 @@
 
     display_errors ('display_errors' , 1);
     error_reporting (E_ALL);
+    session_start();
 
     include ("Funcoes.php");
-
     $conn = conecta();
-
-    //Parámetros vindos do formulário da Home, onde vai enviar o cookie salvo.
-    $email = $_POST['email'];
+    
+    $email =  $_COOKIE['cookie_email'];
     $senha = $_POST['senha'];
 
+    //Seleciona o id do usuario
     $select = $conn->query("SELECT id_usuario FROM tbl_usuario WHERE email = $email AND senha = $senha");
+    $id_usuario = $select->fetch();
 
-    while ($row = $select -> fetch()) {
-        $varEmail = $row['email'];
-        $varSenha = $row['senha'];
-        $id_usuario = $row['id_usuario'];
-
-        if($email == $varEmail && $senha == $varSenha) {
-            $delete = $conn->query("DELETE FROM tbl_usuario WHERE id_usuario = $id_usuario");
-            unset($_COOKIE['Cookie_email']);
-            unset($_COOKIE['Cookie_senha']);
-            header("Location: ../../HTML_CSS/HTML/Home.html");
-        }
-    }
+    //Deleta o usuário(lógico) e deativa o cookie e a sessão
+    $delete = $conn->query("UPDATE tbl_usuario SET excluido = true WHERE id_usuario = $id_usuario");
+    unset($_COOKIE['Cookie_email']);
+    unset($_SESSION['sessaoUsuario']);
+    header("Location: ../../HTML_CSS/HTML/Home.php");
 ?>

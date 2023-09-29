@@ -1,11 +1,10 @@
 <?php
-    display_errors ('display_errors' , 1);
-    error_reporting (E_ALL);
 
-    include ("Funcoes.php");
+   display_errors ('display_errors' , 1);
+   error_reporting (E_ALL);
+   session_start();
 
-    $conn = conecta();
-    
-    
-    
+   unset($_SESSION['sessaoUsuario']); 
+ 
+   header('Location: ../../HTML_CSS/HTML/Home.php');
 ?>

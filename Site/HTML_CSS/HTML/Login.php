@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<?php
-    display_errors ('display_errors' , 1);
-    error_reporting (E_ALL);
-
-    include ("Funcoes.php");
-
-    $conn = conecta();
-    $Cookie_email = '';
-    $Cookie_senha = '';
-    if (isset($_COOKIE['Cookie_email']) && isset($_COOKIE['Cookie_senha'])) {
-        $Cookie_email = $_COOKIE['Cookie_email'];
-        $Cookie_senha = $_COOKIE['Cookie_senha'];
-    }
-    
-?>    
+<html lang="pt-BR">    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../CSS/login.css">
 </head>
+<?php
+    display_errors ('display_errors' , 1);
+    error_reporting (E_ALL);
+    session_start();
+
+    include ("Funcoes.php");
+    $conn = conecta();
+
+    if (isset($_SESSION['sessaoUsuario'])) {
+        $sessaoUsuario = $_SESSION['sessaoUsuario'];
+    } else { 
+      $sessaoUsuario = false; 
+    }
+
+    $email = '';
+    if(!$sessaoUsuario){
+        if(isset($_COOKIE['cookie_email'])) {
+            $email = $_COOKIE['cookie_email'];
+        }
+    }
+?>
 <body>
     <form name="frmLogin" method="post" action="../../PHP/Login_usuario.php">
     <div class="main-login">
@@ -39,11 +45,11 @@
                     <br>
                         <div class="textfield">
 
-                            <input type="email" id="email" name="email" placeholder="Email" value='$Cookie_email'/>
+                            <input type="email" id="email" name="email" placeholder="Email" value="$email"/>
                             <br>
                         </div>
                         <div class="textfield">
-                            <input type="password" id="senha" name="senha" placeholder="Senha" value='$Cookie_senha'/>
+                            <input type="password" id="senha" name="senha" placeholder="Senha"/>
                         </div>
                         <button type="submit" class="btn-login">Login</button>
                         <a href="Cadastro.html" style="color: #FFF" >Não tenho uma conta</a>
