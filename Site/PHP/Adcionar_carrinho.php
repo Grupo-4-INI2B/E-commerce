@@ -1,5 +1,5 @@
 <?php
-    display_errors ( 'display_errors' , 1);
+    display_errors ('display_errors', 1);
     error_reporting (E_ALL);
 
     include ("Functions.php");

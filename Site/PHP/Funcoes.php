@@ -1,7 +1,8 @@
 <?php
 
-  function conecta ($params) {
-    $varConn = new PDO($params);
+  function conecta () {
+    $varConn = new PDO("pgsql:host=pgsql.projetoscti.com.br; dbname=projetoscti25; 
+    user=projetoscti25; password=721492");
     if (!$varConn) {
       echo "Não foi possível conectar, por favor contatar "; 
     } else { 
@@ -28,7 +29,7 @@
     $_SESSION[$nomeSessao] = $paramEmail;
   }
 
-  function EnviaEmail ($pEmailDestino, $pAssunto, $pHtml, $pRemetente) {
+  function enviaEmail ($pEmailDestino, $pAssunto, $pHtml, $pRemetente) {
     error_reporting(E_ALL);
     ini_set("display_errors", 1);
     
@@ -85,7 +86,7 @@
 * Função para executar frases sql
 * marcelo c peres - 2023 
 */
-function ExecutaSQL($paramConn, $paramSQL) 
+function executaSQL($paramConn, $paramSQL) 
 {
  $linhas = $paramConn->exec($paramSQL);
  
@@ -109,7 +110,7 @@ function ExecutaSQL($paramConn, $paramSQL)
 *
 * @return string A senha gerada
 */
-function GeraSenha($tamanho = 8, $maiusculas = true, $numeros = true, $simbolos = false) {
+function geraSenha($tamanho = 8, $maiusculas = true, $numeros = true, $simbolos = false) {
   //$lmin = 'abcdefghijklmnopqrstuvwxyz';
   $lmai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   $num = '1234567890';
@@ -128,5 +129,17 @@ function GeraSenha($tamanho = 8, $maiusculas = true, $numeros = true, $simbolos 
   $retorno .= $caracteres[$rand-1];
   }
   return $retorno;
+}
+
+function verificaEmail($paramEmail) {
+  $conn = conecta();
+  $select = $conn->query("SELECT (email) FROM tbl_usuario");
+  $row = $select->fetch();
+  $varEmail = $row['email'];
+  if ($varEmail == $paramEmail) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
 }
 ?>

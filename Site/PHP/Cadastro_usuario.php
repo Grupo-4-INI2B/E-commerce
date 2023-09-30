@@ -1,6 +1,6 @@
 <?php
 
-    display_errors ('display_errors' , 1);
+    ini_set ('display_errors', 1);    
     error_reporting (E_ALL);
     session_start();
 
@@ -27,14 +27,11 @@
     }
 
     //Verifica se o email já existe no banco de dados
-    $select = $conn->query("SELECT email FROM tbl_usuario");
-    while ($row = $select -> fetch()) {
-        $varEmail = $row['email'];
-        if($email == $varEmail){
+        if(verificaEmail($email)){
             header("Location: ../../HTML_CSS/HTML/Cadastro.html");
             break;
         }
-    }
+    
 
     //Verifica se o id gerado já existe no banco de dados
     $select = $conn->query("SELECT id_usuario FROM tbl_usuario");
