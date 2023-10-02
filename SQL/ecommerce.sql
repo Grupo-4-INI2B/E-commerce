@@ -1,7 +1,7 @@
 /*Criação de tabelas*/
 
-    CREATE TABLE tbl_usuario(
-        id_usuario integer PRIMARY KEY,
+    CREATE TABLE tbl_usuario (
+        id_usuario integer PRIMARY KEY NOT NULL,
         nome_usuario text NOT NULL,
         email varchar(30) NOT NULL,
         telefone varchar(20) NOT NULL,
@@ -10,44 +10,42 @@
         excluido boolean NOT NULL, /*Exlusão lógica*/
         dta_exclusao timestamp
     );
-
-    CREATE TABLE tbl_pedido(
+	
+    CREATE TABLE tbl_pedido (
         id_pedido integer PRIMARY KEY NOT NULL, 
         status varchar(100) NOT NULL, /*Status do pedido*/
         dta_pedido timestamp NOT NULL, /*Data do pedido*/
-        usuario integer NOT NULL,
-        sessao integer NOT NULL
-    );
+        usuario integer NOT NULL
+     );
 
-    CREATE TABLE tbl_compraTmp(
-        sessao varchar(50) PRIMARY KEY, /*Sessão php*/
+    CREATE TABLE tbl_compraTmp (
+        sessao varchar(50) PRIMARY KEY NOT NULL, /*Sessão php*/
         pedido integer NOT NULL
     );
 
-    CREATE TABLE tbl_carrinho(
+    CREATE TABLE tbl_carrinho (
         qntd integer,
         produto varchar(50) ,
         pedido integer
     );
 
-    CREATE TABLE tbl_produto(
-        id_produto varchar PRIMARY KEY,
-        nome_produto text NOT NULL,
-        descricao text NOT NULL, 
-        vlr float NOT NULL,
-        exluido boolean NOT NULL,
+    CREATE TABLE tbl_produto (
+        id_produto varchar(50) PRIMARY KEY NOT NULL,
+        nome_produto text(100) NOT NULL,
+        descricao text(200) NOT NULL, 
+        vlr float NOT NULL, /*Valor do produto*/
+		 qntd int NOT NULL,
+        excluido boolean NOT NULL,
         dta_exclusao timestamp,
         id_visual varchar(50),
         custo numeric(10, 2),
         margem_lucro numeric(10, 2),
-        icms numeric(10, 2),
-        qntd int not null /*Perguntar ao José*/
+        icms numeric(10, 2)  
     );
 
 /*Criação de chaves estrangeiras*/
 
     ALTER TABLE tbl_pedido ADD CONSTRAINT usuario FOREIGN KEY (usuario) REFERENCES tbl_usuario(id_usuario);
-    ALTER TABLE tbl_pedido ADD CONSTRAINT sessao FOREIGN KEY (sessao) REFERENCES tbl_compraTmp(sessao);
     ALTER TABLE tbl_compraTmp ADD CONSTRAINT pedido FOREIGN KEY (pedido) REFERENCES tbl_pedido(id_pedido);
     ALTER TABLE tbl_carrinho ADD CONSTRAINT produto FOREIGN KEY (produto) REFERENCES tbl_produto(id_produto);
     ALTER TABLE tbl_carrinho ADD CONSTRAINT pedido FOREIGN KEY (pedido) REFERENCES tbl_pedido(id_pedido);
@@ -60,31 +58,35 @@
         (3, 'José', 'c@w.com', '1234567811', '12356' , FALSE, FALSE),
         (4, 'Pedro', 'd@w.com', '1234567812', '12346', FALSE, FALSE),
         (5, 'Paulo', 'e@w.com', '1234567813', '12345', FALSE, FALSE);
+		
     INSERT INTO tbl_pedido VALUES 
-        (1, 100.00, 'Aguardando pagamento', '2020-10-10 10:10:10', 1),
-        (2, 200.00, 'Aguardando pagamento', '2020-10-10 10:10:10', 2),
-        (3, 300.00, 'Aguardando pagamento', '2020-10-10 10:10:10', 3),
-        (4, 400.00, 'Aguardando pagamento', '2020-10-10 10:10:10', 4),
-        (5, 500.00, 'Aguardando pagamento', '2020-10-10 10:10:10', 5);
+        (1, 'Aguardando pagamento', '2020-10-10 10:10:10', 1),
+        (2, 'Aguardando pagamento', '2020-10-10 10:10:10', 2),
+        (3, 'Aguardando pagamento', '2020-10-10 10:10:10', 3),
+        (4, 'Aguardando pagamento', '2020-10-10 10:10:10', 4),
+        (5, 'Aguardando pagamento', '2020-10-10 10:10:10', 5);
+		
     INSERT INTO tbl_compraTmp VALUES 
         ('123456789', 1),
         ('1234567810', 2),
         ('1234567811', 3),
         ('1234567812', 4),
         ('1234567813', 5);
-    INSERT INTO tbl_carrinho VALUES 
-        (1, '123456789', 1),
-        (2, '1234567810', 2),
-        (3, '1234567811', 3),
-        (4, '1234567812', 4),
-        (5, '1234567813', 5);
-    INSERT INTO tbl_produto VALUES 
-        ('123456789', 'Produto 1', 'Descrição do produto 1', 100.00, 'N', '2020-10-10 10:10:10', '123456789', 10.00, 10.00, 10.00, 'imagem1'),
-        ('1234567810', 'Produto 2', 'Descrição do produto 2', 200.00, 'N', '2020-10-10 10:10:10', '1234567810', 20.00, 20.00, 20.00, 'imagem2'),
-        ('1234567811', 'Produto 3', 'Descrição do produto 3', 300.00, 'N', '2020-10-10 10:10:10', '1234567811', 30.00, 30.00, 30.00, 'imagem3'),
-        ('1234567812', 'Produto 4', 'Descrição do produto 4', 400.00, 'N', '2020-10-10 10:10:10', '1234567812', 40.00, 40.00, 40.00, 'imagem4'),
-        ('1234567813', 'Produto 5', 'Descrição do produto 5', 500.00, 'N', '2020-10-10 10:10:10', '1234567813', 50.00, 50.00, 50.00, 'imagem5');
-
+		
+    INSERT INTO tbl_produto (id_produto, nome_produto, descricao, vlr, exluido, qntd) VALUES 
+        ('123456789', 'Produto 1', 'Descrição do produto 1', 100.00, FALSE, 4),
+        ('1234567810', 'Produto 2', 'Descrição do produto 2', 200.00, FALSE, 5),
+        ('1234567811', 'Produto 3', 'Descrição do produto 3', 300.00, FALSE, 5),
+        ('1234567812', 'Produto 4', 'Descrição do produto 4', 400.00, FALSE, 10),
+        ('1234567813', 'Produto 5', 'Descrição do produto 5', 500.00, FALSE, 50);
+		
+	INSERT INTO tbl_carrinho VALUES 
+		(1, '123456789', 1),
+		(2, '1234567810', 2),
+		(3, '1234567811', 3),
+		(4, '1234567812', 4),
+		(5, '1234567813', 5);
+		
 /*Consulta de dados*/
 
     /*Consultas simples*/
@@ -104,6 +106,6 @@
     /*Consultas com joins*/ 
         SELECT * FROM tbl_usuario INNER JOIN tbl_pedido ON tbl_usuario.id_usuario = tbl_pedido.usuario;
         SELECT * FROM tbl_pedido INNER JOIN tbl_compraTmp ON tbl_pedido.id_pedido = tbl_compraTmp.pedido;
-        SELECT * FROM tbl_compraTmp INNER JOIN tbl_carrinho ON tbl_compraTmp.sessao = tbl_carrinho.pedido;
+        SELECT * FROM tbl_compraTmp INNER JOIN tbl_carrinho ON tbl_compraTmp.pedido = tbl_carrinho.pedido;
         SELECT * FROM tbl_carrinho INNER JOIN tbl_produto ON tbl_carrinho.produto = tbl_produto.id_produto;
         
