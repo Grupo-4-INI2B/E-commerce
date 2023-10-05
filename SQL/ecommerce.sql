@@ -31,8 +31,8 @@
 
     CREATE TABLE tbl_produto (
         id_produto varchar(50) PRIMARY KEY NOT NULL,
-        nome_produto text(100) NOT NULL,
-        descricao text(200) NOT NULL, 
+        nome_produto text NOT NULL,
+        descricao text NOT NULL, 
         vlr float NOT NULL, /*Valor do produto*/
 		 qntd int NOT NULL,
         excluido boolean NOT NULL,

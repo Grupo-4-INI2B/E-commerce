@@ -2,8 +2,6 @@
 
     ini_set ('display_errors', 1);    
     error_reporting (E_ALL);
-    session_start();
-
     include ("Funcoes.php");
     $conn = conecta();
 
@@ -13,11 +11,11 @@
     $email = $_POST['email'];
     $tlfn = $_POST['tlfn']; 
     $senha = $_POST['senha'];
-    $adm  = false;
-    $excluido = false;
+    $adm  = FALSE;
+    $excluido = FALSE;
 
     if($email = 'bbytecraft@gmail.com'){ //Verifica se o usuário é administrador
-        $adm = true; 
+        $adm = TRUE; 
     }
 
     /*Verifica se algum campo está vazio(só por garantia, visto que 
@@ -27,10 +25,9 @@
     }
 
     //Verifica se o email já existe no banco de dados
-        if(verificaEmail($email)){
-            header("Location: ../../HTML_CSS/HTML/Cadastro.html");
-            break;
-        }
+    if(verificaEmail($email)){
+        header("Location: ../../HTML_CSS/HTML/Cadastro.html");
+    }
     
 
     //Verifica se o id gerado já existe no banco de dados
@@ -39,20 +36,18 @@
         $varIdUsuario = $row['id_usuario'];
         if($id_usuario == $varIdUsuario) {
             $id_usuario = rand(1000, 2000);
-        }else { 
-            break;
         }
     }
    
     //Insere os dados do usuário no banco de dados
-    $insert = $conn->query("INSERT INTO tbl_usuarios VALUES ($id_usuario, $usuario, $email, $senha, $tlfn, $adm, $excluido)");
-
+    $insert = $conn->query("INSERT INTO tbl_usuarios(id_usuario, nome_usuario, email, telefone, senha, adm, excluido) 
+        VALUES($id_usuario, $usuario, $email, $tlfn, $senha , $adm, $excluido)");
     //Criando um cookie para email e sessao
     defineCookie('cookie_email', $email, 1440);
     if($adm){ //Verifica se o usuário é administrador
-        defineSession('sessaoAdm', $email);
+        defineSessao('sessaoAdm', $email);
     }else{
-        defineSession('sessaoUsuario', $email);
+        defineSessao('sessaoUsuario', $email);
     }
-    header("Location: ../../HTML_CSS/HTML/Login_usuario.php");
+    header("Login_usuario.php");
 ?>
