@@ -5,8 +5,9 @@
     include ("Funcoes.php");
     $conn = conecta();
 
-    //Parámetros vindos do formulário de cadastro(Cadastro.html)
-    $id_usuario = rand(1000, 2000); //Cria um número aleatório entre 1000 e 2000 para servir como id do usuário 
+    
+    /*Parámetros vindos do formulário de cadastro(Cadastro.html)*/
+    $id_usuario = rand(1000, 2000); /*Cria um número aleatório entre 1000 e 2000 para servir como id do usuário*/ 
     $usuario = $_POST['usuario'];
     $email = $_POST['email'];
     $tlfn = $_POST['tlfn']; 
@@ -14,7 +15,7 @@
     $adm  = FALSE;
     $excluido = FALSE;
 
-    if($email == 'bbytecraft@gmail.com'){ //Verifica se o usuário é administrador
+    if($email == 'bbytecraft@gmail.com'){ /*Verifica se o usuário é administrador*/
         $adm = TRUE; 
     }
 
@@ -38,7 +39,7 @@
             $id_usuario = rand(1000, 2000);
         }
     }
-   
+    
     //Insere os dados do usuário no banco de dados
     $dados=[
         'id_usuario' => $id_usuario,
@@ -52,6 +53,7 @@
     $insert = $conn->prepare('INSERT INTO tbl_usuario(id_usuario, nome_usuario, email, telefone, senha, adm, excluido) 
         VALUES(:id_usuario, :nome_usuario, :email, :telefone, :senha, :adm, :excluido)');
     $insert->execute($dados);
+
     //Criando um cookie para email e sessao
     defineCookie('cookie_email', $email, 1440);
     if($adm){ //Verifica se o usuário é administrador

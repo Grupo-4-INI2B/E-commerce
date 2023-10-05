@@ -34,7 +34,7 @@
         nome_produto text NOT NULL,
         descricao text NOT NULL, 
         vlr float NOT NULL, /*Valor do produto*/
-		 qntd int NOT NULL,
+		qntd int NOT NULL,
         excluido boolean NOT NULL,
         dta_exclusao timestamp,
         id_visual varchar(50),
