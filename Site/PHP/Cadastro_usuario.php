@@ -14,7 +14,7 @@
     $adm  = FALSE;
     $excluido = FALSE;
 
-    if($email = 'bbytecraft@gmail.com'){ //Verifica se o usuário é administrador
+    if($email == 'bbytecraft@gmail.com'){ //Verifica se o usuário é administrador
         $adm = TRUE; 
     }
 
@@ -40,8 +40,18 @@
     }
    
     //Insere os dados do usuário no banco de dados
-    $insert = $conn->query("INSERT INTO tbl_usuarios(id_usuario, nome_usuario, email, telefone, senha, adm, excluido) 
-        VALUES($id_usuario, $usuario, $email, $tlfn, $senha , $adm, $excluido)");
+    $dados=[
+        'id_usuario' => $id_usuario,
+        'nome_usuario' => $usuario,
+        'email' => $email,
+        'telefone' => $tlfn,
+        'senha' => $senha,
+        'adm' => $adm,
+        'excluido' => $excluido
+    ];
+    $insert = $conn->prepare('INSERT INTO tbl_usuario(id_usuario, nome_usuario, email, telefone, senha, adm, excluido) 
+        VALUES(:id_usuario, :nome_usuario, :email, :telefone, :senha, :adm, :excluido)');
+    $insert->execute($dados);
     //Criando um cookie para email e sessao
     defineCookie('cookie_email', $email, 1440);
     if($adm){ //Verifica se o usuário é administrador
