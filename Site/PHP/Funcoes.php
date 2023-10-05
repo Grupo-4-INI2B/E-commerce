@@ -133,7 +133,7 @@ function geraSenha($tamanho = 8, $maiusculas = true, $numeros = true, $simbolos 
 
 function verificaEmail($paramEmail) {
   $conn = conecta();
-  $select = $conn->query("SELECT (email) FROM tbl_usuario");
+  $select = $conn->query("SELECT email FROM tbl_usuario");
   $row = $select->fetch();
   $varEmail = $row['email'];
   if ($varEmail == $paramEmail) {

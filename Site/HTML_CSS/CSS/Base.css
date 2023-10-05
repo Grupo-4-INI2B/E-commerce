@@ -1,0 +1,225 @@
+/*CSS base*/
+body{
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .grid-container */
+.grid-container {
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 15% 10% 10% 10% 25% auto auto;
+    grid-template-rows: 1fr;
+    background-color: #272727;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15%;
+}
+
+
+.grid-logo {
+    display: flex;
+    justify-content:flex-start;
+    align-items: flex-start;
+    background-color: #272727;
+    color: black;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  padding: 20px;
+  font-size: 30px;
+}
+.search-container
+{
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    padding: 20px;
+    grid-area: auto / 5  ;
+}
+.grid-carrinho {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #272727;
+    color: black;
+    padding: 20px;
+}
+.carrinho{
+    height: 50%;
+    width: 50%;
+}
+.grid-login {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background-color: #272727;
+  color: black;
+  padding: 20px;
+}
+
+.carrinho, .login{
+    height: 40px; /* Ajuste a altura conforme necessário */
+    width: 40px; /* Ajuste a largura conforme necessário */
+    align-items: center;
+}
+.onda{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 33px;
+    width: 135px;
+}
+.logo {
+    height: 10%;
+    width: 10%;
+    position: fixed;
+    border-radius: 20px;
+}
+
+.home{
+    height: 170px;
+    display: grid;
+    flex-direction: row;
+    width: auto;
+    background-color: #f6bd0049;
+    margin-top: 95px;
+    position: static;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto;
+    
+}
+
+.margem-titulo{
+    margin-left: 50px;
+  /*margin-top: 10px;*/
+
+}
+
+
+.botao-menu{
+    font-family: Arial;
+    font-size:large;
+    border-color: #F6BE00;
+    border-width: 7px;
+    border-style: solid;
+    border-radius: 70px;
+}
+.botao-menu:link {
+    background: #F6BE00;
+    text-decoration: none;
+    font-weight:100;
+    font-weight: bold;
+    padding: 0 1vw;
+}
+.botao-menu:hover {
+    background: #ffe48c;    
+    color: #FFF;
+    border-color: #ffe48c;
+    font-weight: 50;
+    padding: 0 1.2vw;
+    font-weight: bold;
+  
+}
+
+
+
+
+/*Footer*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.container-footer{
+  max-height: auto;
+  max-width: auto;
+  margin:auto;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+ul{
+  list-style: none;
+}
+.footer{
+  background-color: #272727;
+    padding: 20px 10px;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
+}
+.footer-col h4::before{
+  content: '';
+  position: absolute;
+  left:0;
+  bottom: -10px;
+  background-color: #F6BE00;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.footer-col ul li:not(:last-cld){
+  margin-bottom: 10px;
+}
+.footer-col ul li a{
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbbbbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+  color: #ffffff;
+  padding-left: 8px;
+}
+.footer-col .social-links a{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255,255,255,0.2);
+  margin:0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+  color: #24262b;
+  background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}

@@ -1,16 +1,18 @@
-body{
+/*body{
   font-family: Arial;
-}
+}*/
 
-.logo {
+ 
+
+/*.logo {
   height: 10%;
   width: 10%;
   position: fixed;
   border-radius: 20px;
-}
+}*/
 
 /* .grid-container */
-.grid-container {
+/*.grid-container {
   z-index: 3;
   display: grid;
   grid-template-columns: 15% 10% 10% 10% 25% auto auto;
@@ -21,43 +23,27 @@ body{
   left: 0;
   right: 0;
   height: 15%;
-}
+}*/
+/*base*/
 
-/* .vermais */
-.vermais {
-  display: inline-block;
-  padding: 0.75rem 1.25rem;
-  border-radius: 10rem;
-  color: #FFF;
-  font-size: 14px; /* Ajuste o tamanho conforme necessário */
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  font-weight: bold;
-  width: 50%;
-  background-color: #F6BE00;
-  border: none;
-  outline: none;
-  box-shadow: 0px 5px 5px #efefef72;
-  height: 35px;
-  cursor: pointer;
-  margin: 25px;
-}
 
-.carrinho, .login{
-  height: 40px; /* Ajuste a altura conforme necessário */
-  width: 40px; /* Ajuste a largura conforme necessário */
+
+
+/*base*/
+/*.carrinho, .login{
+  height: 40px; /* Ajuste a altura conforme necessário 
+  width: 40px; /* Ajuste a largura conforme necessário 
   align-items: center;
-}
+}*/
+/*
 .onda{
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   height: 33px;
   width: 135px;
-}
-
+}*/
+/*
 .botao-menu{
   font-family: Arial;
   font-size:large;
@@ -66,27 +52,22 @@ body{
   border-style: solid;
   border-radius: 70px;
 }
-
-
 .botao-menu:link {
   background: #F6BE00;
   text-decoration: none;
   font-weight:100;
   font-weight: bold;
   padding: 0 1vw;
- 
- }
- 
- .botao-menu:hover {
+}
+.botao-menu:hover {
   background: #ffe48c;    
   color: #FFF;
   border-color: #ffe48c;
   font-weight: 50;
   padding: 0 1.2vw;
+}*/
 
-}
-
-
+/*
 .grid-logo {
     display: flex;
     justify-content:flex-start;
@@ -133,9 +114,9 @@ body{
   background-color: #272727;
   color: black;
   padding: 20px;
-}
+}*/
 
-.home{
+/*.home{
   height: 170px;
   display: grid;
   flex-direction: row;
@@ -146,21 +127,21 @@ body{
     grid-template-columns: auto;
     grid-template-rows: auto auto;
   
-}
-.img{
+}*/
+/*.img{
   width: 100%;
   height: 100%;
   
-}
+}*//*
 .margem-titulo{
   margin-left: 50px;
-}
+}*/
 
-body
+/*body
 {
   margin: 0;
   padding: 0;
-}
+}*/
 .produtos
 {
   width: calc(48vw + 20px);
@@ -178,8 +159,8 @@ body
 }
 .titulo-produtos  
 {
-    font-size: 60px;
-    padding-top: 50px;
+  font-size: 60px;
+  padding-top: 50px;
     margin-left: 50px;
     margin-bottom: 7px;
     text-decoration: none;
@@ -192,13 +173,14 @@ body
     color: #272727;
     margin-bottom: 20px;
     margin-top: 5px;
-}
-.topicos
-{
-  font-size: 15px;
-  margin-left: 50px;
-}
-
+  }
+  .topicos
+  {
+    font-size: 15px;
+    margin-left: 50px;
+  }
+  
+  /* .vermais - específico home*/
 .vermais {
   margin-top: 10px;
   display: inline-block;
@@ -206,6 +188,7 @@ body
   border-radius: 10rem;
   color: #FFF;
   font-size: small;
+  /*font-size: 14px; /* Ajuste o tamanho conforme necessário */
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
@@ -216,14 +199,16 @@ body
   background-color: #F6BE00;
   border: none;
   outline: none;
+  /*box-shadow: 0px 5px 5px #efefef72;*/
   box-shadow: 0px 10px 10px #CCC;
   height: 35px;
   cursor: pointer;
   margin-left: 85px;
+  /*/margin: 25px;*/
 }
-
-.vermais:after {
-  content: "";
+  
+  .vermais:after {
+    content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -246,12 +231,9 @@ body
   border-radius: 10rem;
   z-index: -1;
 }
-
-
 .vermais:hover {
   color: #FFF;
 }
-
 .vermais:hover:before {
   width: 100%;
 }
@@ -270,6 +252,7 @@ body
   width: 20vw;
   height: 40vh;
 }
+
 .produtos-filho{
   grid-area: 1/1/2/2;
 }
@@ -588,7 +571,7 @@ display: flex;
 }
 
 /*Footer*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .container-footer{
   max-height: auto;
@@ -664,6 +647,7 @@ ul{
 }
 
 /*responsive*/
+/*/
 @media(max-width: 767px){
   .footer-col{
     width: 50%;
@@ -674,4 +658,4 @@ ul{
   .footer-col{
     width: 100%;
 }
-}
+}*/
