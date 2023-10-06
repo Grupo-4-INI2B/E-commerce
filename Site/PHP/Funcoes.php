@@ -165,7 +165,7 @@ function verificaUser($paramSenha, $paramEmail)
   $sql->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
   $row = $sql->fetch();
   if($row){
-    defineSessao($row['adm'], $paramEmail);
+    defineSessao("sessaoUsuario", $paramEmail);
     $_SESSION['adm'] = $row['adm'];
     $_SESSION['email'] = $paramEmail;
     $_SESSION['nome'] = $row['nome_usuario'];

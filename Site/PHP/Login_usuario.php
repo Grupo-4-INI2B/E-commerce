@@ -19,7 +19,7 @@
         echo "Email ou senha incorretos";
     } else {
         echo "Login realizado com sucesso";
-        echo $_SESSION['adm'];
+        header('Location: ../HTML_CSS/HTML/');
     }
     
     unset($conn);
