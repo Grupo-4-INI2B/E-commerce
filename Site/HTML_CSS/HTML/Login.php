@@ -7,25 +7,28 @@
     <link rel="stylesheet" href="../CSS/login.css">
 </head>
 <?php
-    
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
     include ("../../PHP/Funcoes.php");
     $conn = conecta();
 
+    //Verifica se o usuário está logado.
     if (isset($_SESSION['sessaoUsuario'])) {
         $sessaoUsuario = $_SESSION['sessaoUsuario'];
     } else { 
       $sessaoUsuario = false; 
     }
 
-    $email = '';
     if(!$sessaoUsuario){
         if(isset($_COOKIE['cookie_email'])) {
             $email = $_COOKIE['cookie_email'];
+        }else {
+            $email = '';
         }
     }
+
+    unset($conn);
 ?>
 <body>
     <form name="frmLogin" method="post" action="../../PHP/Login_usuario.php">
@@ -43,7 +46,6 @@
                     <h1>Entre em sua conta</h1>
                     <br>
                         <div class="textfield">
-
                             <input type="email" id="email" name="email" placeholder="Email"/>
                             <br>
                         </div>
