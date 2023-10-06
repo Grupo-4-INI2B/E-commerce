@@ -14,21 +14,12 @@
     }
 
     //Verifica se o email e senha existem no banco de dados.
-    if(verificaEmail($email)) {
-        $sql = "SELECT senha FROM tbl_usuario WHERE email = $email";
-        if(ExecutaSQL($conn , $sql)) {
-            //Define o cookie e a sessão do usuário
-            defineCookie("cookie_email", $email, 420);
-            if($email == 'bbytecraft@gmail.com'){
-                defineSessao("sessaoAdm", $email);
-            }else {
-                defineSessao("sessaoUsuario", $email);
-            }  
-        }else {
-            echo "Senha incorreta";
-        }
-    }else {
-        echo "Email não cadastrado";
+    $resultado = verificaUser($senha, $email);
+    if(!$resultado) {
+        echo "Email ou senha incorretos";
+    } else {
+        echo "Login realizado com sucesso";
+        echo $_SESSION['adm'];
     }
     
     unset($conn);

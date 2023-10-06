@@ -112,16 +112,7 @@
   // ValorSQL 
   // retorna o valor de um campo de um select
   // Set 2023 - Marcelo C Peres 
-  function ValorSQL( $pConn, $pSQL ) 
-  {
-   $linhas = $pConn->query($pSQL)->fetch();
-    
-   if ($linhas > 0) { 
-       return $linhas[0]; 
-   } else { 
-       return "0"; 
-   }  
-  }       
+
    
 /*
 * Função para gerar senhas aleatórias
@@ -163,9 +154,25 @@ function verificaEmail($paramEmail) {
     $varEmail = $row['email'];
     if($paramEmail == $varEmail){
       return true;
-    }else {
-      return false;
     }
   }
+  return false;
+}
+function verificaUser($paramSenha, $paramEmail)
+{
+  $conn = conecta();
+  $sql = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha");
+  $sql->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
+  $row = $sql->fetch();
+  if($row){
+    defineSessao($row['adm'], $paramEmail);
+    $_SESSION['adm'] = $row['adm'];
+    $_SESSION['email'] = $paramEmail;
+    $_SESSION['nome'] = $row['nome_usuario'];
+    $_SESSION['id'] = $row['id_usuario'];
+
+    return true;
+  }
+  return false;
 }
 ?>

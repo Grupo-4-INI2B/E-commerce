@@ -26,8 +26,10 @@
     //Verifica se o email já existe no banco de dados.
     if(verificaEmail($email)) {
         echo "Email já cadastrado";
+        header('Location: ../HTML_CSS/HTML/Cadastro.html');
     }
-
+    else{
+    
     //Verifica se o id gerado já existe no banco de dados
     $select = $conn->query("SELECT id_usuario FROM tbl_usuario");
     while ($row = $select->fetch()) {
@@ -48,7 +50,7 @@
     $insert->bindParam(':adm', $adm, PDO::PARAM_BOOL);
     $insert->bindParam(':excluido', $excluido, PDO::PARAM_BOOL);
     $insert->execute();
-
+        
     unset($select);
     unset($insert);
     unset($conn);
@@ -58,6 +60,7 @@
     enviaEmail($email, "Cadastro realizado com sucesso", $html, "bbytecraft@gmail.com");
 
     //Redireciona o usuário para a página de login
-    header("Location: ../../HTML_CSS/HTML/Login.html");
+    header("Location: ../HTML_CSS/HTML/Login.php");
+    }
     exit();
 ?>
