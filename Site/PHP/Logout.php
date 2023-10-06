@@ -6,5 +6,5 @@
 
    unset($_SESSION['sessaoUsuario']); 
  
-   header('Location: ../../HTML_CSS/HTML/Home.php');
+   header('Location: ../../HTML_CSS/HTML/index.php');
 ?>

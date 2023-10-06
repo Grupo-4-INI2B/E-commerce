@@ -1,5 +1,4 @@
 <?php
-
   function conecta () {
     $varConn = new PDO("pgsql:host=pgsql.projetoscti.com.br; dbname=projetoscti25; 
     user=projetoscti25; password=721492");
@@ -86,17 +85,43 @@
 * Função para executar frases sql
 * marcelo c peres - 2023 
 */
-function executaSQL($paramConn, $paramSQL) 
-{
- $linhas = $paramConn->exec($paramSQL);
- 
- if ($linhas > 0) { 
-     return TRUE; 
- } else { 
-     echo "<br><b>Erro SQL:</b>".$paramConn->errorInfo()."<br>";
-     return FALSE; 
- }  
-}          
+  /*
+  * Funçãoo para ExecutaSQL frases sql
+  * marcelo c peres - 2023
+  */
+
+  function ExecutaSQL($paramConn, $paramSQL) 
+  {
+    // exec eh usado para update, delete, insert
+    // eh um metodo da conexao
+    // retorna o nro de linhas afetadas
+    $linhas = $paramConn->exec($paramSQL);
+  
+    if ($linhas > 0) { 
+        return TRUE; 
+    } else { 
+        return FALSE; 
+    }  
+  }
+
+  /*
+  * Função para executasql frases sql
+  * marcelo c peres - 2023
+  */
+
+  // ValorSQL 
+  // retorna o valor de um campo de um select
+  // Set 2023 - Marcelo C Peres 
+  function ValorSQL( $pConn, $pSQL ) 
+  {
+   $linhas = $pConn->query($pSQL)->fetch();
+    
+   if ($linhas > 0) { 
+       return $linhas[0]; 
+   } else { 
+       return "0"; 
+   }  
+  }       
    
 /*
 * Função para gerar senhas aleatórias
@@ -134,12 +159,13 @@ function geraSenha($tamanho = 8, $maiusculas = true, $numeros = true, $simbolos 
 function verificaEmail($paramEmail) {
   $conn = conecta();
   $select = $conn->query("SELECT email FROM tbl_usuario");
-  $row = $select->fetch();
-  $varEmail = $row['email'];
-  if ($varEmail == $paramEmail) {
-    return TRUE;
-  } else {
-    return FALSE;
+  while($row = $select->fetch()){
+    $varEmail = $row['email'];
+    if($paramEmail == $varEmail){
+      return true;
+    }else {
+      return false;
+    }
   }
 }
 ?>
