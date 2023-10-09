@@ -10,16 +10,17 @@
         $email = $_POST['email'];
         $senha = $_POST['senha'];
     }else {
-        echo "Erro ao receber os dados do formulário";
+        header("Location: ../HTML_CSS/HTML/Login.php");
     }
 
     //Verifica se o email e senha existem no banco de dados.
     $resultado = verificaUser($senha, $email);
     if(!$resultado) {
-        echo "Email ou senha incorretos";
+        header("Location: ../HTML_CSS/HTML/Login.php");
+        exit();
     } else {
-        echo "Login realizado com sucesso";
-        header('Location: ../HTML_CSS/HTML/');
+        header("Location: ../HTML_CSS/HTML/Index.php");
+        exit();
     }
     
     unset($conn);
