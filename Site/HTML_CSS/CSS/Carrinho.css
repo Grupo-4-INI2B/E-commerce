@@ -1,3 +1,33 @@
+#grid-container-carrinho {
+  display: grid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  grid-template-columns: 55% 30%;
+  grid-column-gap: 6%;
+  grid-template-rows: 10% 90%;
+  background-color: #272727;
+  color: white;
+  padding: 20px;
+  
+}
+#grid-container-carrinho p{
+  grid-area: 1 / 1 / 2 / 3;
+  font-size: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.carrinho-produtos{
+  display: flex;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  height: 60vh;
+  width: 55%;
+  padding: 20px;
+  grid-area: 2/1/3/2;
+}
+
 /*body{
   line-height: 1.5;
   font-family: 'Poppins', sans-serif;
