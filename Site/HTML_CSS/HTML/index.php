@@ -67,16 +67,16 @@
     </div>
     <div class="grid-login">
         <?php
-        echo $sessaoUsuario;
-        if(isset($sessaoUsuario)) {        
-            echo "<a class='botao-menu' href='Perfil.php' class='cart' style='color: #000000'>
-            <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
-            style='position: relative; top: 2px;'Bem vindo, $nome</a>";
-        }else {
-            echo "<a class='botao-menu' href='Login.php' class='cart' style='color: #000000'>
-            <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
-            style='position: relative; top: 2px;'>Entrar</a>";
-        }nao esta funcionando
+            echo $sessaoUsuario;
+            if(isset($sessaoUsuario)) {        
+                echo "<a class='botao-menu' href='Perfil.php' class='cart' style='color: #000000'>
+                <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+                style='position: relative; top: 2px;'Bem vindo, $nome</a>";
+            }else {
+                echo "<a class='botao-menu' href='Login.php' class='cart' style='color: #000000'>
+                <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+                style='position: relative; top: 2px;'>Entrar</a>";
+            } //Não funciona
         ?>
     
         </div>
