@@ -28,57 +28,61 @@
     $_SESSION[$nomeSessao] = $paramEmail;
   }
 
-  function enviaEmail ($pEmailDestino, $pAssunto, $pHtml, $pRemetente) {
-    error_reporting(E_ALL);
-    ini_set("display_errors", 1);
-    
-    require "PHPMailer/PHPMailerAutoload.php";
-        
-    try {
+  function enviaEmail($pEmailDestino, $pAssunto, $pHtml, 
+  $pUsuario = "bbytecraft@gmail.com", 
+  $pSenha = "Byt3_Cr4ft", 
+  $pSMTP = "smtp.projetoscti.com.br") {
 
-    //cria instancia de phpmailer
-    echo "<br>Tentando enviar para ".$pEmailDestino."...";
-    $mail = new PHPMailer(); 
-    $mail->IsSMTP();  
-    
-    // servidor smtp
-    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;   // use se tiver problemas, ele lista toda a transacao com o servidor
-    $mail->Host = "smtp....";
-    $mail->SMTPAuth = true;      // requer autenticação com o servidor                         
-    $mail->SMTPSecure = 'tls';                            
-        
-    $mail-> SMTPOptions = array (
-      'ssl' => array (
-      'verificar_peer' => false,
-      'verify_peer_name' => false,
-      'allow_self_signed' => true ) );
-        
-    $mail->Port = 587;      
-        
-    $mail->Username = "...@..."; 
-    $mail->Password = "..."; 
-    $mail->From = "...@..."; 
-    $mail->FromName = "Suporte de senhas"; 
-    
-    $mail->AddAddress($pEmailDestino, "Usuario"); 
-    $mail->IsHTML(true); 
-    $mail->Subject = "Nova Senha !"; 
-    $mail->Body = $pHtml;
-    $enviado = $mail->Send(); 
-        
-    if (!$enviado) {
-        echo "<br>Erro: " . $mail->ErrorInfo;
-    } else {
-        echo "<br><b>Enviado!</b>";
-    }
-    return $enviado;         
-        
-    } catch (phpmailerException $e) {
-      echo $e->errorMessage(); // erros do phpmailer
-    } catch (Exception $e) {
-      echo $e->getMessage(); // erros da aplicação - gerais
-    }       
- 
+  // troque usuario e senha !!!! 
+  error_reporting(E_ALL);
+  ini_set("display_errors", 1);
+
+  require "PHPMailer/PHPMailerAutoload.php";
+
+  try {
+
+  //cria instancia de phpmailer
+  echo "<br>Tentando enviar para $pEmailDestino...";
+  $mail = new PHPMailer(); 
+  $mail->IsSMTP();  
+
+  // servidor smtp
+  $mail->Host = $pSMTP;
+  $mail->SMTPAuth = true;      // requer autenticacao com o servidor                         
+  $mail->SMTPSecure = 'tls';                            
+
+  $mail-> SMTPOptions = array (
+  'ssl' => array (
+  'verificar_peer' => false,
+  'verify_peer_name' => false,
+  'allow_self_signed' => true ) );
+
+  $mail->Port = 587;      
+
+  $mail->Username = $pUsuario; 
+  $mail->Password = $pSenha; 
+  $mail->From = $pUsuario; 
+  $mail->FromName = "Suporte de senhas"; 
+
+  $mail->AddAddress($pEmailDestino, "Usuario"); 
+  $mail->IsHTML(true); 
+  $mail->Subject = $pAssunto; 
+  $mail->Body = $pHtml;
+  $enviado = $mail->Send(); 
+
+  if (!$enviado) {
+  echo "<br>Erro: " . $mail->ErrorInfo;
+  } else {
+  echo "<br><b>Enviado!</b>";
+  }
+  return $enviado;         
+
+  } catch (phpmailerException $e) {
+  echo $e->errorMessage(); // erros do phpmailer
+  } catch (Exception $e) {
+  echo $e->getMessage(); // erros da aplica��o - gerais
+  }
+  
 }
 
 /*

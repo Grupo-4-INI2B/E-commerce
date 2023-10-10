@@ -40,7 +40,7 @@
     //Aviso de mudança de senha.
     $html = "<h1>Olá, !</h1><br><h3>Sua senha foi modificada, caso não reconheça essa mudança, 
     por favor clique <a href = 'https://projetoscti.com.br/projetoscti13/ecommerce_23/Site/PHP/Cancelar.php'>aqui</a> </h3><br>";
-    enviaEmail($email, "Mudança de senha", $html, "bbytecraft@gmail.com");
+    enviaEmail($email, "Mudança de senha", $html);
 
 ?>
 

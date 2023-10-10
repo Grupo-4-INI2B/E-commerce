@@ -11,6 +11,7 @@
         $senha = $_POST['senha'];
     }else {
         header("Location: ../HTML_CSS/HTML/Login.php");
+        exit();
     }
 
     //Verifica se o email e senha existem no banco de dados.
@@ -19,9 +20,13 @@
         header("Location: ../HTML_CSS/HTML/Login.php");
         exit();
     } else {
-        header("Location: ../HTML_CSS/HTML/Index.php");
+        header("Location: ../HTML_CSS/HTML/index.php");
         exit();
     }
+
+    $html= "<h1>Olá!</h1><br>
+    <h3>Se não reconhece essa nova atividade por favor entre em contato</h3><br>"
+    enviaEmail($email, "Novo login realizado", $html)
     
     unset($conn);
 ?>

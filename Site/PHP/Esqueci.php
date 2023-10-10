@@ -16,7 +16,8 @@
 
     if(verificaEmail($email)) { //Verifica se o email existe no banco de dados
         $codigo = geraSenha();
-        enviaEmail($email, "Código de recuperação de senha", $codigo, "bbytecraft@gmail.com");
+        $html = "<h1>Olá!</h1><br><h3>Seu código de recuperação de senha é: ".$codigo."</h3><br>";
+        enviaEmail($email, "Código de recuperação de senha", $html);
         header("Location: Muda_senha.php?codigo=$codigo&email=$email");
     }else {
         header("Location: ../HTML_CSS/HTML/Esqueci.html"); //email não existe no banco de dados

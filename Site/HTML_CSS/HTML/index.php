@@ -18,7 +18,6 @@
     include ("../../PHP/Funcoes.php");
     $conn = conecta();
 
-    $sessaoUsuario = false;
     $nome = "";
 
     if(isset($_SESSION['sessaoUsuario'])) {
@@ -67,7 +66,7 @@
     </div>
     <div class="grid-login">
         <?php
-            echo $sessaoUsuario;
+            echo $nome;
             if(isset($sessaoUsuario)) {        
                 echo "<a class='botao-menu' href='Perfil.php' class='cart' style='color: #000000'>
                 <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
