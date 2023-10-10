@@ -26,7 +26,8 @@
     //Verifica se o email já existe no banco de dados.
     if(verificaEmail($email)) {
         echo "Email já cadastrado";
-        header('Location: ../HTML_CSS/HTML/Cadastro.html');
+        header("Location: ../HTML_CSS/HTML/Cadastro.html");
+        exit();
     }
     else{
     
@@ -41,7 +42,7 @@
 
     //Insere os dados do usuário no banco de dados
     $insert = $conn->prepare("INSERT INTO tbl_usuario(id_usuario, nome_usuario, email, telefone, senha, adm, excluido) 
-        VALUES(:id_usuario, :nome_usuario, :email, :telefone, :senha, :adm, :excluido)");
+    VALUES(:id_usuario, :nome_usuario, :email, :telefone, :senha, :adm, :excluido)");
     $insert->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
     $insert->bindParam(':nome_usuario', $usuario, PDO::PARAM_STR);
     $insert->bindParam(':email', $email, PDO::PARAM_STR);
