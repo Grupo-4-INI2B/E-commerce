@@ -20,6 +20,10 @@
         header("Location: ../HTML_CSS/HTML/Login.php");
         exit();
     } else {
+        //Cria cookie e sessão
+        defineCookie("cookie_email", $email, 14400);
+        defineSessao("sessaoUsuario", $email);
+        //Redireciona para a página inicial
         header("Location: ../HTML_CSS/HTML/index.php");
         exit();
     }

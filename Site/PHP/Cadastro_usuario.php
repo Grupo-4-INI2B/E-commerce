@@ -6,7 +6,7 @@
 
     $usuario = ""; $email = ""; $tlfn = ""; $senha = ""; $id_usuario = 0;
     /*Parámetros vindos do formulário de cadastro e verificação se não estão vazios*/
-    $id_usuario = rand(1000, 2000); /*Cria um número aleatório entre 1000 e 2000 para servir como id do usuário*/
+    $id_usuario = rand(1000, 5000); /*Cria um número aleatório entre 1000 e 2000 para servir como id do usuário*/
     if (isset($_POST['usuario']) && isset($_POST['email']) && isset($_POST['tlfn']) && isset($_POST['senha'])) {
         $usuario = $_POST['usuario'];
         $email = $_POST['email'];
@@ -29,7 +29,6 @@
         header("Location: ../HTML_CSS/HTML/Cadastro.html");
         exit();
     }
-    else{
     
     //Verifica se o id gerado já existe no banco de dados
     $select = $conn->query("SELECT id_usuario FROM tbl_usuario");
