@@ -23,7 +23,7 @@ $conn = conecta();
             $dadosImagem = file_get_contents($_FILES["imagem"]["tmp_name"]);
 
             // Defina o caminho onde deseja armazenar a imagem no servidor
-            $caminhoDiretorio = "../HTML_CSS/Produto E-commerce/";
+            $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/";
             $caminhoImagem = $caminhoDiretorio . $nomeImagem;
 
             // Verifique se o tamanho do arquivo é aceitável (opcional)
@@ -55,7 +55,7 @@ $conn = conecta();
             $stmt = $conn->prepare($sql);
             
             if ($stmt->execute($params)) {
-                move_uploaded_file($_FILES['imagem']['tmp_name'], '../HTML_CSS/Produto E-commerce/' . $_FILES['imagem']['name']);
+                move_uploaded_file($_FILES['imagem']['tmp_name'], '../HTML_CSS/Produto_E-commerce/' . $_FILES['imagem']['name']);
                 header("Location: Crud.php");
                 exit();
             }
