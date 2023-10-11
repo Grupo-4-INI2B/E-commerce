@@ -9,16 +9,6 @@
     }
   }
 
-  function funcaoLogin($paramEmail, $paramSenha, $paramAdm) {
-    $conn = conecta();
-    $select = $conn->query("SELECT (senha, adm) FROM tbl_usuario WHERE email = $paramEmail");
-    $linha = $select->fetch();
-    $varSenha = $linha['senha'];
-    $varAdm = $linha['adm'];
-
-
-  }
-
   function defineCookie($paramNome, $paramValor, $paramMinutos) {
     setcookie($paramNome, $paramValor, time() + $paramMinutos * 60); 
   }
@@ -28,57 +18,61 @@
     $_SESSION[$nomeSessao] = $paramEmail;
   }
 
-  function enviaEmail ($pEmailDestino, $pAssunto, $pHtml, $pRemetente) {
-    error_reporting(E_ALL);
-    ini_set("display_errors", 1);
-    
-    require "PHPMailer/PHPMailerAutoload.php";
-        
-    try {
+  function enviaEmail($pEmailDestino, $pAssunto, $pHtml, 
+  $pUsuario = "bbytecraft@gmail.com", 
+  $pSenha = "Byt3_Cr4ft", 
+  $pSMTP = "smtp.projetoscti.com.br") {
 
-    //cria instancia de phpmailer
-    echo "<br>Tentando enviar para ".$pEmailDestino."...";
-    $mail = new PHPMailer(); 
-    $mail->IsSMTP();  
-    
-    // servidor smtp
-    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;   // use se tiver problemas, ele lista toda a transacao com o servidor
-    $mail->Host = "smtp....";
-    $mail->SMTPAuth = true;      // requer autenticação com o servidor                         
-    $mail->SMTPSecure = 'tls';                            
-        
-    $mail-> SMTPOptions = array (
-      'ssl' => array (
-      'verificar_peer' => false,
-      'verify_peer_name' => false,
-      'allow_self_signed' => true ) );
-        
-    $mail->Port = 587;      
-        
-    $mail->Username = "...@..."; 
-    $mail->Password = "..."; 
-    $mail->From = "...@..."; 
-    $mail->FromName = "Suporte de senhas"; 
-    
-    $mail->AddAddress($pEmailDestino, "Usuario"); 
-    $mail->IsHTML(true); 
-    $mail->Subject = "Nova Senha !"; 
-    $mail->Body = $pHtml;
-    $enviado = $mail->Send(); 
-        
-    if (!$enviado) {
-        echo "<br>Erro: " . $mail->ErrorInfo;
-    } else {
-        echo "<br><b>Enviado!</b>";
-    }
-    return $enviado;         
-        
-    } catch (phpmailerException $e) {
-      echo $e->errorMessage(); // erros do phpmailer
-    } catch (Exception $e) {
-      echo $e->getMessage(); // erros da aplicação - gerais
-    }       
- 
+  // troque usuario e senha !!!! 
+  error_reporting(E_ALL);
+  ini_set("display_errors", 1);
+
+  require "PHPMailer/PHPMailerAutoload.php";
+
+  try {
+
+  //cria instancia de phpmailer
+  echo "<br>Tentando enviar para $pEmailDestino...";
+  $mail = new PHPMailer(); 
+  $mail->IsSMTP();  
+
+  // servidor smtp
+  $mail->Host = $pSMTP;
+  $mail->SMTPAuth = true;      // requer autenticacao com o servidor                         
+  $mail->SMTPSecure = 'tls';                            
+
+  $mail-> SMTPOptions = array (
+  'ssl' => array (
+  'verificar_peer' => false,
+  'verify_peer_name' => false,
+  'allow_self_signed' => true ) );
+
+  $mail->Port = 587;      
+
+  $mail->Username = $pUsuario; 
+  $mail->Password = $pSenha; 
+  $mail->From = $pUsuario; 
+  $mail->FromName = "Suporte de senhas"; 
+
+  $mail->AddAddress($pEmailDestino, "Usuario"); 
+  $mail->IsHTML(true); 
+  $mail->Subject = $pAssunto; 
+  $mail->Body = $pHtml;
+  $enviado = $mail->Send(); 
+
+  if (!$enviado) {
+  echo "<br>Erro: " . $mail->ErrorInfo;
+  } else {
+  echo "<br><b>Enviado!</b>";
+  }
+  return $enviado;         
+
+  } catch (phpmailerException $e) {
+  echo $e->errorMessage(); // erros do phpmailer
+  } catch (Exception $e) {
+  echo $e->getMessage(); // erros da aplica��o - gerais
+  }
+  
 }
 
 /*
@@ -112,16 +106,7 @@
   // ValorSQL 
   // retorna o valor de um campo de um select
   // Set 2023 - Marcelo C Peres 
-  function ValorSQL( $pConn, $pSQL ) 
-  {
-   $linhas = $pConn->query($pSQL)->fetch();
-    
-   if ($linhas > 0) { 
-       return $linhas[0]; 
-   } else { 
-       return "0"; 
-   }  
-  }       
+
    
 /*
 * Função para gerar senhas aleatórias
@@ -163,9 +148,94 @@ function verificaEmail($paramEmail) {
     $varEmail = $row['email'];
     if($paramEmail == $varEmail){
       return true;
-    }else {
-      return false;
     }
   }
+  return false;
 }
+function verificaUser($paramSenha, $paramEmail)
+{
+  $conn = conecta();
+  $sql = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha");
+  $sql->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
+  $row = $sql->fetch();
+  if($row){
+    defineSessao("sessaoUsuario", $paramEmail);
+    $_SESSION['adm'] = $row['adm'];
+    $_SESSION['email'] = $paramEmail;
+    $_SESSION['nome'] = $row['nome_usuario'];
+    $_SESSION['id'] = $row['id_usuario'];
+
+    return true;
+  }
+  return false;
+}
+
+
+  function crud()
+  {
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    $conn = conecta();
+    $query = "SELECT * FROM tbl_produto ORDER BY id_produto ASC";
+    $result = $conn->query($query);
+
+    if ($result) {
+      echo "<table id='tabela'>";
+      echo "<tr>";
+      echo "<th>ID</th>";
+      echo "<th>Nome</th>";
+      echo "<th>Descrição</th>";
+      echo "<th>Excluido</th>";
+      echo "<th>Valor</th>";
+      echo "<th>Data de Exclusão</th>";
+      echo "<th>Código Visual</th>";
+      echo "<th>Custo</th>";
+      echo "<th>Margem de Lucro</th>";
+      echo "<th>ICMS</th>";
+      echo "<th>Quantidade</th>";
+      echo "<th colspan='3'>Ações</th>";
+      echo "</tr>";
+
+      if ($result->rowCount() > 0) {
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+          
+          $id_produto = $row['id_produto'];
+          $nome_produto = $row['nome_produto'];
+          $descricao = $row['descricao'];
+          $excluido = $row['excluido'];
+          $vlr = $row['vlr'];
+          $dta_exclusao = $row['data_exclusao'];
+          $id_visual = $row['id_visual'];
+          $custo = $row['custo'];
+          $margem_lucro = $row['margem_lucro'];
+          $icms = $row['icms'];
+          $quantidade = $row['qntd'];
+
+          echo "<tr>";
+          echo "<td>" . $id_produto . "</td>";
+          echo "<td>" . $nome_produto . "</td>";
+          echo "<td>" . $descricao . "</td>";
+          echo "<td>" . $excluido . "</td>";
+          echo "<td>" . $vlr . "</td>";
+          echo "<td>" . $dta_exclusao . "</td>";
+          echo "<td>" . $id_visual . "</td>";
+          echo "<td>" . $custo . "</td>";
+          echo "<td>" . $margem_lucro . "</td>";
+          echo "<td>" . $icms . "</td>";
+          echo "<td>" . $quantidade . "</td>";
+          echo "<td><a href='Form_adicionar.php?acao=adicionar'><img src='../HTML_CSS/Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
+          echo "<td><a href='Excluir_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../HTML_CSS/Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
+          echo "<td><a href='Alterar_produto.php?id=" . $id_produto . "&acao=alterar'><img src='../HTML_CSS/Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
+          echo "</tr>";
+      }
+
+      echo "</table>";
+  } else {
+      echo "<p>Nenhum registro encontrado.</p>";
+  }
+
+  } else {
+  echo "Erro ao executar a query.";
+  }
+  }
 ?>

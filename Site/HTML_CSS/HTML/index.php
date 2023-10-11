@@ -18,18 +18,12 @@
     include ("../../PHP/Funcoes.php");
     $conn = conecta();
 
-    $sessaoUsuario = false;
+    $nome = "";
 
     if(isset($_SESSION['sessaoUsuario'])) {
         $sessaoUsuario = $_SESSION['sessaoUsuario'];
+        $nome = $_SESSION['nome'];
     }
-
-    if($sessaoUsuario) {
-        /*Colocar as opções do usuário*/
-    }else {
-        /*Colocar as opções que qualuer um pode ver, mesmo sem estar logado*/
-    }
-
 
 ?>
 <body>
@@ -71,11 +65,20 @@
 
     </div>
     <div class="grid-login">
-        <a class="botao-menu" href="Login.php" class="cart" style="color: #000000">
-        <img src="../Imagens/IconPerson.svg" alt="Ícone de Usuário" width="15" height="15" style="position: relative; top: 2px;">
-        Entrar
-    </a>
-    </div>
+        <?php
+            echo $nome;
+            if(isset($sessaoUsuario)) {        
+                echo "<a class='botao-menu' href='Perfil.php' class='cart' style='color: #000000'>
+                <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+                style='position: relative; top: 2px;'Bem vindo, $nome</a>";
+            }else {
+                echo "<a class='botao-menu' href='Login.php' class='cart' style='color: #000000'>
+                <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+                style='position: relative; top: 2px;'>Entrar</a>";
+            } //Não funciona
+        ?>
+    
+        </div>
     </div>
     <div class="home">
         <br>

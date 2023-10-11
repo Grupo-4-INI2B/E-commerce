@@ -18,5 +18,8 @@
     $delete = $conn->query("UPDATE tbl_usuario SET excluido = true WHERE id_usuario = $id_usuario");
     unset($_COOKIE['Cookie_email']);
     unset($_SESSION['sessaoUsuario']);
-    header("Location: ../../HTML_CSS/HTML/index.php");
+
+    //Redireciona para a página inicial
+    header("Location: ../HTML_CSS/HTML/index.php");
+    exit();
 ?>

@@ -10,26 +10,27 @@
         $email = $_POST['email'];
         $senha = $_POST['senha'];
     }else {
-        echo "Erro ao receber os dados do formulário";
+        header("Location: ../HTML_CSS/HTML/Login.php");
+        exit();
     }
 
     //Verifica se o email e senha existem no banco de dados.
-    if(verificaEmail($email)) {
-        $sql = "SELECT senha FROM tbl_usuario WHERE email = $email";
-        if(ExecutaSQL($conn , $sql)) {
-            //Define o cookie e a sessão do usuário
-            defineCookie("cookie_email", $email, 420);
-            if($email == 'bbytecraft@gmail.com'){
-                defineSessao("sessaoAdm", $email);
-            }else {
-                defineSessao("sessaoUsuario", $email);
-            }  
-        }else {
-            echo "Senha incorreta";
-        }
-    }else {
-        echo "Email não cadastrado";
+    $resultado = verificaUser($senha, $email);
+    if(!$resultado) {
+        header("Location: ../HTML_CSS/HTML/Login.php");
+        exit();
+    } else {
+        //Cria cookie e sessão
+        defineCookie("cookie_email", $email, 14400);
+        defineSessao("sessaoUsuario", $email);
+        //Redireciona para a página inicial
+        header("Location: ../HTML_CSS/HTML/index.php");
+        exit();
     }
+
+    $html= "<h1>Olá!</h1><br>
+    <h3>Se não reconhece essa nova atividade por favor entre em contato</h3><br>"
+    enviaEmail($email, "Novo login realizado", $html)
     
     unset($conn);
 ?>
