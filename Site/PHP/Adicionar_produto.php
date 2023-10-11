@@ -22,16 +22,18 @@ $conn = conecta();
             ':vlr' => $_POST['vlr'],
             ':codigovisual' => $_POST['id_visual'],
             ':custo' => $_POST['custo'],
-            ':dta_exclusao' => '2018-01-01',
+            ':dta_exclusao' => '',
             ':margem_lucro' => $_POST['margem_lucro'],
             ':icms' => $_POST['icms'],
+            ':imagem' =: $_FILES['imagem'];
             ':qntd' => $_POST['qntd'],
             ':excluido' => '0'
         ];
+        
         $sql = "INSERT INTO tbl_produto(
-                id_produto,nome_produto, descricao, vlr,dta_exclusao, id_visual,excluido, custo, margem_lucro, icms, qntd)
+                id_produto,nome_produto, descricao, vlr,dta_exclusao, id_visual,excluido, custo, margem_lucro, icms, qntd, imagem)
                 VALUES (
-                :id_produto,:nome_produto, :descricao, :vlr, dta_exclusao, :codigovisual, :excluido,:custo, :margem_lucro, :icms, :qntd
+                :id_produto,:nome_produto, :descricao, :vlr, dta_exclusao, :codigovisual, :excluido,:custo, :margem_lucro, :icms, :qntd,:imagem
                 )";
 
         $stmt = $conn->prepare($sql);

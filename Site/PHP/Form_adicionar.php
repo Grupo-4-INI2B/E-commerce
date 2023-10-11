@@ -39,6 +39,9 @@
         <label for="qntd">Quantidade:</label>
         <input type="text" id="qntd" name="qntd"><br><br>
 
+        <label for='imagem'>Imagem do produto</label>
+        <input type='file' id='imagem' name='imagem' placeholder='Link da imagem do produto' maxlength=255 required accept='image/*'><br>
+
         <input type="submit" value="Enviar">
     </form>
 </body>
