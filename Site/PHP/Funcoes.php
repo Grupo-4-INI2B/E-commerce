@@ -185,14 +185,15 @@ function verificaUser($paramSenha, $paramEmail)
       echo "<th>ID</th>";
       echo "<th>Nome</th>";
       echo "<th>Descrição</th>";
-      echo "<th>Excluido</th>";
       echo "<th>Valor</th>";
-      echo "<th>Data de Exclusão</th>";
       echo "<th>Código Visual</th>";
       echo "<th>Custo</th>";
       echo "<th>Margem de Lucro</th>";
       echo "<th>ICMS</th>";
       echo "<th>Quantidade</th>";
+      echo "<th>Imagem</th>";
+      echo "<th>Excluido</th>";
+      echo "<th>Data de Exclusão</th>";
       echo "<th colspan='3'>Ações</th>";
       echo "</tr>";
 
@@ -204,27 +205,37 @@ function verificaUser($paramSenha, $paramEmail)
           $descricao = $row['descricao'];
           $excluido = $row['excluido'];
           $vlr = $row['vlr'];
-          $dta_exclusao = $row['data_exclusao'];
+          if($row['dta_exclusao'] != null)
+          {
+            $data_exclusao = $row['dta_exclusao'];
+          }
+          else
+          {
+            $data_exclusao = "Não excluido";
+          }
+          
           $id_visual = $row['id_visual'];
           $custo = $row['custo'];
           $margem_lucro = $row['margem_lucro'];
           $icms = $row['icms'];
           $quantidade = $row['qntd'];
+          $imagem=$row['imagem'];
 
           echo "<tr>";
           echo "<td>" . $id_produto . "</td>";
           echo "<td>" . $nome_produto . "</td>";
           echo "<td>" . $descricao . "</td>";
-          echo "<td>" . $excluido . "</td>";
           echo "<td>" . $vlr . "</td>";
-          echo "<td>" . $dta_exclusao . "</td>";
           echo "<td>" . $id_visual . "</td>";
           echo "<td>" . $custo . "</td>";
           echo "<td>" . $margem_lucro . "</td>";
           echo "<td>" . $icms . "</td>";
           echo "<td>" . $quantidade . "</td>";
+          echo "<td> <img src='$imagem' alt='miguel drogado' widht='150px' height='100px'> </td>";
+          echo "<td>" . $excluido . "</td>";
+          echo "<td>" . $data_exclusao . "</td>";
           echo "<td><a href='Form_adicionar.php?acao=adicionar'><img src='../HTML_CSS/Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
-          echo "<td><a href='Excluir_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../HTML_CSS/Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
+          echo "<td><a href='Deletar_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../HTML_CSS/Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
           echo "<td><a href='Alterar_produto.php?id=" . $id_produto . "&acao=alterar'><img src='../HTML_CSS/Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
           echo "</tr>";
       }
