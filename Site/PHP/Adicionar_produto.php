@@ -15,37 +15,60 @@ $conn = conecta();
             {
                 echo "Não há produtos cadastrados.";
             }
-        $params = [
-            'id_produto'=>$row['maior_id']+1,
-            ':nome_produto' => $_POST['nome_produto'],
-            ':descricao' => $_POST['descricao'],
-            ':vlr' => $_POST['vlr'],
-            ':codigovisual' => $_POST['id_visual'],
-            ':custo' => $_POST['custo'],
-            ':dta_exclusao' => '',
-            ':margem_lucro' => $_POST['margem_lucro'],
-            ':icms' => $_POST['icms'],
-            ':imagem' =: $_FILES['imagem'];
-            ':qntd' => $_POST['qntd'],
-            ':excluido' => '0'
-        ];
-        
-        $sql = "INSERT INTO tbl_produto(
-                id_produto,nome_produto, descricao, vlr,dta_exclusao, id_visual,excluido, custo, margem_lucro, icms, qntd, imagem)
-                VALUES (
-                :id_produto,:nome_produto, :descricao, :vlr, dta_exclusao, :codigovisual, :excluido,:custo, :margem_lucro, :icms, :qntd,:imagem
-                )";
+            // Verifique se o formulário foi enviado
+           
+            $nomeImagem = $_FILES["imagem"]["name"];
+            $tipoImagem = $_FILES["imagem"]["type"];
+            $tamanhoImagem = $_FILES["imagem"]["size"];
+            $dadosImagem = file_get_contents($_FILES["imagem"]["tmp_name"]);
 
-        $stmt = $conn->prepare($sql);
-        if ($stmt->execute($params)) {
-            header("Location: Crud.php");
-            exit();
-        } else {
-            echo "Erro ao inserir o produto no banco de dados.";
-        }
-        }
+            // Defina o caminho onde deseja armazenar a imagem no servidor
+            $caminhoDiretorio = "../HTML_CSS/Produto E-commerce/";
+            $caminhoImagem = $caminhoDiretorio . $nomeImagem;
+
+            // Verifique se o arquivo é uma imagem válido (opcional)
+            $permitirTipos = array("image/jpeg", "image/png", "image/gif");
+            if (!in_array($tipoImagem, $permitirTipos)) {
+                echo "Somente imagens JPEG, PNG e GIF são permitidas.";
+                exit();
+            }
+
+            // Verifique se o tamanho do arquivo é aceitável (opcional)
+            if ($tamanhoImagem > 3000000) { // 3 MB
+                echo "A imagem é muito grande. O tamanho máximo permitido é 3 MB.";
+                exit();
+            }
+            $params = [
+                ':id_produto' => ($row['maior_id'] + 1),
+                ':nome_produto' => $_POST['nome_produto'],
+                ':descricao' => $_POST['descricao'],
+                ':vlr' => $_POST['vlr'],
+                ':codigovisual' => $_POST['id_visual'],
+                ':custo' => $_POST['custo'],
+                ':dta_exclusao' => '2011-01-01 00:00:00',
+                ':margem_lucro' => $_POST['margem_lucro'],
+                ':icms' => $_POST['icms'],
+                ':imagem' => $caminhoImagem, 
+                ':qntd' => $_POST['qntd'],
+                ':excluido' => '0'
+            ]   ;
+            
+            $sql = "INSERT INTO tbl_produto (
+                id_produto, nome_produto, descricao, vlr, dta_exclusao, id_visual, excluido, custo, margem_lucro, icms, qntd, imagem
+            ) VALUES (
+                :id_produto, :nome_produto, :descricao, :vlr, :dta_exclusao, :codigovisual, :excluido, :custo, :margem_lucro, :icms, :qntd, :imagem
+            )";
+            
+            $stmt = $conn->prepare($sql);
+            
+            if ($stmt->execute($params)) {
+                move_uploaded_file($_FILES['imagem']['tmp_name'], '../HTML_CSS/Produto E-commerce/' . $_FILES['imagem']['name']);
+                header("Location: Crud.php");
+                exit();
+            }
         else
         {
             echo "Não recebeu dados do form.";
+        }
         }
     ?>
