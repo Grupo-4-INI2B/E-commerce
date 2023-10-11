@@ -26,13 +26,6 @@ $conn = conecta();
             $caminhoDiretorio = "../HTML_CSS/Produto E-commerce/";
             $caminhoImagem = $caminhoDiretorio . $nomeImagem;
 
-            // Verifique se o arquivo é uma imagem válido (opcional)
-            $permitirTipos = array("image/jpeg", "image/png", "image/gif");
-            if (!in_array($tipoImagem, $permitirTipos)) {
-                echo "Somente imagens JPEG, PNG e GIF são permitidas.";
-                exit();
-            }
-
             // Verifique se o tamanho do arquivo é aceitável (opcional)
             if ($tamanhoImagem > 3000000) { // 3 MB
                 echo "A imagem é muito grande. O tamanho máximo permitido é 3 MB.";
