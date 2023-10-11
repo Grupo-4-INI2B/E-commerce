@@ -51,7 +51,7 @@
                         </div>
                         <div class="textfield">
                             <input type="password" id="senha" name="senha" placeholder="Senha"/>
-                        </div>
+                        </div>  
                         <button type="submit" class="btn-login">Login</button>
                         <a href="Cadastro.html" style="color: #FFF" >Não tenho uma conta</a>
                     </div>

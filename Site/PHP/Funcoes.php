@@ -9,16 +9,6 @@
     }
   }
 
-  function funcaoLogin($paramEmail, $paramSenha, $paramAdm) {
-    $conn = conecta();
-    $select = $conn->query("SELECT (senha, adm) FROM tbl_usuario WHERE email = $paramEmail");
-    $linha = $select->fetch();
-    $varSenha = $linha['senha'];
-    $varAdm = $linha['adm'];
-
-
-  }
-
   function defineCookie($paramNome, $paramValor, $paramMinutos) {
     setcookie($paramNome, $paramValor, time() + $paramMinutos * 60); 
   }
