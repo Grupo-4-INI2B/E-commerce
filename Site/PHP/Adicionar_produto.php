@@ -51,14 +51,13 @@ $conn = conecta();
                         ':margem_lucro' => $_POST['margem_lucro'],
                         ':icms' => $_POST['icms'],
                         ':imagem' => $caminhoImagem, // Save the image path in the database.
-                        ':data_exclusao' => '2008-01-20 00:00:00',
                         ':excluido' => '0',
                         ':quantidade' => $_POST['qntd']
                     );
                     $sql = "INSERT INTO tbl_produto (
-                        id_produto, nome_produto, descricao, vlr, id_visual, custo, margem_lucro, icms, imagem, excluido, qntd, dta_exclusao
+                        id_produto, nome_produto, descricao, vlr, id_visual, custo, margem_lucro, icms, imagem, excluido, qntd
                     ) VALUES (
-                        :id_produto, :nome, :descricao, :preco, :codigovisual, :custo, :margem_lucro, :icms, :imagem, :excluido, :quantidade,:data_exclusao
+                        :id_produto, :nome, :descricao, :preco, :codigovisual, :custo, :margem_lucro, :icms, :imagem, :excluido, :quantidade
                     )";
                 
                     $stmt = $conn->prepare($sql);
