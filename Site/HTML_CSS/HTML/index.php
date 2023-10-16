@@ -117,7 +117,7 @@
                 <br>
                 <!-- Product Card 1 -->
                 <div class="product-card">
-                    <img src="../Produtos E-commerce/Studio Ghibli/SG01.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG01.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>01</p>
                     <p class="price">R$ 0,70</p>
@@ -125,7 +125,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos E-commerce/Studio Ghibli/SG02.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG02.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>02</p>
                     <p class="price">R$ 0,70</p>
@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos E-commerce/Studio Ghibli/SG03.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG03.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>03</p>
                     <p class="price">R$ 0,70</p>
@@ -141,7 +141,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos E-commerce/Studio Ghibli/SG04.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG04.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>04</p>
                     <p class="price">R$ 0,70</p>
@@ -149,14 +149,14 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos E-commerce/Studio Ghibli/SG05.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG05.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>05</p>
                     <p class="price">R$ 0,70</p>
                     <button class="btn-buy">Comprar</button>
                 </div>
                 <div class="product-card">
-                    <img src="../Produtos E-commerce/Studio Ghibli/SG06.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG06.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>06</p>
                     <p class="price">R$ 0,70</p>
@@ -164,7 +164,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos E-commerce/Studio Ghibli/SG07.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG07.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>07</p>
                     <p class="price">R$ 0,70</p>
@@ -172,7 +172,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos E-commerce/Studio Ghibli/SG08.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG08.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>08</p>
                     <p class="price">R$ 0,70</p>
@@ -180,7 +180,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos E-commerce/Studio Ghibli/SG09.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG09.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>09</p>
                     <p class="price">R$ 0,70</p>
@@ -188,7 +188,7 @@
                 </div>
 
                 <div class="product-card">
-                    <img src=" ../Produtos E-commerce/Studio Ghibli/SG10.png" alt="Nome do Produto">
+                    <img src=" ../Produtos_E-commerce/Studio_Ghibli/SG10.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>10</p>
                     <p class="price">R$ 0,70</p>
