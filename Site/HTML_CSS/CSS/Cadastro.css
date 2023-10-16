@@ -129,7 +129,7 @@ input#usuario {
     
 }
 
-input#phone {
+input#tlfn {
     background-image: url(../Imagens/Telefone.svg);
     color: #CCC;
     background-repeat: no-repeat;
@@ -150,7 +150,7 @@ input#senha {
     
 }
 
-input#user {
+input#email {
     background-image: url(../Imagens/Email.svg);
     background-repeat: no-repeat;
     text-indent: 20px;
