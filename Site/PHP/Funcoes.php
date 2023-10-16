@@ -18,61 +18,70 @@
     $_SESSION[$nomeSessao] = $paramEmail;
   }
 
-  function enviaEmail($pEmailDestino, $pAssunto, $pHtml, 
-  $pUsuario = "bbytecraft@gmail.com", 
-  $pSenha = "Byt3_Cr4ft", 
-  $pSMTP = "smtp.projetoscti.com.br") {
+  //Função para envio de email
+  //As referencias a outros arquivos deve ser feita de maneira global, 
+  //ou seja, fora da função
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\Exception;
+  use PHPMailer\PHPMailer\SMTP;
+  function enviaEmail($pEmailDestino, $pUser, $pAssunto, $pHtml) {
+    require 'PHPMailer/src/PHPMailer.php';
+    require 'PHPMailer/src/Exception.php';
+    require 'PHPMailer/src/SMTP.php';
+   
+    //Variaveis de configuração do email(DEVE SER ALTERADO)
+    $pUsuario = "bbytecraft@gmail.com";
+    $pSenha = "Byt3_Cr4ft";
+    $pSMTP = "smtp.projetoscti.com.br";
 
-  // troque usuario e senha !!!! 
-  error_reporting(E_ALL);
-  ini_set("display_errors", 1);
+    //Configuração do PHP, para exibir erros
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1);
+    
+    try {
+      $mail = new PHPMailer(); //Instancia a classe PHPMailer
+      
+      //Configuração do servidor de email
+      $mail->IsSMTP(); //Define que a mensagem será SMTP
+      $mail->Host = $pSMTP; //Endereço do servidor SMTP
+      $mail->SMTPAuth = true; //Autenticação SMTP    
+      $mail->SMTPSecure = 'tls'; //Tipo de segurança
+      $mail->Port = 587; //Porta de comunicação SMTP
+      $mail->Username = $pUsuario; //Usuário do servidor SMTP
+      $mail->Password = $pSenha; //Senha do servidor SMTP
+      $mail->SMTPDebug = 2; //Habilita o debug do SMTP
+      $mail-> SMTPOptions = array (
+      'ssl' => array (
+      'verificar_peer' => false,
+      'verify_peer_name' => false,
+      'allow_self_signed' => true )); //Permite que o PHPMailer aceite certificados SSL não confiáveis
 
-  require "PHPMailer/PHPMailerAutoload.php";
+      //Configuração dos emails do remetente e do destinatário
+      $mail->setFrom($pUsuario); //email do remetente
+      $mail->addReplyTo($pUsuario); //Email para respossta, caso não queira que o usuário responda, coloque no.reply@...
+      $mail->addAddress($pEmailDestino, $pUser); //email do destinatário
 
-  try {
+      //Conteúdo do email
+      $mail->IsHTML(true); //Se o email vai ser em HTML ou não 
+      $mail->Subject = $pAssunto; //O assunto do email
+      $mail->Body = $pHtml; //O conteúdo(corpo) do email em HTML
+      $mail->AltBody = 'seu email nao suporta html'; //Uma mensagem avisando destinatário que o seu email não suporta HTML
+      $enviado = $mail->Send(); //Envia o email
+      
+      //Verifica se o email foi enviado
+      if ($enviado) {
+        echo "E-mail enviado com sucesso!";
+      } else {
+        echo "Não foi possível enviar o e-mail.";
+        echo "<b>Informações do erro:</b> " . $mail->ErrorInfo;
+      }
 
-  //cria instancia de phpmailer
-  echo "<br>Tentando enviar para $pEmailDestino...";
-  $mail = new PHPMailer(); 
-  $mail->IsSMTP();  
-
-  // servidor smtp
-  $mail->Host = $pSMTP;
-  $mail->SMTPAuth = true;      // requer autenticacao com o servidor                         
-  $mail->SMTPSecure = 'tls';                            
-
-  $mail-> SMTPOptions = array (
-  'ssl' => array (
-  'verificar_peer' => false,
-  'verify_peer_name' => false,
-  'allow_self_signed' => true ) );
-
-  $mail->Port = 587;      
-
-  $mail->Username = $pUsuario; 
-  $mail->Password = $pSenha; 
-  $mail->From = $pUsuario; 
-  $mail->FromName = "Suporte de senhas"; 
-
-  $mail->AddAddress($pEmailDestino, "Usuario"); 
-  $mail->IsHTML(true); 
-  $mail->Subject = $pAssunto; 
-  $mail->Body = $pHtml;
-  $enviado = $mail->Send(); 
-
-  if (!$enviado) {
-  echo "<br>Erro: " . $mail->ErrorInfo;
-  } else {
-  echo "<br><b>Enviado!</b>";
-  }
-  return $enviado;         
-
-  } catch (phpmailerException $e) {
-  echo $e->errorMessage(); // erros do phpmailer
-  } catch (Exception $e) {
-  echo $e->getMessage(); // erros da aplica��o - gerais
-  }
-  
+      //Execeções da biblioteca PHPMailer e do PHP(Instaciamento da classe exception)
+    } catch (Exception $e) {
+      echo $e->errorMessage(); //mensagens de erro do PHPMailer 
+    } catch (\Exception $e) {
+      echo $e->getMessage(); //mensagens de erro do PHP
+    }
 }
 
 /*
@@ -152,12 +161,13 @@ function verificaEmail($paramEmail) {
   }
   return false;
 }
+
 function verificaUser($paramSenha, $paramEmail)
 {
   $conn = conecta();
-  $sql = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha");
-  $sql->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
-  $row = $sql->fetch();
+  $select = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha");
+  $select->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
+  $row = $select->fetch();
   if($row){
     defineSessao("sessaoUsuario", $paramEmail);
     $_SESSION['adm'] = $row['adm'];

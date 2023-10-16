@@ -16,21 +16,21 @@
 
     //Verifica se o email e senha existem no banco de dados.
     $resultado = verificaUser($senha, $email);
-    if(!$resultado) {
-        header("Location: ../HTML_CSS/HTML/Login.php");
-        exit();
-    } else {
+    if($resultado) {
         //Cria cookie e sessão
         defineCookie("cookie_email", $email, 14400);
-        defineSessao("sessaoUsuario", $email);
-        //Redireciona para a página inicial
-        header("Location: ../HTML_CSS/HTML/index.php");
+    } else {
+        header("Location: ../HTML_CSS/HTML/Login.php");
         exit();
     }
 
-    $html= "<h1>Olá!</h1><br>
-    <h3>Se não reconhece essa nova atividade por favor entre em contato</h3><br>"
-    enviaEmail($email, "Novo login realizado", $html)
-    
+    //Envia email para o usuário informando que houve um novo login.
+    $html= "<h1>Olá!</h1><br><h3>Se não reconhece essa nova atividade por favor entre em contato</h3><br>";
+    enviaEmail($email,  $_SESSION['nome'], "Nova atividade", $html);
+
     unset($conn);
+
+    //Redireciona para a página inicial.
+    header("Location: ../HTML_CSS/HTML/index.php");
+    exit();
 ?>
