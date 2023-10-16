@@ -15,15 +15,24 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("../../PHP/Funcoes.php");
+    include ("../PHP/Funcoes.php");
     $conn = conecta();
 
-    $nome = "";
+    $nome = ""; $sessaoUsuario = ""; $carrinho = ""; $carrinhoTpm = ""; 
 
     if(isset($_SESSION['sessaoUsuario'])) {
         $sessaoUsuario = $_SESSION['sessaoUsuario'];
         $nome = $_SESSION['nome'];
+    }else {
+        
     }
+
+    if(isset($_POST['iptPesquisa'])) {
+        $pesquisa = $_POST['iptPesquisa'];
+        header("Location: Produtos.php?pesquisa=$pesquisa");
+        exit();
+    }
+
 
 ?>
 <body>
@@ -72,9 +81,8 @@
                 echo "<a class='botao-menu' href='Login.php' class='cart' style='color: #000000'>
                 <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
                 style='position: relative; top: 2px;'>Entrar</a>";
-            } //Não funciona
+            } 
         ?>
-    
         </div>
     </div>
     <div class="home">

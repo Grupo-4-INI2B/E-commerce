@@ -256,7 +256,7 @@ function verificaUser($paramSenha, $paramEmail)
   }
 
   } else {
-  echo "Erro ao executar a query.";
+    echo "Erro ao executar a query.";
   }
   }
 ?>
