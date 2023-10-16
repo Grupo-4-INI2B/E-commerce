@@ -49,11 +49,8 @@
             <a class="botao-menu" href="Devops.html" style="color: #000000" >Devops</a>
         </div>
     </div>
-    <div class="search-container">
-        <form name="frmPesquisa" action="Produtos.html" method="post">
-            <label for="search-input" class="search-icon"></label>
-            <input name ="iptPesquisa" type="text" class="search-input" id="search-input" width="30" height="15" required />
-        </form>
+    <div class="div-pesquisa">
+
     </div>
 
     <div class="grid-carrinho">

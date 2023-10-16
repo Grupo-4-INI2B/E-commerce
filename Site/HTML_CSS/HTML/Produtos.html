@@ -7,7 +7,7 @@
     <title>Byte Craft - Produtos</title>
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Produtos.css">
-    <link rel="stylesheet" href="../CSS/Search-Box.css" />
+    <link rel="stylesheet" href="../CSS/search-Box.css" />
     <script src="../JS/Home.js"></script>
 </head>
 <body>
@@ -32,12 +32,14 @@
                 <a class="botao-menu" href="Devops.html" style="color: #000000">Devops</a>
             </div>
         </div>
+
         <div class="search-container">
-            <form>
-                <label for="search-input" class="search-icon"></label>
-                <input type="text" class="search-input" id="search-input" style="width: 30px; height: 15px;" required />
-            </form>
+            <div class="buscar">
+                <img src="../Imagens/search.svg" alt="Busca">
+                <input type="text" name="busca" placeholder="Faça uma busca">
+            </div>
         </div>
+        <script src="../JS/Produtos.js"></script>
 
         <div class="grid-carrinho">
             <a class="botao-menu" href="Carrinho.html" style="color: #000000">

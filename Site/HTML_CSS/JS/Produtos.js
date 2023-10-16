@@ -106,7 +106,7 @@ function criarCardsStudioGhibli() {
   function criarCardsStarWars() {
     const container = document.querySelector(".container"); // Obtém o elemento onde os cards serão adicionados
   
-    for (let i = 1; i <= 49; i++) {
+    for (let i = 1; i <= 48; i++) {
       const numero = i.toString().padStart(2, '0'); // Use padStart para garantir que haja dois dígitos no número.
       const imagemSrc = `../Produtos_E-commerce/Star Wars/SW${numero}.png`;
   
@@ -154,18 +154,40 @@ function criarCardsStudioGhibli() {
   }
   
   // Função para criar cards de adesivos para o Resto em ordem alfabética
-  function criarCardsResto() {
-    // Adicione as funções para os outros tipos de adesivos aqui
-  }
+  function criarCardsHarryPotter() {
+    const container = document.querySelector(".container"); // Obtém o elemento onde os cards serão adicionados
+  
+    for (let i = 1; i <= 50; i++) {
+      const numero = i.toString().padStart(2, '0'); // Use padStart para garantir que haja dois dígitos no número.
+      const imagemSrc = `../Produtos_E-commerce/Harry Potter/HP${numero}.png`;
+  
+      const card = document.createElement("div");
+      card.classList.add("product-card");
+  
+      const cardContent = document.createElement("div"); // Crie um elemento para o conteúdo do cartão.
+      cardContent.innerHTML = `
+        <img src="${imagemSrc}" alt="Harry Potter">
+        <h2>Harry Potter</h2>
+        <p>Harry Potter ${numero}</p>
+        <p class="price">R$ 1,00</p>
+        <button type="button" class="btn-buy">Comprar</button>
+      `;
+  
+      card.appendChild(cardContent); // Adicione o conteúdo ao cartão.
+      container.appendChild(card);
+    }  }
+    function Buscar(){
+      
+    }
   
   // Chama as funções para criar os cards de produtos quando a página é carregada
   window.addEventListener("load", () => {
-    criarCardsStudioGhibli();
     criarCardsDemonSlayer();
-    criarCardsCapivaras();
     criarCardsPokemons();
     criarCardsStarWars();
+    criarCardsStudioGhibli();
+    criarCardsHarryPotter();
+    criarCardsCapivaras();
     criarCardsVanGogh();
-    criarCardsResto();
   });
   
