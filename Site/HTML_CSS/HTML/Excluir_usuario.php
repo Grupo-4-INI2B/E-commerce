@@ -49,3 +49,7 @@
     header("Location: ../HTML_CSS/HTML/index.php");
     exit();
 ?>
+
+<html>
+    
+</html>

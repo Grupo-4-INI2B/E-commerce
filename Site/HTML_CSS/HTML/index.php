@@ -126,7 +126,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>01</p>
                     <p class="price">R$ 0,70</p>
-                    <button type="submit" class="btn-buy">Comprar</button>
+                    <button type="submit" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
                 </div>
 
                 <div class="product-card">
@@ -134,7 +134,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>02</p>
                     <p class="price">R$ 0,70</p>
-                    <button type="submit" class="btn-buy">Comprar</button>
+                    <button type="submit" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
                 </div>
 
                 <div class="product-card">
@@ -142,7 +142,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>03</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
                 </div>
 
                 <div class="product-card">
@@ -150,7 +150,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>04</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
                 </div>
 
                 <div class="product-card">
@@ -158,14 +158,14 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>05</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
                 </div>
                 <div class="product-card">
                     <img src="../Produtos_E-commerce/Studio_Ghibli/SG06.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>06</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
                 </div>
 
                 <div class="product-card">
@@ -173,7 +173,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>07</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
                 </div>
 
                 <div class="product-card">
@@ -181,7 +181,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>08</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
                 </div>
 
                 <div class="product-card">
@@ -189,7 +189,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>09</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
                 </div>
 
                 <div class="product-card">
@@ -197,7 +197,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>10</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
                 </div>
 
         

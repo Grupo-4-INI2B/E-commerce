@@ -15,7 +15,7 @@ function criarCardsStudioGhibli() {
       <h2>Studio Ghibli</h2>
       <p>Studio Ghibli ${numero}</p>
       <p class="price">R$ 1,00</p>
-      <button type="button" class="btn-buy">Comprar</button>
+      <button type="button" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=SG${numero}'>Comprar</a></button>
     `;
 
     card.appendChild(cardContent); // Adicione o conteúdo ao cartão.
@@ -41,7 +41,7 @@ function criarCardsStudioGhibli() {
         <h2>Demon Slayer</h2>
         <p>Demon Slayer ${numero}</p>
         <p class="price">R$ 1,00</p>
-        <button type="button" class="btn-buy">Comprar</button>
+        <button type="button" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=DS${numero}'>Comprar</a></button>
       `;
   
       card.appendChild(cardContent); // Adicione o conteúdo ao cartão.
@@ -67,7 +67,7 @@ function criarCardsStudioGhibli() {
         <h2>Capivara</h2>
         <p>Capivara ${numero}</p>
         <p class="price">R$ 1,00</p>
-        <button type="button" class="btn-buy">Comprar</button>
+        <button type="button" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=CP${numero}'>Comprar</a></button>
       `;
   
       card.appendChild(cardContent); // Adicione o conteúdo ao cartão.
@@ -93,7 +93,7 @@ function criarCardsStudioGhibli() {
         <h2>Pokemon</h2>
         <p>Pokemon ${numero}</p>
         <p class="price">R$ 1,00</p>
-        <button type="button" class="btn-buy">Comprar</button>
+        <button type="button" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=PK${numero}'>Comprar</a></button>
       `;
   
       card.appendChild(cardContent); // Adicione o conteúdo ao cartão.
@@ -119,7 +119,7 @@ function criarCardsStudioGhibli() {
         <h2>Star Wars</h2>
         <p>Star Wars ${numero}</p>
         <p class="price">R$ 1,00</p>
-        <button type="button" class="btn-buy">Comprar</button>
+        <button type="button" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=SW${numero}'>Comprar</a></button>
       `;
   
       card.appendChild(cardContent); // Adicione o conteúdo ao cartão.
@@ -145,7 +145,7 @@ function criarCardsStudioGhibli() {
         <h2>Van Gogh</h2>
         <p>Van Gogh ${numero}</p>
         <p class="price">R$ 1,00</p>
-        <button type="button" class="btn-buy">Comprar</button>
+        <button type="button" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=VG${numero}'>Comprar</a></button>
       `;
   
       card.appendChild(cardContent); // Adicione o conteúdo ao cartão.
@@ -170,7 +170,7 @@ function criarCardsStudioGhibli() {
         <h2>Harry Potter</h2>
         <p>Harry Potter ${numero}</p>
         <p class="price">R$ 1,00</p>
-        <button type="button" class="btn-buy">Comprar</button>
+        <button type="button" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=HP${numero}'>Comprar</a></button>
       `;
   
       card.appendChild(cardContent); // Adicione o conteúdo ao cartão.

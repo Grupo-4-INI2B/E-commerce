@@ -1,3 +1,15 @@
+<?php
+  ini_set ('display_errors', 1);    
+  error_reporting (E_ALL);
+  include ("../../PHP/Funcoes.php");
+  $conn = conecta();
+  session_start();
+
+  if(isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
+      $sessaoUsuario = $_SESSION['sessaoUsuario'];
+  } 
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,7 +31,7 @@
         </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Home.html" style="color: #000000" >Home</a>
+            <a class="botao-menu" href="index.php" style="color: #000000" >Home</a>
         </div>
     </div>
     <div  class="grid-item">
@@ -63,7 +75,7 @@
     <div id="grid-container-carrinho">
         <div class="heading cf">
           <h1>Meu Carrinho</h1>
-          <a href="#" class="continue">Continuar comprando</a>
+          <a href="Produtos.php" class="continue">Continuar comprando</a>
         </div>
         <div class="cart">
       <!--    <ul class="tableHead">
