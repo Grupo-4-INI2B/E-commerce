@@ -235,6 +235,7 @@ a:link {
   height: 35px;
   cursor: pointer;
   margin-top: 10px; /* Ajuste a margem conforme necessário */
+  text-decoration: none;
 }
 
 .product-card .btn-buy:after {

@@ -20,12 +20,12 @@
 
     CREATE TABLE tbl_carrinho (
         qntd integer NOT NULL,
-        produto varchar(50) NOT NULL,
+        produto integer NOT NULL,
         usuario integer NOT NULL   
     );
 
     CREATE TABLE tbl_produto (
-        id_produto varchar(50) PRIMARY KEY NOT NULL,
+        id_produto integer PRIMARY KEY NOT NULL,
         nome_produto text NOT NULL,
         descricao text NOT NULL, 
         vlr float NOT NULL, /*Valor do produto*/
