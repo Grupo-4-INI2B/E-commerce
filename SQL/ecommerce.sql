@@ -15,17 +15,19 @@
         id_pedido integer PRIMARY KEY NOT NULL, 
         status varchar(100) NOT NULL, 
         dta_pedido timestamp NOT NULL, 
-        usuario integer NOT NULL
+        usuario integer NOT NULL, 
+        produto integer NOT NULL,
+        qntd integer NOT NULL
     );
 
     CREATE TABLE tbl_carrinho (
         qntd integer NOT NULL,
-        produto varchar(50) NOT NULL,
+        produto integer NOT NULL,
         usuario integer NOT NULL   
     );
 
     CREATE TABLE tbl_produto (
-        id_produto varchar(50) PRIMARY KEY NOT NULL,
+        id_produto integer PRIMARY KEY NOT NULL,
         nome_produto text NOT NULL,
         descricao text NOT NULL, 
         vlr float NOT NULL, /*Valor do produto*/
@@ -41,6 +43,8 @@
 /*Criação de chaves estrangeiras*/
 
     ALTER TABLE tbl_pedido ADD CONSTRAINT usuario FOREIGN KEY (usuario) REFERENCES tbl_usuario(id_usuario);
+    ALTER TABLE tbl_pedido ADD CONSTRAINT produto FOREIGN KEY (produto) REFERENCES tbl_produto(id_produto);
+    ALTER TABLE tbl_pedido ADD CONSTRAINT qntd FOREIGN KEY (qntd) REFERENCES tbl_carrinho(qntd);
     ALTER TABLE tbl_carrinho ADD CONSTRAINT produto FOREIGN KEY (produto) REFERENCES tbl_produto(id_produto);
     ALTER TABLE tbl_carrinho ADD CONSTRAINT usuario FOREIGN KEY (usuario) REFERENCES tbl_usuario(id_usuario);
 

@@ -121,6 +121,7 @@ body{
     font-weight:100;
     font-weight: bold;
     padding: 0 1vw;
+    text-decoration: none;
 }
 .botao-menu:hover {
     background: #ffe48c;    

@@ -32,7 +32,7 @@
     unset($conn);
 
     if(isset($_SESSION['carrinhoTpm'])) {
-        $_SESSION['carrinho'] = $_SESSION['carrinhoTpm'];
+        $_SESSION['carrinho'] = $_SESSION['carrinhoTpm']; //Se houver um carrinho temporário, ele é transformado em permanente.
     }
     //Redireciona para a página inicial.
     header("Location: ../HTML_CSS/HTML/index.php");

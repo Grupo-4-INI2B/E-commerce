@@ -12,19 +12,21 @@
     $select->bindParam(':id_usuario', $_SESSION['id_usuario'], PDO::PARAM_INT);
     $select->execute();
     $row = $select->fetch();
-    if($row) {
+    if($row) { //Se já houver um carrinho criado, ele adiciona os produtos ao carrinho já existente.
       $_SESSION['carrinho']['id_produto'] += $row['id_produto'];
       $_SESSION['carrinho']['qntd'] += $row['qntd'];
     }
+    if(isset($_GET['id_produto'] && isset($_GET['qntd']))
     $_SESSION['carrinho']['id_produto'] += $_GET['id_produto'];
     $_SESSION['carrinho']['qntd'] += $_GET['qntd'];
-  }else {
+  }else { //Se não houver sessão iniciada, ele cria um carrinho temporário.
     $sessaoUsuario = null;
     $nome = null;
     $_SESSION['carrinhoTpm']['id_produto'] += $_GET['id_produto'];
     $_SESSION['carrinhoTpm']['qntd'] += $_GET['qntd'];
   }
 
+  unset($select);
   unset($conn);
 ?>
 

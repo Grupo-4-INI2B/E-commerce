@@ -57,7 +57,7 @@
     </div>
 
     <div class="grid-carrinho">
-        <a class="botao-menu" href="Carrinho.html" class="btn btn-primary" style="color: #000000">
+        <a class="botao-menu" href="Carrinho.php" class="btn btn-primary" style="color: #000000">
             <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
             Carrinho
           </a>
