@@ -11,8 +11,8 @@
 <body>
     <h2>Formulário de Produto</h2>
     <form action="Adicionar_produto.php" method="POST" enctype="multipart/form-data">
-        <label for="id_produto"></label>
-        <input type="hidden" id="id_produto" name="id_produto"><br><br>
+        <label for="id_produto">Id Produto</label>
+        <input type="number" id="id_produto" name="id_produto"><br><br>
 
         <label for="nome_produto">Nome:</label>
         <input type="text" id="nome_produto" name="nome_produto"><br><br>

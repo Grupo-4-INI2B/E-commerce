@@ -2,7 +2,7 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("../../PHP/Funcoes.php");
+    include ("Funcoes.php");
     $conn = conecta();
 
     if(isset($_SESSION['sessaoUsuario'])) {
@@ -22,16 +22,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Craft - Produtos</title>
-    <link rel="stylesheet" href="../CSS/Base.css">
-    <link rel="stylesheet" href="../CSS/Produtos.css">
-    <link rel="stylesheet" href="../CSS/search-Box.css" />
-    <script src="../JS/Home.js"></script>
+    <link rel="stylesheet" href="../HTML_CSS/CSS/Base.css">
+    <link rel="stylesheet" href="../HTML_CSS/CSS/Produtos.css">
+    <link rel="stylesheet" href="../HTML_CSS/CSS/search-Box.css" />
+    <script src="../HTML_CSS/JS/Home.js"></script>
 </head>
 <body>
     <div class="grid-container">
         <div class="grid-logo">
             <a href="index.php">
-                <img class="logo" src="../Imagens/logocaixinhacolor.svg" alt="Logomarca">
+                <img class="logo" src="../HTML_CSS/Imagens/logocaixinhacolor.svg" alt="Logomarca">
             </a>
         </div>
         <div class="grid-item">
@@ -51,16 +51,16 @@
         </div>
 
         <div class="search-container">
-            <div class="buscar">
-                <img src="../Imagens/search.svg" alt="Busca">
-                <input type="text" name="busca" placeholder="Faça uma busca">
-            </div>
+                    <form method="POST" action="Produtos.php">
+                    <input type="text" name="pesquisa" id="pesquisa" 
+                        placeholder="Pesquisar..."  
+                        \>
         </div>
         <script src="../JS/Produtos.js"></script>
 
         <div class="grid-carrinho">
             <a class="botao-menu" href="Carrinho.php" style="color: #000000">
-                <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
+                <img src="../HTML_CSS/Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
                 Carrinho
             </a>
         </div>
@@ -73,11 +73,11 @@
     <div class="home">
         <br>
         <h1 class="margem-titulo">Os Nossos<br>Produtos</h1>
-        <img src="../Imagens/onda.png" alt="" class="onda">
+        <img src="../HTML_CSS/Imagens/onda.png" alt="" class="onda">
     </div>
     </div>
     <!-- Filtros -->
-    <div class="filter">
+    <!-- <div class="filter">
         <label for="filter-select">Filtrar por:</label>
         <select id="filter-select">
             <option value="todos">Todos</option>
@@ -88,10 +88,35 @@
             <option value="Star Wars">Star Wars</option>
             <option value="Van Gogh">Van Gogh</option>
         </select>
-    </div>
+    </div> -->
     <!-- JS e loop -->
     <form>
-        <div class="container"></div>
+        <div class="container">
+        <?php
+    $conn = conecta();
+    $select = $conn->prepare('SELECT nome_produto, vlr, descricao, imagem, id_produto from tbl_produto WHERE excluido = false');
+    $select->execute();
+    $result = $select->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($result as $row){
+        $id = $row['id_produto'];
+        $name = $row['nome_produto'];
+        $image = $row['imagem'];
+        $price = number_format($row['vlr'], 2, ',', '.');
+        isset($row['descricao']) ? $description = $row['descricao'] : $description = '';
+    }
+        //Card de sticker 
+            echo "<div class='product-card'>
+            <img src='$image'>
+            <div>
+            <h2>$name</h2>
+            <p>$description</p>
+            <h3>R$ $price</h3>
+            <a href='Produto.php?id=$id'>Comprar</a>
+            </div>
+            </div>";
+    ?>
+        </div>
         <script src="../JS/Produtos.js"> </script>
     </form>
 
@@ -138,6 +163,7 @@
             </div>
         </div>
     </div>
+   
 </footer>
 </body>
 </html>

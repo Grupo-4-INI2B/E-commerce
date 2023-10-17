@@ -3,17 +3,8 @@ include "Funcoes.php";
 
 $conn = conecta();
 
-        
-            $sql = "SELECT MAX(id_produto) AS maior_id FROM tbl_produto";
-            $result = $conn->query($sql);
-            if($result->rowCount() > 0){
-                
-                $row = $result->fetch();
-            }
-            else
-            {
-                echo "Não há produtos cadastrados.";
-            }
+            $id= $_POST['id_produto'];
+           
             // Verifique se o formulário foi enviado
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $nomeImagem = $_FILES["imagem"]["name"];
@@ -22,7 +13,40 @@ $conn = conecta();
                 $dadosImagem = file_get_contents($_FILES["imagem"]["tmp_name"]);
             
                 // Defina o caminho onde deseja armazenar a imagem no servidor
-                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce";
+                if($id > 1100 && $id < 1200)
+                {
+                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Studio_Ghibli/";
+                }
+                else
+                if($id > 1200 && $id < 1300)
+                {
+                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Capivaras/";
+                }
+                else
+                if($id > 1300 && $id < 1400)
+                {
+                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Demon Slayer/";
+                }
+                else
+                if($id > 1400 && $id < 1500)
+                {
+                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Harry Potter/";
+                }
+                else
+                if($id > 1500 && $id < 1600)
+                {
+                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Pokemons/";
+                }
+                else
+                if($id > 1600 && $id < 1700)
+                {
+                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Star Wars/";
+                }
+                else
+                if($id > 1700 && $id < 1800)
+                {
+                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Van Gogh/";
+                }
                 $caminhoImagem = $caminhoDiretorio . $nomeImagem;
             
                 // Verifique se o arquivo é uma imagem válido (opcional)
@@ -37,12 +61,11 @@ $conn = conecta();
                     echo "A imagem é muito grande. O tamanho máximo permitido é 3 MB.";
                     exit();
                 }
-                $new=(int)$row['maior_id'];
                 // Mova a imagem para o diretório desejado no servidor
                 if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $caminhoImagem)) {
                     // The image was uploaded successfully, and now you can insert the data into the database.
                     $params = array(
-                        ':id_produto'=> $new+1,
+                        ':id_produto'=> $_POST['id_produto'],
                         ':nome' => $_POST['nome_produto'],
                         ':descricao' => $_POST['descricao'],
                         ':preco' => $_POST['vlr'],
