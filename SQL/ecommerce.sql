@@ -13,20 +13,15 @@
 	
     CREATE TABLE tbl_pedido (
         id_pedido integer PRIMARY KEY NOT NULL, 
-        status varchar(100) NOT NULL, /*Status do pedido*/
-        dta_pedido timestamp NOT NULL, /*Data do pedido*/
+        status varchar(100) NOT NULL, 
+        dta_pedido timestamp NOT NULL, 
         usuario integer NOT NULL
-     );
-
-    CREATE TABLE tbl_compraTmp (
-        sessao varchar(50) PRIMARY KEY NOT NULL, /*Sessão php*/
-        pedido integer NOT NULL
     );
 
     CREATE TABLE tbl_carrinho (
-        qntd integer,
-        produto varchar(50) ,
-        pedido integer
+        qntd integer NOT NULL,
+        produto varchar(50) NOT NULL,
+        usuario integer NOT NULL   
     );
 
     CREATE TABLE tbl_produto (
@@ -46,9 +41,9 @@
 /*Criação de chaves estrangeiras*/
 
     ALTER TABLE tbl_pedido ADD CONSTRAINT usuario FOREIGN KEY (usuario) REFERENCES tbl_usuario(id_usuario);
-    ALTER TABLE tbl_compraTmp ADD CONSTRAINT pedido FOREIGN KEY (pedido) REFERENCES tbl_pedido(id_pedido);
     ALTER TABLE tbl_carrinho ADD CONSTRAINT produto FOREIGN KEY (produto) REFERENCES tbl_produto(id_produto);
-    ALTER TABLE tbl_carrinho ADD CONSTRAINT pedido FOREIGN KEY (pedido) REFERENCES tbl_pedido(id_pedido);
+    ALTER TABLE tbl_carrinho ADD CONSTRAINT usuario FOREIGN KEY (usuario) REFERENCES tbl_usuario(id_usuario);
+
 
 /*Inserção de dados*/
 

@@ -1,13 +1,31 @@
 <?php
-  ini_set ('display_errors', 1);    
+  ini_set ('display_errors', 1);
   error_reporting (E_ALL);
+  session_start();
   include ("../../PHP/Funcoes.php");
   $conn = conecta();
-  session_start();
 
   if(isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
-      $sessaoUsuario = $_SESSION['sessaoUsuario'];
-  } 
+    $sessaoUsuario = $_SESSION['sessaoUsuario'];
+    $nome = $_SESSION['nome'];
+    $select = $conn->prepare("SELECT * FROM tbl_carrinho WHERE usuario = :id_usuario");
+    $select->bindParam(':id_usuario', $_SESSION['id_usuario'], PDO::PARAM_INT);
+    $select->execute();
+    $row = $select->fetch();
+    if($row) {
+      $_SESSION['carrinho']['id_produto'] += $row['id_produto'];
+      $_SESSION['carrinho']['qntd'] += $row['qntd'];
+    }
+    $_SESSION['carrinho']['id_produto'] += $_GET['id_produto'];
+    $_SESSION['carrinho']['qntd'] += $_GET['qntd'];
+  }else {
+    $sessaoUsuario = null;
+    $nome = null;
+    $_SESSION['carrinhoTpm']['id_produto'] += $_GET['id_produto'];
+    $_SESSION['carrinhoTpm']['qntd'] += $_GET['qntd'];
+  }
+
+  unset($conn);
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +43,7 @@
 <body>
     <div class="grid-container">
         <div class="grid-logo">
-            <a href="Home.html">
+            <a href="index.php">
                 <img class="logo" src="../Imagens/logocaixinhacolor.svg" alt="Logomarca">
             </a>
         </div>
@@ -36,13 +54,13 @@
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Produtos.html" style="color: #000000" >Produtos</a>
+            <a class="botao-menu" href="Produtos.php" style="color: #000000" >Produtos</a>
 
         </div>
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Devops.html" style="color: #000000" >Devops</a>
+            <a class="botao-menu" href="Devops.php" style="color: #000000" >Devops</a>
         </div>
     </div>
     <div class="search-container">
@@ -53,7 +71,7 @@
     </div>
 
     <div class="grid-carrinho">
-        <a class="botao-menu" href="Carrinho.html" class="btn btn-primary" style="color: #000000">
+        <a class="botao-menu" href="Carrinho.php" class="btn btn-primary" style="color: #000000">
             <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
             Carrinho
           </a>
@@ -61,9 +79,9 @@
 
     </div>
     <div class="grid-login">
-        <a class="botao-menu" href="Login.html" class="cart" style="color: #000000">
-        <img src="../Imagens/IconPerson.svg" alt="Ícone de Usuário" width="15" height="15" style="position: relative; top: 2px;">
-        Entrar
+      <?php
+        cabecalho($sessaoUsuario,  $nome);           
+      ?>
     </a>
     </div>
     </div>

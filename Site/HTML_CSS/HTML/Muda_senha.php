@@ -6,7 +6,7 @@
     $conn = conecta();
     
     if(!isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
-        header("Location: index.php");
+        header("Location: Login.php");
     }
 
     $email = "";

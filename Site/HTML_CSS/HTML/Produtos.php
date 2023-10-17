@@ -1,3 +1,20 @@
+<?php
+    ini_set ('display_errors', 1);
+    error_reporting (E_ALL);
+    session_start();
+    include ("../../PHP/Funcoes.php");
+    $conn = conecta();
+
+    if(isset($_SESSION['sessaoUsuario'])) {
+        $sessaoUsuario = $_SESSION['sessaoUsuario'];
+        $nome = $_SESSION['nome'];
+    }else {
+        $sessaoUsuario = null;
+        $nome = null;
+    }
+
+    unset($conn);
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -13,23 +30,23 @@
 <body>
     <div class="grid-container">
         <div class="grid-logo">
-            <a href="Home.html">
+            <a href="index.php">
                 <img class="logo" src="../Imagens/logocaixinhacolor.svg" alt="Logomarca">
             </a>
         </div>
         <div class="grid-item">
             <div>
-                <a class="botao-menu" href="Home.html" style="color: #000000">Home</a>
+                <a class="botao-menu" href="index.php" style="color: #000000">Home</a>
             </div>
         </div>
         <div class="grid-item">
             <div>
-                <a class="botao-menu" href="Produtos.html" style="color: #000000">Produtos</a>
+                <a class="botao-menu" href="Produtos.php" style="color: #000000">Produtos</a>
             </div>
         </div>
         <div class="grid-item">
             <div>
-                <a class="botao-menu" href="Devops.html" style="color: #000000">Devops</a>
+                <a class="botao-menu" href="Devops.php" style="color: #000000">Devops</a>
             </div>
         </div>
 
@@ -42,16 +59,15 @@
         <script src="../JS/Produtos.js"></script>
 
         <div class="grid-carrinho">
-            <a class="botao-menu" href="Carrinho.html" style="color: #000000">
+            <a class="botao-menu" href="Carrinho.php" style="color: #000000">
                 <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
                 Carrinho
             </a>
         </div>
         <div class="grid-login">
-            <a class="botao-menu" href="login.html" style="color: #000000">
-                <img src="../Imagens/IconPerson.svg" alt="Ícone de Usuário" width="15" height="15" style="position: relative; top: 2px;">
-                Entrar
-            </a>
+            <?php
+                cabecalho($sessaoUsuario,  $nome);           
+            ?>
         </div>
     </div>
     <div class="home">

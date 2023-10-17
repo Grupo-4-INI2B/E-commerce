@@ -15,24 +15,16 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("../PHP/Funcoes.php");
+    include ("../../PHP/Funcoes.php");
     $conn = conecta();
-
-    $nome = ""; $sessaoUsuario = ""; $carrinho = ""; $carrinhoTpm = ""; 
 
     if(isset($_SESSION['sessaoUsuario'])) {
         $sessaoUsuario = $_SESSION['sessaoUsuario'];
         $nome = $_SESSION['nome'];
     }else {
-        
+        $sessaoUsuario = null;
+        $nome = null;
     }
-
-    if(isset($_POST['iptPesquisa'])) {
-        $pesquisa = $_POST['iptPesquisa'];
-        header("Location: Produtos.php?pesquisa=$pesquisa");
-        exit();
-    }
-
 
 ?>
 <body>
@@ -44,18 +36,18 @@
         </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu"ws href="Home.html" style="color: #000000" >Home</a>
+            <a class="botao-menu"ws href="index.php" style="color: #000000" >Home</a>
         </div>
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Produtos.html" style="color: #000000" >Produtos</a>
+            <a class="botao-menu" href="Produtos.php" style="color: #000000" >Produtos</a>
 
         </div>
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Devops.html" style="color: #000000" >Devops</a>
+            <a class="botao-menu" href="Devops.php" style="color: #000000" >Devops</a>
         </div>
     </div>
     <div class="div-pesquisa">
@@ -63,7 +55,7 @@
     </div>
 
     <div class="grid-carrinho">
-        <a class="botao-menu" href="Carrinho.html" class="btn btn-primary" style="color: #000000">
+        <a class="botao-menu" href="Carrinho.php" class="btn btn-primary" style="color: #000000">
             <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
             Carrinho
           </a>
@@ -72,16 +64,7 @@
     </div>
     <div class="grid-login">
         <?php
-            echo $nome;
-            if(isset($sessaoUsuario)) {        
-                echo "<a class='botao-menu' href='Perfil.php' class='cart' style='color: #000000'>
-                <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
-                style='position: relative; top: 2px;'Bem vindo, $nome</a>";
-            }else {
-                echo "<a class='botao-menu' href='Login.php' class='cart' style='color: #000000'>
-                <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
-                style='position: relative; top: 2px;'>Entrar</a>";
-            } 
+           cabecalho($sessaoUsuario,  $nome);           
         ?>
         </div>
     </div>
@@ -126,7 +109,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>01</p>
                     <p class="price">R$ 0,70</p>
-                    <button type="submit" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
+                    <button type="submit" class="btn-buy">Comprar</button>
                 </div>
 
                 <div class="product-card">
@@ -134,7 +117,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>02</p>
                     <p class="price">R$ 0,70</p>
-                    <button type="submit" class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
+                    <button type="submit" class="btn-buy">Comprar</button>
                 </div>
 
                 <div class="product-card">
@@ -142,7 +125,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>03</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
+                    <button class="btn-buy">Comprar</button>
                 </div>
 
                 <div class="product-card">
@@ -150,7 +133,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>04</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
+                    <button class="btn-buy">Comprar</button>
                 </div>
 
                 <div class="product-card">
@@ -158,14 +141,14 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>05</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
+                    <button class="btn-buy">Comprar</button>
                 </div>
                 <div class="product-card">
                     <img src="../Produtos_E-commerce/Studio_Ghibli/SG06.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>06</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
+                    <button class="btn-buy">Comprar</button>
                 </div>
 
                 <div class="product-card">
@@ -173,7 +156,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>07</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
+                    <button class="btn-buy">Comprar</button>
                 </div>
 
                 <div class="product-card">
@@ -181,7 +164,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>08</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
+                    <button class="btn-buy">Comprar</button>
                 </div>
 
                 <div class="product-card">
@@ -189,7 +172,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>09</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
+                    <button class="btn-buy">Comprar</button>
                 </div>
 
                 <div class="product-card">
@@ -197,7 +180,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>10</p>
                     <p class="price">R$ 0,70</p>
-                    <button class="btn-buy"><a href='Carrinho.php?operacao=incluir&codigoProduto=$codigoProduto'>Comprar</a></button>
+                    <button class="btn-buy">Comprar</button>
                 </div>
 
         

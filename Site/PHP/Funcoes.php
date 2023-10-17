@@ -1,4 +1,5 @@
 <?php
+  //Função para conectar ao banco de dados
   function conecta () {
     $varConn = new PDO("pgsql:host=pgsql.projetoscti.com.br; dbname=projetoscti25; 
     user=projetoscti25; password=721492");
@@ -9,6 +10,7 @@
     }
   }
 
+  //Funções para definir cookie e sessão
   function defineCookie($paramNome, $paramValor, $paramMinutos) {
     setcookie($paramNome, $paramValor, time() + $paramMinutos * 60); 
   }
@@ -18,20 +20,71 @@
     $_SESSION[$nomeSessao] = $paramEmail;
   }
 
+  //Funções para verificação de credenciais
+  function verificaUser($paramSenha, $paramEmail)
+  {
+    $conn = conecta();
+    $select = $conn->prepare("SELECT * FROM tbl_carrinho INNER JOIN ");
+    $select->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
+    $row = $select->fetch();
+    if($row){
+      defineSessao("sessaoUsuario", $paramEmail);
+      $_SESSION['adm'] = $row['adm'];
+      $_SESSION['email'] = $paramEmail;
+      $_SESSION['nome'] = $row['nome_usuario'];
+      $_SESSION['id_usuario'] = $row['id_usuario'];
+      
+      return true;
+    }
+    return false;
+  }
+
+  function verificaEmail($paramEmail) {
+    $conn = conecta();
+    $select = $conn->query("SELECT email FROM tbl_usuario");
+    while($row = $select->fetch()){
+      $varEmail = $row['email'];
+      if($paramEmail == $varEmail){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  //Função de cabeçalho
+  function cabecalho($sessaoUsuario, $nome) {
+    if($sessaoUsuario != null) {        
+      echo "<a class='botao-menu' href='Perfil.php' class='cart' style='color: #000000'>
+      <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+      style='position: relative; top: 2px;'Bem vindo, $nome</a>";
+    }else {
+      echo "<a class='botao-menu' href='Login.php' class='cart' style='color: #000000'>
+      <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+      style='position: relative; top: 2px;'>Entrar</a>";
+    } 
+  }
+
+  function logado($sessaoUsuario) {
+    if($sessaoUsuario != null) {        
+      return true;
+    }
+  }
+
+
   //Função para envio de email
   //As referencias a outros arquivos deve ser feita de maneira global, 
   //ou seja, fora da função
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\Exception;
   use PHPMailer\PHPMailer\SMTP;
-  function enviaEmail($pEmailDestino, $pUser, $pAssunto, $pHtml) {
+  function enviaEmail($pDestinatario, $pNome, $pAssunto, $pHtml) {
     require 'PHPMailer/src/PHPMailer.php';
     require 'PHPMailer/src/Exception.php';
     require 'PHPMailer/src/SMTP.php';
    
     //Variaveis de configuração do email(DEVE SER ALTERADO)
-    $pUsuario = "bbytecraft@gmail.com";
-    $pSenha = "Byt3_Cr4ft";
+    $pRemetente = "bytecraft@projetoscti.com.br";
+    $pSenha = "Byte#craft2023";
     $pSMTP = "smtp.projetoscti.com.br";
 
     //Configuração do PHP, para exibir erros
@@ -47,7 +100,7 @@
       $mail->SMTPAuth = true; //Autenticação SMTP    
       $mail->SMTPSecure = 'tls'; //Tipo de segurança
       $mail->Port = 587; //Porta de comunicação SMTP
-      $mail->Username = $pUsuario; //Usuário do servidor SMTP
+      $mail->Username = $pRemetente; //Usuário do servidor SMTP
       $mail->Password = $pSenha; //Senha do servidor SMTP
       $mail->SMTPDebug = 2; //Habilita o debug do SMTP
       $mail-> SMTPOptions = array (
@@ -57,9 +110,9 @@
       'allow_self_signed' => true )); //Permite que o PHPMailer aceite certificados SSL não confiáveis
 
       //Configuração dos emails do remetente e do destinatário
-      $mail->setFrom($pUsuario); //email do remetente
+      $mail->setFrom($pRemetente, 'ByteCraft'); //email do remetente
       $mail->addReplyTo($pUsuario); //Email para respossta, caso não queira que o usuário responda, coloque no.reply@...
-      $mail->addAddress($pEmailDestino, $pUser); //email do destinatário
+      $mail->addAddress($pDestinatario, $pNome); //email do destinatário
 
       //Conteúdo do email
       $mail->IsHTML(true); //Se o email vai ser em HTML ou não 
@@ -129,57 +182,26 @@
 *
 * @return string A senha gerada
 */
-function geraSenha($tamanho = 8, $maiusculas = true, $numeros = true, $simbolos = false) {
-  //$lmin = 'abcdefghijklmnopqrstuvwxyz';
-  $lmai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  $num = '1234567890';
-  $simb = '!@#$%*-';
-  $retorno = '';
-  $caracteres = '';
+  function geraSenha($tamanho = 8, $maiusculas = true, $numeros = true, $simbolos = false) {
+    //$lmin = 'abcdefghijklmnopqrstuvwxyz';
+    $lmai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $num = '1234567890';
+    $simb = '!@#$%*-';
+    $retorno = '';
+    $caracteres = '';
 
-  //$caracteres .= $lmin;
-  if ($maiusculas) $caracteres .= $lmai;
-  if ($numeros) $caracteres .= $num;
-  if ($simbolos) $caracteres .= $simb;
+    //$caracteres .= $lmin;
+    if ($maiusculas) $caracteres .= $lmai;
+    if ($numeros) $caracteres .= $num;
+    if ($simbolos) $caracteres .= $simb;
 
-  $len = strlen($caracteres);
-  for ($n = 1; $n <= $tamanho; $n++) {
-  $rand = mt_rand(1, $len);
-  $retorno .= $caracteres[$rand-1];
-  }
-  return $retorno;
-}
-
-function verificaEmail($paramEmail) {
-  $conn = conecta();
-  $select = $conn->query("SELECT email FROM tbl_usuario");
-  while($row = $select->fetch()){
-    $varEmail = $row['email'];
-    if($paramEmail == $varEmail){
-      return true;
+    $len = strlen($caracteres);
+    for ($n = 1; $n <= $tamanho; $n++) {
+    $rand = mt_rand(1, $len);
+    $retorno .= $caracteres[$rand-1];
     }
+    return $retorno;
   }
-  return false;
-}
-
-function verificaUser($paramSenha, $paramEmail)
-{
-  $conn = conecta();
-  $select = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha");
-  $select->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
-  $row = $select->fetch();
-  if($row){
-    defineSessao("sessaoUsuario", $paramEmail);
-    $_SESSION['adm'] = $row['adm'];
-    $_SESSION['email'] = $paramEmail;
-    $_SESSION['nome'] = $row['nome_usuario'];
-    $_SESSION['id'] = $row['id_usuario'];
-
-    return true;
-  }
-  return false;
-}
-
 
   function crud()
   {
@@ -259,4 +281,6 @@ function verificaUser($paramSenha, $paramEmail)
     echo "Erro ao executar a query.";
   }
   }
+
+  
 ?>
