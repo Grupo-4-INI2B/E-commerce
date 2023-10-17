@@ -5,12 +5,12 @@
     <title>Formulário de Produto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../HTML_CSS/CSS/crud.css">
+    <link rel="stylesheet" href="../CSS/crud.css">
 </head>
 
 <body>
     <h2>Formulário de Produto</h2>
-    <form action="Adicionar_produto.php" method="POST" enctype="multipart/form-data">
+    <form action="../PHP/Adicionar_produto.php" method="POST" enctype="multipart/form-data">
         <label for="id_produto">Id Produto</label>
         <input type="number" id="id_produto" name="id_produto"><br><br>
 

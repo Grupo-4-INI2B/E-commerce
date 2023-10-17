@@ -2,7 +2,7 @@
    ini_set ('display_errors', 1);
    error_reporting (E_ALL);
    session_start();
-   include ("../../PHP/Funcoes.php");
+   include ("Funcoes.php");
    $conn = conecta();
   
    $insert = $conn->prepare("INSERT INTO tbl_carrinho  
@@ -14,5 +14,5 @@
 
    session_unset();
    
-   header('Location: ../HTML_CSS/HTML/index.php');
+   header('Location: ../HTML/index.php');
 ?>

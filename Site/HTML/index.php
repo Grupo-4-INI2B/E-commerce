@@ -41,7 +41,7 @@
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="../PHP/Produtos.php" style="color: #000000" >Produtos</a>
+            <a class="botao-menu" href="Produtos.php" style="color: #000000" >Produtos</a>
 
         </div>
     </div>
@@ -82,9 +82,7 @@
                 <p class="topicos">Diversidade de estampas para sua escolha</p>
                 <p class="topicos">Extremamente duráveis</p>
                 <p class="topicos">Escolha seu favorito, despertando sua criatividade</p>
-                <form action="">
-                    <button name="ver_mais" value="Ver Mais" class="vermais">Ver mais</button>
-                </form>
+                <button name="ver_mais" value="Ver Mais" class="vermais">Ver mais</button>
             </div>
             <div class="div-foto">
                 <img src="../Imagens/image.png" alt="" id="foto">

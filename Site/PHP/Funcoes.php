@@ -55,11 +55,11 @@
   function cabecalho($sessaoUsuario, $nome) {
     if($sessaoUsuario != null) {        
       echo "<a class='botao-menu' href='Perfil.php' class='cart' style='color: #000000'>
-      <img src='../HTML_CSS/Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+      <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
       style='position: relative; top: 2px;'Bem vindo, $nome</a>";
     }else {
       echo "<a class='botao-menu' href='Login.php' class='cart' style='color: #000000'>
-      <img src='../HTML_CSS/Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+      <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
       style='position: relative; top: 2px;'>Entrar</a>";
     } 
   }
@@ -266,9 +266,9 @@
           echo "<td> <img src='$imagem' alt='miguel drogado' widht='150px' height='100px'> </td>";
           echo "<td>" . $excluido . "</td>";
           echo "<td>" . $data_exclusao . "</td>";
-          echo "<td><a href='Form_adicionar.php?acao=adicionar'><img src='../HTML_CSS/Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
-          echo "<td><a href='Deletar_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../HTML_CSS/Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
-          echo "<td><a href='Form_alterar.php?id=" . $id_produto . "&acao=alterar'><img src='../HTML_CSS/Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
+          echo "<td><a href='Form_adicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
+          echo "<td><a href='Deletar_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
+          echo "<td><a href='Form_alterar.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
           echo "</tr>";
       }
 

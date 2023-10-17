@@ -2,7 +2,7 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("Funcoes.php");
+    include ("../PHP/Funcoes.php");
     $conn = conecta();
 
     if(isset($_SESSION['sessaoUsuario'])) {
@@ -22,16 +22,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Craft - Produtos</title>
-    <link rel="stylesheet" href="../HTML_CSS/CSS/Base.css">
-    <link rel="stylesheet" href="../HTML_CSS/CSS/Produtos.css">
-    <link rel="stylesheet" href="../HTML_CSS/CSS/search-Box.css" />
-    <script src="../HTML_CSS/JS/Home.js"></script>
+    <link rel="stylesheet" href="../CSS/Base.css">
+    <link rel="stylesheet" href="../CSS/Produtos.css">
+    <link rel="stylesheet" href="../CSS/search-Box.css" />
+    <script src="../JS/Home.js"></script>
 </head>
 <body>
     <div class="grid-container">
         <div class="grid-logo">
             <a href="index.php">
-                <img class="logo" src="../HTML_CSS/Imagens/logocaixinhacolor.svg" alt="Logomarca">
+                <img class="logo" src="../Imagens/logocaixinhacolor.svg" alt="Logomarca">
             </a>
         </div>
         <div class="grid-item">
@@ -60,7 +60,7 @@
 
         <div class="grid-carrinho">
             <a class="botao-menu" href="Carrinho.php" style="color: #000000">
-                <img src="../HTML_CSS/Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
+                <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
                 Carrinho
             </a>
         </div>
@@ -73,7 +73,7 @@
     <div class="home">
         <br>
         <h1 class="margem-titulo">Os Nossos<br>Produtos</h1>
-        <img src="../HTML_CSS/Imagens/onda.png" alt="" class="onda">
+        <img src="../Imagens/onda.png" alt="" class="onda">
     </div>
     </div>
     <!-- Filtros -->

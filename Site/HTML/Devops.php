@@ -40,7 +40,7 @@
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="../PHP/Produtos.php" style="color: #000000" >Produtos</a>
+            <a class="botao-menu" href="Produtos.php" style="color: #000000" >Produtos</a>
 
         </div>
     </div>
