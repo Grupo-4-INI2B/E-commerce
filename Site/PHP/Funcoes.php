@@ -24,7 +24,7 @@
   function verificaUser($paramSenha, $paramEmail)
   {
     $conn = conecta();
-    $select = $conn->prepare("SELECT * FROM tbl_carrinho INNER JOIN ");
+    $select = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha");
     $select->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
     $row = $select->fetch();
     if($row){
