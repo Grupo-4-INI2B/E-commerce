@@ -2,14 +2,13 @@
 
     ini_set ('display_errors', 1);    
     error_reporting (E_ALL);
-    include ("../../PHP/Funcoes.php");
+    include ("../PHP/Funcoes.php");
     $conn = conecta();
 
     if(!isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
         header("Location: Login.php");
     }
 
-    include ("Funcoes.php");
     $conn = conecta();
     
     $email = $_POST['email'];
@@ -46,7 +45,7 @@
     unset($conn);
 
     //Redireciona para a página inicial
-    header("Location: ../HTML_CSS/HTML/index.php");
+    header("Location: index.php");
     exit();
 ?>
 

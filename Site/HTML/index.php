@@ -15,7 +15,7 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("../../PHP/Funcoes.php");
+    include ("../PHP/Funcoes.php");
     $conn = conecta();
 
     if(isset($_SESSION['sessaoUsuario'])) {
@@ -30,7 +30,7 @@
 <body>
     <div class="grid-container">
         <div class="grid-logo">
-            <a href="Home.html">
+            <a href="index.php">
                 <img class="logo" src="../Imagens/logocaixinhacolor.svg" alt="Logomarca">
             </a>
         </div>
@@ -41,7 +41,7 @@
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Produtos.php" style="color: #000000" >Produtos</a>
+            <a class="botao-menu" href="../PHP/Produtos.php" style="color: #000000" >Produtos</a>
 
         </div>
     </div>

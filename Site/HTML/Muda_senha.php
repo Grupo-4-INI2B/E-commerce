@@ -2,7 +2,7 @@
     
     ini_set ('display_errors', 1);    
     error_reporting (E_ALL);
-    include ("../../PHP/Funcoes.php");
+    include ("../PHP/Funcoes.php");
     $conn = conecta();
     
     if(!isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.

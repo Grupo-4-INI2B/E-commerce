@@ -2,7 +2,7 @@
   ini_set ('display_errors', 1);
   error_reporting (E_ALL);
   session_start();
-  include ("../../PHP/Funcoes.php");
+  include ("../PHP/Funcoes.php");
   $conn = conecta();
 
   if(isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
@@ -16,7 +16,7 @@
       $_SESSION['carrinho']['id_produto'] += $row['id_produto'];
       $_SESSION['carrinho']['qntd'] += $row['qntd'];
     }
-    if(isset($_GET['id_produto'] && isset($_GET['qntd']))
+    if(isset($_GET['id_produto']) && isset($_GET['qntd']))
     $_SESSION['carrinho']['id_produto'] += $_GET['id_produto'];
     $_SESSION['carrinho']['qntd'] += $_GET['qntd'];
   }else { //Se não houver sessão iniciada, ele cria um carrinho temporário.
@@ -95,7 +95,7 @@
     <div id="grid-container-carrinho">
         <div class="heading cf">
           <h1>Meu Carrinho</h1>
-          <a href="Produtos.php" class="continue">Continuar comprando</a>
+          <a href="../PHP/Produtos.php" class="continue">Continuar comprando</a>
         </div>
         <div class="cart">
       <!--    <ul class="tableHead">

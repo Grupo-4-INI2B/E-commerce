@@ -17,13 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $icms = $_POST['icms'];
     $quantidade = $_POST['quantidade'];
     $imagem = $_POST['imagem'];
-
-    // Verifique se a data_exclusao foi definida no formulário
-    if (isset($_POST['data_exclusao']) && !empty($_POST['data_exclusao'])) {
-        $data_exclusao = $_POST['data_exclusao']; // Aqui, $data_exclusao é uma string no formato "YYYY-MM-DD HH:MI:SS"
-    } else {
-        $data_exclusao = null;
-    }
     
     // Verifique se o formulário enviou uma imagem
     if (isset($_FILES["imagem"]) && $_FILES["imagem"]["size"] > 0) {
