@@ -15,37 +15,42 @@ $conn = conecta();
                 // Defina o caminho onde deseja armazenar a imagem no servidor
                 if($id > 1100 && $id < 1200)
                 {
-                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Studio_Ghibli/";
+                $caminhoDiretorio = "../Produtos_E-commerce/Aleatório/";
                 }
                 else
                 if($id > 1200 && $id < 1300)
                 {
-                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Capivaras/";
+                $caminhoDiretorio = "../Produtos_E-commerce/Capivaras/";
                 }
                 else
                 if($id > 1300 && $id < 1400)
                 {
-                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Demon Slayer/";
+                $caminhoDiretorio = "../Produtos_E-commerce/Demon Slayer/";
                 }
                 else
                 if($id > 1400 && $id < 1500)
                 {
-                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Harry Potter/";
+                $caminhoDiretorio = "../Produtos_E-commerce/Harry Potter/";
                 }
                 else
                 if($id > 1500 && $id < 1600)
                 {
-                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Pokemons/";
+                $caminhoDiretorio = "../Produtos_E-commerce/Pokemons/";
                 }
                 else
                 if($id > 1600 && $id < 1700)
                 {
-                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Star Wars/";
+                $caminhoDiretorio = "../Produtos_E-commerce/Star Wars/";
                 }
                 else
                 if($id > 1700 && $id < 1800)
                 {
-                $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce/Van Gogh/";
+                $caminhoDiretorio = "../Produtos_E-commerce/Studio_Ghibli/";
+                }
+                else
+                if($id > 1800 && $id < 1900)
+                {
+                $caminhoDiretorio = "../Produtos_E-commerce/Van Gogh/";
                 }
                 $caminhoImagem = $caminhoDiretorio . $nomeImagem;
             
@@ -75,12 +80,13 @@ $conn = conecta();
                         ':icms' => $_POST['icms'],
                         ':imagem' => $caminhoImagem, // Save the image path in the database.
                         ':excluido' => '0',
-                        ':quantidade' => $_POST['qntd']
+                        ':quantidade' => $_POST['qntd'],
+                        ':categoria' => $_POST['categoria']
                     );
                     $sql = "INSERT INTO tbl_produto (
-                        id_produto, nome_produto, descricao, vlr, id_visual, custo, margem_lucro, icms, imagem, excluido, qntd
+                        id_produto, nome_produto, descricao, vlr, id_visual, custo, margem_lucro, icms, imagem, excluido, qntd, categoria
                     ) VALUES (
-                        :id_produto, :nome, :descricao, :preco, :codigovisual, :custo, :margem_lucro, :icms, :imagem, :excluido, :quantidade
+                        :id_produto, :nome, :descricao, :preco, :codigovisual, :custo, :margem_lucro, :icms, :imagem, :excluido, :quantidade, :categoria
                     )";
                 
                     $stmt = $conn->prepare($sql);

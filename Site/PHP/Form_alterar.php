@@ -25,6 +25,7 @@
             $icms = $row['icms'];
             $imagem = $row['imagem'];
             $quantidade = $row['qntd'];
+            $categoria = $row['categoria'];
     ?>
             <!DOCTYPE html>
             <html>
@@ -62,6 +63,8 @@
                     <input type="file" name="imagem" value="<?php echo "<img src='$imagem' alt='Imagem do Produto'>"?>" ><br>
                     <label for="quantidade">Quantidade:</label>
                     <input type="text" name="quantidade" value="<?php echo $quantidade; ?>"><br>
+                    <label for="categoria">Categoria:</label>
+                    <input type="text" name="categoria" value="<?php echo $categoria; ?>"><br>
                     <input type="hidden" name="imagem_existente" value="<?php echo $imagem; ?>">
                     <input type="submit" value="Salvar Alterações">
                 </form>

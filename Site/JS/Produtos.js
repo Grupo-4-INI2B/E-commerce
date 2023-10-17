@@ -176,23 +176,59 @@
 //       card.appendChild(cardContent); // Adicione o conteúdo ao cartão.
 // //       container.appendChild(card);
 //     }  }
-    function Buscar(){
-      var search = document.getElementById('pesquisa');
-      search.addEventListener('keyup', function() {
-        filterProducts();
-      });
-      const products = document.querySelectorAll('.produto');
-      products.forEach(function(product) {
-        const category = product.getAttribute('data-categoria');
-        let showProduct = false;
-        if (showProduct) {
+        const checkbox_todos = document.getElementById('todos');
+        const checkbox_pokemons = document.getElementById('pokemons');
+        const checkbox_studio_ghibli = document.getElementById('studio_ghibli');
+        const checkbox_harry_potter = document.getElementById('harry_potter');
+
+        checkbox_cti.addEventListener('change', function() {
+            filterProducts();
+        });
+
+        checkbox_info.addEventListener('change', function() {
+            filterProducts();
+        });
+
+        checkbox_mec.addEventListener('change', function() {
+            filterProducts();
+        });
+        checkbox_eletro.addEventListener('change', function() {
+            filterProducts();
+        });
+
+function Buscar() {
+    const Todos = checkbox_todos.checked;
+    const Pokemons = checkbox_pokemons.checked;
+    const Studio_Ghibli = checkbox_studio_ghibli.checked;
+    const Harry_potter = checkbox_harry_potter.checked;
+
+  let exiteflitros = false;
+      if (Todos && categoria == 'Todos') {
+          showProduct = true;
+          hasFilters = true;
+      }
+
+      else if (Pokemons && categoria == 'Pokemons') {
+          showProduct = true;
+          hasFilters = true;
+      }
+
+      else if (Studio_Ghibli ) {
+          showProduct = true;
+          hasFilters = true;
+      }
+      else if (Harry_potter) {
+          showProduct = true;
+          hasFilters = true;
+      }
+
+      if (showProduct) {
           product.style.display = 'block';
       } else {
           product.style.display = 'none';
       }
-    }
-  )};
-  
+  };
+
   // Chama as funções para criar os cards de produtos quando a página é carregada
   // window.addEventListener("load", () => {
   //   criarCardsDemonSlayer();

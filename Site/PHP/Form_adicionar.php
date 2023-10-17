@@ -41,6 +41,9 @@
         <label for="imagem">Imagem:</label>
         <input type="file" id="imagem" name="imagem"><br><br>
 
+        <label for="categoria">Categoria:</label>
+        <input type="text" name="categoria" value="<?php echo $categoria; ?>"><br>
+
         <input type="submit" value="Enviar">
     </form>
 </body>

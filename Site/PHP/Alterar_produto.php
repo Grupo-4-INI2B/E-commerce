@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $icms = $_POST['icms'];
     $quantidade = $_POST['quantidade'];
     $imagem = $_POST['imagem'];
+    $categoria = $_POST['categoria'];
     
     // Verifique se o formulário enviou uma imagem
     if (isset($_FILES["imagem"]) && $_FILES["imagem"]["size"] > 0) {
@@ -55,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     // Prepare e execute a consulta SQL
-    $query = "UPDATE tbl_produto SET nome_produto = :nome, descricao = :descricao, excluido = :excluido, vlr = :preco, dta_exclusao = :data_exclusao, id_visual = :codigovisual, custo = :custo, margem_lucro = :margem_lucro, icms = :icms, imagem = :imagem, qntd = :quantidade WHERE id_produto = :id_produto";
+    $query = "UPDATE tbl_produto SET nome_produto = :nome, descricao = :descricao, excluido = :excluido, vlr = :preco, dta_exclusao = :data_exclusao, id_visual = :codigovisual, custo = :custo, margem_lucro = :margem_lucro, icms = :icms, imagem = :imagem, qntd = :quantidade, categoria=:categoria WHERE id_produto = :id_produto";
     
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':id_produto', $id_produto, PDO::PARAM_INT); // Assumindo que id_produto é um número (inteiro)
@@ -70,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':icms', $icms, PDO::PARAM_INT);
     $stmt->bindParam(':imagem', $imagem, PDO::PARAM_STR);
     $stmt->bindParam(':quantidade', $quantidade, PDO::PARAM_INT);
+    $stmt->bindParam(':categoria', $categoria, PDO::PARAM_STR);
     
     if ($stmt->execute()) {
         echo "Produto atualizado com sucesso.";
