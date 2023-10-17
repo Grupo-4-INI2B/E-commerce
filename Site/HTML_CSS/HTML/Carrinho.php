@@ -16,6 +16,7 @@
       $_SESSION['carrinho']['id_produto'] += $row['id_produto'];
       $_SESSION['carrinho']['qntd'] += $row['qntd'];
     }
+    if(isset($_GET['id_produto'] && isset($_GET['qntd']))
     $_SESSION['carrinho']['id_produto'] += $_GET['id_produto'];
     $_SESSION['carrinho']['qntd'] += $_GET['qntd'];
   }else { //Se não houver sessão iniciada, ele cria um carrinho temporário.
