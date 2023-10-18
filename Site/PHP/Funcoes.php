@@ -27,15 +27,19 @@
     $select = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha");
     $select->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
     $row = $select->fetch();
-    if($row){
-      defineSessao("sessaoUsuario", $paramEmail);
-      $_SESSION['adm'] = $row['adm'];
-      $_SESSION['email'] = $paramEmail;
-      $_SESSION['nome'] = $row['nome_usuario'];
-      $_SESSION['id_usuario'] = $row['id_usuario'];
-      
+    if($row) {
+      if($row['excluido'] == true){
+        defineSessao("sessaoUsuario", $paramEmail);
+        $_SESSION['adm'] = $row['adm'];
+        $_SESSION['email'] = $paramEmail;
+        $_SESSION['nome'] = $row['nome_usuario'];
+        $_SESSION['id_usuario'] = $row['id_usuario'];
+      }else{
+        destroiCookieSessao();
+        return false;
+      }
       return true;
-    }
+    } 
     return false;
   }
 
@@ -63,13 +67,6 @@
       style='position: relative; top: 2px;'>Entrar</a>";
     } 
   }
-
-  function logado($sessaoUsuario) {
-    if($sessaoUsuario != null) {        
-      return true;
-    }
-  }
-
 
   //Função para envio de email
   //As referencias a outros arquivos deve ser feita de maneira global, 
@@ -266,9 +263,9 @@
           echo "<td> <img src='$imagem' alt='miguel drogado' widht='150px' height='100px'> </td>";
           echo "<td>" . $excluido . "</td>";
           echo "<td>" . $data_exclusao . "</td>";
-          echo "<td><a href='Form_adicionar.php?acao=adicionar'><img src='../HTML_CSS/Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
-          echo "<td><a href='Deletar_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../HTML_CSS/Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
-          echo "<td><a href='Form_alterar.php?id=" . $id_produto . "&acao=alterar'><img src='../HTML_CSS/Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
+          echo "<td><a href='Form_adicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
+          echo "<td><a href='Deletar_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
+          echo "<td><a href='Form_alterar_produto.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
           echo "</tr>";
       }
 
@@ -282,5 +279,30 @@
   }
   }
 
-  
+  /*Função para destruir cookie e sessão 
+  Fonte: http://php.net/manual/pt_BR/function.session-destroy.php
+  via https://pt.stackoverflow.com/questions/241268/como-destruir-todas-as-sessõ<es-do-php></es-do-php>
+  */
+  function destroiCookieSessao() {
+    // Inicializa a sessão.
+    // Se estiver sendo usado session_name("something"), não esqueça de usá-lo agora!
+    session_start();
+    
+    // Apaga todas as variáveis da sessão
+    $_SESSION = array();
+    
+    // Se é preciso matar a sessão, então os cookies de sessão também devem ser apagados.
+    // Nota: Isto destruirá a sessão, e não apenas os dados!
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        ); 
+    }
+    
+    // Por último, destrói a sessão
+    session_destroy();
+  }
+ 
 ?>

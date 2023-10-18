@@ -91,7 +91,7 @@ $conn = conecta();
                 
                     $stmt = $conn->prepare($sql);
                     if ($stmt->execute($params)) {
-                        header("Location: ./Crud.php");
+                        header("Location: ../HTML/Crud.php");
                         exit();
                     } else {
                         echo "Erro ao inserir o produto no banco de dados.";

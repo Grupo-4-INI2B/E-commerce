@@ -2,7 +2,7 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("Funcoes.php");
+    include ("../PHP/Funcoes.php");
     $conn = conecta();
 
     if(isset($_SESSION['sessaoUsuario'])) {
@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Produtos.css">
     <link rel="stylesheet" href="../CSS/search-Box.css"/>
+    <link rel="stylesheet" href="../CSS/search-Box.css" />
+
     <script src="../JS/Home.js"></script>
 </head>
 <body>

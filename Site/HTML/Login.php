@@ -31,7 +31,7 @@
     unset($conn);
 ?>
 <body>
-    <form name="frmLogin" method="post" action="../../PHP/Login_usuario.php">
+    <form name="frmLogin" method="post" action="../PHP/Login_usuario.php">
     <div class="main-login">
         <div class="login-container">
 

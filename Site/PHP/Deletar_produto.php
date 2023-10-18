@@ -9,6 +9,6 @@ $conn = conecta();
                 $deleta = ['id' => $id_produto];
                 $delete = $conn->prepare('delete from tbl_produto where id_produto = :id');
                 $delete->execute($deleta);
-                header("Location: ./Crud.php");
+                header("Location: ../HTML/Crud.php");
            }
-    ?>
+?>

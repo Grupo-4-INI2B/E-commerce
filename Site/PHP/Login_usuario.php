@@ -11,17 +11,16 @@
         $email = $_POST['email'];
         $senha = $_POST['senha'];
     }else {
-        header("Location: ../HTML_CSS/HTML/Login.php");
+        header("Location: ../HTML/Login.php");
         exit();
     }
 
     //Verifica se o email e senha existem no banco de dados.
     $resultado = verificaUser($senha, $email);
     if($resultado) {
-        //Cria cookie e sessão
         defineCookie("cookie_email", $email, 14400);
     } else {
-        header("Location: ../HTML_CSS/HTML/Login.php");
+        header("Location: ../HTML/Login.php");
         exit();
     }
 
@@ -35,6 +34,6 @@
         $_SESSION['carrinho'] = $_SESSION['carrinhoTpm']; //Se houver um carrinho temporário, ele é transformado em permanente.
     }
     //Redireciona para a página inicial.
-    header("Location: ../HTML_CSS/HTML/index.php");
+    header("Location: ../HTML/index.php");
     exit();
 ?>
