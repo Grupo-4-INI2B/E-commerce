@@ -18,12 +18,20 @@
     include ("../PHP/Funcoes.php");
     $conn = conecta();
 
-    if(isset($_SESSION['sessaoUsuario'])) {
+    if(isset($_SESSION['sessaoAdm'])) {
+        $sessaoAdm = $_SESSION['sessaoAdm'];
+        $nome = $_SESSION['nome'];
+        $sessaoUsuario = null;
+    }
+    else if(isset($_SESSION['sessaoUsuario'])) {
         $sessaoUsuario = $_SESSION['sessaoUsuario'];
         $nome = $_SESSION['nome'];
-    }else {
+        $sessaoAdm = null;
+    }
+    else {
         $sessaoUsuario = null;
         $nome = null;
+        $sessaoAdm = null;
     }
 
 ?>
@@ -62,9 +70,10 @@
           
 
     </div>
+    
     <div class="grid-login">
         <?php
-           cabecalho($sessaoUsuario,  $nome);           
+            cabecalho($sessaoUsuario,  $nome, $sessaoAdm);
         ?>
         </div>
     </div>

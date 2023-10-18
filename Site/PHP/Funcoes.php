@@ -56,13 +56,19 @@
   }
 
   //Função de cabeçalho
-  function cabecalho($sessaoUsuario, $nome) {
+  function cabecalho($sessaoUsuario, $nome, $sessaoAdm) {
     if($sessaoUsuario != null) {        
-      echo "<a class='botao-menu' href='Perfil.php' class='cart' style='color: #000000'>
+      echo "<a class='botao-perfil' href='Perfil.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
       style='position: relative; top: 2px;'Bem vindo, $nome</a>";
-    }else {
-      echo "<a class='botao-menu' href='Login.php' class='cart' style='color: #000000'>
+    }else if($sessaoAdm != null)
+    {
+      echo "<a class='botao-perfil' href='Adm.php' class='cart' style='color: #000000'>
+      <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+      style='position: relative; top: 2px;'>Bem vindo, $nome ,você é administrador</a>";
+    }else
+    {
+      echo "<a class='botao-perfil' href='Login.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
       style='position: relative; top: 2px;'>Entrar</a>";
     } 
