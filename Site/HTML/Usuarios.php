@@ -5,7 +5,7 @@
     include ("../PHP/Funcoes.php");
     $conn = conecta();
 
-    if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == true){ // Se não está logado ou não é administrador 
+    if($_SESSION['adm'] == false){ // Se não está logado ou não é administrador 
         header("Location: index.php");
         exit();
     }
@@ -47,8 +47,8 @@
                         <td> $senha    </td>
                         <td> $varAdm   </td>
                         <td>
-                            <a href = 'deletarUsuario.php?id_usuario=$varId'> <img src='../imagens/excluir.png' alt='Sorry'  width='30'/> </a> 
-                            <a href = 'Excluir_usuario.php?id_usuario=$varId'> <img src='../imagens/alterar.png' alt='Sorry'  width='30'/> </a> 
+                            <a href = 'alterarUsuario.php?id_usuario=$varId'> <img src='../Imagens/alterar.png' alt='Sorry'  width='30'/> </a> 
+                            <a href = 'Excluir_usuario.php?id_usuario=$varId'> <img src='../Imagens/excluir.png' alt='Sorry'  width='30'/> </a> 
                         </td>
                     </tr>
                 ";
