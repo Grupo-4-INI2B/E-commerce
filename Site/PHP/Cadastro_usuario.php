@@ -26,7 +26,7 @@
     //Verifica se o email já existe no banco de dados.
     if(verificaEmail($email)) {
         echo "Email já cadastrado";
-        header("Location: ../HTML_CSS/HTML/Cadastro.html");
+        header("Location: ../HTML/Cadastro.html");
         exit();
     }
     
@@ -57,9 +57,9 @@
     
     //Envia um email para o usuário cadastrado
     $html = "<h1>Olá, $usuario!</h1><br><h3>Seu cadastro foi realizado com sucesso!</h3><br>";
-    enviaEmail($email, "Cadastro realizado com sucesso", $html);
+    enviaEmail($email, $usuario, "Cadastro realizado com sucesso", $html);
 
     //Redireciona o usuário para a página de login
-    header("Location: ../HTML_CSS/HTML/Login.php");
+    header("Location: ../HTML/Login.php");
     exit();
 ?>

@@ -5,15 +5,14 @@
     <title>Formulário de Produto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/crud.css">
-    <link rel="icon" href="../img/Logos.svg">
+    <link rel="stylesheet" href="../HTML_CSS/CSS/crud.css">
 </head>
 
 <body>
     <h2>Formulário de Produto</h2>
     <form action="Adicionar_produto.php" method="POST" enctype="multipart/form-data">
-        <label for="id_produto"></label>
-        <input type="hidden" id="id_produto" name="id_produto"><br><br>
+        <label for="id_produto">Id Produto</label>
+        <input type="number" id="id_produto" name="id_produto"><br><br>
 
         <label for="nome_produto">Nome:</label>
         <input type="text" id="nome_produto" name="nome_produto"><br><br>
@@ -39,8 +38,11 @@
         <label for="qntd">Quantidade:</label>
         <input type="text" id="qntd" name="qntd"><br><br>
 
-        <label for='imagem'>Imagem do produto</label>
-        <input type='file' id='imagem' name='imagem' placeholder='Link da imagem do produto' maxlength=255 required accept='image/*'><br>
+        <label for="imagem">Imagem:</label>
+        <input type="file" id="imagem" name="imagem"><br><br>
+
+        <label for="categoria">Categoria:</label>
+        <input type="text" name="categoria" value="<?php echo $categoria; ?>"><br>
 
         <input type="submit" value="Enviar">
     </form>

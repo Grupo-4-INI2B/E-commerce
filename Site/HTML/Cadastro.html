@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Byte Craft - Cadastro</title>
+    <link rel="stylesheet" href="../CSS/Cadastro.css" />
+</head>
+
+<body>
+    <form name="frmCadastro" method="post" action="../PHP/Cadastro_usuario.php">
+        <div class="main-login">
+            <div class="login-container">
+                <div class="left-login">
+                    <img src="../Imagens/logocaixinhabranco.svg" />
+                    <br />
+                    <h1>Novo por aqui?<br /></h1>
+                    <h3>Crie sua conta agora mesmo.</h3>
+                </div>
+                <div class="right-login">
+                    <div class="card-login">
+                        <h1>Criar uma nova conta</h1>
+                        <br />
+                        <div class="textfield">
+                            <input type="text" id="usuario" name="usuario" placeholder="Nome de usuário" required />
+                        </div>
+                        <br />
+                        <div class="textfield">
+                            <input type="email" id="email" name="email" placeholder="E-Mail" required />
+                            <br />
+                        </div>
+                        <div class="textfield">
+                            <input type="tel" id="tlfn" name="tlfn" placeholder="(xx) xxxx-xxxx"
+                                pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" required />
+                            <br />
+                        </div>
+                        <div class="textfield">
+                            <input type="password" id="senha" name="senha" placeholder="Senha" required />
+                        </div>
+                        <button type="submit" class="btn-login">Cadastrar</button>
+                        <a href="Login.php" style="color: #fff">Já possuo uma conta</a>
+                    </div>
+                    <!--
+                    <button class="close-button">
+                    <img src="IconX.svg" alt="Fechar">
+                    </button>-->
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
