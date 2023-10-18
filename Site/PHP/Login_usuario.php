@@ -18,7 +18,6 @@
     //Verifica se o email e senha existem no banco de dados.
     $resultado = verificaUser($senha, $email);
     if($resultado) {
-        //Cria cookie e sessão
         defineCookie("cookie_email", $email, 14400);
     } else {
         header("Location: ../HTML/Login.php");

@@ -2,35 +2,52 @@
 
     ini_set ('display_errors', 1);    
     error_reporting (E_ALL);
+    session_start();
     include ("../PHP/Funcoes.php");
     $conn = conecta();
 
     if(!isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
         header("Location: Login.php");
+        exit();
+    }
+
+    if(isset($_GET['id_usuario'])) {
+        $pId_usuario = $_GET['id_usuario'];
     }
 
     $conn = conecta();
-    
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+  
+    if($_SESSION['adm'] == false) {
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
 
-    //Seleciona o id do usuario
-    $select = $conn->prepare("SELECT id_usuario FROM tbl_usuario WHERE email = :email AND senha = :senha");
-    $select->bindParam(':senha', $senha, PDO::PARAM_STR);
-    $select->bindParam(':email', $email, PDO::PARAM_STR);
-    $select->execute();
-    $id_usuario = $select->fetch();
-
-    if(isset($id_usuario)) {
-        $excluido = false;
+        //Seleciona o id do usuario
+        $select = $conn->prepare("SELECT id_usuario FROM tbl_usuario WHERE email = :email AND senha = :senha");
+        $select->bindParam(':senha', $senha, PDO::PARAM_STR);
+        $select->bindParam(':email', $email, PDO::PARAM_STR);
+        $select->execute();
+        $id_usuario = $select->fetch();
+    }
+   
+    if(isset($id_usuario) || isset($pId_usuario)) {
+        $excluido = true;
         //Deleta o usuário(lógico) e desativa o cookie e a sessão
         $update = $conn->prepare("UPDATE tbl_usuario SET excluido = :excluido WHERE id_usuario = :id_usuario");
         $update->bindParam(':excluido', $excluido, PDO::PARAM_BOOL);
-        $update->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+        if($_SESSION['adm'] == true) {
+            $update->bindParam(':id_usuario', $pId_usuario, PDO::PARAM_INT);
+            $update->execute();
+
+            unset($update);
+            unset($select);
+            unset($conn);
+            
+            header("Location: Usuarios.php");
+            exit();
+        }
         $update->execute();
 
-        unset($_COOKIE['Cookie_email']);
-        unset($_SESSION['sessaoUsuario']);
+        destroiCookieSessao();
 
         unset($update);
     }else {
