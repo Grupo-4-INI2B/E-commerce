@@ -28,16 +28,12 @@
     $select->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
     $row = $select->fetch();
     if($row) {
-      if($row['excluido'] == true){
-        defineSessao("sessaoUsuario", $paramEmail);
-        $_SESSION['adm'] = $row['adm'];
-        $_SESSION['email'] = $paramEmail;
-        $_SESSION['nome'] = $row['nome_usuario'];
-        $_SESSION['id_usuario'] = $row['id_usuario'];
-      }else{
-        destroiCookieSessao();
-        return false;
-      }
+      defineSessao("sessaoUsuario", $paramEmail);
+      $_SESSION['adm'] = $row['adm'];
+      $_SESSION['email'] = $paramEmail;
+      $_SESSION['nome'] = $row['nome_usuario'];
+      $_SESSION['id_usuario'] = $row['id_usuario'];
+      
       return true;
     } 
     return false;
