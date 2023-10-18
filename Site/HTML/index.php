@@ -17,16 +17,18 @@
     session_start();
     include ("../PHP/Funcoes.php");
     $conn = conecta();
-
-    if(isset($_SESSION['sessaoAdm'])) {
-        $sessaoAdm = $_SESSION['sessaoAdm'];
+    $testeemail=isset($_SESSION['email']);
+    $testeuser=isset($_SESSION['sessaoUsuario']);
+    if($testeemail=="bbytecraft@gmail.com") {
+        $sessaoAdm = true;
         $nome = $_SESSION['nome'];
         $sessaoUsuario = null;
     }
-    else if(isset($_SESSION['sessaoUsuario'])) {
-        $sessaoUsuario = $_SESSION['sessaoUsuario'];
+    else 
+    if($testeuser!=null) {
+        $sessaoAdm = '0';
         $nome = $_SESSION['nome'];
-        $sessaoAdm = null;
+        $sessaoUsuario = $_SESSION['email'];
     }
     else {
         $sessaoUsuario = null;
@@ -75,8 +77,9 @@
         <?php
             cabecalho($sessaoUsuario,  $nome, $sessaoAdm);
         ?>
-        </div>
     </div>
+</div>
+
     <div class="home">
         <br>
         <h1 class="margem-titulo">Os Melhores<br>Produtos Geek's</h1>

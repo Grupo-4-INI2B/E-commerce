@@ -53,20 +53,21 @@
 
   //Função de cabeçalho
   function cabecalho($sessaoUsuario, $nome, $sessaoAdm) {
-    if($sessaoUsuario != null) {        
+    echo $sessaoAdm;
+    if($sessaoUsuario == true && $sessaoAdm == false) {        
       echo "<a class='botao-perfil' href='Perfil.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
-      style='position: relative; top: 2px;'Bem vindo, $nome</a>";
-    }else if($sessaoAdm != null)
+      style='position: relative; top: 2px;   font-size:15px;'Bem vindo, $nome</a>";
+    }else if($sessaoAdm == true)
     {
       echo "<a class='botao-perfil' href='Adm.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
-      style='position: relative; top: 2px;'>Bem vindo, $nome ,você é administrador</a>";
-    }else
+      style='position: relative; top: 2px;  font-size:10px;'>Bem vindo administrador, $nome </a>";
+    }else if($sessaoUsuario == false && $sessaoAdm == false)
     {
       echo "<a class='botao-perfil' href='Login.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
-      style='position: relative; top: 2px;'>Entrar</a>";
+      style='position: relative; top: 2px;  font-size:20px;'>Entrar</a>";
     } 
   }
 
