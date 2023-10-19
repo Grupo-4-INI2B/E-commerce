@@ -17,14 +17,16 @@
     if (isset($_SESSION['sessaoUsuario'])) {
         $sessaoUsuario = $_SESSION['sessaoUsuario'];
     } else { 
-      $sessaoUsuario = false; 
+        $sessaoUsuario = null;
+        $nome = null;
+        $adm = false;
     }
 
     if(!$sessaoUsuario){
         if(isset($_COOKIE['cookie_email'])) {
             $email = $_COOKIE['cookie_email'];
         }else {
-            $email = '';
+            $email = null;
         }
     }
 

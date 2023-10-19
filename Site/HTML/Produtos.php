@@ -8,9 +8,11 @@
     if(isset($_SESSION['sessaoUsuario'])) {
         $sessaoUsuario = $_SESSION['sessaoUsuario'];
         $nome = $_SESSION['nome'];
+        $adm = $_SESSION['adm'];
     }else {
         $sessaoUsuario = null;
         $nome = null;
+        $adm = false;
     }
 
     unset($conn);
@@ -68,7 +70,7 @@
         </div>
         <div class="grid-login">
             <?php
-                cabecalho($sessaoUsuario,  $nome);           
+                cabecalho($sessaoUsuario,  $nome,  $adm);           
             ?>
         </div>
     </div>

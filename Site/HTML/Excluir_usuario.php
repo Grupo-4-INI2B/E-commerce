@@ -9,13 +9,11 @@
     if(!isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
         header("Location: Login.php");
         exit();
-    }
+    } 
 
     if(isset($_GET['id_usuario'])) {
         $pId_usuario = $_GET['id_usuario'];
-    }
-
-    $conn = conecta();
+    } 
   
     if($_SESSION['adm'] == false) {
         $email = $_POST['email'];
@@ -34,8 +32,10 @@
         //Deleta o usuário(lógico) e desativa o cookie e a sessão
         $update = $conn->prepare("UPDATE tbl_usuario SET excluido = :excluido WHERE id_usuario = :id_usuario");
         $update->bindParam(':excluido', $excluido, PDO::PARAM_BOOL);
+        $update->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
         if($_SESSION['adm'] == true) {
             $update->bindParam(':id_usuario', $pId_usuario, PDO::PARAM_INT);
+
             $update->execute();
 
             unset($update);

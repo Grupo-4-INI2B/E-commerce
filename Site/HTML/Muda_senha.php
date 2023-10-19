@@ -7,12 +7,8 @@
     
     if(!isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
         header("Location: Login.php");
+        exit();
     }
-
-    $email = "";
-    $codigo = "";
-    $paramCodigo = "";
-    $senha = "";
 
     //Verifica se email e código foram enviados.
     if (isset($_POST['codigo']) && isset($_POST['email'])) {
@@ -50,6 +46,9 @@
     $html = "<h1>Olá, !</h1><br><h3>Sua senha foi modificada, caso não reconheça essa mudança, 
     por favor entre em contato</h3><br>";
     enviaEmail($email, $_SESSION['nome'], "Mudança de senha", $html);
+
+    header("Location: Login.php");
+    exit();
 
 ?>
 

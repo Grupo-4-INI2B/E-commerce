@@ -16,26 +16,16 @@
     error_reporting (E_ALL);
     session_start();
     include ("../PHP/Funcoes.php");
-    $conn = conecta();
-    $testeemail=isset($_SESSION['email']);
-    $testeuser=isset($_SESSION['sessaoUsuario']);
-    if($testeemail=="bbytecraft@gmail.com") {
-        $sessaoAdm = true;
+    
+    if(isset($_SESSION['sessaoUsuario'])){
+        $sessaoUsuario = $_SESSION['sessaoUsuario'];
         $nome = $_SESSION['nome'];
-        $sessaoUsuario = null;
-    }
-    else 
-    if($testeuser!=null) {
-        $sessaoAdm = '0';
-        $nome = $_SESSION['nome'];
-        $sessaoUsuario = $_SESSION['email'];
-    }
-    else {
+        $adm = $_SESSION['adm'];
+    } else {
         $sessaoUsuario = null;
         $nome = null;
-        $sessaoAdm = null;
+        $adm = false;
     }
-
 ?>
 <body>
     <div class="grid-container">
@@ -75,7 +65,7 @@
     
     <div class="grid-login">
         <?php
-            cabecalho($sessaoUsuario,  $nome, $sessaoAdm);
+            cabecalho($sessaoUsuario,  $nome, $adm);
         ?>
     </div>
 </div>

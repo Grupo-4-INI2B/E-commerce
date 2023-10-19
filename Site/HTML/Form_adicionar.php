@@ -3,10 +3,10 @@
     error_reporting (E_ALL);
     session_start();
     include ("../PHP/Funcoes.php");
-    $conn = conecta();
 
-    if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == true){ // Se não está logado ou não é administrador 
+    if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == false){ // Se não está logado ou não é administrador 
         header("Location: ../HTML/Login.php");
+        exit();
     }
 ?>
 

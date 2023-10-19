@@ -1,6 +1,11 @@
 <?php
 include "Funcoes.php";
 
+    if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == false) { // Se não está logado ou não é administrador 
+        header("Location: ../HTML/Login.php");
+        exit();
+    }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Conecte-se ao banco de dados
     $conn = conecta();

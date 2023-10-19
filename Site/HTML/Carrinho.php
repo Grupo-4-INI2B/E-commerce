@@ -8,6 +8,7 @@
   if(isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
     $sessaoUsuario = $_SESSION['sessaoUsuario'];
     $nome = $_SESSION['nome'];
+    $adm = $_SESSION['adm'];
     $select = $conn->prepare("SELECT * FROM tbl_carrinho WHERE usuario = :id_usuario");
     $select->bindParam(':id_usuario', $_SESSION['id_usuario'], PDO::PARAM_INT);
     $select->execute();
@@ -24,6 +25,9 @@
     if(isset($_GET['id_produto']) && isset($_GET['qntd'])) {
       $_SESSION['carrinhoTpm']['id_produto'] += $_GET['id_produto'];
       $_SESSION['carrinhoTpm']['qntd'] += $_GET['qntd'];
+      $sessaoUsuario = null;
+      $nome = null;
+      $adm = false;
     }
   }
 
@@ -83,7 +87,7 @@
     </div>
     <div class="grid-login">
       <?php
-        cabecalho($sessaoUsuario,  $nome);           
+        cabecalho($sessaoUsuario,  $nome, $adm);           
       ?>
     </a>
     </div>

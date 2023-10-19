@@ -4,7 +4,6 @@
     include("Funcoes.php");
     $conn = conecta();
 
-    $usuario = ""; $email = ""; $tlfn = ""; $senha = ""; $id_usuario = 0;
     /*Parámetros vindos do formulário de cadastro e verificação se não estão vazios*/
     $id_usuario = rand(1000, 5000); /*Cria um número aleatório entre 1000 e 2000 para servir como id do usuário*/
     if (isset($_POST['usuario']) && isset($_POST['email']) && isset($_POST['tlfn']) && isset($_POST['senha'])) {
@@ -13,7 +12,8 @@
         $tlfn = $_POST['tlfn'];
         $senha = $_POST['senha'];
     } else {
-        echo "Erro ao receber os dados do formulário";
+        header("Location: ../HTML/Cadastro.html");
+        exit();
     }
     $adm  = false;
     $excluido = false;

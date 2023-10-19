@@ -1,6 +1,11 @@
+<?php
+    if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == false) { // Se não está logado ou não é administrador 
+        header("Location: ../HTML/Login.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Formulário de Produto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">

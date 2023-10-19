@@ -3,14 +3,15 @@
     error_reporting (E_ALL);
     session_start();
     include ("../PHP/Funcoes.php");
-    $conn = conecta();
 
     if(isset($_SESSION['sessaoUsuario'])) {
-        $sessaoUsuario = $_SESSION['sessaoUsuario'];
-        $nome = $_SESSION['nome'];
+      $sessaoUsuario = $_SESSION['sessaoUsuario'];
+      $nome = $_SESSION['nome'];
+      $adm = $_SESSION['adm'];
     }else {
-        $sessaoUsuario = null;
-        $nome = null;
+      $sessaoUsuario = null;
+      $nome = null;
+      $adm = false;
     }
 
 ?>
@@ -66,7 +67,7 @@
     </div>
     <div class="grid-login">
       <?php
-        cabecalho($sessaoUsuario,  $nome);           
+        cabecalho($sessaoUsuario,  $nome, $adm);           
       ?>
     </div>
     </div>

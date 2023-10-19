@@ -3,6 +3,11 @@ include "Funcoes.php";
 
 $conn = conecta();
 
+    if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == false) { // Se não está logado ou não é administrador 
+        header("Location: ../HTML/Login.php");
+        exit();
+    }
+
             $id= $_POST['id_produto'];
            
             // Verifique se o formulário foi enviado
