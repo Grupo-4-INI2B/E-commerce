@@ -57,7 +57,7 @@
       echo "<a class='botao-perfil' href='Login.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
       style='position: relative; top: 2px;  font-size:20px;'>Entrar</a>";
-    } else if($adm == false) {        
+    } else if(!$adm) {        
        echo "<a class='botao-perfil' href='Perfil.php' class='cart' style='color: #000000'>
        <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
        style='position: relative; top: 2px;   font-size:10px;'>Bem vindo, $nome</a>";

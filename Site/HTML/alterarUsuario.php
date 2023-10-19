@@ -18,7 +18,8 @@
         header("Location: Usuarios.php");
         exit();
     }
-    if(isset($select['nome_usuario']) && isset($select['email']) && isset($select['telefone']) && isset($select['senha']) && isset($select['adm'])) {
+    if(isset($select['nome_usuario']) && isset($select['email']) 
+    && isset($select['telefone']) && isset($select['senha']) && isset($select['adm'])) {
         $varNome   = $select['nome_usuario'];
         $varEmail  = $select['email'];
         $varTlfn   = $select['telefone'];

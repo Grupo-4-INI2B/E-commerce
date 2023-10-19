@@ -16,10 +16,12 @@
       $insert->bindParam(':qntd', $_SESSION['carrinho']['qntd'], PDO::PARAM_INT);
       $insert->bindParam(':produto', $_SESSION['carrinho']['id_produto'], PDO::PARAM_INT);
       $insert->bindParam(':email', $_SESSION['id_usuario'], PDO::PARAM_INT);
+
       $insert->execute();
+      unset($insert);
    }
   
-   unset($insert);
+   
    unset($conn);
    session_unset();
    

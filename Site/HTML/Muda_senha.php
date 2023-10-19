@@ -20,30 +20,27 @@
         $paramCodigo = $_POST['paramCodigo'];
 
         if($codigo != $paramCodigo) { //Verifica se o código enviado é igual ao código gerado.
-            header("Location: Muda_senha.php");
+            header("Location:  Muda_senha.php?codigo=$codigo&email=$email");
             exit();
         }
 
+        //Atualiza a senha do usuário no banco de dados.
+        $update = $conn->prepare("UPDATE tbl_usuario(senha) SET senha = :novaSenha WHERE email = :email");
+        $update->bindParam(':novaSenha', $senha, PDO::PARAM_STR);
+        $update->bindParam(':email', $email, PDO::PARAM_STR);
+        $update->execute();
+
+        unset($update);
+        unset($conn);
     }else {
-        header("Location: Muda_senha.php");
+        header("Location:  Muda_senha.php?codigo=$codigo&email=$email");
         exit();
     }
-
-   
-
-    //Atualiza a senha do usuário no banco de dados.
-    $update = $conn->prepare("UPDATE tbl_usuario(senha) SET senha = :novaSenha WHERE email = :email");
-    $update->bindParam(':novaSenha', $senha, PDO::PARAM_STR);
-    $update->bindParam(':email', $email, PDO::PARAM_STR);
-    $update->execute();
-
-    unset($update);
-    unset($conn);
 
     //Aviso de mudança de senha.
     $html = "<h1>Olá, !</h1><br><h3>Sua senha foi modificada, caso não reconheça essa mudança, 
     por favor entre em contato</h3><br>";
-    enviaEmail($email, $_SESSION['nome'], "Mudança de senha", $html);
+    enviaEmail($email, "Usuário", "Mudança de senha", $html);
 
     header("Location: Login.php");
     exit();
@@ -52,5 +49,15 @@
 
 <!DOCTYPE html>
 <html>
-    
+    <head>
+
+    </head>
+    <body>
+        <h2>Esqueci minha senha</h2>
+        <form action="Muda_senha.php" method="POST">
+            <input type="text" name="novaSenha" placeholder="Nova senha">
+            <input type="hidden" name="paramCodigo" placeholder="Código enviado por email">
+            <input type="submit" name="submit" value="Enviar">
+        </form>
+    </body>
 </html>

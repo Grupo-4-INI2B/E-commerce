@@ -9,29 +9,42 @@
     $sessaoUsuario = $_SESSION['sessaoUsuario'];
     $nome = $_SESSION['nome'];
     $adm = $_SESSION['adm'];
+
     $select = $conn->prepare("SELECT * FROM tbl_carrinho WHERE usuario = :id_usuario");
     $select->bindParam(':id_usuario', $_SESSION['id_usuario'], PDO::PARAM_INT);
     $select->execute();
     $row = $select->fetch();
+
+    unset($select);
+    
     if($row) { //Se já houver um carrinho criado, ele adiciona os produtos ao carrinho já existente.
       $_SESSION['carrinho']['id_produto'] += $row['id_produto'];
       $_SESSION['carrinho']['qntd'] += $row['qntd'];
     }
-    if(isset($_GET['id_produto']) && isset($_GET['qntd'])){
+
+    if(isset($_GET['id_produto']) && isset($_GET['qntd'])) {
+      //Vai adcionar o produto selecionado em Produtos ao carrinho.
       $_SESSION['carrinho']['id_produto'] += $_GET['id_produto'];
       $_SESSION['carrinho']['qntd'] += $_GET['qntd'];
+    } else {
+      header("Location: Produtos.php");
+      exit();
     }
+
   }else { //Se não houver sessão iniciada, ele cria um carrinho temporário.
+    $sessaoUsuario = null;
+    $nome = null;
+    $adm = false;
     if(isset($_GET['id_produto']) && isset($_GET['qntd'])) {
+      //Vai adcionar o produto selecionado em Produtos ao carrinho temporário.
       $_SESSION['carrinhoTpm']['id_produto'] += $_GET['id_produto'];
       $_SESSION['carrinhoTpm']['qntd'] += $_GET['qntd'];
-      $sessaoUsuario = null;
-      $nome = null;
-      $adm = false;
+    } else {
+      header("Location: Produtos.php");
+      exit();
     }
   }
 
-  unset($select);
   unset($conn);
 ?>
 

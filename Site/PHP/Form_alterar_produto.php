@@ -2,7 +2,7 @@
     include "Funcoes.php";
     if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == false) { // Se não está logado ou não é administrador 
         header("Location: ../HTML/Login.php");
-        exit();
+        exit(); 
     }
     
     if (isset($_GET['id'])) {
