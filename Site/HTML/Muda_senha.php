@@ -4,23 +4,17 @@
     error_reporting (E_ALL);
     include ("../PHP/Funcoes.php");
     $conn = conecta();
-    
-    //Verifica se email e código foram enviados.
-    if (isset($_GET['codigo']) && isset($_GET['email'])) {
-        $email = $_GET['email'];
-        $codigo = $_GET['codigo'];
-    }else {
-        header("Location: Esqueci.php");
-        exit();
-    }
 
-    //Verifica se o código e a nova senha foram enviados.
-    if(isset($_POST['novaSenha']) && isset($_POST['paramCodigo']) && $_POST['submit']) {
+    if(isset($_GET['codigo']) && isset($_GET['email']) && //Verifica se o código e o email foram enviados.
+       isset($_POST['novaSenha']) && isset($_POST['paramCodigo']) 
+       && isset($_POST['submit']) && $_GET['']) { //Verifica se a nova senha e o código foram enviados.
+        $codigo = $_GET['codigo'];
+        $email = $_GET['email'];
         $senha = $_POST['novaSenha'];
         $paramCodigo = $_POST['paramCodigo'];
 
         if($codigo != $paramCodigo) { //Verifica se o código enviado é igual ao código gerado.
-            header("Location:  Muda_senha.php?codigo=$codigo&email=$email");
+            header("Location:  Muda_senha.php");
             exit();
         }
 
@@ -32,19 +26,19 @@
 
         unset($update);
         unset($conn);
+
+        //Aviso de mudança de senha.
+        $html = "<h1>Olá, !</h1><br><h3>Sua senha foi modificada, caso não reconheça essa mudança, 
+        por favor entre em contato</h3><br>";
+        enviaEmail($email, "Usuário", "Mudança de senha", $html);
+
+        header("Location: Login.php");
+        exit();
+
     }else {
-        header("Location:  Muda_senha.php?codigo=$codigo&email=$email");
+        header("Location:  Muda_senha.php");
         exit();
     }
-
-    //Aviso de mudança de senha.
-    $html = "<h1>Olá, !</h1><br><h3>Sua senha foi modificada, caso não reconheça essa mudança, 
-    por favor entre em contato</h3><br>";
-    enviaEmail($email, "Usuário", "Mudança de senha", $html);
-
-    header("Location: Login.php");
-    exit();
-
 ?>
 
 <!DOCTYPE html>
