@@ -5,33 +5,31 @@
     include ("../PHP/Funcoes.php");
     $conn = conecta();
     
-    if(!isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
-        header("Location: Login.php");
-        exit();
-    }
-
     //Verifica se email e código foram enviados.
-    if (isset($_POST['codigo']) && isset($_POST['email'])) {
-        $email = $_POST['email'];
-        $codigo = $_POST['codigo'];
+    if (isset($_GET['codigo']) && isset($_GET['email'])) {
+        $email = $_GET['email'];
+        $codigo = $_GET['codigo'];
     }else {
         header("Location: Esqueci.php");
         exit();
     }
 
     //Verifica se o código e a nova senha foram enviados.
-    if(isset($_POST['novaSenha']) && isset($_POST['paramCodigo'])) {
+    if(isset($_POST['novaSenha']) && isset($_POST['paramCodigo']) && $_POST['submit']) {
         $senha = $_POST['novaSenha'];
         $paramCodigo = $_POST['paramCodigo'];
+
+        if($codigo != $paramCodigo) { //Verifica se o código enviado é igual ao código gerado.
+            header("Location: Muda_senha.php");
+            exit();
+        }
+
     }else {
         header("Location: Muda_senha.php");
         exit();
     }
 
-    if($codigo != $paramCodigo) { //Verifica se o código enviado é igual ao código gerado.
-        header("Location: Muda_senha.php");
-        exit();
-    }
+   
 
     //Atualiza a senha do usuário no banco de dados.
     $update = $conn->prepare("UPDATE tbl_usuario(senha) SET senha = :novaSenha WHERE email = :email");

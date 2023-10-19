@@ -1,0 +1,33 @@
+.titulo-perfil
+{
+    font-size: 50px;
+    font-weight: bold;
+    color: #000000;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+.campo-perfil
+{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.btn-logout
+{
+    font-family: Arial;
+    border-color: #F6BE00;
+    border-width: 7px;
+    border-style: solid;
+    border-radius: 70px;
+    background-color: #F6BE00;
+    color: inherit; 
+    text-decoration: none;
+    color:black;
+}

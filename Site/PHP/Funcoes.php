@@ -24,7 +24,7 @@
   function verificaUser($paramSenha, $paramEmail)
   {
     $conn = conecta();
-    $select = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha");
+    $select = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha AND excluido = false");
     $select->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
     $row = $select->fetch();
     if($row) {
@@ -57,17 +57,16 @@
       echo "<a class='botao-perfil' href='Login.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
       style='position: relative; top: 2px;  font-size:20px;'>Entrar</a>";
-    } else if(!$adm) {        
+    } else if($adm == false) {        
+       echo "<a class='botao-perfil' href='Perfil.php' class='cart' style='color: #000000'>
+       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+       style='position: relative; top: 2px;   font-size:10px;'>Bem vindo, $nome</a>";
+    } else  {
       echo "<a class='botao-perfil' href='Perfil.php' class='cart' style='color: #000000'>
-      <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
-      style='position: relative; top: 2px;   font-size:15px;'Bem vindo, $nome</a>";
-    } else {
-      echo "<a class='botao-perfil' href='Adm.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
       style='position: relative; top: 2px;  font-size:10px;'>Bem vindo administrador</a>";
     }
-  }
-
+}
   //Função para envio de email
   //As referencias a outros arquivos deve ser feita de maneira global, 
   //ou seja, fora da função
