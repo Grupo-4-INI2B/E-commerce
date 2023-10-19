@@ -3,49 +3,39 @@
   error_reporting (E_ALL);
   session_start();
   include ("../PHP/Funcoes.php");
-  $conn = conecta();
+  $conn = conecta();  
+
 
   if(isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
     $sessaoUsuario = $_SESSION['sessaoUsuario'];
     $nome = $_SESSION['nome'];
     $adm = $_SESSION['adm'];
-
     $select = $conn->prepare("SELECT * FROM tbl_carrinho WHERE usuario = :id_usuario");
     $select->bindParam(':id_usuario', $_SESSION['id_usuario'], PDO::PARAM_INT);
     $select->execute();
     $row = $select->fetch();
-
-    unset($select);
-    
     if($row) { //Se já houver um carrinho criado, ele adiciona os produtos ao carrinho já existente.
-      $_SESSION['carrinho']['id_produto'] += $row['id_produto'];
-      $_SESSION['carrinho']['qntd'] += $row['qntd'];
+      array_push($_SESSION['carrinho']['id_produto'], $row['id_produto']);
+      $id=$_SESSION['carrinho']['id_produto'];
     }
-
-    if(isset($_GET['id_produto']) && isset($_GET['qntd'])) {
-      //Vai adcionar o produto selecionado em Produtos ao carrinho.
-      $_SESSION['carrinho']['id_produto'] += $_GET['id_produto'];
-      $_SESSION['carrinho']['qntd'] += $_GET['qntd'];
-    } else {
-      header("Location: Produtos.php");
-      exit();
+    if(isset($_GET['id']) ){
+      array_push($_SESSION['carrinho']['id_produto'], $_GET['id']);
+      $id= $_SESSION['carrinho']['id_produto'];
     }
-
   }else { //Se não houver sessão iniciada, ele cria um carrinho temporário.
-    $sessaoUsuario = null;
-    $nome = null;
-    $adm = false;
-    if(isset($_GET['id_produto']) && isset($_GET['qntd'])) {
-      //Vai adcionar o produto selecionado em Produtos ao carrinho temporário.
-      $_SESSION['carrinhoTpm']['id_produto'] += $_GET['id_produto'];
-      $_SESSION['carrinhoTpm']['qntd'] += $_GET['qntd'];
-    } else {
-      header("Location: Produtos.php");
-      exit();
+    if(isset($_GET['id'])) {
+      $id_produto=array();
+      $id_produto[0]=$_GET['id'];
+      array_push($_SESSION['carrinhoTpm']['id_produto'], $id_produto[0]);
+      $sessaoUsuario = null;
+      $nome = null;
+      $adm = false;
+      // $id = $_SESSION['carrinhoTpm']['id_produto'];
     }
   }
 
-  unset($conn);
+  unset($select);
+  
 ?>
 
 <!DOCTYPE html>
@@ -126,18 +116,36 @@
             <li class="items odd">
               
           <div class="infoWrap"> 
-              <div class="cartSection">
-              <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                <p class="itemNumber">#QUE-007544-002</p>
-                <h3>Item Name 1</h3>
+             
+                
+                <?php
+                echo $id;
+                    $select = $conn->prepare('SELECT nome_produto, vlr, categoria, imagem FROM tbl_produto WHERE id_produto=:id_produto ORDER BY id_produto ASC ');
+                    $select->bindParam(':id_produto', $id, PDO::PARAM_INT);
+                    $select->execute();
+                    $row = $select->fetch(PDO::FETCH_ASSOC);
+                        foreach($select as $row){
+                          $diretorioimg = $row['imagem'];
+                          $nome_produto = $row['nome_produto'];
+                          $vlr = $row['vlr'];
+                          $categoria = $row['categoria'];
+                          echo  "<div class='cartSection'>
+                                <img src='$diretorioimg' alt='' class='itemImg' />
+                                <p class='itemNumber'>$categoria</p>
+                                <h3>$nome_produto</h3>
+                                <p> <input type='text'  class='qty' placeholder='3'/> $vlr</p>";               
+                          }
+                        if($row==null)
+                         {
+                            echo "<h1>Seu carrinho está vazio</h1>";
+                         }
+                ?>
               
-                 <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>
-              
-                <p class="stockStatus"> In Stock</p>
+                 
               </div>  
           
               
-              <div class="prodTotal cartSection">
+              <!-- <div class="prodTotal cartSection">
                 <p>$15.00</p>
               </div>
                     <div class="cartSection removeWrap">
@@ -216,11 +224,10 @@
                </div>
             </li>
             
-            
-            <!--<li class="items even">Item 2</li>-->
+            <li class="items even">Item 2</li>
        
           </ul>
-        </div>
+        </div> -->
               
         <div class="subtotal cf">
           <ul>
