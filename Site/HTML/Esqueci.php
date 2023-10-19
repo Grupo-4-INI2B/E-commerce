@@ -31,8 +31,12 @@
 
 <!DOCTYPE html>
 <html>
-    
+    <head>
+    </head>
     <body>
-        
+        <form action="Esqueci.php" method="POST">
+            <input type="email" name="email" placeholder="Email">
+            <input type="submit" name="submit" value="Enviar">
+        </form>
     </body>
 </html>

@@ -56,7 +56,8 @@
                         </div>  
                         <button type="submit" class="btn-login">Login</button>
                         <a href="Cadastro.html" style="color: #FFF" >Não tenho uma conta</a>
-                    </div>
+                        <a href="Esqueci a senha" style="color: #FFF">Esqueci a senha</a>
+                </div>
             </div>
         </div>
     </div>

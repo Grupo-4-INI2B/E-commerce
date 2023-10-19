@@ -55,8 +55,8 @@
     <body>
         <h2>Esqueci minha senha</h2>
         <form action="Muda_senha.php" method="POST">
-            <input type="text" name="novaSenha" placeholder="Nova senha">
-            <input type="hidden" name="paramCodigo" placeholder="Código enviado por email">
+            <input type="password" name="novaSenha" placeholder="Nova senha">
+            <input type="text" name="paramCodigo" placeholder="Código enviado por email">
             <input type="submit" name="submit" value="Enviar">
         </form>
     </body>
