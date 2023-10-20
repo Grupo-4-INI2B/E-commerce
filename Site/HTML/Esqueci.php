@@ -27,11 +27,35 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <link rel="stylesheet" href="../CSS/Esqueci.css" />
+    <link rel="stylesheet" href="../CSS/Base.css" />
+
     </head>
     <body>
         <form action="" method="post">
-            <input type="email" name="email" placeholder="Email">
-            <input type="submit" name="submit" value="Enviar">
+        <div class="main-login">
+            <div class="login-container">
+                <div class="left-login">
+                    <img src="../Imagens/logocaixinhabranco.svg" />
+                    <br />
+                    <h1>Esqueceu a senha?<br /></h1>
+                    <h3>Mais cuidado da próxima vez.</h3>
+                </div>
+                <div class="right-login">
+                    <div class="card-login">
+                        <h1>Insira seu email:</h1>
+                        <br />
+ 
+                        <div class="textfield">
+                            <input type="email" name="email" placeholder="Email">
+                            <br />
+                        </div>
+                        
+                        <button type="submit" name="submit" value="Enviar" class="btn-login">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         </form>
     </body>
 </html>
