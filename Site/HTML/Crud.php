@@ -9,14 +9,17 @@
 </head>
 
 <body>
-
   <?php
-    if(!$_SESSION['sessaoUsuario'] || $_SESSION['adm'] == false){ // Se não está logado ou não é administrador 
+     ini_set ('display_errors', 1);
+     error_reporting (E_ALL);
+     session_start();
+     include ("../PHP/Funcoes.php");
+ 
+    if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
       header("Location: index.php");
       exit();
     }
 
-    include("../PHP/Funcoes.php");
     crud();
   ?>
   </table>

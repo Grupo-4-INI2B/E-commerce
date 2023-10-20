@@ -1,9 +1,13 @@
-    <?php
-    include "Funcoes.php";
-    if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == false) { // Se não está logado ou não é administrador 
-        header("Location: ../HTML/Login.php");
-        exit(); 
-    }
+<?php
+   ini_set ('display_errors', 1);
+   error_reporting (E_ALL);
+   session_start();
+   include ("../PHP/Funcoes.php");
+
+   if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
+       header("Location: ../HTML/Login.php");
+       exit();
+}
     
     if (isset($_GET['id'])) {
         $id_produto = $_GET['id'];

@@ -1,12 +1,15 @@
 <?php
-include "Funcoes.php";
+    ini_set ('display_errors', 1);
+    error_reporting (E_ALL);
+    session_start();
+    include ("../PHP/Funcoes.php");
 
-    if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == false) { // Se não está logado ou não é administrador 
+    if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
         header("Location: ../HTML/Login.php");
         exit();
     }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Conecte-se ao banco de dados
     $conn = conecta();
     

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
-    <script src="../JS/Home.js"></script>
+    <script src="../JS/home.js"></script>
 </head>
 </html>
 <?php

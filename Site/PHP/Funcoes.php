@@ -114,6 +114,7 @@
       $mail->IsHTML(true); //Se o email vai ser em HTML ou não 
       $mail->Subject = $pAssunto; //O assunto do email
       $mail->Body = $pHtml; //O conteúdo(corpo) do email em HTML
+      $mail->CharSet = 'UTF-8'; //Codificação do email
       $mail->AltBody = 'seu email nao suporta html'; //Uma mensagem avisando destinatário que o seu email não suporta HTML
       $enviado = $mail->Send(); //Envia o email
       
