@@ -263,9 +263,9 @@
           echo "<td> <img src='$imagem' alt='miguel drogado' widht='150px' height='100px'> </td>";
           echo "<td>" . $excluido . "</td>";
           echo "<td>" . $data_exclusao . "</td>";
-          echo "<td><a href='Form_adicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
-          echo "<td><a href='Deletar_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
-          echo "<td><a href='Form_alterar_produto.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
+          echo "<td><a href='../HTML/Form_adicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
+          echo "<td><a href='../PHP/Deletar_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
+          echo "<td><a href='../PHP/Form_alterar_produto.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
           echo "</tr>";
       }
 

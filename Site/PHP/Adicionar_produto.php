@@ -3,6 +3,7 @@
     error_reporting (E_ALL);
     session_start();
     include ("../PHP/Funcoes.php");
+    $conn=conecta();
 
     if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
         header("Location: ../HTML/Login.php");
@@ -94,7 +95,7 @@
                     ) VALUES (
                         :id_produto, :nome, :descricao, :preco, :codigovisual, :custo, :margem_lucro, :icms, :imagem, :excluido, :quantidade, :categoria
                     )";
-                
+
                     $stmt = $conn->prepare($sql);
                     if ($stmt->execute($params)) {
                         header("Location: ../HTML/Crud.php");

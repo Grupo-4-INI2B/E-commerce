@@ -48,6 +48,9 @@
             <label for="qntd">Quantidade:</label>
             <input type="text" id="qntd" name="qntd"><br><br>
 
+            <label for="categoria">Id Categoria:</label>
+            <input type="text" id="categoria" name="categoria"><br><br>
+
             <label for="imagem">Imagem:</label>
             <input type="file" id="imagem" name="imagem"><br><br>
 
