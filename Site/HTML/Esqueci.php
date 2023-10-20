@@ -3,17 +3,19 @@
     ini_set ('display_errors', 1);    
     error_reporting (E_ALL);
     include ("../PHP/Funcoes.php");
+    session_start();
 
     //Verifica se email foi enviado.
-    if(isset($_POST['submit']) && isset($_POST['email'])) {
+    if($_POST) {
         $email = $_POST['email'];
 
         if(verificaEmail($email)) { //Verifica se o email existe no banco de dados
-            $codigo = geraSenha();
-            $html = "<h1>Olá!</h1><br><h3>Seu código de recuperação de senha é: ".$codigo."</h3><br>";
+            //Gera um código de recuperação de senha e envia para o email do usuário.
+            $_SESSION['codigo'] = geraSenha();
+            $html = "<h1>Olá!</h1><br><h3>Seu código de recuperação de senha é: ".$_SESSION['codigo']."</h3><br>";
             enviaEmail($email, "Usuário", "Código de recuperação de senha", $html);
             
-            header("Location: Muda_senha.php?codigo=$codigo&email=$email");
+            header("Location:Muda_senha.php?email=$email");
             exit();
         } else {
             header("Location: Esqueci.php");
@@ -27,7 +29,7 @@
     <head>
     </head>
     <body>
-        <form action="Esqueci.php" method="POST">
+        <form action="" method="post">
             <input type="email" name="email" placeholder="Email">
             <input type="submit" name="submit" value="Enviar">
         </form>

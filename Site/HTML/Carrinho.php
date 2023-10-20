@@ -5,7 +5,7 @@
   include ("../PHP/Funcoes.php");
   $conn = conecta();  
 
-
+  
   if(isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
     $sessaoUsuario = $_SESSION['sessaoUsuario'];
     $nome = $_SESSION['nome'];
@@ -27,11 +27,12 @@
       $id_produto=array();
       $id_produto[0]=$_GET['id'];
       array_push($_SESSION['carrinhoTpm']['id_produto'], $id_produto[0]);
-      $sessaoUsuario = null;
-      $nome = null;
-      $adm = false;
+      
       // $id = $_SESSION['carrinhoTpm']['id_produto'];
     }
+    $sessaoUsuario = null;
+    $nome = null;
+    $adm = false;
   }
 
   unset($select);
