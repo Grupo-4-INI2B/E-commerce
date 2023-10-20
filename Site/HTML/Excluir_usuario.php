@@ -30,8 +30,9 @@
     if(isset($id_usuario) || isset($pId_usuario)) {
         $excluido = true;
         //Deleta o usuário(lógico) e desativa o cookie e a sessão
-        $update = $conn->prepare("UPDATE tbl_usuario SET excluido = :excluido WHERE id_usuario = :id_usuario");
-        $update->bindParam(':excluido', $excluido, PDO::PARAM_BOOL);
+        $update = $conn->prepare("UPDATE tbl_usuario SET excluido = :excluido, dta_exclusao = :dta_exclusao WHERE id_usuario = :id_usuario");
+     
+        $update->bindParam(':dta_exclusao', date("Y-m-d H:i:s"), PDO::PARAM_STR);
         $update->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
         if($_SESSION['adm'] == true) {
             $update->bindParam(':id_usuario', $pId_usuario, PDO::PARAM_INT);
@@ -45,6 +46,8 @@
             header("Location: Usuarios.php");
             exit();
         }
+        
+        $update->bindParam(':excluido', $excluido, PDO::PARAM_BOOL);
         $update->execute();
 
         destroiCookieSessao();
