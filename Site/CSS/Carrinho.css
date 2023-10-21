@@ -82,7 +82,7 @@
   background: #fafafa;
 }
 .cart .items .infoWrap {
-  display: table;
+  display:contents;
   width: 100%;
 }
 .cart .items .cartSection {

@@ -5,20 +5,44 @@
   include ("../PHP/Funcoes.php");
   $conn = conecta();  
   $session_id=session_id();
-    
   if ( isset($_SESSION['sessaoUsuario']) ) {
     $login = $_SESSION['sessaoUsuario'];
     $codigoUsuario = ValorSQL($conn, " select id_usuario from tbl_usuario 
                                        where email = '$login'");
  }
-     
  // existe alguma compra associada ao session_id ??
  $existe = intval ( ValorSQL($conn," select count(*) from tbl_compra inner join tbl_tmpcompra
-                                     on tbl_compra.id_compra = tbl_tmpcompra.fk_compra  
-                                     where tbl_tmpcompra.session = '$session_id' ") ) == 1;
+                                                      on tbl_compra.id_compra = tbl_tmpcompra.fk_compra  
+                                                      where tbl_tmpcompra.session = '$session_id' ") );
+  $verificastatus = ValorSQL($conn," select status from tbl_compra inner join tbl_tmpcompra
+                                                      on tbl_compra.id_compra = tbl_tmpcompra.fk_compra  
+                                                      where tbl_tmpcompra.session = '$session_id' ");
+ if ($existe) {
+    $existe = true;
+ } else {
+    $existe = false;
+ }
+ echo $verificastatus;
  // se nao existe
- if (!$existe) {   
+ if($existe && $verificastatus=='Concluida')
+ {
+   $dataHoje = date('Y/m/d');
+  
+   $statusCompra = 'Pendente';
 
+   ExecutaSQL($conn,"UPDATE tbl_compra SET status = '$statusCompra' WHERE fk_usuario = $codigoUsuario and status = 'Concluida'");
+   echo $statusCompra;
+   ExecutaSQL($conn," insert into tbl_compra (data_compra, status, fk_usuario) 
+                       values ('$dataHoje','$statusCompra', $codigoUsuario) ");
+                       echo $verificastatus;
+   $codigoCompra = $conn->lastInsertId();
+
+   // insere o tbl_tmpcompra
+   ExecutaSQL($conn," insert into tbl_tmpcompra (fk_compra, session) 
+                      values ($codigoCompra,'$session_id') ");
+ }
+ if (!$existe) {   
+echo '1';
     $dataHoje = date('Y/m/d');
  
     $statusCompra = 'Pendente';
@@ -33,11 +57,9 @@
     // insere o tbl_tmpcompra
     ExecutaSQL($conn," insert into tbl_tmpcompra (fk_compra, session) 
                        values ($codigoCompra,'$session_id') ");  
+                       
  
- } else {
-
-    // como o teste mostrou que ja existe um registro de compra
-    // retorna esse codigo de compra
+ } else if($existe && $verificastatus=='Pendente'){
     $codigoCompra = intval ( ValorSQL($conn," select id_compra from tbl_compra
                                               inner join tbl_tmpcompra on tbl_compra.id_compra = 
                                               tbl_tmpcompra.fk_compra 
@@ -46,12 +68,9 @@
     // obtem o status dessa compra, se criou agora, entao eh 'pendente'
     $statusCompra = ValorSQL($conn, " select status from tbl_compra 
                                       where id_compra = $codigoCompra ");
-        
  } 
-
  ////////////// se estiver logado atualiza e 'liga' a compra com o 
  ////////////// usuario
-
  if (isset($codigoUsuario)) {
     ExecutaSQL($conn,"update tbl_compra 
                          set fk_usuario = $codigoUsuario 
@@ -62,32 +81,33 @@
 
  // se o carrinho foi chamado por COMPRAR, EXCLUIR ou FECHAR
 
- if ($_GET['operacao']) { 
+ if ($_GET) { 
      
     $operacao      = $_GET['operacao'];
     $codigoProduto = $_GET['id'];
-
     // obtem a qtd atual desse produto no carrinho  
     $quantidade = intval ( ValorSQL($conn," select quantidade 
                                             from tbl_compra_produto 
                                             where 
                                                fk_produto = $codigoProduto and 
-                                               fk_compra = $codigoCompra ") );  
+                                               fk_compra = $codigoCompra ") ); 
+    $quantidade2 = intval (ValorSQL($conn," select qntd 
+                                            from tbl_produto 
+                                            where id_produto = $codigoProduto")); 
     if ($operacao == 'incluir') {
-        echo "<br> >> Vamor incluir...<br>";
         if ($quantidade == 0) {
             ExecutaSQL($conn,
                       " insert into tbl_compra_produto 
-                           (fk_produto,fk_compra,quantidade) 
+                        (fk_produto,fk_compra,quantidade) 
                         values ($codigoProduto,$codigoCompra,1) "); 
-        } else {
-            ExecutaSQL($conn,
-                      " update tbl_compra_produto 
-                           set quantidade = quantidade + 1 
-                        where 
-                           fk_produto = $codigoProduto and 
-                           fk_compra = $codigoCompra "); 
-                       
+        }else 
+        if($quantidade2 >= $quantidade+1){
+          ExecutaSQL($conn,
+                    " update tbl_compra_produto 
+                         set quantidade = quantidade + 1 
+                      where 
+                         fk_produto = $codigoProduto and 
+                         fk_compra = $codigoCompra");   
         }
     } else 
     if ($operacao == 'excluir') {
@@ -98,24 +118,28 @@
                                where 
                                   fk_produto = $codigoProduto and 
                                   fk_compra = $codigoCompra ");         
-        } else {
-            ExecutaSQL($conn," update tbl_compra_produto 
-                                   set quantidade = quantidade - 1 
-                               where 
-                                  fk_produto = $codigoProduto and 
-                                  fk_compra = $codigoCompra ");       
-        }
+        } 
+        else {
+          ExecutaSQL($conn," update tbl_compra_produto 
+                                 set quantidade = quantidade - 1 
+                             where 
+                                fk_produto = $codigoProduto and 
+                                fk_compra = $codigoCompra ");       
+      }
     } else 
     if ($operacao == 'fechar') {
        echo "<br> >> Vamor fechar...<br>";  
-       // muda o status da compra pra concluida
+       $statusCompra = 'Concluida';
+        ExecutaSQL($conn,"UPDATE tbl_compra SET status = '$statusCompra' WHERE fk_usuario = $codigoUsuario and status = 'Pendente'");
+        ExecutaSQL($conn,"DELETE FROM tbl_tmpcompra USING tbl_compra WHERE tbl_tmpcompra.fk_compra = $codigoCompra");
+        header("Location: ../HTML/Pagamento.php");
        // faz um form pra colocar forma de pagamento
        // colocar opcao de pix, cartao, etc, etc
        // conforme orientacao da professora jovita, 
        // exclua fisicamente o tmpcompra referente a essa compra
        // ...   
     }
- } 
+  }
  
 
   
@@ -215,7 +239,7 @@
     <div id="grid-container-carrinho">
         <div class="heading cf">
           <h1>Meu Carrinho</h1>
-          <a href="../PHP/Produtos.php" class="continue">Continuar comprando</a>
+          <a href="../HTML/Produtos.php" class="continue">Continuar comprando</a>
         </div>
         <div class="cart">
       <!--    <ul class="tableHead">
@@ -252,48 +276,38 @@
                 //             echo "<h1>Seu carrinho está vazio</h1>";
                 //          }
                 $sql = " select tbl_produto.id_produto, 
-                 tbl_produto.descricao, 
-                 tbl_compra_produto.quantidade, 
-                 tbl_produto.imagem,
-                 tbl_produto.vlr, 
-                 tbl_produto.vlr * tbl_compra_produto.quantidade as sub  
-                    from tbl_produto
-                        inner join tbl_compra_produto on 
-                            tbl_produto.id_produto = tbl_compra_produto.fk_produto 
-                    where tbl_compra_produto.fk_compra = $codigoCompra";
+                          tbl_produto.nome_produto,
+                          tbl_compra_produto.quantidade, 
+                          tbl_produto.imagem,
+                          tbl_produto.vlr, 
+                          tbl_produto.vlr * tbl_compra_produto.quantidade as sub  
+                              from tbl_produto
+                                  inner join tbl_compra_produto on 
+                                      tbl_produto.id_produto = tbl_compra_produto.fk_produto 
+                              where tbl_compra_produto.fk_compra = $codigoCompra";
    
                 $select = $conn->query($sql);
-                echo $codigoCompra;
                 // cria table com itens no carrinho e seus subtotais
                 while ( $linha = $select->fetch() ) {
-                      
-                      $codigoProduto = $linha['id_produto']; 
-                      $descProd      = $linha['descricao'];
+                      $codigoProduto = $linha['id_produto'];
+                      $nome_produto      = $linha['nome_produto'];
                       $quant         = $linha['quantidade'];
                       $vunit         = $linha['vlr'];
                       $sub           = $linha['sub'];
                       $imagem        = $linha['imagem'];
-
-                      // vc poderia incluir links para 'incluir' alem dos 'excluir'
-                      // com isso, o usuario nao precisaria voltar na home pra incrementar 
-                      // a quantidade do mesmo produto
-                      echo $codigoProduto;
-                      echo "<table border='1'>
-                              <tr>
-                              <td>Produto</td>
-                              <td>Qtd</td>
-                              <td>$ Unitário</td>
-                              <td>Subtotal</td>
-                              <td>Imagem</td>
-                              </tr>";
-                      echo "<tr>
-                            <td>$descProd</td>
-                            <td>$quant</td>
-                            <td>$vunit</td>
-                            <td>$sub</td>
-                            <td>$imagem</td>
-                            <td><a href='carrinho.php?operacao=excluir&codigoProduto=$codigoProduto'>Excluir</a></td>
-                            </tr></table>";    
+                      echo "
+                            <div class='infoWrap'> 
+                              <div class='cartSection'>
+                                <img src='$imagem' alt='' class='itemImg'>
+                                <h3>$nome_produto</h3>
+                                <p>Quantidade: $quant</p>
+                                <p>Valor unitário: $vunit</p>
+                                <div class='prodTotal cartSection'>
+                                  <p>Subtotal: $sub</p>
+                                </div>
+                                <a href='Carrinho.php?operacao=excluir&id=$codigoProduto'>Excluir</a>
+                                <a href='Carrinho.php?operacao=incluir&id=$codigoProduto'>Adicionar</a>
+                            </div>";    
                 }
                 
                 echo "</table>";
@@ -312,7 +326,7 @@
                 if ( isset($login) ) 
                 {
                   if ($statusCompra == 'Pendente' && $login <> '') {
-                    echo "<a href='carrinho.php?operacao=fechar&codigoProduto=0'>Fechar o carrinho</a>";         
+                    echo "<a href='Carrinho.php?operacao=fechar&id=0'>Fechar o carrinho</a>";         
                   }
                 }
 
@@ -335,26 +349,7 @@
             </li>
             <li class="items even">
               
-             <div class="infoWrap"> 
-              <div class="cartSection">
-               
-              <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                <p class="itemNumber">#QUE-007544-002</p>
-                <h3>Item Name 1</h3>
-              
-                 <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>
-              
-                <p class="stockStatus"> In Stock</p>
-              </div>  
-          
-              
-              <div class="prodTotal cartSection">
-                <p>$15.00</p>
-              </div>
-                    <div class="cartSection removeWrap">
-                 <a href="#" class="remove">x</a>
-              </div>
-            </div>
+
             </li>
             
                   <li class="items odd">

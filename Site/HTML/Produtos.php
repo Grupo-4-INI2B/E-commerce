@@ -119,7 +119,7 @@
                             <h2>$name</h2>
                             <p>$description</p>
                             <h3>R$ $vlr</h3>
-                            <a href='../HTML/Carrinho.php?id=$id'>Comprar</a>
+                            <a href='../HTML/Carrinho.php?operacao=incluir&id=$id'>Comprar</a>
                             </div>
                            ";
                     }
