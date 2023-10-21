@@ -120,7 +120,7 @@
                             <div ><img src='" . $imagem . "'> </div>
                             <h2>$name</h2>
                             <p>$description</p>
-                            <h3>R$ $vlr</h3>
+                            <h3>R$ $vlr</h3><h3>$qntd</h3>
                             <a href='../HTML/Carrinho.php?operacao=incluir&id=$id'>Comprar</a>
                             </div>
                            ";
