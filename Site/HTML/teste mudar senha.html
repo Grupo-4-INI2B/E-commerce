@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Byte Craft - Cadastro</title>
+    <link rel="stylesheet" href="../CSS/Cadastro.css" />
+</head>
+
+<body>
+    <form name="frmCadastro" method="post" action="../PHP/Cadastro_usuario.php">
+        <div class="main-login">
+            <div class="login-container">
+                <div class="left-login">
+                    <img src="../Imagens/logocaixinhabranco.svg" />
+                    <br />
+                    <h1>Esqueceu a senha?<br /></h1>
+                    <h3>Mais cuidado da próxima vez.</h3>
+                </div>
+                <div class="right-login">
+                    <div class="card-login">
+                        <h1>Mudança de senha</h1>
+                        <br />
+                        <div class="textfield">
+                            <input type="email" id="email" name="email" placeholder="Código enviado por E-mail" required />
+                            <br />
+                        </div>
+                        <div class="textfield">
+                            <input type="password" id="senha" name="senha" placeholder="Nova senha" required />
+                        </div>
+                        <button type="submit" class="btn-login">Enviar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

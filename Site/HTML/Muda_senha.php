@@ -33,14 +33,37 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <link rel="stylesheet" href="../CSS/Cadastro.css" />
+    <title>Byte Craft</title>
 
     </head>
     <body>
-        <h2>Esqueci minha senha</h2>
         <form action="" method="post">
-            <input type="text" name="novaSenha" placeholder="Nova senha">
-            <input type="text" name="paramCodigo" placeholder="Código enviado por email">
-            <input type="submit" name="submit" value="Enviar">
+            <div class="main-login">
+            <div class="login-container">
+                <div class="left-login">
+                    <img src="../Imagens/logocaixinhabranco.svg" />
+                    <br />
+                    <h1>Esqueceu a senha?<br /></h1>
+                    <h3>Mais cuidado da próxima vez.</h3>
+                </div>
+                <div class="right-login">
+                    <div class="card-login">
+                        <h1>Mudança de senha</h1>
+                        <br />
+                        <div class="textfield">
+                            <input type="text" id="email" name="paramCodigo" placeholder="Código enviado por E-mail" required />
+                            <br />
+                        </div>
+                        <div class="textfield">
+                            <input type="text" id="senha" name="novaSenha" placeholder="Nova senha" required />
+                        </div>
+                        <button type="submit" name="submit" value="Enviar" class="btn-login">Enviar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         </form>
     </body>
 </html>
