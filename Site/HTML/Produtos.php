@@ -101,6 +101,7 @@
         <?php
 
         $conn = conecta();
+        if($_POST['filter-produtos']==null){
                     $select = $conn->prepare('select nome_produto, vlr, descricao, categoria, imagem, id_produto, qntd from tbl_produto WHERE excluido = false ORDER BY id_produto ASC');
                     $select->execute();
                     $result = $select->fetchAll(PDO::FETCH_ASSOC);
@@ -125,6 +126,34 @@
                             </div>
                            ";
                     }
+                }
+                else if($_POST['filter-produtos']=="pokemons"){
+                    $select = $conn->prepare('select nome_produto, vlr, descricao, categoria, imagem, id_produto, qntd from tbl_produto WHERE excluido = false AND categoria = "Pokemon" ORDER BY id_produto ASC');
+                    $select->execute();
+                    $result = $select->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($result as $row) {
+                        $categoria = $row['categoria'];
+                        $select2 = $conn->prepare('select categoria from tbl_produto where categoria = :categoria');
+                        $select2->execute(['categoria' => $categoria]);
+                        $categoria = $select2->fetch();
+                        $id = $row['id_produto'];
+                        $name = $row['nome_produto'];
+                        $imagem = $row['imagem'];
+                        $description = $row['descricao'];
+                        $vlr = number_format($row['vlr'], 2, ',', '.');
+                        $qntd = $row['qntd'];
+                        if($qntd > 0)
+                        echo "<div class='product-card' data-categoria='". $categoria['categoria'] ."' data-nome='" . $name . "' data-preco = 'R$ " . $vlr . "'>
+                            <div ><img src='" . $imagem . "'> </div>
+                            <h2>$name</h2>
+                            <p>$description</p>
+                            <h3>R$ $vlr</h3><h3>$qntd</h3>
+                            <a href='../HTML/Carrinho.php?operacao=incluir&id=$id'>Comprar</a>
+                            </div>
+                           ";
+                    }
+                }
+                    
     ?>  
         </div>
        
