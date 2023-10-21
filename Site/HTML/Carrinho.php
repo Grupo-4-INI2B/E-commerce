@@ -22,11 +22,11 @@
  } else {
     $existe = false;
  }
- echo $verificastatus;
  // se nao existe
+ $dataHoje = date("Y-m-d H:i:s");
  if($existe && $verificastatus=='Concluida')
  {
-   $dataHoje = date('Y/m/d');
+   
   
    $statusCompra = 'Pendente';
 
@@ -42,8 +42,7 @@
                       values ($codigoCompra,'$session_id') ");
  }
  if (!$existe) {   
-echo '1';
-    $dataHoje = date('Y/m/d');
+
  
     $statusCompra = 'Pendente';
 
@@ -128,11 +127,12 @@ echo '1';
       }
     } else 
     if ($operacao == 'fechar') {
-       echo "<br> >> Vamor fechar...<br>";  
-       $statusCompra = 'Concluida';
-       ExecutaSQL($conn,"UPDATE tbl_produto SET qntd = tbl_produto.qntd - tbl_compra_produto.quantidade FROM tbl_compra_produto
+        echo "<br> >> Vamor fechar...<br>";  
+        $statusCompra = 'Concluida';
+        ExecutaSQL($conn,"UPDATE tbl_produto SET qntd = tbl_produto.qntd - tbl_compra_produto.quantidade FROM tbl_compra_produto
                                             WHERE tbl_produto.id_produto = tbl_compra_produto.fk_produto
                                             AND tbl_compra_produto.fk_compra = $codigoCompra;");
+        ValorSQL($conn,"UPDATE tbl_produto SET excluido = true, dta_exclusao = '$dataHoje' WHERE qntd = 0;");
         ExecutaSQL($conn,"UPDATE tbl_compra SET status = '$statusCompra' WHERE fk_usuario = $codigoUsuario and status = 'Pendente'");
         ExecutaSQL($conn,"DELETE FROM tbl_tmpcompra USING tbl_compra WHERE tbl_tmpcompra.fk_compra = $codigoCompra");
         header("Location: ../HTML/Pagamento.php");
