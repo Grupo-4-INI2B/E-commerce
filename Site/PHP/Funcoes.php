@@ -143,11 +143,9 @@
   * marcelo c peres - 2023
   */
 
-  function ExecutaSQL($paramConn, $paramSQL) 
+  function ExecutaSQL( $paramConn, $paramSQL ) 
   {
-    // exec eh usado para update, delete, insert
-    // eh um metodo da conexao
-    // retorna o nro de linhas afetadas
+
     $linhas = $paramConn->exec($paramSQL);
   
     if ($linhas > 0) { 
@@ -162,9 +160,17 @@
   * marcelo c peres - 2023
   */
 
-  // ValorSQL 
-  // retorna o valor de um campo de um select
-  // Set 2023 - Marcelo C Peres 
+  function ValorSQL( $pConn, $pSQL ) 
+  {
+   $linhas = $pConn->query($pSQL)->fetch();
+  
+   if ($linhas > 0) { 
+       return $linhas[0]; 
+   } else { 
+       return "0"; 
+   }  
+  }
+
 
    
 /*
