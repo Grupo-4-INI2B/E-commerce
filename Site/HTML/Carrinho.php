@@ -157,13 +157,6 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
       </div>
     </div>
 
-    <div class="search-container">
-      <form>
-        <label for="search-input" class="search-icon"></label>
-        <input type="text" class="search-input" id="search-input" width="30" height="15" required>
-      </form>
-      </form>
-    </div>
 
     <div class="grid-carrinho">
       <a class="botao-menu" href="Carrinho.php" class="btn btn-primary" style="color: #000000">
