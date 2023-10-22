@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Devops.css">
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
+    <link rel="icon" href="../Imagens/logocaixinha.svg">
     <script src="../JS/Home.js"></script>
 </head>
 <body>
@@ -59,10 +60,12 @@
           
 
     </div>
-    <div class="botao-menu">
-      <?php
-        cabecalho($sessaoUsuario,  $nome, $adm);           
-      ?>
+    <div class='grid-login'>
+        <div class="botao-menu">
+        <?php
+            cabecalho($sessaoUsuario,  $nome, $adm);           
+        ?>
+        </div>
     </div>
     </div>
     <div class="home">

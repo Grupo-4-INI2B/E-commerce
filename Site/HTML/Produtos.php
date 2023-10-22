@@ -27,10 +27,9 @@
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Produtos.css">
     <link rel="stylesheet" href="../CSS/search-Box.css"/>
+    <link rel="icon" href="../Imagens/logocaixinha.svg">
 
     <script src="../JS/Home.js"></script>
-    <script src="../JS/Produtos.js"></script>
-</head>
 <body>
 <div class="grid-container">
         <div class="grid-logo">
@@ -63,10 +62,12 @@
           
 
     </div>
-    <div class="botao-menu">
-      <?php
-        cabecalho($sessaoUsuario,  $nome, $adm);           
-      ?>
+    <div class='grid-login'>
+        <div class="botao-menu">
+        <?php
+            cabecalho($sessaoUsuario,  $nome, $adm);           
+        ?>
+        </div>
     </div>
     </div>
     <div class="home">
@@ -81,26 +82,27 @@
             <button class="dropdownbtn">Filtro</button>
             <div class="dropdown-content">
                 <!-- Corrigindo os atributos 'for' nos labels -->
-                <input type="checkbox" onchange="categoria('todos')" id="todos">
-                <label for="todos">Todos</label>
-                <input type="checkbox" onchange="categoria('pokemon')" id="pokemon">
-                <label for="pokemon">Pokemons</label>
-                <input type="checkbox" onchange="categoria('harry_potter')" id="harry_potter">
-                <label for="harry_potter">Harry Potter</label>
-                <input type="checkbox" onchange="categoria('capivara')" id="capivara">
-                <label for="capivara">Capivaras</label>
-                <input type="checkbox" onchange="categoria('van_gogh')" id="van_gogh">
-                <label for="van_gogh">Van Gogh</label>
-                <input type="checkbox" onchange="categoria('star_wars')" id="star_wars">
-                <label for="star_wars">Star Wars</label>
-                <input type="checkbox" onchange="categoria('studio_ghibli')" id="studio_ghibli">
-                <label for="studio_ghibli">Studio Ghibli</label>
-                <input type="checkbox" onchange="categoria('demon_slayer')" id="demon_slayer">
-                <label for="demon_slayer">Demon Slayer</label>
-                <input type="checkbox" onchange="categoria('aleatorio')" id="aleatorio">
-                <label for="aleatorio">Aleatório</label>
-                <input type="hidden" id="categorias" name="categorias" value="">
-                <input type="button" onClick="send()">Buscar</input>
+                <input type="checkbox" name='filtro[]' id="Pokémon" value="Pokémon">
+                <label for="Pokémon">Pokémon</label>
+                <input type="checkbox" name='filtro[]' id="Harry Potter" value="Harry Potter">
+                <label for="Harry Potter">Harry Potter</label>
+                <input type="checkbox" name='filtro[]' id="Capivara" value="Capivara">
+                <label for="Capivara">Capivaras</label>
+                <input type="checkbox" name='filtro[]'  id="Van Gogh" value="Van Gogh">
+                <label for="Van Gogh">Van Gogh</label>
+                <input type="checkbox" name='filtro[]' id="Star Wars" value="Star Wars">
+                <label for="Star Wars">Star Wars</label>
+                <input type="checkbox" name='filtro[]' id="Studio Ghibli" value="Studio Ghibli">
+                <label for="Studio Ghibli">Studio Ghibli</label>
+                <input type="checkbox" name='filtro[]' id="Demon Slayer" value="Demon Slayer">
+                <label for="Demon Slayer">Demon Slayer</label>
+                <input type="checkbox" name='filtro[]' id="Aleatório" value="Aleatório">
+                <label for="Aleatório">Aleatório</label>
+                <input type="checkbox" name='filtro[]' id="Botton" value="Botton">
+                <label for="Botton">Botton</label>
+                <input type="checkbox" name='filtro[]' id="Poster" value="Poster">
+                <label for="Poster">Poster</label>
+                <input type="submit" value='Filtrar' name='categorias'></input>
                 <br>
 
             </div>
@@ -112,32 +114,23 @@
             <div class="container">
                 <?php
                 // Certifique-se de ter a função `conecta()` definida para a conexão com o banco de dados
-
                 $conn = conecta();
-                if(isset($_POST['categorias'])) {
-                    $categorias = $_POST['categorias'];
-                    if(strpos($categoria,'todos') == true) {
-                    $categorias = "";
-                    $sql=("SELECT * FROM tbl_produto WHERE qntd > 0");
-                    }
-                    else{
-                        $sql = ("SELECT * FROM tbl_produto WHERE categoria = '$categorias' AND qntd > 0");
-                    }
-                }
-                    else {
-                        $sql=("SELECT * FROM tbl_produto WHERE qntd > 0");
-
-                    }
-                        $result = $conn->query($sql);
-                        while ($row = $result->fetch()) {
+                $categorias=isset($_POST['filtro'])?$_POST['filtro']:null;
+                if($categorias !== null)
+                {
+                    for($i=0;$i<count($categorias);$i++)
+                    {
+                        $categoria=$categorias[$i];
+                        $query = ("SELECT * FROM tbl_produto WHERE categoria = '$categoria' AND qntd > 0 ORDER BY id_produto ASC");
+                        $result = $conn->query($query);
+                        if ($result->rowCount() > 0) {
+                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                             $id = $row['id_produto'];
                             $name = $row['nome_produto'];
                             $imagem = $row['imagem'];
                             $description = $row['descricao'];
                             $vlr = number_format($row['vlr'], 2, ',', '.');
                             $qntd = $row['qntd'];
-                            if($qntd > 0)    
-                            {
                                 echo "<div class='product-card' >
                                 <div ><img src='" . $imagem . "'> </div>
                                 <h2>$name</h2>
@@ -145,9 +138,34 @@
                                 <h3>R$ $vlr</h3><h3>Quantidade em estoque: $qntd</h3>
                                 <a href='../HTML/Carrinho.php?operacao=incluir&id=$id' class='btn-buy'>Comprar</a>
                                 </div>";
-                            }
+                        
                         }
-                            
+                        
+                    }
+                }
+                }
+                else
+                    {
+                        $query = "SELECT * FROM tbl_produto WHERE qntd>0 ORDER BY id_produto ASC";
+                        $result = $conn->query($query);
+                        if ($result->rowCount() > 0) {
+                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                $id = $row['id_produto'];
+                                $name = $row['nome_produto'];
+                                $imagem = $row['imagem'];
+                                $description = $row['descricao'];
+                                $vlr = number_format($row['vlr'], 2, ',', '.');
+                                $qntd = $row['qntd'];
+                                    echo "<div class='product-card' >
+                                    <div ><img src='" . $imagem . "'> </div>
+                                    <h2>$name</h2>
+                                    <p>$description</p>
+                                    <h3>R$ $vlr</h3><h3>Quantidade em estoque: $qntd</h3>
+                                    <a href='../HTML/Carrinho.php?operacao=incluir&id=$id' class='btn-buy'>Comprar</a>
+                                    </div>";
+                    }
+                }	
+            }  
                         
                 ?>
             </div>
@@ -160,49 +178,58 @@
     </form>
 
 <!-- Footer -->
-<footer class="footer">
-    <div class="container-footer">
-        <div class="row">
-            <div class="footer-col">
-                <h4>ByteCraft</h4>
-                <ul>
-                    <li><a href="#">Sobre nós</a></li>
-                    <li><a href="#">Nossos serviços</a></li>
-                    <li><a href="#">Politica de privacidade</a></li>
-                    <li><a href="#">Nossos Contribuintes</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Ajuda</h4>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Envio</a></li>
-                    <li><a href="#">Devolução</a></li>
-                    <li><a href="#">Status do Pedido</a></li>
-                    <li><a href="#">Opções de pagamento</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Loja Online</h4>
-                <ul>
-                    <li><a href="#">Anime</a></li>
-                    <li><a href="#">Capivaras</a></li>
-                    <li><a href="#">Van Gogh</a></li>
-                    <li><a href="#">Star wars</a></li>
-                    <li><a href="#">Harry Potter</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Nossas Redes</h4>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
+<title>Footer Design</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+
+  <footer class="footer">
+     <div class="container-footer">
+      <div class="row">
+        <div class="footer-col">
+          <h4>ByteCraft</h4>
+          <ul>
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Nossos serviços</a></li>
+            <li><a href="#">Politica de privacidade</a></li>
+            <li><a href="#">Nossos Contribuintes</a></li>
+          </ul>
         </div>
-    </div>
-   
-</footer>
+
+        <div class="footer-col">
+          <h4>Ajuda</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Envio</a></li>
+            <li><a href="#">Devolução</a></li>
+            <li><a href="#">Status do Pedido</a></li>
+            <li><a href="#">Opções de pagamento</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Loja Online</h4>
+          <ul>
+            <li><a href="#">Anime</a></li>
+            <li><a href="#">Capivaras</a></li>
+            <li><a href="#">Van Googh</a></li>
+            <li><a href="#">Star wars</a></li>
+            <li><a href="#">Harry Potter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Nossas Redes</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+      </div>
+     </div>
+  </footer>
+
 </body>
 </html>

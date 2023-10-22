@@ -12,6 +12,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Conecte-se ao banco de dados
     $conn = conecta();
+    echo $_POST['imagem'];
     // Obtenha os dados do formulário
     $id_produto = $_POST['id_produto'];
     $nome = $_POST['nome'];
@@ -31,7 +32,7 @@
         $nomeImagem = $_FILES["imagem"]["name"];
         $tipoImagem = $_FILES["imagem"]["type"];
         $tamanhoImagem = $_FILES["imagem"]["size"];
-        $caminhoDiretorio = "../Produtos_E-commerce";
+        $caminhoDiretorio = "../Produtos_E-commerce/";
         $caminhoImagem = $caminhoDiretorio . $nomeImagem;
     
         // Verifique se o arquivo é uma imagem válida

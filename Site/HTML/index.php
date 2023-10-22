@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
+    <link rel="icon" href="../Imagens/logocaixinha.svg">
     <script src="../JS/home.js"></script>
 </head>
 </html>
@@ -83,7 +84,7 @@
                 <p class="topicos">Extremamente duráveis</p>
                 <p class="topicos">Escolha seu favorito, despertando sua criatividade</p>
                 <div class="div-foto">
-                <img src="../Imagens/image.png" alt="" id="foto">
+                
             </div>
                 <button name="ver_mais" value="Ver Mais" class="vermais">Ver mais</button>
             </div>
@@ -206,7 +207,16 @@
         </div>
         
     </div>
-
+    <div class="video-container">
+        <div class="teste">
+            <div class="imgs">
+                <img src="../Imagens/img_media1.png" alt="" id="foto">
+            </div>
+            
+        </div>
+        
+    </div>
+    
 
     <!--Footer-->
 
