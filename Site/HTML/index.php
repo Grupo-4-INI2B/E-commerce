@@ -228,6 +228,7 @@
             <li><a href="#">Nossos Contribuintes</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Ajuda</h4>
           <ul>
@@ -238,6 +239,7 @@
             <li><a href="#">Opções de pagamento</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Loja Online</h4>
           <ul>
@@ -248,6 +250,7 @@
             <li><a href="#">Harry Potter</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Nossas Redes</h4>
           <div class="social-links">
@@ -256,6 +259,7 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
+        
       </div>
      </div>
   </footer>
