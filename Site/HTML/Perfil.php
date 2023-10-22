@@ -22,6 +22,7 @@
                     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
                     <title>Byte Craft - Home</title>
                     <link rel='stylesheet' href='../CSS/Perfil.css'>
+                     <link rel='icon' href='../Imagens/logocaixinha.svg'>
                 </head>
     ";
     if(!$adm)

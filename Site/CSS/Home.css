@@ -44,7 +44,7 @@
   width: 135px;
 }*/
 
-.botao-menu{
+/* .botao-menu{
   font-family: Arial;
   font-size:large;
   border-color: #F6BE00;
@@ -87,7 +87,7 @@
   border-color: #ffe48c;
   font-weight: 50;
   padding: 0 1.2vw;
-}*/
+} */
 
 /*
 .grid-logo {
@@ -272,8 +272,9 @@
 #foto
 {
   margin-top: 30px;
-  width: 20vw;
-  height: 40vh;
+  width: 91vw;
+  height: 70vh;
+  border-radius: 20px;
 }
 
 .produtos-filho{

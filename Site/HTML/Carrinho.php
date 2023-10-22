@@ -128,6 +128,7 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
   <link rel="stylesheet" href="../CSS/Base.css">
   <link rel="stylesheet" href="../CSS/Carrinho.css">
   <link rel="stylesheet" href="../CSS/Search-Box.css" />
+  <link rel="icon" href="../Imagens/logocaixinha.svg">
   <script src="../JS/Home.js"></script>
 </head>
 
@@ -161,13 +162,16 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
     <div class="grid-carrinho">
       <a class="botao-menu" href="Carrinho.php" class="btn btn-primary" style="color: #000000">
         <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compra" width="15" height="15" style="position: relative; top: 3px;">
+        Carrinho
       </a>
     </div>
 
-    <div class="botao-menu">
-      <?php
-      cabecalho($login,  $nome, $adm);
-      ?>
+    <div class='grid-login'>
+        <div class="botao-menu">
+        <?php
+            cabecalho($login,  $nome, $adm);           
+        ?>
+        </div>
     </div>
   </div>
 
