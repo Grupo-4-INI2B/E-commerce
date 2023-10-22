@@ -28,7 +28,7 @@
     }
 ?>
 <body>
-    <div class="grid-container">
+<div class="grid-container">
         <div class="grid-logo">
             <a href="index.php">
                 <img class="logo" src="../Imagens/logocaixinhacolor.svg" alt="Logomarca">
@@ -36,7 +36,7 @@
         </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu"ws href="index.php" style="color: #000000" >Home</a>
+            <a class="botao-menu" href="index.php" style="color: #000000" >Home</a>
         </div>
     </div>
     <div  class="grid-item">
@@ -50,8 +50,11 @@
             <a class="botao-menu" href="Devops.php" style="color: #000000" >Devops</a>
         </div>
     </div>
-    <div class="div-pesquisa">
-
+    <div class="search-container">
+        <form>
+            <label for="search-input" class="search-icon"></label>
+            <input type="text" class="search-input" id="search-input" width="30" height="15" required />
+        </form>
     </div>
 
     <div class="grid-carrinho">
@@ -62,11 +65,11 @@
           
 
     </div>
-    
     <div class="grid-login">
-        <?php
-            cabecalho($sessaoUsuario,  $nome, $adm);
-        ?>
+      <?php
+        cabecalho($sessaoUsuario,  $nome, $adm);           
+      ?>
+    </div>
     </div>
 </div>
 

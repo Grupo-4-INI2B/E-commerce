@@ -239,4 +239,30 @@
   //   criarCardsCapivaras();
   //   criarCardsVanGogh();
   // });
-  
+    var bar = Array();
+    var barrios = document.getElementById("categorias");
+    function categoria(valor){//Pega o valor do check
+
+        if(document.getElementById(valor).checked == true){//Se ta ligado agrega o valor
+            bar.push(valor);        
+        }else{//Se desliga apaga o valor do array
+            let index = bar.indexOf(valor);
+        if (index !== -1) bar.splice(index, 1);
+        }
+    }
+
+    function send(){
+        var juntar = "";
+        let cant = bar.length;
+        //Criar um string com o dados do array
+        for(i = 0; i < cant - 1; i++){
+            juntar = juntar + bar[i] + "_";
+        }
+
+        //Deixa o ultimo elemento fora para evitar um _ demais ao final do String
+        juntar = juntar + bar[cant -1];
+
+        barrios.value = juntar;
+        document.getElementById("filtro").submit();
+    }
+    

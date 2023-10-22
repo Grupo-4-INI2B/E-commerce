@@ -8,28 +8,27 @@ body{
 
 /* .grid-container */
 .grid-container {
-    z-index: 3;
-    display: grid;
-    grid-template-columns: 15% 10% 10% 10% 25% auto auto;
-    grid-template-rows: 1fr;
-    background-color: #272727;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 15%;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 15% 10% 10% 10% 25% auto auto;
+  grid-template-rows: 1fr;
+  background-color: #272727;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15%;
 }
 
 
 .grid-logo {
     display: flex;
-    justify-content:flex-start;
+    justify-content:  flex-start;
     align-items: flex-start;
     background-color: #272727;
     color: black;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
+    padding: 10px;
+    grid-area: auto / 1 / auto / 2;
 }
 .grid-item {
   display: flex;
@@ -58,6 +57,7 @@ body{
 .carrinho{
     height: 50%;
     width: 50%;
+    align-items: flex-end;
 }
 .grid-login {
   display: flex;
@@ -81,10 +81,10 @@ body{
     width: 135px;
 }
 .logo {
-    height: 5%;
-    width: 5%;
-    position: fixed;
-    border-radius: 20px;
+  height: 10%;
+  width: 10%;
+  position: fixed;
+  border-radius: 20px;
 }
 
 .home{
