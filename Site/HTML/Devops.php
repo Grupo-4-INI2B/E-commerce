@@ -65,7 +65,7 @@
           
 
     </div>
-    <div class="grid-login">
+    <div class="botao-menu">
       <?php
         cabecalho($sessaoUsuario,  $nome, $adm);           
       ?>
