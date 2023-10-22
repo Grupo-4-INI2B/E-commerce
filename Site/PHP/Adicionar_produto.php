@@ -59,6 +59,16 @@
                 {
                 $caminhoDiretorio = "../Produtos_E-commerce/Van Gogh/";
                 }
+                else
+                if($id > 2000 && $id < 3000)
+                {
+                $caminhoDiretorio = "../Produtos_E-commerce/Botton/";
+                }
+                else
+                if($id > 3000 && $id < 4000)
+                {
+                $caminhoDiretorio = "../Produtos_E-commerce/Poster/";
+                }
                 $caminhoImagem = $caminhoDiretorio . $nomeImagem;
             
                 // Verifique se o arquivo é uma imagem válido (opcional)
