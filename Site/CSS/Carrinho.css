@@ -355,6 +355,7 @@ a.include:hover {
   right: -10px;
 }
 .grid-card{
+  box-shadow: 0px 5px 5px #CCC;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
