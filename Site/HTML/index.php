@@ -87,11 +87,12 @@
                 <p class="topicos">Diversidade de estampas para sua escolha</p>
                 <p class="topicos">Extremamente duráveis</p>
                 <p class="topicos">Escolha seu favorito, despertando sua criatividade</p>
-                <button name="ver_mais" value="Ver Mais" class="vermais">Ver mais</button>
-            </div>
-            <div class="div-foto">
+                <div class="div-foto">
                 <img src="../Imagens/image.png" alt="" id="foto">
             </div>
+                <button name="ver_mais" value="Ver Mais" class="vermais">Ver mais</button>
+            </div>
+
         </div>
 
         
@@ -198,10 +199,10 @@
         
     </div>
     <div class="video-container">
-        <h1 class="video" style="font-size: large;">Vídeo</h1>
+        <h1 class="video" style="font-size: large;">Coneça nossos produtos mais de perto!!!</h1>
         <div class="teste">
             <div class="video-e-titulo">
-                    <iframe src="https://www.youtube.com/embed/jIQ6UV2onyI?si=rc-Xb3Av7zGyVwOW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/mRSY6UVr4zg?si=xFEXNLrf53BOczrm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="Texto-do vídeo">
                     <p class="subtitulo-video">

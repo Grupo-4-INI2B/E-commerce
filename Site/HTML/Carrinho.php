@@ -171,7 +171,7 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
       </a>
     </div>
 
-    <div class="grid-login">
+    <div class="botao-menu">
       <?php
       cabecalho($login,  $nome, $adm);
       ?>

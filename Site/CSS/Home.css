@@ -164,6 +164,7 @@
   margin: 0;
   padding: 0;
 }*/
+
 .produtos
 {
   width: calc(48vw + 20px);
@@ -406,7 +407,7 @@
   margin-right: 35px;
   background-color: #efefef72;
   width: 39vw;
-  height: auto;
+  height: min-content;
   padding: 5px;
   border-radius: 30px;
   display: flex;
