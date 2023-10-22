@@ -160,7 +160,7 @@
   * marcelo c peres - 2023
   */
 
-  function ValorSQL( $pConn, $pSQL ) 
+  function ValorSQL($pConn, $pSQL) 
   {
    $linhas = $pConn->query($pSQL)->fetch();
   
