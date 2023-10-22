@@ -34,20 +34,6 @@ if ($existe) {
 
 $dataHoje = date("Y-m-d H:i:s"); //Pega a data e hora atual.
 
-// if ($existe && $verificastatus == 'Concluida') { //Se ele existe e a compra estiver concluida.
-//   $statusCompra = 'Pendente'; //O status da compra é pendente.
-
-//   //Atualiza o status da compra para concluida.
-//   ExecutaSQL($conn, "UPDATE tbl_compra SET status = $statusCompra WHERE fk_usuario = $codigoUsuario AND status = 'Concluida'");
-//   //Insere a data e hora atual, o status da compra e o id do usuário na tabela tbl_compra.
-//   ExecutaSQL($conn, "INSERT INTO tbl_compra (data_compra, status, fk_usuario) VALUES ($dataHoje, $statusCompra, $codigoUsuario)");
-
-//   $codigoCompra = $conn->lastInsertId(); //Pega o id da compra.
-
-//   // insere o tbl_tmpcompra
-//   ExecutaSQL($conn, "INSERT INTO tbl_tmpcompra (fk_compra, session) VALUES ($codigoCompra, $session_id)"); //Insere o id da compra e o session_id na tabela tbl_tmpcompra.
-// }
-
 if (!$existe) {   // se não existe.
   $statusCompra = 'Pendente'; //O status da compra é pendente.
 
@@ -59,7 +45,7 @@ if (!$existe) {   // se não existe.
 
   //Insere o tbl_tmpcompra
   ExecutaSQL($conn, "INSERT INTO tbl_tmpcompra (fk_compra, session) VALUES ('$codigoCompra', '$session_id')");
-} else if ($existe && $verificastatus == 'Pendente') { //Se ele existe e a compra estiver pendente.
+} else { //Se ele existe e a compra estiver pendente.
   $codigoCompra = intval(ValorSQL($conn, "SELECT id_compra FROM tbl_compra
                                              INNER JOIN tbl_tmpcompra ON tbl_compra.id_compra = tbl_tmpcompra.fk_compra 
                                              WHERE tbl_tmpcompra.session = '$session_id'")); //Pega o id da compra.
