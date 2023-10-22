@@ -10,7 +10,7 @@ body{
 .grid-container {
   z-index: 3;
   display: grid;
-  grid-template-columns: 15% 10% 10% 10% 25% auto auto;
+  grid-template-columns: 15% 17% 17% 17%  17% 17%;
   grid-template-rows: 1fr;
   background-color: #272727;
   position: fixed;
@@ -52,7 +52,7 @@ body{
 
 .grid-carrinho {
   display: flex;
-  justify-content:center;
+  justify-content:right;
   align-items: center;
   background-color: #272727;
   color: black;
@@ -153,7 +153,7 @@ body{
 
 .grid-login {
   display: flex;
-  justify-content:center;
+  justify-content:right;
   align-items: center;
   background-color: #272727;
   color: black;
