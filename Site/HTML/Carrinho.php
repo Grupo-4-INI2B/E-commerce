@@ -11,7 +11,7 @@ if (isset($_SESSION['sessaoUsuario'])) { //Se o usuário estiver logado.
   $nome=ValorSQL($conn, "SELECT nome_usuario FROM tbl_usuario WHERE email = '$login'"); //Pega o nome do usuário.
   $adm=ValorSQL($conn, "SELECT adm FROM tbl_usuario WHERE email = '$login'"); //Pega o adm do usuário.
   $codigoUsuario = ValorSQL($conn, " SELECT id_usuario FROM tbl_usuario 
-                                       WHERE email = '$login'"); //Seleciona o id do usuário aonde ele for igual ao login(email).
+                                     WHERE email = '$login'"); //Seleciona o id do usuário aonde ele for igual ao login(email).
 } else { //Se o usuário não estiver logado.
   $login = null; //O login(email) do usuário é nulo.
   $codigoUsuario = null; //O código do usuário é nulo.
@@ -99,18 +99,20 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
                          SET qntd = tbl_produto.qntd - tbl_compra_produto.quantidade 
                          FROM tbl_compra_produto
                          WHERE tbl_produto.id_produto = tbl_compra_produto.fk_produto AND tbl_compra_produto.fk_compra = $codigoCompra");
-
-    //Atualiza o status da compra para concluida.                     
-    ValorSQL($conn, "UPDATE tbl_produto SET excluido = true, dta_exclusao = $dataHoje WHERE qntd = 0;");
+          
+    ValorSQL($conn,"UPDATE tbl_produto SET excluido = true, dta_exclusao = '$dataHoje' WHERE qntd = 0;");
 
     //Atualiza o status da compra para concluida.
-    ExecutaSQL($conn, "UPDATE tbl_compra SET status = $statusCompra WHERE fk_usuario = $codigoUsuario AND status = Pendente");
+    ExecutaSQL($conn,"UPDATE tbl_compra SET status = '$statusCompra' WHERE fk_usuario = $codigoUsuario and status = 'Pendente'");
 
     //Deleta da compra temporário.
     ExecutaSQL($conn, "DELETE FROM tbl_tmpcompra USING tbl_compra WHERE tbl_tmpcompra.fk_compra = $codigoCompra");
 
     //Redereciona para a página de pagamento.
     header("Location: ../HTML/Pagamento.php");
+  }else if($_GET['operacao'] == 'apagar') { //Se a operação for destruir.
+    ExecutaSQL($conn, "DELETE FROM tbl_tmpcompra USING tbl_compra WHERE tbl_tmpcompra.fk_compra = $codigoCompra");
+    header("Location: ../HTML/Carrinho.php");
   }
 }
 ?>
@@ -228,19 +230,26 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
             $total = ValorSQL($conn, "select sum (tbl_produto.vlr * tbl_compra_produto.quantidade) from tbl_produto inner join tbl_compra_produto on 
             tbl_produto.id_produto = tbl_compra_produto.fk_produto where tbl_compra_produto.fk_compra = $codigoCompra");
             // se o login foi obtido (se esta logado), mostra link 'fechar carrinho' 
-            if (isset($login)) {
-              if ($statusCompra == 'Pendente' && $login <> '') {
-                echo"<div class='subtotal cf'>
-                  <ul>
-                    <li class='totalRow'><span class='label'>Satus da compra</span><span class='value'>$statusCompra</span></li>
-                    <li class='totalRow final'><span class='label'>Total R$: </span><span class='value'>$total,00</span></li>
-                    <li class='totalRow'><a href='Carrinho.php?operacao=fechar&id=0' class='btn'>Finalizar compra</a></li>
-                    <br><br><br><br><br>
-                    <li class='totalRow'><a href='index.php' class='btn-home'>Voltar ao home</a></li>
-                  </ul>
-                </div>";
+            if($codigoCompra==0)
+            {
+              echo "<h1 class='margem-titulo'>Seu carrinho está vazio</h1>";
+            }else{
+              if (isset($login)) {
+                  if ($statusCompra == 'Pendente' && $login <> '') {
+                    echo"<div class='subtotal cf'>
+                            <ul>
+                              <li class='totalRow'><span class='label'>Satus da compra</span><span class='value'>$statusCompra</span></li>
+                              <li class='totalRow final'><span class='label'>Total R$: </span><span class='value'>$total,00</span></li>
+                              <li class='totalRow'><a href='Carrinho.php?operacao=fechar&id=0' class='btn'>Finalizar compra</a></li>
+                              <br><br><br><br><br>
+                              <li class='totalRow'><a href='Carrinho.php?operacao=apagar&id=0' class= 'btn-home'>Limpar o carrinho</a></li>
+                              <br><br><br><br><br>
+                              <li class='totalRow'><a href='index.php' class='btn-home'>Voltar ao home</a></li>
+                            </ul>
+                        </div>";
               }
             }
+          }
 
             ?>
           </div>

@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Produtos.css">
     <link rel="stylesheet" href="../CSS/search-Box.css"/>
-    <link rel="stylesheet" href="../CSS/search-Box.css" />
 
     <script src="../JS/Home.js"></script>
     <script src="../JS/Produtos.js"></script>

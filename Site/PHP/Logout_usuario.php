@@ -18,6 +18,7 @@
       $insert->bindParam(':email', $_SESSION['id_usuario'], PDO::PARAM_INT);
 
       $insert->execute();
+      destroiCookieSessao();
       unset($insert);
    }
   
