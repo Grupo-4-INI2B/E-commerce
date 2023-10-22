@@ -73,7 +73,7 @@
     </div>
     <div class="home">
         <br>
-        <h1 class="margem-titulo">Os Nossos Dev's</h1>
+        <h1 class="margem-titulo"><br>Os Nossos Dev's</h1>
             <img src="../Imagens//onda.png" alt="" class="onda">
     </div>
     <div class="grid-container2">

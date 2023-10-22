@@ -227,12 +227,12 @@ a:link {
   z-index: 1;
   font-family: Arial;
   font-weight: bold;
-  width: 100%;
+  width: 50%;
   background-color: #F6BE00;
   border: none;
   outline: none;
   box-shadow: 0px 5px 5px #efefef72;
-  height: 35px;
+  height: 20px;
   cursor: pointer;
   margin-top: 10px; /* Ajuste a margem conforme necessário */
   text-decoration: none;

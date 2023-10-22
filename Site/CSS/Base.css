@@ -22,14 +22,16 @@ body{
 
 
 .grid-logo {
-    display: flex;
-    justify-content:  flex-start;
-    align-items: flex-start;
-    background-color: #272727;
-    color: black;
-    padding: 10px;
-    grid-area: auto / 1 / auto / 2;
+  display: flex;
+  justify-content:flex-start;
+  align-items: flex-start;
+  background-color: #272727;
+  color: black;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
 }
+
 .grid-item {
   display: flex;
   justify-content: center;
@@ -46,20 +48,9 @@ body{
     padding: 20px;
     grid-area: auto / 5  ;
 }
+
+
 .grid-carrinho {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    background-color: #272727;
-    color: black;
-    padding: 20px;
-}
-.carrinho{
-    height: 50%;
-    width: 50%;
-    align-items: flex-end;
-}
-.grid-login {
   display: flex;
   justify-content:center;
   align-items: center;
@@ -67,6 +58,11 @@ body{
   color: black;
   padding: 20px;
 }
+.carrinho{
+  height: 50%;
+  width: 50%;
+}
+
 
 .carrinho, .login{
     height: 40px; /* Ajuste a altura conforme necessário */
@@ -81,8 +77,8 @@ body{
     width: 135px;
 }
 .logo {
-  height: 10%;
-  width: 10%;
+  height: 8%;
+  width: 8%;
   position: fixed;
   border-radius: 20px;
 }
@@ -108,30 +104,41 @@ body{
 
 
 .botao-menu{
-    font-family: Arial;
-    font-size:large;
-    border-color: #F6BE00;
-    border-width: 7px;
-    border-style: solid;
-    border-radius: 70px;
+  font-family: Arial;
+  font-size:large;
+  border-color: #F6BE00;
+  border-width: 7px;
+  border-style: solid;
+  border-radius: 70px;
 }
 .botao-menu:link {
-    background: #F6BE00;
-    text-decoration: none;
-    font-weight:100;
-    font-weight: bold;
-    padding: 0 1vw;
-    text-decoration: none;
-}
+  background: #F6BE00;
+  text-decoration: none;
+  font-weight:100;
+  font-weight: bold;
+  padding: 0 1vw; 
+} 
 .botao-menu:hover {
-    background: #ffe48c;    
-    color: #FFF;
-    border-color: #ffe48c;
-    font-weight: 50;
-    padding: 0 1.2vw;
-    font-weight: bold;
-  
+  background: #ffe48c;    
+  color: #FFF;
+  border-color: #ffe48c;
+  font-weight: 50;
+  padding: 0 1.2vw;
 }
+
+
+
+
+
+
+.grid-login {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background-color: #272727;
+  color: black;
+  padding: 20px;
+} 
 
 
 

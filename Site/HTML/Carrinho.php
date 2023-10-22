@@ -8,9 +8,10 @@ $session_id = session_id();
 
 if (isset($_SESSION['sessaoUsuario'])) { //Se o usuário estiver logado.
   $login = $_SESSION['sessaoUsuario']; //Pega o login(email) do usuário.
-  $nome = $_SESSION['nome_usuario']; //Pega o nome do usuário.
-  $adm = $_SESSION['adm']; //Pega o adm do usuário.
-  $codigoUsuario = ValorSQL($conn, "SELECT id_usuario FROM tbl_usuario WHERE email = $login"); //Seleciona o id do usuário aonde ele for igual ao login(email).
+  $nome=ValorSQL($conn, "SELECT nome_usuario FROM tbl_usuario WHERE email = '$login'"); //Pega o nome do usuário.
+  $adm=ValorSQL($conn, "SELECT adm FROM tbl_usuario WHERE email = '$login'"); //Pega o adm do usuário.
+  $codigoUsuario = ValorSQL($conn, " SELECT id_usuario FROM tbl_usuario 
+                                       WHERE email = '$login'"); //Seleciona o id do usuário aonde ele for igual ao login(email).
 } else { //Se o usuário não estiver logado.
   $login = null; //O login(email) do usuário é nulo.
   $codigoUsuario = null; //O código do usuário é nulo.
@@ -33,19 +34,19 @@ if ($existe) {
 
 $dataHoje = date("Y-m-d H:i:s"); //Pega a data e hora atual.
 
-if ($existe && $verificastatus == 'Concluida') { //Se ele existe e a compra estiver concluida.
-  $statusCompra = 'Pendente'; //O status da compra é pendente.
+// if ($existe && $verificastatus == 'Concluida') { //Se ele existe e a compra estiver concluida.
+//   $statusCompra = 'Pendente'; //O status da compra é pendente.
 
-  //Atualiza o status da compra para concluida.
-  ExecutaSQL($conn, "UPDATE tbl_compra SET status = $statusCompra WHERE fk_usuario = $codigoUsuario AND status = 'Concluida'");
-  //Insere a data e hora atual, o status da compra e o id do usuário na tabela tbl_compra.
-  ExecutaSQL($conn, "INSERT INTO tbl_compra (data_compra, status, fk_usuario) VALUES ($dataHoje, $statusCompra, $codigoUsuario)");
+//   //Atualiza o status da compra para concluida.
+//   ExecutaSQL($conn, "UPDATE tbl_compra SET status = $statusCompra WHERE fk_usuario = $codigoUsuario AND status = 'Concluida'");
+//   //Insere a data e hora atual, o status da compra e o id do usuário na tabela tbl_compra.
+//   ExecutaSQL($conn, "INSERT INTO tbl_compra (data_compra, status, fk_usuario) VALUES ($dataHoje, $statusCompra, $codigoUsuario)");
 
-  $codigoCompra = $conn->lastInsertId(); //Pega o id da compra.
+//   $codigoCompra = $conn->lastInsertId(); //Pega o id da compra.
 
-  // insere o tbl_tmpcompra
-  ExecutaSQL($conn, "INSERT INTO tbl_tmpcompra (fk_compra, session) VALUES ($codigoCompra, $session_id)"); //Insere o id da compra e o session_id na tabela tbl_tmpcompra.
-}
+//   // insere o tbl_tmpcompra
+//   ExecutaSQL($conn, "INSERT INTO tbl_tmpcompra (fk_compra, session) VALUES ($codigoCompra, $session_id)"); //Insere o id da compra e o session_id na tabela tbl_tmpcompra.
+// }
 
 if (!$existe) {   // se não existe.
   $statusCompra = 'Pendente'; //O status da compra é pendente.
@@ -190,7 +191,7 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
   </div>
 
   <div class="home">
-    <h1 class="margem-titulo">Suas<br>compras</h1>
+    <h1 class="margem-titulo"><br>Suas compras</h1>
     <img src="../Imagens//onda.png" alt="" class="onda">
   </div>
 
@@ -221,49 +222,41 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
               $vunit = $linha['vlr'];
               $sub = $linha['sub'];
               $imagem = $linha['imagem'];
-              echo "
-                <div class='infoWrap'> 
+              echo " <div class='grid-card'>
                   <div class='cartSection'>
                     <img src='$imagem' alt='' class='itemImg'>
                     <h3>$nome_produto</h3>
                     <p>Quantidade: $quant</p>
-                    <p>Valor unitário: $vunit</p>
-                    <div class='prodTotal cartSection'>
-                      <p>Subtotal: $sub</p>
+                    <br>
+                    <p>Valor unitário R$: $vunit,00</p>
+                    <br>
+                    <p>Subtotal R$: $sub,00</p>
+                    <br>
+                    <a href='Carrinho.php?operacao=incluir&id=$codigoProduto' class='include' >Adicionar</a>
+                    <a href='Carrinho.php?operacao=excluir&id=$codigoProduto' class='remove'>Excluir</a>
                     </div>
-                    <a href='Carrinho.php?operacao=excluir&id=$codigoProduto'>Excluir</a>
-                    <a href='Carrinho.php?operacao=incluir&id=$codigoProduto'>Adicionar</a>
-                  </div>
-                </div>
-              ";
+                  </div>";
             }
 
             // calcula o total e mostra junto com o status da compra     
             $total = ValorSQL($conn, "select sum (tbl_produto.vlr * tbl_compra_produto.quantidade) from tbl_produto inner join tbl_compra_produto on 
             tbl_produto.id_produto = tbl_compra_produto.fk_produto where tbl_compra_produto.fk_compra = $codigoCompra");
-
-            echo "Status da compra: $statusCompra<br>";
-            echo "Total: $total <br><br>";
-
             // se o login foi obtido (se esta logado), mostra link 'fechar carrinho' 
             if (isset($login)) {
               if ($statusCompra == 'Pendente' && $login <> '') {
-                echo "<a href='Carrinho.php?operacao=fechar&id=0'>Fechar o carrinho</a>";
+                echo"<div class='subtotal cf'>
+                  <ul>
+                    <li class='totalRow'><span class='label'>Satus da compra</span><span class='value'>$statusCompra</span></li>
+                    <li class='totalRow final'><span class='label'>Total R$: </span><span class='value'>$total,00</span></li>
+                    <li class='totalRow'><a href='Carrinho.php?operacao=fechar&id=0' class='btn'>Finalizar compra</a></li>
+                    <br><br><br><br><br>
+                    <li class='totalRow'><a href='index.php' class='btn-home'>Voltar ao home</a></li>
+                  </ul>
+                </div>";
               }
             }
 
-            // link pra voltar pra home
-            echo "<br> <a href='index.php'>Home</a>";
             ?>
-          </div>
-
-          <div class="subtotal cf">
-            <ul>
-              <li class="totalRow"><span class="label">Subtotal</span><span class="value">$35.00</span></li>
-              <li class="totalRow"><span class="label">Embalagem</span><span class="value">$5.00</span></li>
-              <li class="totalRow final"><span class="label">Total</span><span class="value">$44.00</span></li>
-              <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
-            </ul>
           </div>
     </div>
   </div>

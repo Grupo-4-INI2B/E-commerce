@@ -78,7 +78,7 @@
     </div>
     <div class="home">
         <br>
-        <h1 class="margem-titulo">Produtos</h1>
+        <h1 class="margem-titulo"><br>Produtos</h1>
             <img src="../Imagens//onda.png" alt="" class="onda">
     </div>
     <!-- Filtros -->
@@ -149,8 +149,8 @@
                                 <div ><img src='" . $imagem . "'> </div>
                                 <h2>$name</h2>
                                 <p>$description</p>
-                                <h3>R$ $vlr</h3><h3>$qntd</h3>
-                                <a href='../HTML/Carrinho.php?operacao=incluir&id=$id'>Comprar</a>
+                                <h3>R$ $vlr</h3><h3>Quantidade em estoque: $qntd</h3>
+                                <a href='../HTML/Carrinho.php?operacao=incluir&id=$id' class='btn-buy'>Comprar</a>
                                 </div>";
                             }
                         }
