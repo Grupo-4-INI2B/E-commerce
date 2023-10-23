@@ -10,7 +10,7 @@ body{
 .grid-container {
   z-index: 3;
   display: grid;
-  grid-template-columns: 15% 17% 17% 17%  17% 17%;
+  grid-template-columns: 15% 12% 12% 12% auto auto;
   grid-template-rows: 1fr;
   background-color: #272727;
   position: fixed;
@@ -34,19 +34,11 @@ body{
 
 .grid-item {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   color: black;
   padding: 20px;
   font-size: 30px;
-}
-.search-container
-{
-    display: flex;
-    justify-content:left;
-    align-items: center;
-    padding: 20px;
-    grid-area: auto / 5  ;
 }
 
 
@@ -158,6 +150,7 @@ body{
   background-color: #272727;
   color: black;
   padding: 20px;
+  margin-right: 10%;
 } 
 
 

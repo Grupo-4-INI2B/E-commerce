@@ -237,7 +237,7 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
                             <ul>
                               <li class='totalRow'><span class='label'>Satus da compra</span><span class='value'>$statusCompra</span></li>
                               <li class='totalRow final'><span class='label'>Total R$: </span><span class='value'>$total,00</span></li>
-                              <li class='totalRow'><a href='Carrinho.php?operacao=fechar&id=0' class='btn'>Finalizar compra</a></li>
+                              <li class='totalRow'><a href='Confirma_compra.php?total=$total' class='btn'>Finalizar compra</a></li>
                               <br><br><br><br><br>
                               <li class='totalRow'><a href='Carrinho.php?operacao=apagar&id=0' class= 'btn-home'>Limpar o carrinho</a></li>
                               <br><br><br><br><br>
