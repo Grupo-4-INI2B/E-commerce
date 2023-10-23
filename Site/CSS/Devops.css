@@ -1,4 +1,4 @@
-body{
+/* body{
   line-height: 1.5;
   font-family: 'Poppins', sans-serif;
 }
@@ -21,7 +21,7 @@ body{
   left: 0;
   right: 0;
   height: 15%;
-}
+} */
 
 /* .vermais */
 /*.vermais {
@@ -46,18 +46,18 @@ body{
   margin: 25px;
 }*/
 
-.carrinho, .login{
-  height: 40px; /* Ajuste a altura conforme necessário */
-  width: 40px; /* Ajuste a largura conforme necessário */
+ .carrinho, .login{
+  height: 40px; 
+  width: 40px;  
   align-items: center;
-}
+ } *//*
 .onda{
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   height: 43px;
   width: 145px;
-}
+} */
 
 /*a {
   font-family: Arial;
@@ -85,7 +85,7 @@ a:link {
   font-weight: 50;
   padding: 0 1.2vw;
 
- }*/
+ /* }
 .botao-menu{
   font-family: Arial;
   font-size:large;
@@ -108,7 +108,7 @@ a:link {
   font-weight: 50;
   padding: 0 1.2vw;
 }
-
+*/
 
 
 .grid-logo {
@@ -157,7 +157,7 @@ a:link {
   background-color: #272727;
   color: black;
   padding: 20px;
-}
+} */
 
 .home{
   height: 170px;
@@ -309,4 +309,5 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 width: 100%;
+margin-bottom: 15px;
 }

@@ -1,0 +1,22 @@
+.btn{
+  color:black;
+  font-family: Arial;
+  border-color: #F6BE00;
+  border-width: 7px;
+  border-style: solid;
+  border-radius: 70px;
+}
+.btn:link {
+  background: #F6BE00;
+  text-decoration: none;
+  font-size: large;
+  font-weight: bold;
+  padding: 0 1vw;
+}
+.btn:hover {
+  background: #ffe48c;    
+  color:black;
+  border-color: #ffe48c;
+  font-size: large;
+  padding: 0 1vw;
+}

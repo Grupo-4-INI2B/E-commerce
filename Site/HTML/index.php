@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
-    <script src="../JS/Home.js"></script>
+    <link rel="icon" href="../Imagens/logocaixinha.svg">
+    <script src="../JS/home.js"></script>
 </head>
 </html>
 <?php
@@ -16,19 +17,19 @@
     error_reporting (E_ALL);
     session_start();
     include ("../PHP/Funcoes.php");
-    $conn = conecta();
-
-    if(isset($_SESSION['sessaoUsuario'])) {
+    
+    if(isset($_SESSION['sessaoUsuario'])){
         $sessaoUsuario = $_SESSION['sessaoUsuario'];
         $nome = $_SESSION['nome'];
-    }else {
+        $adm = $_SESSION['adm'];
+    } else {
         $sessaoUsuario = null;
         $nome = null;
+        $adm = false;
     }
-
 ?>
 <body>
-    <div class="grid-container">
+<div class="grid-container">
         <div class="grid-logo">
             <a href="index.php">
                 <img class="logo" src="../Imagens/logocaixinhacolor.svg" alt="Logomarca">
@@ -36,7 +37,7 @@
         </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu"ws href="index.php" style="color: #000000" >Home</a>
+            <a class="botao-menu" href="index.php" style="color: #000000" >Home</a>
         </div>
     </div>
     <div  class="grid-item">
@@ -50,9 +51,7 @@
             <a class="botao-menu" href="Devops.php" style="color: #000000" >Devops</a>
         </div>
     </div>
-    <div class="div-pesquisa">
-
-    </div>
+    
 
     <div class="grid-carrinho">
         <a class="botao-menu" href="Carrinho.php" class="btn btn-primary" style="color: #000000">
@@ -63,14 +62,16 @@
 
     </div>
     <div class="grid-login">
-        <?php
-           cabecalho($sessaoUsuario,  $nome);           
-        ?>
-        </div>
+      <?php
+        cabecalho($sessaoUsuario,  $nome, $adm);           
+      ?>
     </div>
+    </div>
+</div>
+
     <div class="home">
         <br>
-        <h1 class="margem-titulo">Os Melhores<br>Produtos Geek's</h1>
+        <h1 class="margem-titulo"><br>Os Melhores<br>Produtos Geek's</h1>
             <img src="../Imagens//onda.png" alt="" class="onda">
     </div>
     <div class="container">
@@ -82,11 +83,12 @@
                 <p class="topicos">Diversidade de estampas para sua escolha</p>
                 <p class="topicos">Extremamente duráveis</p>
                 <p class="topicos">Escolha seu favorito, despertando sua criatividade</p>
+                <div class="div-foto">
+                
+            </div>
                 <button name="ver_mais" value="Ver Mais" class="vermais">Ver mais</button>
             </div>
-            <div class="div-foto">
-                <img src="../Imagens/image.png" alt="" id="foto">
-            </div>
+
         </div>
 
         
@@ -193,10 +195,10 @@
         
     </div>
     <div class="video-container">
-        <h1 class="video" style="font-size: large;">Vídeo</h1>
+        <h1 class="video" style="font-size: large;">Coneça nossos produtos mais de perto!!!</h1>
         <div class="teste">
             <div class="video-e-titulo">
-                    <iframe src="https://www.youtube.com/embed/jIQ6UV2onyI?si=rc-Xb3Av7zGyVwOW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/mRSY6UVr4zg?si=xFEXNLrf53BOczrm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="Texto-do vídeo">
                     <p class="subtitulo-video">
@@ -205,7 +207,16 @@
         </div>
         
     </div>
-
+    <div class="video-container">
+        <div class="teste">
+            <div class="imgs">
+                <img src="../Imagens/img_media1.png" alt="" id="foto">
+            </div>
+            
+        </div>
+        
+    </div>
+    
 
     <!--Footer-->
 
@@ -226,6 +237,7 @@
             <li><a href="#">Nossos Contribuintes</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Ajuda</h4>
           <ul>
@@ -236,6 +248,7 @@
             <li><a href="#">Opções de pagamento</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Loja Online</h4>
           <ul>
@@ -246,6 +259,7 @@
             <li><a href="#">Harry Potter</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Nossas Redes</h4>
           <div class="social-links">
@@ -254,6 +268,7 @@
             <a href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
+        
       </div>
      </div>
   </footer>

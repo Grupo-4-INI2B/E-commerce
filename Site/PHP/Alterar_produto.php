@@ -1,10 +1,18 @@
 <?php
-include "Funcoes.php";
+    ini_set ('display_errors', 1);
+    error_reporting (E_ALL);
+    session_start();
+    include ("../PHP/Funcoes.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
+        header("Location: ../HTML/Login.php");
+        exit();
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Conecte-se ao banco de dados
     $conn = conecta();
-    
+    echo $_POST['imagem'];
     // Obtenha os dados do formulário
     $id_produto = $_POST['id_produto'];
     $nome = $_POST['nome'];
@@ -18,13 +26,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $quantidade = $_POST['quantidade'];
     $imagem = $_POST['imagem'];
     $categoria = $_POST['categoria'];
-    
+                if($id_produto > 1100 && $id_produto < 1200)
+                {
+                    $caminhoDiretorio = "../Produtos_E-commerce/Aleatório/";
+                }
+                else
+                if($id_produto > 1200 && $id_produto < 1300)
+                {
+                    $caminhoDiretorio = "../Produtos_E-commerce/Capivaras/";
+                }
+                else
+                if($id_produto > 1300 && $id_produto < 1400)
+                {
+                    $caminhoDiretorio = "../Produtos_E-commerce/Demon Slayer/";
+                }
+                else
+                if($id_produto > 1400 && $id_produto < 1500)
+                {
+                    $caminhoDiretorio = "../Produtos_E-commerce/Harry Potter/";
+                }
+                else
+                if($id_produto > 1500 && $id_produto < 1600)
+                {
+                    $caminhoDiretorio = "../Produtos_E-commerce/Pokemons/";
+                }
+                else
+                if($id_produto > 1600 && $id_produto < 1700)
+                {
+                    $caminhoDiretorio = "../Produtos_E-commerce/Star Wars/";
+                }
+                else
+                if($id_produto > 1700 && $id_produto < 1800)
+                {
+                    $caminhoDiretorio = "../Produtos_E-commerce/Studio_Ghibli/";
+                }
+                else
+                if($id_produto > 1800 && $id_produto < 1900)
+                {
+                    $caminhoDiretorio = "../Produtos_E-commerce/Van Gogh/";
+                }
+                if($id > 2000 && $id < 3000)
+                {
+                $caminhoDiretorio = "../Produtos_E-commerce/Botton/";
+                }
+                else
+                if($id > 3000 && $id < 4000)
+                {
+                $caminhoDiretorio = "../Produtos_E-commerce/Poster/";
+                }
     // Verifique se o formulário enviou uma imagem
     if (isset($_FILES["imagem"]) && $_FILES["imagem"]["size"] > 0) {
         $nomeImagem = $_FILES["imagem"]["name"];
         $tipoImagem = $_FILES["imagem"]["type"];
         $tamanhoImagem = $_FILES["imagem"]["size"];
-        $caminhoDiretorio = "../HTML_CSS/Produtos_E-commerce";
         $caminhoImagem = $caminhoDiretorio . $nomeImagem;
     
         // Verifique se o arquivo é uma imagem válida

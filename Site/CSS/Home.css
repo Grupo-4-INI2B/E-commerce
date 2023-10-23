@@ -43,8 +43,8 @@
   height: 33px;
   width: 135px;
 }*/
-/*
-.botao-menu{
+
+/* .botao-menu{
   font-family: Arial;
   font-size:large;
   border-color: #F6BE00;
@@ -52,6 +52,28 @@
   border-style: solid;
   border-radius: 70px;
 }
+.botao-perfil{
+  font-family: Arial;
+  border-color: #F6BE00;
+  border-width: 7px;
+  border-style: solid;
+  border-radius: 70px;
+}
+.botao-perfil:link {
+  background: #F6BE00;
+  text-decoration: none;
+  font-weight:100;
+  font-weight: bold;
+  padding: 0 1vw;
+}
+.botao-perfil:hover {
+  background: #ffe48c;    
+  color: #FFF;
+  border-color: #ffe48c;
+  font-weight: 50;
+  padding: 0 1.2vw;
+}
+
 .botao-menu:link {
   background: #F6BE00;
   text-decoration: none;
@@ -65,7 +87,7 @@
   border-color: #ffe48c;
   font-weight: 50;
   padding: 0 1.2vw;
-}*/
+} */
 
 /*
 .grid-logo {
@@ -142,6 +164,7 @@
   margin: 0;
   padding: 0;
 }*/
+
 .produtos
 {
   width: calc(48vw + 20px);
@@ -249,8 +272,9 @@
 #foto
 {
   margin-top: 30px;
-  width: 20vw;
-  height: 40vh;
+  width: 91vw;
+  height: 70vh;
+  border-radius: 20px;
 }
 
 .produtos-filho{
@@ -384,7 +408,7 @@
   margin-right: 35px;
   background-color: #efefef72;
   width: 39vw;
-  height: auto;
+  height: min-content;
   padding: 5px;
   border-radius: 30px;
   display: flex;

@@ -5,7 +5,6 @@
     $conn = conecta();
     session_start();
 
-    $email = ""; $senha = "";
     //Parâmetros vindos do formulário de cadastro e login e verificação se estão vazios.
     if(isset($_POST['email']) && isset($_POST['senha'])) {
         $email = $_POST['email'];

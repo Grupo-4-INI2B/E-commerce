@@ -3,14 +3,15 @@
     error_reporting (E_ALL);
     session_start();
     include ("../PHP/Funcoes.php");
-    $conn = conecta();
 
     if(isset($_SESSION['sessaoUsuario'])) {
-        $sessaoUsuario = $_SESSION['sessaoUsuario'];
-        $nome = $_SESSION['nome'];
+      $sessaoUsuario = $_SESSION['sessaoUsuario'];
+      $nome = $_SESSION['nome'];
+      $adm = $_SESSION['adm'];
     }else {
-        $sessaoUsuario = null;
-        $nome = null;
+      $sessaoUsuario = null;
+      $nome = null;
+      $adm = false;
     }
 
 ?>
@@ -24,6 +25,7 @@
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Devops.css">
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
+    <link rel="icon" href="../Imagens/logocaixinha.svg">
     <script src="../JS/Home.js"></script>
 </head>
 <body>
@@ -49,12 +51,6 @@
             <a class="botao-menu" href="Devops.php" style="color: #000000" >Devops</a>
         </div>
     </div>
-    <div class="search-container">
-        <form>
-            <label for="search-input" class="search-icon"></label>
-            <input type="text" class="search-input" id="search-input" width="30" height="15" required />
-        </form>
-    </div>
 
     <div class="grid-carrinho">
         <a class="botao-menu" href="Carrinho.php" class="btn btn-primary" style="color: #000000">
@@ -64,15 +60,17 @@
           
 
     </div>
-    <div class="grid-login">
-      <?php
-        cabecalho($sessaoUsuario,  $nome);           
-      ?>
+    <div class='grid-login'>
+        <div class="botao-menu">
+        <?php
+            cabecalho($sessaoUsuario,  $nome, $adm);           
+        ?>
+        </div>
     </div>
     </div>
     <div class="home">
         <br>
-        <h1 class="margem-titulo">Os Nossos Dev's</h1>
+        <h1 class="margem-titulo"><br>Os Nossos Dev's</h1>
             <img src="../Imagens//onda.png" alt="" class="onda">
     </div>
     <div class="grid-container2">

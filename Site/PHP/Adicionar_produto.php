@@ -1,7 +1,14 @@
 <?php
-include "Funcoes.php";
+    ini_set ('display_errors', 1);
+    error_reporting (E_ALL);
+    session_start();
+    include ("../PHP/Funcoes.php");
+    $conn=conecta();
 
-$conn = conecta();
+    if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
+        header("Location: ../HTML/Login.php");
+        exit();
+    }
 
             $id= $_POST['id_produto'];
            
@@ -52,6 +59,16 @@ $conn = conecta();
                 {
                 $caminhoDiretorio = "../Produtos_E-commerce/Van Gogh/";
                 }
+                else
+                if($id > 2000 && $id < 3000)
+                {
+                $caminhoDiretorio = "../Produtos_E-commerce/Botton/";
+                }
+                else
+                if($id > 3000 && $id < 4000)
+                {
+                $caminhoDiretorio = "../Produtos_E-commerce/Poster/";
+                }
                 $caminhoImagem = $caminhoDiretorio . $nomeImagem;
             
                 // Verifique se o arquivo é uma imagem válido (opcional)
@@ -88,7 +105,7 @@ $conn = conecta();
                     ) VALUES (
                         :id_produto, :nome, :descricao, :preco, :codigovisual, :custo, :margem_lucro, :icms, :imagem, :excluido, :quantidade, :categoria
                     )";
-                
+
                     $stmt = $conn->prepare($sql);
                     if ($stmt->execute($params)) {
                         header("Location: ../HTML/Crud.php");

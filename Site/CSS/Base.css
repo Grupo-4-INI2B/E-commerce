@@ -8,65 +8,53 @@ body{
 
 /* .grid-container */
 .grid-container {
-    z-index: 3;
-    display: grid;
-    grid-template-columns: 15% 10% 10% 10% 25% auto auto;
-    grid-template-rows: 1fr;
-    background-color: #272727;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 15%;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 15% 12% 12% 12% auto auto;
+  grid-template-rows: 1fr;
+  background-color: #272727;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15%;
 }
 
 
 .grid-logo {
-    display: flex;
-    justify-content:flex-start;
-    align-items: flex-start;
-    background-color: #272727;
-    color: black;
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
+  display: flex;
+  justify-content:flex-start;
+  align-items: flex-start;
+  background-color: #272727;
+  color: black;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
 }
+
 .grid-item {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   color: black;
   padding: 20px;
   font-size: 30px;
 }
-.search-container
-{
-    display: flex;
-    justify-content:left;
-    align-items: center;
-    padding: 20px;
-    grid-area: auto / 5  ;
-}
+
+
 .grid-carrinho {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    background-color: #272727;
-    color: black;
-    padding: 20px;
-}
-.carrinho{
-    height: 50%;
-    width: 50%;
-}
-.grid-login {
   display: flex;
-  justify-content:center;
+  justify-content:right;
   align-items: center;
   background-color: #272727;
   color: black;
   padding: 20px;
 }
+.carrinho{
+  height: 50%;
+  width: 50%;
+}
+
 
 .carrinho, .login{
     height: 40px; /* Ajuste a altura conforme necessário */
@@ -81,10 +69,10 @@ body{
     width: 135px;
 }
 .logo {
-    height: 5%;
-    width: 5%;
-    position: fixed;
-    border-radius: 20px;
+  height: 8%;
+  width: 8%;
+  position: fixed;
+  border-radius: 20px;
 }
 
 .home{
@@ -108,30 +96,60 @@ body{
 
 
 .botao-menu{
-    font-family: Arial;
-    font-size:large;
-    border-color: #F6BE00;
-    border-width: 7px;
-    border-style: solid;
-    border-radius: 70px;
+  font-family: Arial;
+  font-size:large;
+  border-color: #F6BE00;
+  border-width: 7px;
+  border-style: solid;
+  border-radius: 70px;
 }
 .botao-menu:link {
-    background: #F6BE00;
-    text-decoration: none;
-    font-weight:100;
-    font-weight: bold;
-    padding: 0 1vw;
-    text-decoration: none;
+  background: #F6BE00;
+  text-decoration: none;
+  font-size: large;
+  font-weight: bold;
+  padding: 0 1vw;
 }
 .botao-menu:hover {
-    background: #ffe48c;    
-    color: #FFF;
-    border-color: #ffe48c;
-    font-weight: 50;
-    padding: 0 1.2vw;
-    font-weight: bold;
-  
+  background: #ffe48c;    
+  color: #FFF;
+  border-color: #ffe48c;
+  font-size: large;
+  padding: 0 1vw;
 }
+.botao-perfil{
+  font-family: Arial;
+  border-color: #F6BE00;
+  border-width: 7px;
+  border-style: solid;
+  border-radius: 70px;
+}
+.botao-perfil:link {
+  background: #F6BE00;
+  text-decoration: none;
+  font-size: large;
+  font-weight: bold;
+}
+.botao-perfil:hover {
+  background: #ffe48c;    
+  color: #FFF;
+  border-color: #ffe48c;
+  font-size: large;
+}
+
+
+
+
+
+.grid-login {
+  display: flex;
+  justify-content:right;
+  align-items: center;
+  background-color: #272727;
+  color: black;
+  padding: 20px;
+  margin-right: 10%;
+} 
 
 
 
@@ -142,7 +160,7 @@ body{
 .container-footer{
   max-height: auto;
   max-width: auto;
-  margin:auto;
+  margin: auto;
 }
 
 .row{

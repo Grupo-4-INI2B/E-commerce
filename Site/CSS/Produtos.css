@@ -63,8 +63,8 @@ a:link {
   padding: 0 1.2vw;
 
  }*/
-/*
-.botao-menu{
+
+/* .botao-menu{
   font-family: Arial;
   font-size:large;
   border-color: #F6BE00;
@@ -85,7 +85,7 @@ a:link {
   border-color: #ffe48c;
   font-weight: 50;
   padding: 0 1.2vw;
-}*/
+} */
 
 
 /*
@@ -195,7 +195,7 @@ a:link {
 
 .product-card img {
   width: 100%;
-  height: auto;
+  height: 35vh;
 }
 
 .product-card h2 {
@@ -227,12 +227,12 @@ a:link {
   z-index: 1;
   font-family: Arial;
   font-weight: bold;
-  width: 100%;
+  width: 50%;
   background-color: #F6BE00;
   border: none;
   outline: none;
   box-shadow: 0px 5px 5px #efefef72;
-  height: 35px;
+  height: 20px;
   cursor: pointer;
   margin-top: 10px; /* Ajuste a margem conforme necessário */
   text-decoration: none;

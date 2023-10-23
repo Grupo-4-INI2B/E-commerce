@@ -5,20 +5,27 @@
    include ("../PHP/Funcoes.php");
    $conn = conecta();
 
-   if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == true){ // Se não está logado ou não é administrador 
-       header("Location: index.php");
-       exit();
-   }
+    if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == false) { // Se não está logado ou não é administrador 
+        header("Location: ../HTML/Login.php");
+        exit();
+    }
 
     $id_usuario = $_GET['id_usuario'];
 
     $select = $conn->query("SELECT * FROM tbl_usuario WHERE id_usuario = $id_usuario")->fetch();
 
-    $varNome   = $select['nome_usuario'];
-    $varEmail  = $select['email'];
-    $varTlfn   = $select['telefone'];
-    $varSenha  = $select['senha'];
-    $varAdm    = $select['adm'];
+    if($select['excluido'] == true) {
+        header("Location: Usuarios.php");
+        exit();
+    }
+    if(isset($select['nome_usuario']) && isset($select['email']) 
+    && isset($select['telefone']) && isset($select['senha']) && isset($select['adm'])) {
+        $varNome   = $select['nome_usuario'];
+        $varEmail  = $select['email'];
+        $varTlfn   = $select['telefone'];
+        $varSenha  = $select['senha'];
+        $varAdm    = $select['adm'];
+    } 
 
     if(isset($_POST['submit'])){
         $usuario      = $_POST['usuario'];

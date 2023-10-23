@@ -3,10 +3,10 @@
     error_reporting (E_ALL);
     session_start();
     include ("../PHP/Funcoes.php");
-    $conn = conecta();
 
-    if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == true){ // Se não está logado ou não é administrador 
+    if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
         header("Location: ../HTML/Login.php");
+        exit();
     }
 ?>
 
@@ -22,13 +22,13 @@
         <h2>Formulário de Produto</h2>
         <form action="../PHP/Adicionar_produto.php" method="POST" enctype="multipart/form-data">
             <label for="id_produto">Id Produto</label>
-            <input type="number" id="id_produto" name="id_produto"><br><br>
+            <input type="number" id="id_produto" name="id_produto" ><br><br>
 
             <label for="nome_produto">Nome:</label>
-            <input type="text" id="nome_produto" name="nome_produto"><br><br>
+            <input type="text" id="nome_produto" name="nome_produto" ><br><br>
 
             <label for="descricao">Descrição:</label>
-            <textarea id="descricao" name="descricao"></textarea><br><br>
+            <textarea id="descricao" name="descricao" ></textarea><br><br>
 
             <label for="vlr">Preço:</label>
             <input type="text" id="vlr" name="vlr"><br><br>
@@ -47,6 +47,9 @@
 
             <label for="qntd">Quantidade:</label>
             <input type="text" id="qntd" name="qntd"><br><br>
+
+            <label for="categoria">Id Categoria:</label>
+            <input type="text" id="categoria" name="categoria"><br><br>
 
             <label for="imagem">Imagem:</label>
             <input type="file" id="imagem" name="imagem"><br><br>

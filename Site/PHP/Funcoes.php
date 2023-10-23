@@ -24,7 +24,7 @@
   function verificaUser($paramSenha, $paramEmail)
   {
     $conn = conecta();
-    $select = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha");
+    $select = $conn->prepare("SELECT * FROM tbl_usuario WHERE email = :email AND senha = :senha AND excluido = false");
     $select->execute(['email' => $paramEmail, 'senha' => $paramSenha]);
     $row = $select->fetch();
     if($row) {
@@ -52,18 +52,21 @@
   }
 
   //Função de cabeçalho
-  function cabecalho($sessaoUsuario, $nome) {
-    if($sessaoUsuario != null) {        
-      echo "<a class='botao-menu' href='Perfil.php' class='cart' style='color: #000000'>
+  function cabecalho($sessaoUsuario, $nome, $adm) {
+    if(!isset($sessaoUsuario)) {
+      echo "<a class='botao-perfil' href='Login.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
-      style='position: relative; top: 2px;'Bem vindo, $nome</a>";
-    }else {
-      echo "<a class='botao-menu' href='Login.php' class='cart' style='color: #000000'>
+      style='position: relative; top: 2px;  font-size:20px;'>Entrar</a>";
+    } else if(!$adm) {        
+       echo "<a class='botao-perfil' href='Perfil.php' class='cart' style='color: #000000'>
+       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
+       style='position: relative; top: 2px;   font-size:10px;'>Bem vindo, $nome</a>";
+    } else  {
+      echo "<a class='botao-perfil' href='Perfil.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
-      style='position: relative; top: 2px;'>Entrar</a>";
-    } 
-  }
-
+      style='position: relative; top: 2px;  font-size:10px;'>Bem vindo administrador</a>";
+    }
+}
   //Função para envio de email
   //As referencias a outros arquivos deve ser feita de maneira global, 
   //ou seja, fora da função
@@ -111,6 +114,7 @@
       $mail->IsHTML(true); //Se o email vai ser em HTML ou não 
       $mail->Subject = $pAssunto; //O assunto do email
       $mail->Body = $pHtml; //O conteúdo(corpo) do email em HTML
+      $mail->CharSet = 'UTF-8'; //Codificação do email
       $mail->AltBody = 'seu email nao suporta html'; //Uma mensagem avisando destinatário que o seu email não suporta HTML
       $enviado = $mail->Send(); //Envia o email
       
@@ -139,11 +143,9 @@
   * marcelo c peres - 2023
   */
 
-  function ExecutaSQL($paramConn, $paramSQL) 
+  function ExecutaSQL( $paramConn, $paramSQL ) 
   {
-    // exec eh usado para update, delete, insert
-    // eh um metodo da conexao
-    // retorna o nro de linhas afetadas
+
     $linhas = $paramConn->exec($paramSQL);
   
     if ($linhas > 0) { 
@@ -158,9 +160,17 @@
   * marcelo c peres - 2023
   */
 
-  // ValorSQL 
-  // retorna o valor de um campo de um select
-  // Set 2023 - Marcelo C Peres 
+  function ValorSQL($pConn, $pSQL) 
+  {
+   $linhas = $pConn->query($pSQL)->fetch();
+  
+   if ($linhas > 0) { 
+       return $linhas[0]; 
+   } else { 
+       return "0"; 
+   }  
+  }
+
 
    
 /*
@@ -259,9 +269,9 @@
           echo "<td> <img src='$imagem' alt='miguel drogado' widht='150px' height='100px'> </td>";
           echo "<td>" . $excluido . "</td>";
           echo "<td>" . $data_exclusao . "</td>";
-          echo "<td><a href='Form_adicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
-          echo "<td><a href='Deletar_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
-          echo "<td><a href='Form_alterar_produto.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
+          echo "<td><a href='../HTML/Form_adicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
+          echo "<td><a href='../PHP/Deletar_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
+          echo "<td><a href='../PHP/Form_alterar_produto.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
           echo "</tr>";
       }
 
