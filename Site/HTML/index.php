@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
-    <link rel="icon" href="../Imagens/logocaixinha.svg">
+    <link rel="icon" href="../Imagens/logocaixinha.svg"> 
     <script src="../JS/home.js"></script>
 </head>
 </html>
@@ -84,9 +84,13 @@
                 <p class="topicos">Extremamente duráveis</p>
                 <p class="topicos">Escolha seu favorito, despertando sua criatividade</p>
                 <div class="div-foto">
-                
-            </div>
+                <img src="../Imagens/Imgmedia2.png" class='img_media' alt="Botton">
+                <img src="../Imagens/ImgMedia1.jpeg" class='img_media' alt="Botton">
+                <img src="../Imagens/ImgMedia3.png" class='img_media' alt="Botton">
+                </div>
+            <a href="Produtos.php">
                 <button name="ver_mais" value="Ver Mais" class="vermais">Ver mais</button>
+                </a>
             </div>
 
         </div>
@@ -195,7 +199,7 @@
         
     </div>
     <div class="video-container">
-        <h1 class="video" style="font-size: large;">Coneça nossos produtos mais de perto!!!</h1>
+        <h1 class="video" style="font-size: large;">Conheça nossos produtos mais de perto!!!</h1>
         <div class="teste">
             <div class="video-e-titulo">
                 <iframe src="https://www.youtube.com/embed/mRSY6UVr4zg?si=xFEXNLrf53BOczrm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -217,7 +221,7 @@
         
     </div>
     
-
+    <a href='index.php' class='btn-buy' >Voltar ao Topo</a>
     <!--Footer-->
 
    <title>Footer Design</title>
@@ -231,41 +235,32 @@
         <div class="footer-col">
           <h4>ByteCraft</h4>
           <ul>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Nossos serviços</a></li>
-            <li><a href="#">Politica de privacidade</a></li>
-            <li><a href="#">Nossos Contribuintes</a></li>
+            <li><a href="Devops.php">Sobre nós</a></li>
+            <li><a href="Produtos.php">Nossos serviços</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Ajuda</h4>
           <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Envio</a></li>
-            <li><a href="#">Devolução</a></li>
-            <li><a href="#">Status do Pedido</a></li>
-            <li><a href="#">Opções de pagamento</a></li>
+            <li><a href="#">Opções de pagamento: Fichas</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Loja Online</h4>
           <ul>
-            <li><a href="#">Anime</a></li>
-            <li><a href="#">Capivaras</a></li>
-            <li><a href="#">Van Googh</a></li>
-            <li><a href="#">Star wars</a></li>
-            <li><a href="#">Harry Potter</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="Produtos.php">Produtos</a></li>
+            <li><a href="Devops.php">Devops</a></li>
+            <li><a href="Carrinho.php">Carrinho</a></li>   
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Nossas Redes</h4>
           <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/bbyte_craft/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         

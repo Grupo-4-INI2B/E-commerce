@@ -137,7 +137,14 @@ body{
   font-size: large;
 }
 
-
+.img_media{
+  width: 10vw;
+  height: 20vh;
+  margin-left: 50px;
+  margin-bottom: 10px;
+  margin-right: 60px;
+  border-radius: 20px;
+}
 
 
 
@@ -176,7 +183,8 @@ ul{
 }
 .footer-col{
    width: 25%;
-   padding: 0 15px;
+   padding: 0px;
+   display: inline-block;
 }
 .footer-col h4{
   font-size: 18px;
@@ -241,4 +249,27 @@ ul{
   .footer-col{
     width: 100%;
 }
+}
+.btn-buy {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10rem;
+  color: #FFF;
+  font-size: small;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-family: Arial;
+  font-weight: bold;
+  width: 7%;
+  background-color: #F6BE00;
+  border: none;
+  outline: none;
+  box-shadow: 0px 5px 5px #efefef72;
+  height: 35px;
+  cursor: pointer;
+  margin-top: 10px; /* Ajuste a margem conforme necessário */
+  text-decoration: none;
+  padding-bottom: 0;
 }

@@ -176,60 +176,50 @@
         </div>
        
     </form>
-
+    <a href='Produtos.php' class='btn-buy'>Voltar ao Topo</a>
 <!-- Footer -->
 <title>Footer Design</title>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
 
-  <footer class="footer">
+<footer class="footer">
      <div class="container-footer">
       <div class="row">
         <div class="footer-col">
           <h4>ByteCraft</h4>
           <ul>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Nossos serviços</a></li>
-            <li><a href="#">Politica de privacidade</a></li>
-            <li><a href="#">Nossos Contribuintes</a></li>
+            <li><a href="Devops.php">Sobre nós</a></li>
+            <li><a href="Produtos.php">Nossos serviços</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Ajuda</h4>
           <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Envio</a></li>
-            <li><a href="#">Devolução</a></li>
-            <li><a href="#">Status do Pedido</a></li>
-            <li><a href="#">Opções de pagamento</a></li>
+            <li><a href="#">Opções de pagamento: Fichas</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Loja Online</h4>
           <ul>
-            <li><a href="#">Anime</a></li>
-            <li><a href="#">Capivaras</a></li>
-            <li><a href="#">Van Googh</a></li>
-            <li><a href="#">Star wars</a></li>
-            <li><a href="#">Harry Potter</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="Produtos.php">Produtos</a></li>
+            <li><a href="Devops.php">Devops</a></li>
+            <li><a href="Carrinho.php">Carrinho</a></li>   
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Nossas Redes</h4>
           <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/bbyte_craft/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         
       </div>
      </div>
   </footer>
-
 </body>
 </html>
