@@ -24,8 +24,6 @@
     <title>Byte Craft - Devops</title>
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Devops.css">
-    <link rel="stylesheet" href="../CSS/Search-Box.css" />
-    <link rel="icon" href="../Imagens/logocaixinha.svg">
     <script src="../JS/Home.js"></script>
 </head>
 <body>
@@ -61,11 +59,11 @@
 
     </div>
     <div class='grid-login'>
-        <div class="botao-menu">
-        <?php
-            cabecalho($sessaoUsuario,  $nome, $adm);           
-        ?>
-        </div>
+    <div class="botao-menu">
+      <?php
+        cabecalho($sessaoUsuario,  $nome, $adm);           
+      ?>
+    </div>
     </div>
     </div>
     <div class="home">
@@ -73,6 +71,14 @@
         <h1 class="margem-titulo"><br>Os Nossos Dev's</h1>
             <img src="../Imagens//onda.png" alt="" class="onda">
     </div>
+      <div class="infogeral">
+              <h3>A ByteCraft é uma loja online criada a partir de um projeto curricular
+                que abrange as disciplinas de Gestão de Negócios, Aplicativos I, Banco de 
+                Dados e PHP, ministradas pelos professores Jovita Mercedes H. Baenas, Débora Aires, 
+                José Vieira e Marcelo Cabello. Desenvolvida para amantes da cultura 
+                Geek em geral, nossa loja </h3>
+      </div>
+
     <div class="grid-container2">
         <div class="gustavo">
             <img src="../Imagens/gustavo.png" width="160" height="160">
@@ -104,15 +110,6 @@
             <H2> Juliana Tano</H2>
             <h3> Número 20</h3>
         </div>
-      </div>
-      <div class="infogeral">
-              <h3>A ByteCraft é uma loja online criada a partir de um projeto curricular
-                que abrange as disciplinas de Gestão de Negócios, Aplicativos I, Banco de 
-                Dados e PHP, ministradas pelos professores Jovita Mercedes H. Baenas, Débora Aires, 
-                José Vieira e Marcelo Cabello. Desenvolvida para amantes da cultura 
-                Geek em geral, nossa loja </h3>
-              <h4> Colégio Técnico Industrial “Prof. Isaac 
-                  Portal Roldán” - Câmpus de Bauru </h4>  
       </div>
     </div>
 </body>

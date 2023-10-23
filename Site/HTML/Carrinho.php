@@ -227,6 +227,10 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
             $total = ValorSQL($conn, "select sum (tbl_produto.vlr * tbl_compra_produto.quantidade) from tbl_produto inner join tbl_compra_produto on 
             tbl_produto.id_produto = tbl_compra_produto.fk_produto where tbl_compra_produto.fk_compra = $codigoCompra");
             // se o login foi obtido (se esta logado), mostra link 'fechar carrinho' 
+            if($total == null)
+            {
+              $total = 0;
+            }
             if($codigoCompra==0)
             {
               echo "<h1 class='margem-titulo'>Seu carrinho está vazio</h1>";

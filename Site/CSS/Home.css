@@ -544,7 +544,6 @@ display: flex;
 }
 .video-e-titulo
 {
-  
   align-items: center;
   height: auto;
   width: 100%;
@@ -568,8 +567,8 @@ display: flex;
   box-shadow: 0px 5px 5px #CCC;
   padding: 1vw 1vw;
   border-radius: 20px;
-
 }
+
   iframe {
   align-items: center;
   border-radius: 20px;
@@ -593,6 +592,7 @@ display: flex;
   border-radius: 20px;
 
 }
+
 
 /*Footer*/
 /*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');

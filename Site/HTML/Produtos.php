@@ -26,7 +26,7 @@
     <title>Byte Craft - Produtos</title>
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Produtos.css">
-    <link rel="stylesheet" href="../CSS/search-Box.css"/>
+    <link rel="stylesheet" href="../CSS/Carrinho.css"/>
     <link rel="icon" href="../Imagens/logocaixinha.svg">
 
     <script src="../JS/Home.js"></script>
@@ -102,7 +102,7 @@
                 <label for="Botton">Botton</label>
                 <input type="checkbox" name='filtro[]' id="Poster" value="Poster">
                 <label for="Poster">Poster</label>
-                <input type="submit" value='Filtrar' name='categorias'></input>
+                <input type="submit" value='Filtrar' class='btn' name='categorias'></input>
                 <br>
 
             </div>
