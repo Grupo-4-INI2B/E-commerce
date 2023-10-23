@@ -60,6 +60,8 @@
                 <a class='btn-logout' href='../PHP/Logout_usuario.php'>Logout</a>
                 <br>
                 <a class='btn-logout' href='Excluir_usuario.php'>Excluir Perfil</a>
+                <br>
+                <a class='btn-logout' href='index.php'>Voltar ao home</a>
             </body>
         </html>";
     }else {
@@ -69,7 +71,9 @@
         echo "<h2 class='subtitulo'>Administrador</h2>";
         echo "<h2><a href='Usuarios.php' class='btn-logout'>Administar Usuários</a></h2>";
         echo "<h2><a href='Crud.php' class='btn-logout'>Administar Produtos</a></h2>";
-        echo "<a class='btn-logout' href='../PHP/Logout_usuario.php'>Logout</a></html>";
+        echo "<a class='btn-logout' href='../PHP/Logout_usuario.php'>Logout</a>
+                <br>
+                <a class='btn-logout' href='index.php'>Voltar ao home</a></html>";
     }
 
 ?>

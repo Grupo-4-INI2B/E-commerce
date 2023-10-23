@@ -58,6 +58,8 @@
                         <a href="Cadastro.html" style="color: #FFF" >Não tenho uma conta</a>
                         <br>
                         <a href="Esqueci.php" style="color: #FFF">Esqueci a senha</a>
+                        <br>
+                        <a href="index.php" style="color: #FFF">Voltar ao Home</a>
                 </div>
             </div>
         </div>
