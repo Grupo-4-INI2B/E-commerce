@@ -108,79 +108,79 @@
                     <img src="../Produtos_E-commerce/Studio_Ghibli/SG01.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>01</p>
-                    <p class="price">R$ 0,70</p>
-                    <button type="submit" class="btn-buy">Comprar</button>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1701' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG02.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Harry Potter/HP25.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>02</p>
-                    <p class="price">R$ 0,70</p>
-                    <button type="submit" class="btn-buy">Comprar</button>
+                    <p>Harry Potter<br>25</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1425' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG03.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Pokemons/PK15.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>03</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Pokémon<br>15</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1515' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG04.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Aleatório/AL01.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>04</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Aleatório<br>01</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1101' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG05.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Van Gogh/VG21.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>05</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Van Gogh<br>21</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1821' class='btn-buy'>Comprar</a>
                 </div>
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG06.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Demon Slayer/DS01.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>06</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
-                </div>
-
-                <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG07.png" alt="Nome do Produto">
-                    <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>07</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Demon Slayer<br>01</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1301' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG08.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Star Wars/SW09.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>08</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Star Wars<br>09</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1609' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG09.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Capivaras/CP41.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>09</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Capivaras<br>41</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1241' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src=" ../Produtos_E-commerce/Studio_Ghibli/SG10.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Demon Slayer/DS35.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>10</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Demon Slayer<br>35</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1335' class='btn-buy'>Comprar</a>
+                </div>
+
+                <div class="product-card">
+                    <img src=" ../Produtos_E-commerce/Pokemons/PK46.png" alt="Nome do Produto">
+                    <h2>Adesivo Anime</h2>
+                    <p>Pokémon<br>46</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1546' class='btn-buy'>Comprar</a>
                 </div>
 
         
