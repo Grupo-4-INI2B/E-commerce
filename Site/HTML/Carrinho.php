@@ -227,26 +227,26 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
             $total = ValorSQL($conn, "select sum (tbl_produto.vlr * tbl_compra_produto.quantidade) from tbl_produto inner join tbl_compra_produto on 
             tbl_produto.id_produto = tbl_compra_produto.fk_produto where tbl_compra_produto.fk_compra = $codigoCompra");
             // se o login foi obtido (se esta logado), mostra link 'fechar carrinho' 
-            if($codigoCompra==0)
-            {
-              echo "<h1 class='margem-titulo'>Seu carrinho está vazio</h1>";
-            }else{
-              if (isset($login)) {
-                  if ($statusCompra == 'Pendente' && $login <> '') {
-                    echo"<div class='subtotal cf'>
-                            <ul>
-                              <li class='totalRow'><span class='label'>Satus da compra</span><span class='value'>$statusCompra</span></li>
-                              <li class='totalRow final'><span class='label'>Total R$: </span><span class='value'>$total,00</span></li>
-                              <li class='totalRow'><a href='Confirma_compra.php?total=$total' class='btn'>Finalizar compra</a></li>
-                              <br><br><br><br><br>
-                              <li class='totalRow'><a href='Carrinho.php?operacao=apagar&id=0' class= 'btn-home'>Limpar o carrinho</a></li>
-                              <br><br><br><br><br>
-                              <li class='totalRow'><a href='index.php' class='btn-home'>Voltar ao home</a></li>
-                            </ul>
-                        </div>";
-              }
-            }
-          }
+              if($codigoCompra==0)
+              {
+                echo "<h1 class='margem-titulo'>Seu carrinho está vazio</h1>";
+              }else{
+                if (isset($login)) {
+                    if ($statusCompra == 'Pendente' && $login <> '') {
+                      echo"<div class='subtotal cf'>
+                              <ul>
+                                <li class='totalRow'><span class='label'>Satus da compra</span><span class='value'>$statusCompra</span></li>
+                                <li class='totalRow final'><span class='label'>Total R$: </span><span class='value'>$total,00</span></li>
+                                <li class='totalRow'><a href='Confirma_compra.php?total=$total' class='btn'>Finalizar compra</a></li>
+                                <br><br><br><br><br>
+                                <li class='totalRow'><a href='Carrinho.php?operacao=apagar&id=0' class= 'btn-home'>Limpar o carrinho</a></li>
+                                <br><br><br><br><br>
+                                <li class='totalRow'><a href='index.php' class='btn-home'>Voltar ao home</a></li>
+                              </ul>
+                          </div>";
+                          } 
+                        } 
+                      }
 
             ?>
           </div>
