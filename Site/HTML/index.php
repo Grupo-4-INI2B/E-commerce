@@ -193,13 +193,12 @@
             </div>
 
         </div>
-
-
-    
         
     </div>
     <div class="video-container">
+
         <h1 class="video" style="font-size: large;">Conheça nossos produtos mais de perto!!!</h1>
+
         <div class="teste">
             <div class="video-e-titulo">
                 <iframe src="https://www.youtube.com/embed/mRSY6UVr4zg?si=xFEXNLrf53BOczrm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -218,12 +217,10 @@
             </div>
             
         </div>
-        
     </div>
-    
     <a href='index.php' class='btn-buy' >Voltar ao Topo</a>
-    <!--Footer-->
 
+    <!--Footer-->
    <title>Footer Design</title>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
