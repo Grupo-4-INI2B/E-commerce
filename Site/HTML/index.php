@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../CSS/Base.css">
     <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
-    <link rel="icon" href="../Imagens/logocaixinha.svg">
+    <link rel="icon" href="../Imagens/logocaixinha.svg"> 
     <script src="../JS/home.js"></script>
 </head>
 </html>
@@ -84,9 +84,13 @@
                 <p class="topicos">Extremamente duráveis</p>
                 <p class="topicos">Escolha seu favorito, despertando sua criatividade</p>
                 <div class="div-foto">
-                
-            </div>
+                <img src="../Imagens/Imgmedia2.png" class='img_media' alt="Botton">
+                <img src="../Imagens/ImgMedia1.jpeg" class='img_media' alt="Botton">
+                <img src="../Imagens/ImgMedia3.png" class='img_media' alt="Botton">
+                </div>
+            <a href="Produtos.php">
                 <button name="ver_mais" value="Ver Mais" class="vermais">Ver mais</button>
+                </a>
             </div>
 
         </div>
@@ -108,79 +112,79 @@
                     <img src="../Produtos_E-commerce/Studio_Ghibli/SG01.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>01</p>
-                    <p class="price">R$ 0,70</p>
-                    <button type="submit" class="btn-buy">Comprar</button>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1701' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG02.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Harry Potter/HP25.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>02</p>
-                    <p class="price">R$ 0,70</p>
-                    <button type="submit" class="btn-buy">Comprar</button>
+                    <p>Harry Potter<br>25</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1425' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG03.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Pokemons/PK15.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>03</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Pokémon<br>15</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1515' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG04.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Aleatório/AL01.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>04</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Aleatório<br>01</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1101' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG05.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Van Gogh/VG21.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>05</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Van Gogh<br>21</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1821' class='btn-buy'>Comprar</a>
                 </div>
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG06.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Demon Slayer/DS01.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>06</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
-                </div>
-
-                <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG07.png" alt="Nome do Produto">
-                    <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>07</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Demon Slayer<br>01</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1301' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG08.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Star Wars/SW09.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>08</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Star Wars<br>09</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1609' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src="../Produtos_E-commerce/Studio_Ghibli/SG09.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Capivaras/CP41.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>09</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Capivaras<br>41</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1241' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
-                    <img src=" ../Produtos_E-commerce/Studio_Ghibli/SG10.png" alt="Nome do Produto">
+                    <img src="../Produtos_E-commerce/Demon Slayer/DS35.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
-                    <p>Studio Ghibli<br>10</p>
-                    <p class="price">R$ 0,70</p>
-                    <button class="btn-buy">Comprar</button>
+                    <p>Demon Slayer<br>35</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1335' class='btn-buy'>Comprar</a>
+                </div>
+
+                <div class="product-card">
+                    <img src=" ../Produtos_E-commerce/Pokemons/PK46.png" alt="Nome do Produto">
+                    <h2>Adesivo Anime</h2>
+                    <p>Pokémon<br>46</p>
+                    <p class="price">R$ 1,00</p>
+                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1546' class='btn-buy'>Comprar</a>
                 </div>
 
         
@@ -192,7 +196,9 @@
         
     </div>
     <div class="video-container">
-        <h1 class="video" style="font-size: large;">Conheça nossos produtos mais de perto!</h1>
+
+        <h1 class="video" style="font-size: large;">Conheça nossos produtos mais de perto!!!</h1>
+
         <div class="teste">
             <div class="video-e-titulo">
                 <iframe src="https://www.youtube.com/embed/mRSY6UVr4zg?si=xFEXNLrf53BOczrm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -212,7 +218,8 @@
             
         </div>
     </div>
-    
+    <a href='index.php' class='btn-buy' >Voltar ao Topo</a>
+
     <!--Footer-->
    <title>Footer Design</title>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
@@ -225,41 +232,32 @@
         <div class="footer-col">
           <h4>ByteCraft</h4>
           <ul>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Nossos serviços</a></li>
-            <li><a href="#">Politica de privacidade</a></li>
-            <li><a href="#">Nossos Contribuintes</a></li>
+            <li><a href="Devops.php">Sobre nós</a></li>
+            <li><a href="Produtos.php">Nossos serviços</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Ajuda</h4>
           <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Envio</a></li>
-            <li><a href="#">Devolução</a></li>
-            <li><a href="#">Status do Pedido</a></li>
-            <li><a href="#">Opções de pagamento</a></li>
+            <li><a href="#">Opções de pagamento: Fichas</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Loja Online</h4>
           <ul>
-            <li><a href="#">Anime</a></li>
-            <li><a href="#">Capivaras</a></li>
-            <li><a href="#">Van Googh</a></li>
-            <li><a href="#">Star wars</a></li>
-            <li><a href="#">Harry Potter</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="Produtos.php">Produtos</a></li>
+            <li><a href="Devops.php">Devops</a></li>
+            <li><a href="Carrinho.php">Carrinho</a></li>   
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Nossas Redes</h4>
           <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/bbyte_craft/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         

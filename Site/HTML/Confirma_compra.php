@@ -28,7 +28,7 @@
                 <div class="card-login">
                 <?php
                    $total = $_GET['total'];
-                   echo "<p>Total: $total</p>
+                   echo "<p>Total a ser pago em fichas: R$$total,00</p>
                     <a class='btn' href='Carrinho.php?operacao=fechar&id=0'>Finalizar compra</a>
                     <br><br>
                     <a class='btn' href='index.php'>Voltar ao home</a>";

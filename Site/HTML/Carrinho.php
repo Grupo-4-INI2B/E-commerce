@@ -227,84 +227,75 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
             $total = ValorSQL($conn, "select sum (tbl_produto.vlr * tbl_compra_produto.quantidade) from tbl_produto inner join tbl_compra_produto on 
             tbl_produto.id_produto = tbl_compra_produto.fk_produto where tbl_compra_produto.fk_compra = $codigoCompra");
             // se o login foi obtido (se esta logado), mostra link 'fechar carrinho' 
-            if($total == null)
-            {
-              $total = 0;
-            }
-            if($codigoCompra==0)
-            {
-              echo "<h1 class='margem-titulo'>Seu carrinho está vazio</h1>";
-            }else{
-              if (isset($login)) {
-                  if ($statusCompra == 'Pendente' && $login <> '') {
-                    echo"<div class='subtotal cf'>
-                            <ul>
-                              <li class='totalRow'><span class='label'>Satus da compra</span><span class='value'>$statusCompra</span></li>
-                              <li class='totalRow final'><span class='label'>Total R$: </span><span class='value'>$total,00</span></li>
-                              <li class='totalRow'><a href='Confirma_compra.php?total=$total' class='btn'>Finalizar compra</a></li>
-                              <br><br><br><br><br>
-                              <li class='totalRow'><a href='Carrinho.php?operacao=apagar&id=0' class= 'btn-home'>Limpar o carrinho</a></li>
-                              <br><br><br><br><br>
-                              <li class='totalRow'><a href='index.php' class='btn-home'>Voltar ao home</a></li>
-                            </ul>
-                        </div>";
-              }
-            }
-          }
+
+              if($codigoCompra==0)
+              {
+                echo "<h1 class='margem-titulo'>Seu carrinho está vazio</h1>";
+              }else{
+                if (isset($login)) {
+                    if ($statusCompra == 'Pendente' && $login <> '') {
+                      echo"<div class='subtotal cf'>
+                              <ul>
+                                <li class='totalRow'><span class='label'>Satus da compra</span><span class='value'>$statusCompra</span></li>
+                                <li class='totalRow final'><span class='label'>Total R$: </span><span class='value'>$total,00</span></li>
+                                <li class='totalRow'><a href='Confirma_compra.php?total=$total' class='btn'>Finalizar compra</a></li>
+                                <br><br><br><br><br>
+                                <li class='totalRow'><a href='Carrinho.php?operacao=apagar&id=0' class= 'btn-home'>Limpar o carrinho</a></li>
+                                <br><br><br><br><br>
+                                <li class='totalRow'><a href='index.php' class='btn-home'>Voltar ao home</a></li>
+                              </ul>
+                          </div>";
+                          } 
+                        } 
+                      }
+
 
             ?>
           </div>
     </div>
   </div>
+  <a href='Carrinho.php' class='btn-buy'>Voltar ao Topo</a>
 
   <!--Footer-->
   <footer class="footer">
-    <div class="container-footer">
+     <div class="container-footer">
       <div class="row">
         <div class="footer-col">
           <h4>ByteCraft</h4>
           <ul>
-            <li><a href="#">Sobre nós</a></li>
-            <li><a href="#">Nossos serviços</a></li>
-            <li><a href="#">Politica de privacidade</a></li>
-            <li><a href="#">Nossos Contribuintes</a></li>
+            <li><a href="Devops.php">Sobre nós</a></li>
+            <li><a href="Produtos.php">Nossos serviços</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Ajuda</h4>
           <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Envio</a></li>
-            <li><a href="#">Devolução</a></li>
-            <li><a href="#">Status do Pedido</a></li>
-            <li><a href="#">Opções de pagamento</a></li>
+            <li><a href="#">Opções de pagamento: Fichas</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Loja Online</h4>
           <ul>
-            <li><a href="#">Anime</a></li>
-            <li><a href="#">Capivaras</a></li>
-            <li><a href="#">Van Googh</a></li>
-            <li><a href="#">Star wars</a></li>
-            <li><a href="#">Harry Potter</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="Produtos.php">Produtos</a></li>
+            <li><a href="Devops.php">Devops</a></li>
+            <li><a href="Carrinho.php">Carrinho</a></li>   
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Nossas Redes</h4>
           <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/bbyte_craft/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
-
+        
       </div>
-    </div>
+     </div>
   </footer>
+
 </body>
 
 </html>
