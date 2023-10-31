@@ -65,12 +65,12 @@
                 {
                     $caminhoDiretorio = "../Produtos_E-commerce/Van Gogh/";
                 }
-                if($id > 2000 && $id < 3000)
+                if($id_produto > 2000 && $id_produto < 3000)
                 {
-                $caminhoDiretorio = "../Produtos_E-commerce/Botton/";
+                    $caminhoDiretorio = "../Produtos_E-commerce/Botton/";
                 }
                 else
-                if($id > 3000 && $id < 4000)
+                if($id_produto > 3000 && $id_produto < 4000)
                 {
                 $caminhoDiretorio = "../Produtos_E-commerce/Poster/";
                 }
@@ -82,7 +82,7 @@
         $caminhoImagem = $caminhoDiretorio . $nomeImagem;
     
         // Verifique se o arquivo é uma imagem válida
-        $permitirTipos = array("image/jpeg", "image/png", "image/gif");
+        $permitirTipos = array("image/jpeg", "image/png", "image/gif", "image/jpg");
         if (!in_array($tipoImagem, $permitirTipos)) {
             echo "Somente imagens JPEG, PNG e GIF são permitidas.";
             exit();

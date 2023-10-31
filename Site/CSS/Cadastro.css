@@ -131,7 +131,7 @@ input#usuario {
 
 input#tlfn {
     background-image: url(../Imagens/Telefone.svg);
-    color: #CCC;
+    color: #000;
     background-repeat: no-repeat;
     text-indent: 20px;
     justify-content: center;
