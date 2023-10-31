@@ -266,7 +266,7 @@
           echo "<td>" . $margem_lucro . "</td>";
           echo "<td>" . $icms . "</td>";
           echo "<td>" . $quantidade . "</td>";
-          echo "<td> <img src='$imagem' alt='miguel drogado' widht='150px' height='100px'> </td>";
+          echo "<td> <img src='$imagem' alt='Sumiu' widht='150px' height='100px'> </td>";
           echo "<td>" . $excluido . "</td>";
           echo "<td>" . $data_exclusao . "</td>";
           echo "<td><a href='../HTML/Form_adicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";

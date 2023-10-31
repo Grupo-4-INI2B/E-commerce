@@ -167,11 +167,10 @@
 
 .produtos
 {
-  width: calc(48vw + 20px);
     background-color: #efefef72;
     border-radius: 20px;
     width: 48vw;
-    height: 50vh;
+    height: 64vh;
     margin-left: 20px;
     display: grid;
     grid-template-columns: auto auto;
@@ -192,7 +191,7 @@
 {
   font-size: 20px;
   font-weight: bold;
-  margin-left: 50px;
+  margin-left: 3vw;
     color: #272727;
     margin-bottom: 20px;
     margin-top: 5px;
@@ -200,7 +199,7 @@
   .topicos
   {
     font-size: 15px;
-    margin-left: 50px;
+    margin-left: 3vw;
   }
   
   /* .vermais - específico home*/
@@ -226,7 +225,7 @@
   box-shadow: 0px 10px 10px #CCC;
   height: 35px;
   cursor: pointer;
-  margin-left: 210px;
+  margin-left: 12vw;
 
   /*/margin: 25px;*/
 }
@@ -472,9 +471,8 @@
   grid-template-rows: auto;
     font-size: 20px;
     padding-top: 10px; /* Ajuste o espaçamento conforme necessário */
-    margin-left: 50px;
+    margin-left: 22vw;
     margin-bottom: 20px; /* Ajuste o espaçamento conforme necessário */
-    text-align: center; /* Centralize o texto horizontalmente */
 }
 .product-container::-webkit-scrollbar{
   display: none;

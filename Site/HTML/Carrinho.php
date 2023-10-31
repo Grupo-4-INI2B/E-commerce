@@ -99,11 +99,40 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
                          SET qntd = tbl_produto.qntd - tbl_compra_produto.quantidade 
                          FROM tbl_compra_produto
                          WHERE tbl_produto.id_produto = tbl_compra_produto.fk_produto AND tbl_compra_produto.fk_compra = $codigoCompra");
-          
-    ValorSQL($conn,"UPDATE tbl_produto SET excluido = true, dta_exclusao = '$dataHoje' WHERE qntd = 0;");
+    $idproduto=ValorSQL($conn,"SELECT fk_produto FROM tbl_compra_produto WHERE fk_compra = $codigoCompra");      
+    ValorSQL($conn,"UPDATE tbl_produto SET excluido = true, dta_exclusao = '$dataHoje' 
+                    FROM tbl_compra_produto WHERE tbl_produto.qntd = 0 AND tbl_produto.id_produto = $idproduto;");
 
     //Atualiza o status da compra para concluida.
     ExecutaSQL($conn,"UPDATE tbl_compra SET status = '$statusCompra' WHERE fk_usuario = $codigoUsuario and status = 'Pendente'");
+echo $codigoCompra;
+      $sql=("SELECT tbl_compra.id_compra, tbl_compra.data_compra, tbl_compra.fk_usuario,
+                          tbl_compra_produto.fk_produto, tbl_compra_produto.quantidade
+                          FROM tbl_compra INNER JOIN tbl_compra_produto
+                          ON tbl_compra.id_compra=tbl_compra_produto.fk_compra
+                          WHERE tbl_compra.id_compra=$codigoCompra;");
+      $select = $conn->query($sql);
+
+    // cria table com itens no carrinho e seus subtotais
+      while ($linha = $select->fetch()) {
+      $id_compra=$linha['id_compra'];
+      $dataCompra = $linha['data_compra'];
+      $id_produto = $linha['fk_produto'];
+      $quantidade = $linha['quantidade'];
+      $fk_usuario = $linha['fk_usuario'];
+      $sql2=("SELECT nome_produto,vlr FROM tbl_produto WHERE id_produto=$id_produto;");
+      $select2 = $conn->query($sql2);
+      while($linha2 = $select2->fetch()){
+        $nome_produto=$linha2['nome_produto'];
+        $sub=$linha2['vlr'];
+        $vlr_total=$vlr*$quantidade;
+      }
+      $sql3=("SELECT nome_usuario FROM tbl_usuario WHERE id_usuario=$fk_usuario;");
+      $select3 = $conn->query($sql3);
+      while( $linha3 = $select3->fetch()){
+        $nome_usuario=$linha3['nome_usuario'];
+      } 
+    }
 
     //Deleta da compra temporário.
     ExecutaSQL($conn, "DELETE FROM tbl_tmpcompra USING tbl_compra WHERE tbl_tmpcompra.fk_compra = $codigoCompra");
