@@ -28,9 +28,13 @@
     }
    
     if(isset($id_usuario) || isset($pId_usuario)) {
+        //Aviso de exclusão de conta.
+        $html = "<h1>Olá, !</h1><br><h3>Sua conta foi excluída, caso não reconheça essa mudança entre em contato</h3><br>";
+        enviaEmail($email, $_SESSION['nome'], "Exclusão de conta", $html);
+
         $excluido = true;
         //Deleta o usuário(lógico) e desativa o cookie e a sessão
-        $update = $conn->prepare("UPDATE tbl_usuario SET excluido = :excluido, dta_exclusao = :dta_exclusao WHERE id_usuario = :id_usuario");
+        $update = $conn->prepare("DELETE FROM tbl_usuario WHERE id_usuario = :id_usuario");
      
         $update->bindParam(':dta_exclusao', date("Y-m-d H:i:s"), PDO::PARAM_STR);
         $update->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
@@ -57,10 +61,7 @@
         header("Location: Excluir_usuario.php");
         exit();
     }
-    //Aviso de exclusão de conta.
-    $html = "<h1>Olá, !</h1><br><h3>Sua conta foi excluída, caso não reconheça essa mudança entre em contato</h3><br>";
-    enviaEmail($email, $_SESSION['nome'], "Exclusão de conta", $html);
-
+    
     unset($select);
     unset($conn);
 
