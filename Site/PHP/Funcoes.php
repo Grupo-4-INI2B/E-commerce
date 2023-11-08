@@ -134,6 +134,38 @@
     }
 }
 
+//Função para gerar PDF
+function CriaPDF ( $paramTitulo, $paramHtml, $paramArquivoPDF ) {
+  $arq = false;     
+  try {  
+    require "fpdf/html_table.php"; 
+    // abre classe fpdf estendida com recurso que converte <table> em pdf
+  
+    $pdf = new PDF();  
+    // cria um novo objeto $pdf da classe 'pdf' que estende 'fpdf' em 'html_table.php'
+    $pdf->AddPage();  // cria uma pagina vazia
+    $pdf->SetFont('helvetica','B',20);       
+    $pdf->Write(5,$paramTitulo);    
+    $pdf->SetFont('helvetica','',8);     
+    $pdf->WriteHTML($paramHtml); // renderiza $html na pagina vazia
+    ob_end_clean();    
+    // fpdf requer tela vazia, essa instrucao 
+    // libera a tela antes do output
+    
+    // gerando um arquivo 
+    $pdf->Output($paramArquivoPDF,'F');
+    // gerando um download 
+    $pdf->Output('D',$paramArquivoPDF);  // disponibiliza o pdf gerado pra download
+    $arq = true;
+  } catch (Exception $e) {
+    echo $e->getMessage(); // erros da aplicação - gerais
+  }
+  return $arq;
+}
+
+
+
+
 /*
 * Função para executar frases sql
 * marcelo c peres - 2023 
