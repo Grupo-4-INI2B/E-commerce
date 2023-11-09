@@ -15,10 +15,10 @@
             $html = "<h1>Olá!</h1><br><h3>Seu código de recuperação de senha é: ".$_SESSION['codigo']."</h3><br>";
             enviaEmail($email, "Usuário", "Código de recuperação de senha", $html);
             
-            header("Location:Muda_senha.php?email=$email");
+            header("Location:mudaSenha.php?email=$email");
             exit();
         } else {
-            header("Location: Esqueci.php");
+            header("Location: esqueci.php");
             exit();
         }
     }
@@ -28,7 +28,7 @@
 <html>
     <head>
     <link rel="stylesheet" href="../CSS/Esqueci.css" />
-    <link rel="stylesheet" href="../CSS/Base.css" />
+    <link rel="stylesheet" href="../CSS/base.css" />
 
     </head>
     <body>

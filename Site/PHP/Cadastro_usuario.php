@@ -12,7 +12,7 @@
         $tlfn = $_POST['tlfn'];
         $senha = $_POST['senha'];
     } else {
-        header("Location: ../HTML/Cadastro.html");
+        header("Location: ../HTML/cadastro.html");
         exit();
     }
     $adm  = false;
@@ -26,7 +26,7 @@
     //Verifica se o email já existe no banco de dados.
     if(verificaEmail($email)) {
         echo "Email já cadastrado";
-        header("Location: ../HTML/Cadastro.html");
+        header("Location: ../HTML/cadastro.html");
         exit();
     }
     
@@ -60,6 +60,6 @@
     enviaEmail($email, $usuario, "Cadastro realizado com sucesso", $html);
 
     //Redireciona o usuário para a página de login
-    header("Location: ../HTML/Login.php");
+    header("Location: ../HTML/login.php");
     exit();
 ?>

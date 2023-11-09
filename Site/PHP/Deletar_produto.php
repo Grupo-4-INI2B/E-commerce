@@ -5,7 +5,7 @@
      include ("../PHP/Funcoes.php");
      $conn=conecta();
      if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
-     header("Location: ../HTML/Login.php");
+     header("Location: ../HTML/login.php");
      exit();
      }
         
@@ -17,6 +17,6 @@
      $delete->bindParam(':id_produto', $id_produto, PDO::PARAM_INT);
      $delete->bindParam(':data_exclusao', date("Y-m-d H:i:s"), PDO::PARAM_STR);
      $delete->execute($deleta);
-     header("Location: ../HTML/Crud.php");
+     header("Location: ../HTML/crud.php");
            
 ?>

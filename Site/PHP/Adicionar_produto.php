@@ -6,7 +6,7 @@
     $conn=conecta();
 
     if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
-        header("Location: ../HTML/Login.php");
+        header("Location: ../HTML/login.php");
         exit();
     }
 
@@ -108,7 +108,7 @@
 
                     $stmt = $conn->prepare($sql);
                     if ($stmt->execute($params)) {
-                        header("Location: ../HTML/Crud.php");
+                        header("Location: ../HTML/crud.php");
                         exit();
                     } else {
                         echo "Erro ao inserir o produto no banco de dados.";

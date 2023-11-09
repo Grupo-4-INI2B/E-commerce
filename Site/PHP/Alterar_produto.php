@@ -5,7 +5,7 @@
     include ("../PHP/Funcoes.php");
 
     if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
-        header("Location: ../HTML/Login.php");
+        header("Location: ../HTML/login.php");
         exit();
     }
 
@@ -129,7 +129,7 @@
     
     if ($stmt->execute()) {
         echo "Produto atualizado com sucesso.";
-        header("Location: ../HTML/Crud.php");
+        header("Location: ../HTML/crud.php");
     } else {
         echo "Erro ao atualizar o produto.";
     }

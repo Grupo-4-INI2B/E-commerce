@@ -34,7 +34,7 @@
                              $nome = $_SESSION['nome'];
                              $adm = $_SESSION['adm'];
                          }else {
-                          header("Location: Login.php");
+                          header("Location: login.php");
                           exit();
                                 }
 
@@ -59,7 +59,7 @@
                 <h2 class='campo-perfil'>Email : $sessaoUsuario</h2>
                 <a class='btn-logout' href='../PHP/Logout_usuario.php'>Logout</a>
                 <br>
-                <a class='btn-logout' href='Excluir_usuario.php'>Excluir Perfil</a>
+                <a class='btn-logout' href='excluirUsuario.php'>Excluir Perfil</a>
                 <br>
                 <a class='btn-logout' href='index.php'>Voltar ao home</a>
             </body>
@@ -69,8 +69,8 @@
         echo "<h2 class='subtitulo'>Nome: $nome</h2>";
         echo "<h2 class='subtitulo'>Email: $sessaoUsuario</h2>";
         echo "<h2 class='subtitulo'>Administrador</h2>";
-        echo "<h2><a href='Usuarios.php' class='btn-logout'>Administar Usuários</a></h2>";
-        echo "<h2><a href='Crud.php' class='btn-logout'>Administar Produtos</a></h2>";
+        echo "<h2><a href='usuarios.php' class='btn-logout'>Administar Usuários</a></h2>";
+        echo "<h2><a href='crud.php' class='btn-logout'>Administar Produtos</a></h2>";
         echo "<a class='btn-logout' href='../PHP/Logout_usuario.php'>Logout</a>
                 <br>
                 <a class='btn-logout' href='index.php'>Voltar ao home</a></html>";

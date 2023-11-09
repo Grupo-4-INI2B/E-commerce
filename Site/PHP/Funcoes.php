@@ -54,15 +54,15 @@
   //Função de cabeçalho
   function cabecalho($sessaoUsuario, $nome, $adm) {
     if(!isset($sessaoUsuario)) {
-      echo "<a class='botao-perfil' href='Login.php' class='cart' style='color: #000000'>
+      echo "<a class='botao-perfil' href='login.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
       style='position: relative; top: 2px;  font-size:20px;'>Entrar</a>";
     } else if(!$adm) {        
-       echo "<a class='botao-perfil' href='Perfil.php' class='cart' style='color: #000000'>
+       echo "<a class='botao-perfil' href='perfil.php' class='cart' style='color: #000000'>
        <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
        style='position: relative; top: 2px;   font-size:10px;'>Bem vindo, $nome</a>";
     } else  {
-      echo "<a class='botao-perfil' href='Perfil.php' class='cart' style='color: #000000'>
+      echo "<a class='botao-perfil' href='perfil.php' class='cart' style='color: #000000'>
       <img src='../Imagens/IconPerson.svg' alt='Ícone de Usuário' width='15' height='15' 
       style='position: relative; top: 2px;  font-size:10px;'>Bem vindo administrador</a>";
     }
@@ -135,7 +135,7 @@
 }
 
 //Função para gerar PDF
-function CriaPDF ( $paramTitulo, $paramHtml, $paramArquivoPDF ) {
+function CriaPDF ($paramTitulo, $paramHtml, $paramArquivoPDF) {
   $arq = false;     
   try {  
     require "fpdf/html_table.php"; 
@@ -301,7 +301,7 @@ function CriaPDF ( $paramTitulo, $paramHtml, $paramArquivoPDF ) {
           echo "<td> <img src='$imagem' alt='Sumiu' widht='150px' height='100px'> </td>";
           echo "<td>" . $excluido . "</td>";
           echo "<td>" . $data_exclusao . "</td>";
-          echo "<td><a href='../HTML/Form_adicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
+          echo "<td><a href='../HTML/formAdicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
           echo "<td><a href='../PHP/Deletar_produto.php?id=" . $id_produto . "&acao=excluir'><img src='../Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
           echo "<td><a href='../PHP/Form_alterar_produto.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
           echo "</tr>";

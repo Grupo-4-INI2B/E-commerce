@@ -55,9 +55,9 @@
                             <input type="password" id="senha" name="senha" placeholder="Senha"/>
                         </div>  
                         <button type="submit" class="btn-login">Login</button>
-                        <a href="Cadastro.html" style="color: #FFF" >Não tenho uma conta</a>
+                        <a href="cadastro.html" style="color: #FFF" >Não tenho uma conta</a>
                         <br>
-                        <a href="Esqueci.php" style="color: #FFF">Esqueci a senha</a>
+                        <a href="esqueci.php" style="color: #FFF">Esqueci a senha</a>
                         <br>
                         <a href="index.php" style="color: #FFF">Voltar ao Home</a>
                 </div>

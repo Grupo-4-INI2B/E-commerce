@@ -15,7 +15,7 @@
     echo"<h1>Tabela de usuarios</h1>";
 
     echo"
-    <a href='Perfil.php'>Voltar</a>
+    <a href='perfil.php'>Voltar</a>
     <table border = '2'>
         <tr>
             <th> id de usuario </th>
@@ -48,7 +48,7 @@
                         <td> $varAdm   </td>
                         <td>
                             <a href = 'alterarUsuario.php?id_usuario=$varId'> <img src='../Imagens/alterar.png' alt='Sorry'  width='30'/> </a> 
-                            <a href = 'Excluir_usuario.php?id_usuario=$varId'> <img src='../Imagens/excluir.png' alt='Sorry'  width='30'/> </a> 
+                            <a href = 'excluirUsuario.php?id_usuario=$varId'> <img src='../Imagens/excluir.png' alt='Sorry'  width='30'/> </a> 
                         </td>
                     </tr>
                 ";

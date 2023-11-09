@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Craft - Home</title>
-    <link rel="stylesheet" href="../CSS/Base.css">
+    <link rel="stylesheet" href="../CSS/base.css">
     <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
     <link rel="icon" href="../Imagens/logocaixinha.svg"> 
@@ -42,19 +42,19 @@
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Produtos.php" style="color: #000000" >Produtos</a>
+            <a class="botao-menu" href="produtos.php" style="color: #000000" >Produtos</a>
 
         </div>
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Devops.php" style="color: #000000" >Devops</a>
+            <a class="botao-menu" href="devops.php" style="color: #000000" >Devops</a>
         </div>
     </div>
     
 
     <div class="grid-carrinho">
-        <a class="botao-menu" href="Carrinho.php" class="btn btn-primary" style="color: #000000">
+        <a class="botao-menu" href="carrinho.php" class="btn btn-primary" style="color: #000000">
             <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
             Carrinho
           </a>
@@ -88,7 +88,7 @@
                 <img src="../Imagens/ImgMedia1.jpeg" class='img_media' alt="Botton">
                 <img src="../Imagens/ImgMedia3.png" class='img_media' alt="Botton">
                 </div>
-            <a href="Produtos.php">
+            <a href="produtos.php">
                 <button name="ver_mais" value="Ver Mais" class="vermais">Ver mais</button>
                 </a>
             </div>
@@ -113,7 +113,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Studio Ghibli<br>01</p>
                     <p class="price">R$ 1,00</p>
-                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1701' class='btn-buy'>Comprar</a>
+                    <a href='../HTML/carrinho.php?operacao=incluir&id=1701' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
@@ -121,7 +121,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Harry Potter<br>25</p>
                     <p class="price">R$ 1,00</p>
-                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1425' class='btn-buy'>Comprar</a>
+                    <a href='../HTML/carrinho.php?operacao=incluir&id=1425' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
@@ -129,7 +129,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Pokémon<br>15</p>
                     <p class="price">R$ 1,00</p>
-                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1515' class='btn-buy'>Comprar</a>
+                    <a href='../HTML/carrinho.php?operacao=incluir&id=1515' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
@@ -137,7 +137,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Aleatório<br>01</p>
                     <p class="price">R$ 1,00</p>
-                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1101' class='btn-buy'>Comprar</a>
+                    <a href='../HTML/carrinho.php?operacao=incluir&id=1101' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
@@ -145,14 +145,14 @@
                     <h2>Adesivo Anime</h2>
                     <p>Van Gogh<br>21</p>
                     <p class="price">R$ 1,00</p>
-                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1821' class='btn-buy'>Comprar</a>
+                    <a href='../HTML/carrinho.php?operacao=incluir&id=1821' class='btn-buy'>Comprar</a>
                 </div>
                 <div class="product-card">
                     <img src="../Produtos_E-commerce/Demon Slayer/DS01.png" alt="Nome do Produto">
                     <h2>Adesivo Anime</h2>
                     <p>Demon Slayer<br>01</p>
                     <p class="price">R$ 1,00</p>
-                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1301' class='btn-buy'>Comprar</a>
+                    <a href='../HTML/carrinho.php?operacao=incluir&id=1301' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
@@ -160,7 +160,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Star Wars<br>09</p>
                     <p class="price">R$ 1,00</p>
-                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1609' class='btn-buy'>Comprar</a>
+                    <a href='../HTML/carrinho.php?operacao=incluir&id=1609' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
@@ -168,7 +168,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Capivaras<br>41</p>
                     <p class="price">R$ 1,00</p>
-                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1241' class='btn-buy'>Comprar</a>
+                    <a href='../HTML/carrinho.php?operacao=incluir&id=1241' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
@@ -176,7 +176,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Demon Slayer<br>35</p>
                     <p class="price">R$ 1,00</p>
-                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1335' class='btn-buy'>Comprar</a>
+                    <a href='../HTML/carrinho.php?operacao=incluir&id=1335' class='btn-buy'>Comprar</a>
                 </div>
 
                 <div class="product-card">
@@ -184,7 +184,7 @@
                     <h2>Adesivo Anime</h2>
                     <p>Pokémon<br>46</p>
                     <p class="price">R$ 1,00</p>
-                    <a href='../HTML/Carrinho.php?operacao=incluir&id=1546' class='btn-buy'>Comprar</a>
+                    <a href='../HTML/carrinho.php?operacao=incluir&id=1546' class='btn-buy'>Comprar</a>
                 </div>
 
         
@@ -232,8 +232,8 @@
         <div class="footer-col">
           <h4>ByteCraft</h4>
           <ul>
-            <li><a href="Devops.php">Sobre nós</a></li>
-            <li><a href="Produtos.php">Nossos serviços</a></li>
+            <li><a href="devops.php">Sobre nós</a></li>
+            <li><a href="produtos.php">Nossos serviços</a></li>
           </ul>
         </div>
 
@@ -248,9 +248,9 @@
           <h4>Loja Online</h4>
           <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="Produtos.php">Produtos</a></li>
-            <li><a href="Devops.php">Devops</a></li>
-            <li><a href="Carrinho.php">Carrinho</a></li>   
+            <li><a href="produtos.php">Produtos</a></li>
+            <li><a href="devops.php">Devops</a></li>
+            <li><a href="carrinho.php">Carrinho</a></li>   
           </ul>
         </div>
 

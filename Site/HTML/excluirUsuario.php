@@ -7,7 +7,7 @@
     $conn = conecta();
 
     if(!isset($_SESSION['sessaoUsuario'])) { //Verifica se há sessão iniciada.
-        header("Location: Login.php");
+        header("Location: login.php");
         exit();
     } 
 
@@ -47,7 +47,7 @@
             unset($select);
             unset($conn);
             
-            header("Location: Usuarios.php");
+            header("Location: usuarios.php");
             exit();
         }
         
@@ -58,7 +58,7 @@
 
         unset($update);
     }else {
-        header("Location: Excluir_usuario.php");
+        header("Location: excluirUsuario.php");
         exit();
     }
     

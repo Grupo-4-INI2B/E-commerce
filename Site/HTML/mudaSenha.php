@@ -23,7 +23,7 @@
             por favor entre em contato</h3><br>";
             enviaEmail($_GET['email'], "Usuário", "Mudança de senha", $html);
 
-            header("Location: Login.php");
+            header("Location: login.php");
             exit();
         }      
     }
@@ -33,7 +33,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <link rel="stylesheet" href="../CSS/Cadastro.css" />
+    <link rel="stylesheet" href="../CSS/cadastro.css" />
     <title>Byte Craft</title>
 
     </head>

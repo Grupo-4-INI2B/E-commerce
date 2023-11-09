@@ -6,7 +6,7 @@
    $conn = conecta();
   
    if(!isset($_SESSION['sessaoUsuario'])) { // Se não está logado
-      header("Location: Login.php");
+      header("Location: login.php");
       exit();
    }
 

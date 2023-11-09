@@ -10,7 +10,7 @@
         $email = $_POST['email'];
         $senha = $_POST['senha'];
     }else {
-        header("Location: ../HTML/Login.php");
+        header("Location: ../HTML/login.php");
         exit();
     }
 
@@ -19,7 +19,7 @@
     if($resultado) {
         defineCookie("cookie_email", $email, 14400);
     } else {
-        header("Location: ../HTML/Login.php");
+        header("Location: ../HTML/login.php");
         exit();
     }
 

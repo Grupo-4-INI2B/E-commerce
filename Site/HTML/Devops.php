@@ -22,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Craft - Devops</title>
-    <link rel="stylesheet" href="../CSS/Base.css">
+    <link rel="stylesheet" href="../CSS/base.css">
     <link rel="stylesheet" href="../CSS/Devops.css">
     <script src="../JS/Home.js"></script>
 </head>
@@ -40,18 +40,18 @@
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Produtos.php" style="color: #000000" >Produtos</a>
+            <a class="botao-menu" href="produtos.php" style="color: #000000" >Produtos</a>
 
         </div>
     </div>
     <div  class="grid-item">
         <div >
-            <a class="botao-menu" href="Devops.php" style="color: #000000" >Devops</a>
+            <a class="botao-menu" href="devops.php" style="color: #000000" >Devops</a>
         </div>
     </div>
 
     <div class="grid-carrinho">
-        <a class="botao-menu" href="Carrinho.php" class="btn btn-primary" style="color: #000000">
+        <a class="botao-menu" href="carrinho.php" class="btn btn-primary" style="color: #000000">
             <img src="../Imagens/IconCart.svg" alt="Ícone de carrinho de compras" width="15" height="15" style="position: relative; top: 3px;">
             Carrinho
           </a>
@@ -112,7 +112,7 @@
         </div>
       </div>
     </div>
-    <a href='Devops.php' class='btn-buy'>Voltar ao Topo</a>
+    <a href='devops.php' class='btn-buy'>Voltar ao Topo</a>
 </body>
 
 <!--Footer-->
@@ -128,8 +128,8 @@
         <div class="footer-col">
           <h4>ByteCraft</h4>
           <ul>
-            <li><a href="Devops.php">Sobre nós</a></li>
-            <li><a href="Produtos.php">Nossos serviços</a></li>
+            <li><a href="devops.php">Sobre nós</a></li>
+            <li><a href="produtos.php">Nossos serviços</a></li>
           </ul>
         </div>
 
@@ -144,9 +144,9 @@
           <h4>Loja Online</h4>
           <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="Produtos.php">Produtos</a></li>
-            <li><a href="Devops.php">Devops</a></li>
-            <li><a href="Carrinho.php">Carrinho</a></li>   
+            <li><a href="produtos.php">Produtos</a></li>
+            <li><a href="devops.php">Devops</a></li>
+            <li><a href="carrinho.php">Carrinho</a></li>   
           </ul>
         </div>
 

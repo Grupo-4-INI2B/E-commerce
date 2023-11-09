@@ -6,7 +6,7 @@
    $conn = conecta();
 
     if(!isset($_SESSION['sessaoUsuario']) || $_SESSION['adm'] == false) { // Se não está logado ou não é administrador 
-        header("Location: ../HTML/Login.php");
+        header("Location: ../HTML/login.php");
         exit();
     }
 
@@ -15,7 +15,7 @@
     $select = $conn->query("SELECT * FROM tbl_usuario WHERE id_usuario = $id_usuario")->fetch();
 
     if($select['excluido'] == true) {
-        header("Location: Usuarios.php");
+        header("Location: usuarios.php");
         exit();
     }
     if(isset($select['nome_usuario']) && isset($select['email']) 
@@ -48,7 +48,7 @@
         unset($update);
         unset($conn);
 
-        header("Location: Usuarios.php");
+        header("Location: usuarios.php");
         exit();
     }
 ?>
@@ -59,7 +59,7 @@
         <title>Usuarios</title>
     </head>
     <body>
-        <a href="Usuarios.php">Voltar</a>
+        <a href="usuarios.php">Voltar</a>
         <form action="alterarUsuario.php" method="post" name="frmAlterar">
             <fieldset style="width: 100px;">
                 Nome: <input type="text" id="usuario" name="usuario" placeholder="Nome de usuário" value="<?php echo $varNome; ?>" required><br><br>
