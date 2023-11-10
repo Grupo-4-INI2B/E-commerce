@@ -2,7 +2,7 @@
    ini_set ('display_errors', 1);
    error_reporting (E_ALL);
    session_start();
-   include ("../PHP/Funcoes.php");
+   include ("../PHP/funcoes.php");
 
    if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
        header("Location: ../HTML/login.php");
@@ -48,7 +48,7 @@
 
             <body>
                 <h1>Editar Produto</h1>
-                <form action="Alterar_produto.php" method="post" enctype="multipart/form-data">
+                <form action="alterarProduto.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_produto" value="<?php echo $id_produto; ?>">
                     <label for="nome">Nome:</label>
                     <input type="text" name="nome" value="<?php echo $nome; ?>"><br>

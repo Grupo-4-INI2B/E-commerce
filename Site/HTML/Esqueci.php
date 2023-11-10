@@ -2,7 +2,7 @@
 
     ini_set ('display_errors', 1);    
     error_reporting (E_ALL);
-    include ("../PHP/Funcoes.php");
+    include ("../PHP/funcoes.php");
     session_start();
 
     //Verifica se email foi enviado.
@@ -27,7 +27,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <link rel="stylesheet" href="../CSS/Esqueci.css" />
+    <link rel="stylesheet" href="../CSS/esqueci.css" />
     <link rel="stylesheet" href="../CSS/base.css" />
 
     </head>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Craft - Home</title>
     <link rel="stylesheet" href="../CSS/base.css">
-    <link rel="stylesheet" href="../CSS/Home.css">
+    <link rel="stylesheet" href="../CSS/home.css">
     <link rel="stylesheet" href="../CSS/Search-Box.css" />
     <link rel="icon" href="../Imagens/logocaixinha.svg"> 
     <script src="../JS/home.js"></script>
@@ -16,7 +16,7 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("../PHP/Funcoes.php");
+    include ("../PHP/funcoes.php");
     
     if(isset($_SESSION['sessaoUsuario'])){
         $sessaoUsuario = $_SESSION['sessaoUsuario'];

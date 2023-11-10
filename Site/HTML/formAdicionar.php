@@ -2,7 +2,7 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("../PHP/Funcoes.php");
+    include ("../PHP/funcoes.php");
 
     if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
         header("Location: ../HTML/login.php");
@@ -20,7 +20,7 @@
     </head>
     <body>
         <h2>Formulário de Produto</h2>
-        <form action="../PHP/Adicionar_produto.php" method="POST" enctype="multipart/form-data">
+        <form action="../PHP/adcionarProduto.php" method="POST" enctype="multipart/form-data">
             <label for="id_produto">Id Produto</label>
             <input type="number" id="id_produto" name="id_produto" ><br><br>
 

@@ -2,7 +2,7 @@
    ini_set ('display_errors', 1);
    error_reporting (E_ALL);
    session_start();
-   include ("Funcoes.php");
+   include ("funcoes.php");
    $conn = conecta();
   
    if(!isset($_SESSION['sessaoUsuario'])) { // Se não está logado

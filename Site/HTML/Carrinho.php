@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 session_start();
-include("../PHP/Funcoes.php");
+include("../PHP/funcoes.php");
 $conn = conecta();
 $session_id = session_id();
 

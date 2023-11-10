@@ -2,7 +2,7 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("../PHP/Funcoes.php");
+    include ("../PHP/funcoes.php");
     $conn = conecta();
 
     if(isset($_SESSION['sessaoUsuario'])) {
@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Craft - Produtos</title>
     <link rel="stylesheet" href="../CSS/base.css">
-    <link rel="stylesheet" href="../CSS/Produtos.css">
+    <link rel="stylesheet" href="../CSS/produtos.css">
     <link rel="stylesheet" href="../CSS/carrinho.css"/>
     <link rel="icon" href="../Imagens/logocaixinha.svg">
 
