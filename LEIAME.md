@@ -6,7 +6,7 @@ Heitor Lima, Igor Zamparo, Janaina Toledo e Juliana Tano.
 Email da equipe: bbytecraft@gmail.com
 
 Aqui no GitHub, está localizado a parte técnica do projeto, dentro das matérias de Banco de Dados, 
-Desenvolvimento Web - PHPe Aplicativos I - HTML e CSS, sobre a tutela dos professores José Vieira 
+Desenvolvimento Web - PHP e Aplicativos I - HTML-CSS, sobre a tutela dos professores José Vieira 
 e Marecelo Cabello e da professora Debora Aires, respectivamente. 
 A outra parte do projeto, montagem de uma empresa e sua administração, está junto a matéria 
 Gestão de Negócios I da Profa. Me. Jovita M. Hojas Baenas.
@@ -20,7 +20,8 @@ Para o banco de dados:
   - Utilizamos como gerenciador o PostgreSQL e a sua versão extendida da linguagem SQL.
 
 Para o backend:
-  - Linguagem PHP.
+  - Linguagem PHP com as bibliotecas PHPMailer e fpdf;
+  - Sentenças SQL.
 
 Para o frontend:
   - HTML;
