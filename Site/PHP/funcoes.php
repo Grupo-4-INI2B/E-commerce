@@ -303,7 +303,7 @@ function CriaPDF ($paramTitulo, $paramHtml, $paramArquivoPDF) {
           echo "<td>" . $data_exclusao . "</td>";
           echo "<td><a href='../HTML/formAdicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
           echo "<td><a href='../PHP/deletarProduto.php?id=" . $id_produto . "&acao=excluir'><img src='../Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
-          echo "<td><a href='../PHP/Form_alterarProduto.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
+          echo "<td><a href='../PHP/formAlterarProduto.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
           echo "</tr>";
       }
 

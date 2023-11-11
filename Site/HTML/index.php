@@ -17,7 +17,9 @@
     error_reporting (E_ALL);
     session_start();
     include ("../PHP/funcoes.php");
-    
+    if($_GET['id'] == 1){
+        echo "<script>alert('Compra finalizada');</script>";
+    }
     if(isset($_SESSION['sessaoUsuario'])){
         $sessaoUsuario = $_SESSION['sessaoUsuario'];
         $nome = $_SESSION['nome'];
@@ -240,7 +242,7 @@
         <div class="footer-col">
           <h4>Ajuda</h4>
           <ul>
-            <li><a href="#">Opções de pagamento: Fichas</a></li>
+            <li>Opções de pagamento: Fichas</li>
           </ul>
         </div>
 

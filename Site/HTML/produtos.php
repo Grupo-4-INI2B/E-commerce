@@ -197,7 +197,7 @@
         <div class="footer-col">
           <h4>Ajuda</h4>
           <ul>
-            <li><a href="#">Opções de pagamento: Fichas</a></li>
+            <li>Opções de pagamento: Fichas</li>
           </ul>
         </div>
 
