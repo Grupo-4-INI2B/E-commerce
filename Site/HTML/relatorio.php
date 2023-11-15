@@ -1,9 +1,13 @@
 <?php 
   // mostra erros do php
-  ini_set ( 'display_errors' , 1); 
+  ini_set ( 'display_errors', 1); 
   error_reporting (E_ALL);   
-   
   include("funcoes.php");
+
+  if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
+    header("Location: index.php");
+    exit();
+  }
 
   // calcula hoje
   $hoje = date('Y-m-d');
@@ -18,7 +22,7 @@
     $dataf = $_POST['dataf'];
 
     $SQLCompra = 
-            "select compras.cod_compra, compras.data, usuarios.nome, 
+            "SELECT compras.cod_compra, compras.data, usuarios.nome, 
                 sum ( compra_produto.quantidade * produtos.valor ) total  
              from compras 
                 inner join usuarios on compras.fk_cod_usuario = usuarios.cod_usuario 
