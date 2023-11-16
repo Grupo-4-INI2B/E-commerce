@@ -2,7 +2,7 @@
   // mostra erros do php
   ini_set ( 'display_errors', 1); 
   error_reporting (E_ALL);   
-  include("funcoes.php");
+  include("../php/funcoes.php");
 
   if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
     header("Location: index.php");
@@ -20,6 +20,13 @@
 
     $datai = $_POST['datai'];
     $dataf = $_POST['dataf'];
+    $HTML = $_POST['HTML'];
+
+    if(isset($_POST['preVisualizacao'])){
+      $preVisualizacao = 'I';
+    }else{
+      $preVisualizacao = 'D';
+    }
 
     $SQLCompra = 
             "SELECT compras.cod_compra, compras.data, usuarios.nome, 
@@ -51,7 +58,7 @@
 
     // abre a consulta de COMPRA do periodo
     $compra = $conn->prepare($SQLCompra);
-    $compra->execute ( [ 'datai' => $datai, 'dataf' => $dataf ] );
+    $compra->execute(['datai' => $datai, 'dataf' => $dataf]);
     // prepara os ITENS     
     $itens_compra = $conn->prepare($SQLItensCompra);
 
@@ -64,10 +71,10 @@
 
     $html .= "<br><br>
               <b>".
-              sprintf('%3s', 'Id').
-              sprintf('%12s','Data').
-              sprintf('%50s','Nome').
-              sprintf('%10s','$ tot').
+                sprintf('%3s', 'Id').
+                sprintf('%12s','Data').
+                sprintf('%50s','Nome').
+                sprintf('%10s','$tot').
               "</b>
               <br>";
 
@@ -102,14 +109,20 @@
     }
 
     $html.="</html>";
-    if (CriaPDF ('Relatorio de Vendas', $html, 'relatorios/relatorio.pdf'))  {
-      echo 'Gerado com sucesso';
-    }else {
-      echo 'Erro ao gerar';
+
+    if(isset($HTML)){
+      echo $html;
+    }else{
+
+      if (CriaPDF ("Relatorio de Vendas", $html, "relatorios/$hoje.pdf", $preVisualizacao))  {
+        echo 'Gerado com sucesso';
+      }else {
+        echo 'Erro ao gerar';
+      }
+
+      header("Location: relatorios/$hoje.pdf");
     }
-    header('Location: relatorios/relatorio.pdf');
   }
-  
 ?>
 
 <!DOCTYPE html>
@@ -124,8 +137,10 @@
 
   <body>
     <form action='' method='POST'>
-      Data inicial<br><input type='date' name='datai' value='$ontem'><br>
-      Data final<br><input type='date' name='dataf' value='$ontem'><br>
+      Data inicial<br><input type='date' name='datai'><br>
+      Data final<br><input type='date' name='dataf'><br>
+      Imprimir na tela?<input type='radio' name='HTML'><br>
+      Pré-vizualização?<input type='checkbox' name='preVisualizacao'><br>
       <input type='submit' value='Gerar'>
     </form>;
   </body>
