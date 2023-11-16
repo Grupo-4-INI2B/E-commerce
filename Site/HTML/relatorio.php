@@ -1,8 +1,10 @@
 <?php 
-  // mostra erros do php
-  ini_set ( 'display_errors', 1); 
-  error_reporting (E_ALL);   
-  include("../php/funcoes.php");
+  ini_set('display_errors', 1);
+  error_reporting(E_ALL);
+  session_start();
+  include("../PHP/funcoes.php");
+
+  $conn = conecta();
 
   if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
     header("Location: index.php");
@@ -20,7 +22,12 @@
 
     $datai = $_POST['datai'];
     $dataf = $_POST['dataf'];
-    $HTML = $_POST['HTML'];
+    if(isset($_POST['HTML'])){
+      $HTML = 'S';
+    }else {
+      $HTML = 'N';
+    }
+
 
     if(isset($_POST['preVisualizacao'])){
       $preVisualizacao = 'I';
@@ -29,27 +36,23 @@
     }
 
     $SQLCompra = 
-            "SELECT compras.cod_compra, compras.data, usuarios.nome, 
-                sum ( compra_produto.quantidade * produtos.valor ) total  
-             from compras 
-                inner join usuarios on compras.fk_cod_usuario = usuarios.cod_usuario 
-                inner join compra_produto on compra_produto.fk_cod_compra = compras.cod_compra
-                inner join produtos on produtos.cod_produto = compra_produto.fk_cod_produto 
-             where 
-                compras.data >= :datai and compras.data <= :dataf and 
-                compras.status = 'Concluida'  
-             group by 
-                compras.cod_compra, compras.data, usuarios.nome 
-                order by compras.data"; 
+            "SELECT tbl_compra.id_compra, tbl_compra.data_compra, tbl_usuario.nome_usuario,
+            SUM ( tbl_compra_produto.quantidade * tbl_produto.vlr ) total FROM tbl_compra
+            INNER JOIN tbl_usuario ON tbl_compra.fk_usuario = tbl_usuario.id_usuario
+            INNER JOIN tbl_compra_produto ON tbl_compra_produto.fk_compra = tbl_compra.id_compra
+            INNER JOIN tbl_produto ON tbl_produto.id_produto = tbl_compra_produto.fk_produto
+            WHERE tbl_compra.data_compra >= :datai AND tbl_compra.data_compra <= :dataf AND
+            tbl_compra.status = 'Concluida'
+            GROUP BY tbl_compra.id_compra, tbl_compra.data_compra, tbl_usuario.nome_usuario
+            ORDER BY tbl_compra.data_compra"; 
 
     $SQLItensCompra = 
-              "select produtos.descricao, compra_produto.quantidade, produtos.valor, 
-                compra_produto.quantidade * produtos.valor subtotal 
-               from compra_produto  
-                inner join produtos on produtos.cod_produto = compra_produto.fk_cod_produto 
-               where 
-                compra_produto.fk_cod_compra = :cod_compra   
-               order by produtos.descricao"; 
+              "SELECT tbl_produto.nome_produto, tbl_produto.descricao, tbl_compra_produto.quantidade, tbl_produto.vlr,
+              tbl_compra_produto.quantidade * tbl_produto.vlr subtotal
+              FROM tbl_compra_produto
+              INNER JOIN tbl_produto ON tbl_produto.id_produto = tbl_compra_produto.fk_produto
+              WHERE tbl_compra_produto.fk_compra = :id_compra
+              ORDER BY tbl_produto.descricao"; 
 
     // formata valores em reais 
     setlocale(LC_ALL, 'pt_BR.utf-8');
@@ -58,9 +61,13 @@
 
     // abre a consulta de COMPRA do periodo
     $compra = $conn->prepare($SQLCompra);
-    $compra->execute(['datai' => $datai, 'dataf' => $dataf]);
+    $compra->bindParam(':datai', $datai, PDO::PARAM_STR);
+    $compra->bindParam(':dataf', $dataf, PDO::PARAM_STR);
+
+    $compra->execute();
     // prepara os ITENS     
     $itens_compra = $conn->prepare($SQLItensCompra);
+
 
       
     // fetch significa carregar proxima linha
@@ -74,20 +81,21 @@
                 sprintf('%3s', 'Id').
                 sprintf('%12s','Data').
                 sprintf('%50s','Nome').
-                sprintf('%10s','$tot').
+                sprintf('%10s','$ tot').
               "</b>
               <br>";
 
-    while ( $linha_compra = $compra->fetch() ) {
-      $cod_compra = sprintf('%03s',$linha_compra['cod_compra']);
-      $data       = sprintf('%12s',$linha_compra['data']);
-      $cliente    = sprintf('%50s',$linha_compra['nome']);
-      $total      = sprintf('%10s',number_format($linha_compra['total'], 2, ',', '.'));
+    while ($linha_compra = $compra->fetch()) {
+      $cod_compra = sprintf('%03s', $linha_compra['id_compra']);
+      $data       = sprintf('%12s', $linha_compra['data_compra']);
+      $cliente    = sprintf('%50s', $linha_compra['nome_usuario']);
+      $total      = sprintf('%10s', number_format($linha_compra['total'], 2, ',', '.'));
         
       $html .= $cod_compra . $data . $cliente . $total . "<br>";               
-            
+      
+      $itens_compra->bindParam(':id_compra', $linha_compra['id_compra'], PDO::PARAM_INT);
       // executa ITENS passando o codigo da COMPRA atual
-      $itens_compra->execute([ 'cod_compra' => $linha_compra['cod_compra']]);
+      $itens_compra->execute();
 
       $html .= "<b>".
               sprintf('%20s','Prod').
@@ -99,10 +107,10 @@
       /////////////  D E T A L H E  ////////////////////
       // carrega a proxima linha ITENS_COMPRA
       while ($linha_itens_compra = $itens_compra->fetch()) {
-        $produto  = sprintf('%20s',$linha_itens_compra['descricao']);
-        $qtd      = sprintf('%5s',$linha_itens_compra['quantidade']);
-        $unit     = sprintf('%10s',number_format($linha_itens_compra['valor'], 2, ',', '.'));
-        $subtotal = sprintf('%10s',number_format($linha_itens_compra['subtotal'], 2, ',', '.'));
+        $produto  = sprintf('%20s', $linha_itens_compra['descricao']);
+        $qtd      = sprintf('%5s', $linha_itens_compra['quantidade']);
+        $unit     = sprintf('%10s', number_format($linha_itens_compra['vlr'], 2, ',', '.'));
+        $subtotal = sprintf('%10s', number_format($linha_itens_compra['subtotal'], 2, ',', '.'));
 
         $html .= $produto . $qtd . $unit . $subtotal . "<br>";
       } 
@@ -110,17 +118,17 @@
 
     $html.="</html>";
 
-    if(isset($HTML)){
+    if($HTML == 'S'){
       echo $html;
     }else{
 
-      if (CriaPDF ("Relatorio de Vendas", $html, "relatorios/$hoje.pdf", $preVisualizacao))  {
+      if (CriaPDF ("Relatorio de Vendas", $html, "$hoje.pdf", $preVisualizacao))  {
         echo 'Gerado com sucesso';
       }else {
         echo 'Erro ao gerar';
       }
 
-      header("Location: relatorios/$hoje.pdf");
+      header("Location: $hoje.pdf");
     }
   }
 ?>

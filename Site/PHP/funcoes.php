@@ -152,12 +152,12 @@ function CriaPDF ($paramTitulo, $paramHtml, $paramArquivoPDF, $opcao) {
     // fpdf requer tela vazia, essa instrucao 
     // libera a tela antes do output
     
-    $pdf->Output($paramArquivoPDF, $opcao);
+    $pdf->Output($opcao, $paramArquivoPDF, true);
     // gera o pdf e salva no servidor
     // $opcao = 'I' - abre no navegador
     // $opcao = 'D' - força download
 
-    $pdf->output($paramArquivoPDF, 'F');// $opcao = 'F' - salva no servidor
+    $pdf->Output('F',  "relatorios/$paramArquivoPDF", true);// $opcao = 'F' - salva no servidor
 
     $arq = true;
   } catch (Exception $e) {
