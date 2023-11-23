@@ -69,6 +69,7 @@
         echo "<h2 class='subtitulo'>Nome: $nome</h2>";
         echo "<h2 class='subtitulo'>Email: $sessaoUsuario</h2>";
         echo "<h2 class='subtitulo'>Administrador</h2>";
+        echo "<h2><a href='relatorio.php' class='btn-logout'>Gerar Relatórios</a></h2>";
         echo "<h2><a href='usuarios.php' class='btn-logout'>Administar Usuários</a></h2>";
         echo "<h2><a href='crud.php' class='btn-logout'>Administar Produtos</a></h2>";
         echo "<a class='btn-logout' href='../PHP/logoutUsuario.php'>Logout</a>

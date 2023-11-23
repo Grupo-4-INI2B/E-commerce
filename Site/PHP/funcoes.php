@@ -107,7 +107,7 @@
 
       //Configuração dos emails do remetente e do destinatário
       $mail->setFrom($pRemetente, 'ByteCraft'); //email do remetente
-      $mail->addReplyTo($pUsuario); //Email para respossta, caso não queira que o usuário responda, coloque no.reply@...
+      $mail->addReplyTo($pNome); //Email para respossta, caso não queira que o usuário responda, coloque no.reply@...
       $mail->addAddress($pDestinatario, $pNome); //email do destinatário
 
       //Conteúdo do email
@@ -140,13 +140,13 @@ function CriaPDF ($paramTitulo, $paramHtml, $paramArquivoPDF, $opcao) {
   try {  
     require "fpdf/html_table.php"; 
     // abre classe fpdf estendida com recurso que converte <table> em pdf
-  
     $pdf = new PDF();  
     // cria um novo objeto $pdf da classe 'pdf' que estende 'fpdf' em 'html_table.php'
     $pdf->AddPage();  // cria uma pagina vazia
     $pdf->SetFont('helvetica', 'B', 20);       
     $pdf->Write(5, $paramTitulo);    
-    $pdf->SetFont('helvetica', '', 8);     
+    $pdf->SetFont('helvetica', '', 8);    
+    $paramHtml = utf8_decode($paramHtml);
     $pdf->WriteHTML($paramHtml); // renderiza $html na pagina vazia
     ob_end_clean();    
     // fpdf requer tela vazia, essa instrucao 
