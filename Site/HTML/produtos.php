@@ -81,7 +81,6 @@
         <div class="dropdown">
             <button class="dropdownbtn">Filtro</button>
             <div class="dropdown-content">
-                <!-- Corrigindo os atributos 'for' nos labels -->
                 <label for="Pokémon"><input type="checkbox" name='filtro[]' id="Pokémon" value="Pokémon">Pokémon</label>
                 <label for="HarryPotter"><input type="checkbox" name='filtro[]' id="HarryPotter" value="Harry Potter">Harry Potter</label>
                 <label for="Capivara"><input type="checkbox" name='filtro[]' id="Capivara" value="Capivara">Capivaras</label>
@@ -103,7 +102,7 @@
         <form>
             <div class="container">
                 <?php
-                // Certifique-se de ter a função `conecta()` definida para a conexão com o banco de dados
+
                 $conn = conecta();
                 $categorias=isset($_POST['filtro'])?$_POST['filtro']:null;
                 if($categorias !== null)
