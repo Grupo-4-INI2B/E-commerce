@@ -287,12 +287,15 @@ a:link {
   margin-left: 15%;
 }
 
-
 .dropdown {
   position: relative;
   display: inline-block;
+  margin-top: 15%;
+  margin-left: 15%;
 }
-
+.dropdown-content label {
+  display: flex;
+}
 
 .dropdown-content {
   display: none;
@@ -322,7 +325,7 @@ a:link {
   background-color: #ff4800;
 }
 input[type=submit] {
-  display: block;
+  display: flex;
   border-radius: 10rem;
   color: #FFF;
   font-size: small;
@@ -332,7 +335,7 @@ input[type=submit] {
   z-index: 1;
   font-family: Arial;
   font-weight: bold;
-  width: 100%;
+  width: 50%;
   background-color: #F6BE00;
   border: none;
   outline: none;
