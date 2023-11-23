@@ -2,7 +2,7 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("../PHP/Funcoes.php");
+    include ("../PHP/funcoes.php");
     $conn = conecta();
 
     if(!$_SESSION['adm']){ // Se não está logado ou não é administrador 
@@ -48,7 +48,7 @@
                         <td> $varAdm   </td>
                         <td>
                             <a href = 'alterarUsuario.php?id_usuario=$varId'> <img src='../Imagens/alterar.png' alt='Sorry'  width='30'/> </a> 
-                            <a href = 'excluirUsuario.php?id_usuario=$varId'> <img src='../Imagens/excluir.png' alt='Sorry'  width='30'/> </a> 
+                            <a href = 'excluirUsuario.php?id_usuario=$varId&&email=$varEmail'> <img src='../Imagens/excluir.png' alt='Sorry'  width='30'/> </a> 
                         </td>
                     </tr>
                 ";

@@ -1,7 +1,7 @@
 <?php
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
-    include("Funcoes.php");
+    include("funcoes.php");
     $conn = conecta();
 
     /*Parámetros vindos do formulário de cadastro e verificação se não estão vazios*/

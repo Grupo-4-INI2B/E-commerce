@@ -124,18 +124,18 @@ input#usuario {
     background-repeat: no-repeat;
     text-indent: 20px;
     justify-content: center;
-    background-position: 10px 24px;
+    background-position: 10px 16px;
     background-size: 20px;
     
 }
 
 input#tlfn {
     background-image: url(../Imagens/Telefone.svg);
-    color: #CCC;
+    color: #000;
     background-repeat: no-repeat;
     text-indent: 20px;
     justify-content: center;
-    background-position: 10px 24px;
+    background-position: 10px 16px;
     background-size: 20px;
     
 }
@@ -145,7 +145,7 @@ input#senha {
     background-repeat: no-repeat;
     text-indent: 20px;
     justify-content: center;
-    background-position: 10px 24px;
+    background-position: 10px 16px;
     background-size: 20px;
     
 }
@@ -155,7 +155,7 @@ input#email {
     background-repeat: no-repeat;
     text-indent: 20px;
     justify-content: center;
-    background-position: 10px 27px;
+    background-position: 10px 16px;
     background-size: 20px;
     
 }
@@ -172,7 +172,7 @@ input#email {
     outline: none;
     box-sizing: border-box;
     border: none;
-    height: 70px;
+    height: 50px;
 
 }
 
@@ -265,3 +265,5 @@ a:link {
     font-weight: bold;
     border-color: #CCC;
    }
+
+/*#name:active { background-image: none; }*/

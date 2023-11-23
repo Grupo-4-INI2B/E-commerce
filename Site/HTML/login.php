@@ -10,7 +10,7 @@
     ini_set ('display_errors', 1);
     error_reporting (E_ALL);
     session_start();
-    include ("../PHP/Funcoes.php");
+    include ("../PHP/funcoes.php");
     $conn = conecta();
 
     //Verifica se o usuário está logado.
@@ -33,7 +33,7 @@
     unset($conn);
 ?>
 <body>
-    <form name="frmLogin" method="post" action="../PHP/Login_usuario.php">
+    <form name="frmLogin" method="post" action="../PHP/loginUsuario.php">
     <div class="main-login">
         <div class="login-container">
 

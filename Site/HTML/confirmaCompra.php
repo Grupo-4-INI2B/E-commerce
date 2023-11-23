@@ -7,14 +7,14 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Craft - Confirmação de compra</title>
-    <link rel="stylesheet" href="../CSS/Perfil.css">
+    <link rel="stylesheet" href="../CSS/perfil.css">
     <link rel="stylesheet" href="../CSS/confirmaCompra.css">
 
 </head>
 
 
 <body>
-    <form name="frmLogin" method="post" action="../PHP/Login_usuario.php">
+    <form name="frmLogin" method="post" action="../PHP/loginUsuario.php">
     <div class="main-login">
         <div class="login-container">
 
