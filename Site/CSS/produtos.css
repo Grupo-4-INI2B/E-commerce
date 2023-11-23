@@ -332,7 +332,7 @@ input[type=submit] {
   z-index: 1;
   font-family: Arial;
   font-weight: bold;
-  width: 50%;
+  width: 100%;
   background-color: #F6BE00;
   border: none;
   outline: none;

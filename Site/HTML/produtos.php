@@ -82,26 +82,16 @@
             <button class="dropdownbtn">Filtro</button>
             <div class="dropdown-content">
                 <!-- Corrigindo os atributos 'for' nos labels -->
-                <input type="checkbox" name='filtro[]' id="Pokémon" value="Pokémon">
-                <label for="Pokémon">Pokémon</label>
-                <input type="checkbox" name='filtro[]' id="Harry Potter" value="Harry Potter">
-                <label for="Harry Potter">Harry Potter</label>
-                <input type="checkbox" name='filtro[]' id="Capivara" value="Capivara">
-                <label for="Capivara">Capivaras</label>
-                <input type="checkbox" name='filtro[]'  id="Van Gogh" value="Van Gogh">
-                <label for="Van Gogh">Van Gogh</label>
-                <input type="checkbox" name='filtro[]' id="Star Wars" value="Star Wars">
-                <label for="Star Wars">Star Wars</label>
-                <input type="checkbox" name='filtro[]' id="Studio Ghibli" value="Studio Ghibli">
-                <label for="Studio Ghibli">Studio Ghibli</label>
-                <input type="checkbox" name='filtro[]' id="Demon Slayer" value="Demon Slayer">
-                <label for="Demon Slayer">Demon Slayer</label>
-                <input type="checkbox" name='filtro[]' id="Aleatório" value="Aleatório">
-                <label for="Aleatório">Aleatório</label>
-                <input type="checkbox" name='filtro[]' id="Botton" value="Botton">
-                <label for="Botton">Botton</label>
-                <input type="checkbox" name='filtro[]' id="Poster" value="Poster">
-                <label for="Poster">Poster</label>
+                <label for="Pokémon"><input type="checkbox" name='filtro[]' id="Pokémon" value="Pokémon">Pokémon</label>
+                <label for="HarryPotter"><input type="checkbox" name='filtro[]' id="HarryPotter" value="Harry Potter">Harry Potter</label>
+                <label for="Capivara"><input type="checkbox" name='filtro[]' id="Capivara" value="Capivara">Capivaras</label>
+                <label for="VanGogh"><input type="checkbox" name='filtro[]'  id="VanGogh" value="Van Gogh">Van Gogh</label>
+                <label for="StarWars"><input type="checkbox" name='filtro[]' id="StarWars" value="Star Wars">Star Wars</label>
+                <label for="StudioGhibli"><input type="checkbox" name='filtro[]' id="StudioGhibli" value="Studio Ghibli">Studio Ghibli</label>
+                <label for="DemonSlayer"><input type="checkbox" name='filtro[]' id="DemonSlayer" value="Demon Slayer">Demon Slayer</label>
+                <label for="Aleatório"><input type="checkbox" name='filtro[]' id="Aleatório" value="Aleatório">Aleatório</label>
+                <label for="Botton"><input type="checkbox" name='filtro[]' id="Botton" value="Botton">Botton</label>
+                <label for="Poster"><input type="checkbox" name='filtro[]' id="Poster" value="Poster">Poster</label>
                 <input type="submit" value='Filtrar' class='btn' name='categorias'></input>
                 <br>
 
