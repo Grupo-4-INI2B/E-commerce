@@ -257,7 +257,7 @@ a:link {
   left: 0;
   width: 0%;
   height: 100%;
-  background-color: #b68b00;
+  background-color: #F6BE00;
   transition: all 0.3s;
   border-radius: 10rem;
   z-index: -1;
@@ -273,7 +273,7 @@ a:link {
 
 
 .dropdownbtn {
-  background-color: #c2a02f;
+  background-color: #F6BE00;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -361,7 +361,7 @@ input[type=submit]:before {
   position: absolute;
   width: 0%;
   height: 100%;
-  background-color: #b68b00;
+  background-color: #F6BE00;
   transition: all 0.3s;
   border-radius: 10rem;
   z-index: -1;
