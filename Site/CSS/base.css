@@ -264,16 +264,15 @@ ul{
   z-index: 1;
   font-family: Arial;
   font-weight: bold;
-  width: 9%;
+  width: 7vw;
   background-color: #F6BE00;
   border: none;
   outline: none;
   box-shadow: 0px 5px 5px #efefef72;
-  height: 35px;
+  height: 2vh;
   cursor: pointer;
   margin-top: 10px; /* Ajuste a margem conforme necessário */
   text-decoration: none;
-  padding-bottom: 0;
 }
 li{
   color: #bbbbbb;

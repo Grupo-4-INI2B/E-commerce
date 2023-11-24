@@ -220,7 +220,7 @@
             
         </div>
     </div>
-    <a href='index.php' class='btn-buy' >Voltar ao Topo</a>
+    <a href='index.php' class='voltar' >Voltar ao Topo</a>
 
     <!--Footer-->
    <title>Footer Design</title>
