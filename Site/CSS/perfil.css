@@ -1,12 +1,12 @@
 .titulo-perfil
 {
-    font-size: 50px;
+    font-size: 30px;
     font-weight: bold;
     color: #000000;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 1%;
+    margin-bottom: 1%;
     display: block;
 }
 .campo-perfil
@@ -39,7 +39,7 @@
     box-shadow: 0px 10px 10px #CCC;
     height: 2vh;
     cursor: pointer;
-    margin: 1vh;
+    margin-bottom: 5%;
   }
   
   .btn-logout:after {

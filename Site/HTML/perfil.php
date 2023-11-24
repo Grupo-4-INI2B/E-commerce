@@ -55,8 +55,8 @@
         echo "
             <body>
                 <h1 class='titulo-perfil'>Perfil</h1>
-                <h2 class='campo-perfil'>Nome : $nome</h2>
-                <h2 class='campo-perfil'>Email : $sessaoUsuario</h2>
+                <h3 class='campo-perfil'>Nome : $nome</h3>
+                <h3 class='campo-perfil'>Email : $sessaoUsuario</h3>
                 <a class='btn-logout' href='../PHP/logoutUsuario.php'>Logout</a>
                 <br>
                 <a class='btn-logout' href='excluirUsuario.php'>Excluir Perfil</a>
@@ -66,12 +66,12 @@
         </html>";
     }else {
         echo "<h1>Perfil</h1>";
-        echo "<h2 class='subtitulo'>Nome: $nome</h2>";
-        echo "<h2 class='subtitulo'>Email: $sessaoUsuario</h2>";
-        echo "<h2 class='subtitulo'>Administrador</h2>";
-        echo "<h2><a href='relatorio.php' class='btn-logout'>Gerar Relatórios</a></h2>";
-        echo "<h2><a href='usuarios.php' class='btn-logout'>Administar Usuários</a></h2>";
-        echo "<h2><a href='crud.php' class='btn-logout'>Administar Produtos</a></h2>";
+        echo "<h3 class='subtitulo'>Nome: $nome</h3>";
+        echo "<h3 class='subtitulo'>Email: $sessaoUsuario</h3>";
+        echo "<h3 class='subtitulo'>Administrador</h3>";
+        echo "<a href='relatorio.php' class='btn-logout'>Gerar Relatórios</a>";
+        echo "<a href='usuarios.php' class='btn-logout'>Administar Usuários</a>";
+        echo "<a href='crud.php' class='btn-logout'>Administar Produtos</a>";
         echo "<a class='btn-logout' href='../PHP/logoutUsuario.php'>Logout</a>
                 <br>
                 <a class='btn-logout' href='index.php'>Voltar ao home</a></html>";
