@@ -178,7 +178,7 @@ a.remove {
   font-size: .75em;
   float: left;
   margin-right: 10px;
-  width: 3vw;
+  width: 6vw;
   border-radius: 80%;
   line-height: .85;
   -webkit-transition: all 0.25s linear;
@@ -201,7 +201,7 @@ a.include {
   padding: .5em;
   font-size: .75em;
   display: inline-block;
-  width: 3vw;
+  width: 6vw;
   border-radius: 80%;
   line-height: .85;
   -webkit-transition: all 0.25s linear;
@@ -215,7 +215,20 @@ a.include:hover {
   background: rgb(103, 241, 49);
   color: black;
 }
-
+.necessario
+{
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: -.015em;
+  font-size: .91em;
+  padding: 1em;
+  color: rgb(255, 255, 255);
+  background: #ff9737;
+  font-weight: bold;
+  border-radius: 50px;
+  float: right;
+  text-align: right;
+}
 /* .promoCode {
   border: 2px solid #efefef;
   float: left;

@@ -48,7 +48,7 @@
                         <td> $varAdm   </td>
                         <td>
                             <a href = 'alterarUsuario.php?id_usuario=$varId'> <img src='../Imagens/alterar.png' alt='Sorry'  width='30'/> </a> 
-                            <a href = 'excluirUsuario.php?id_usuario=$varId'> <img src='../Imagens/excluir.png' alt='Sorry'  width='30'/> </a> 
+                            <a href = 'excluirUsuario.php?id_usuario=$varId&&email=$varEmail'> <img src='../Imagens/excluir.png' alt='Sorry'  width='30'/> </a> 
                         </td>
                     </tr>
                 ";

@@ -257,7 +257,7 @@ a:link {
   left: 0;
   width: 0%;
   height: 100%;
-  background-color: #b68b00;
+  background-color: #F6BE00;
   transition: all 0.3s;
   border-radius: 10rem;
   z-index: -1;
@@ -273,7 +273,7 @@ a:link {
 
 
 .dropdownbtn {
-  background-color: #c2a02f;
+  background-color: #F6BE00;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -287,12 +287,15 @@ a:link {
   margin-left: 15%;
 }
 
-
 .dropdown {
   position: relative;
   display: inline-block;
+  margin-top: 3vw;
+  margin-left: 8vh;
 }
-
+.dropdown-content label {
+  display: flex;
+}
 
 .dropdown-content {
   display: none;
@@ -302,6 +305,8 @@ a:link {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   margin-left: 15%;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
 }
 
 .dropdown-content input {
@@ -322,7 +327,7 @@ a:link {
   background-color: #ff4800;
 }
 input[type=submit] {
-  display: block;
+  display: flex;
   border-radius: 10rem;
   color: #FFF;
   font-size: small;
@@ -340,7 +345,7 @@ input[type=submit] {
   height: 40px;
   cursor: pointer;
   text-decoration: none;
-
+  margin-left: 2vw;
 }
 
 input[type=submit]:after {
@@ -358,7 +363,7 @@ input[type=submit]:before {
   position: absolute;
   width: 0%;
   height: 100%;
-  background-color: #b68b00;
+  background-color: #F6BE00;
   transition: all 0.3s;
   border-radius: 10rem;
   z-index: -1;

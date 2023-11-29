@@ -73,7 +73,7 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
   $quantidade2 = intval(ValorSQL($conn, "SELECT qntd FROM tbl_produto WHERE id_produto = $codigoProduto"));
 
   if ($operacao == 'incluir') { //Se a operação for incluir.
-    if ($quantidade == 0) {
+    if ($quantidade == 0 && $quantidade2 >= 1) {
       //Insere o id do produto, o id da compra e a quantidade na tabela tbl_compra_produto. 
       ExecutaSQL($conn, "INSERT INTO tbl_compra_produto (fk_produto, fk_compra, quantidade) VALUES ($codigoProduto, $codigoCompra, 1)");
     } else if ($quantidade2 >= $quantidade + 1) {
@@ -82,6 +82,9 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
                            WHERE 
                             fk_produto = $codigoProduto 
                             AND fk_compra = $codigoCompra"); //Atualiza a quantidade do produto na tabela tbl_compra_produto.   
+    } else
+    {
+      echo "<script>alert('Quantidade indisponível no estoque!');</script>";
     }
   } else if ($operacao == 'excluir') { //Se a operação for excluir.
     if ($quantidade <= 1) {
@@ -92,6 +95,7 @@ if ($_GET) { //Quando o usuário clica em comprar em produtos e é redirecionado
       ExecutaSQL($conn, "UPDATE tbl_compra_produto SET quantidade = quantidade - 1 WHERE fk_produto = $codigoProduto AND fk_compra = $codigoCompra");
     }
   } else if ($operacao == 'fechar') { //Se a operação for fechar(terminar a compra).
+    
     $statusCompra = 'Concluida'; //O status da compra é concluida.
 
     //Atualiza o status da compra para concluida.
@@ -138,7 +142,8 @@ echo $codigoCompra;
     ExecutaSQL($conn, "DELETE FROM tbl_tmpcompra USING tbl_compra WHERE tbl_tmpcompra.fk_compra = $codigoCompra");
 
     //Redereciona para a página de pagamento.
-    header("Location: ../HTML/pagamento.php");
+
+    header("Location: ../HTML/index.php?id=1");
   }else if($_GET['operacao'] == 'apagar') { //Se a operação for destruir.
     ExecutaSQL($conn, "DELETE FROM tbl_tmpcompra USING tbl_compra WHERE tbl_tmpcompra.fk_compra = $codigoCompra");
     header("Location: ../HTML/carrinho.php");
@@ -247,6 +252,7 @@ echo $codigoCompra;
                     <p>Subtotal R$: $sub,00</p>
                     <br>
                     <a href='carrinho.php?operacao=incluir&id=$codigoProduto' class='include' >Adicionar</a>
+                    <br>
                     <a href='carrinho.php?operacao=excluir&id=$codigoProduto' class='remove'>Excluir</a>
                     </div>
                   </div>";
@@ -262,7 +268,7 @@ echo $codigoCompra;
                 echo "<h1 class='margem-titulo'>Seu carrinho está vazio</h1>";
               }else{
                 if (isset($login)) {
-                    if ($statusCompra == 'Pendente' && $login <> '') {
+                    if ($statusCompra == 'Pendente' && $login <> '' && $total > 0) {
                       echo"<div class='subtotal cf'>
                               <ul>
                                 <li class='totalRow'><span class='label'>Satus da compra</span><span class='value'>$statusCompra</span></li>
@@ -275,7 +281,25 @@ echo $codigoCompra;
                               </ul>
                           </div>";
                           } 
-                        } 
+                        else if($total<=0)
+                        {
+                          echo"<div class='subtotal cf'>
+                              <ul>
+                                <li class='totalRow'><span class='label'>Satus da compra</span><span class='value'>$statusCompra</span></li>
+                                <li class='totalRow final'><span class='label'>Total R$: </span><span class='value'>0,00</span></li>                                <br><br><br><br><br>
+                                <br><br><br><br><br>
+                                <li class='totalRow'><a href='index.php' class='btn-home'>Voltar ao home</a></li>
+                              </ul>
+                          </div>";
+                        }
+                        } else if($login =='')
+                        {
+                          echo"<div class='subtotal cf'>
+                          <ul>
+                              <li class='totalRow'><a class='necessario'>É necesssário logar para concluir sua compra</a></li>
+                          </ul>
+                          </div>";
+                        }
                       }
 
             ?>
@@ -299,7 +323,7 @@ echo $codigoCompra;
         <div class="footer-col">
           <h4>Ajuda</h4>
           <ul>
-            <li><a href="#">Opções de pagamento: Fichas</a></li>
+            <li>Opções de pagamento: Fichas</li>
           </ul>
         </div>
 

@@ -107,7 +107,7 @@
 
       //Configuração dos emails do remetente e do destinatário
       $mail->setFrom($pRemetente, 'ByteCraft'); //email do remetente
-      $mail->addReplyTo($pUsuario); //Email para respossta, caso não queira que o usuário responda, coloque no.reply@...
+      $mail->addReplyTo($pNome); //Email para respossta, caso não queira que o usuário responda, coloque no.reply@...
       $mail->addAddress($pDestinatario, $pNome); //email do destinatário
 
       //Conteúdo do email
@@ -135,27 +135,30 @@
 }
 
 //Função para gerar PDF
-function CriaPDF ($paramTitulo, $paramHtml, $paramArquivoPDF) {
+function CriaPDF ($paramTitulo, $paramHtml, $paramArquivoPDF, $opcao) {
   $arq = false;     
   try {  
     require "fpdf/html_table.php"; 
     // abre classe fpdf estendida com recurso que converte <table> em pdf
-  
     $pdf = new PDF();  
     // cria um novo objeto $pdf da classe 'pdf' que estende 'fpdf' em 'html_table.php'
     $pdf->AddPage();  // cria uma pagina vazia
-    $pdf->SetFont('helvetica','B',20);       
-    $pdf->Write(5,$paramTitulo);    
-    $pdf->SetFont('helvetica','',8);     
+    $pdf->SetFont('helvetica', 'B', 20);       
+    $pdf->Write(5, $paramTitulo);    
+    $pdf->SetFont('helvetica', '', 8);    
+    $paramHtml = utf8_decode($paramHtml);
     $pdf->WriteHTML($paramHtml); // renderiza $html na pagina vazia
     ob_end_clean();    
     // fpdf requer tela vazia, essa instrucao 
     // libera a tela antes do output
     
-    // gerando um arquivo 
-    $pdf->Output($paramArquivoPDF,'F');
-    // gerando um download 
-    $pdf->Output('D',$paramArquivoPDF);  // disponibiliza o pdf gerado pra download
+    $pdf->Output($opcao, $paramArquivoPDF, true);
+    // gera o pdf e salva no servidor
+    // $opcao = 'I' - abre no navegador
+    // $opcao = 'D' - força download
+
+    $pdf->Output('F',  "relatorios/$paramArquivoPDF", true);// $opcao = 'F' - salva no servidor
+
     $arq = true;
   } catch (Exception $e) {
     echo $e->getMessage(); // erros da aplicação - gerais
@@ -303,7 +306,7 @@ function CriaPDF ($paramTitulo, $paramHtml, $paramArquivoPDF) {
           echo "<td>" . $data_exclusao . "</td>";
           echo "<td><a href='../HTML/formAdicionar.php?acao=adicionar'><img src='../Imagens/Adicionar.png' alt='Adicionar' width='30'></a></td>";
           echo "<td><a href='../PHP/deletarProduto.php?id=" . $id_produto . "&acao=excluir'><img src='../Imagens/X_vermelho.png' alt='Excluir' width='30'></a></td>";
-          echo "<td><a href='../PHP/Form_alterarProduto.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
+          echo "<td><a href='../PHP/formAlterarProduto.php?id=" . $id_produto . "&acao=alterar'><img src='../Imagens/Alterar.png' alt='Alterar' width='30'></a></td>";
           echo "</tr>";
       }
 

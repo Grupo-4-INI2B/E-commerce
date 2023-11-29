@@ -13,6 +13,7 @@
 
     if(isset($_GET['id_usuario'])) {
         $pId_usuario = $_GET['id_usuario'];
+        $email = $_GET['email'];
     } 
   
     if($_SESSION['adm'] == false) {
@@ -34,9 +35,9 @@
 
         $excluido = true;
         //Deleta o usuário(lógico) e desativa o cookie e a sessão
-        $update = $conn->prepare("DELETE FROM tbl_usuario WHERE id_usuario = :id_usuario");
-     
-        $update->bindParam(':dta_exclusao', date("Y-m-d H:i:s"), PDO::PARAM_STR);
+        $update = $conn->prepare("UPDATE tbl_usuario SET dta_exclusao=:dta_exclusao, excluido=TRUE WHERE id_usuario = :id_usuario");
+        $d=date("Y-m-d H:i:s");
+        $update->bindParam(':dta_exclusao', $d, PDO::PARAM_STR);
         $update->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
         if($_SESSION['adm'] == true) {
             $update->bindParam(':id_usuario', $pId_usuario, PDO::PARAM_INT);

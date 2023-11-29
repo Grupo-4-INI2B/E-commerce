@@ -67,6 +67,7 @@ body{
     align-items: flex-end;
     height: 33px;
     width: 135px;
+    margin-top: 15vh;
 }
 .logo {
   height: 8%;
@@ -81,7 +82,7 @@ body{
     flex-direction: row;
     width: auto;
     background-color: #f6bd0049;
-    margin-top: 95px;
+    margin-top: 6vh;
     position: static;
       grid-template-columns: auto;
       grid-template-rows: auto auto;
@@ -91,7 +92,8 @@ body{
 .margem-titulo{
     margin-left: 50px;
   /*margin-top: 10px;*/
-
+    position: absolute;
+    top: 14vh;
 }
 
 
@@ -262,14 +264,16 @@ ul{
   z-index: 1;
   font-family: Arial;
   font-weight: bold;
-  width: 7%;
+  width: 7vw;
   background-color: #F6BE00;
   border: none;
   outline: none;
   box-shadow: 0px 5px 5px #efefef72;
-  height: 35px;
+  height: 2vh;
   cursor: pointer;
   margin-top: 10px; /* Ajuste a margem conforme necessário */
   text-decoration: none;
-  padding-bottom: 0;
+}
+li{
+  color: #bbbbbb;
 }

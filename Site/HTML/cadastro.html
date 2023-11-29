@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Byte Craft - Cadastro</title>
     <link rel="stylesheet" href="../CSS/cadastro.css" />
+    <script src="../JS/cadastro.js"></script>
 </head>
 
 <body>
@@ -31,9 +32,9 @@
                             <br />
                         </div>
                         <div class="textfield">
-                            <input type="tel" id="tlfn" name="tlfn" placeholder="(xx) xxxx-xxxx"
-                                pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" required />
-                            <br />
+                            <input type="tel" name="tlfn" id="tlfn" maxlength=15 onkeyup="formatPhone(this, event)" placeholder="Telefone "
+                            pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" required>           
+                        <br>
                         </div>
                         <div class="textfield">
                             <input type="password" id="senha" name="senha" placeholder="Senha" required />
